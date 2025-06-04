@@ -59,7 +59,7 @@ export default function SingFitLandingPage() {
 </div>
 <p className="text-center text-lg font-bold underline decoration-[#FDD9C7] decoration-1 text-[#002F6C] tracking-wide mb-6">SingFit is Designed For:</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 text-left pt-6">
-          <div className="bg-[#FCF2EC] p-6 rounded-lg shadow hover:shadow-lg transition">
+          <div className="bg-[#FEF8F5] p-6 rounded-lg shadow hover:shadow-lg transition">
             <HeartHandshake className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
 <h3 className="font-semibold text-lg">Caregivers & Their Loved Ones</h3>
             <p className="text-sm leading-relaxed text-gray-800 leading-relaxed">
