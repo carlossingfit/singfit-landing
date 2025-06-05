@@ -9,9 +9,11 @@ export default function SingFitLandingPage() {
       {/* Hero Section */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start bg-[#EEF6FA] p-10 rounded-xl shadow-xl bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] bg-repeat">
         <div className="space-y-10">
-          <h1 className="text-5xl font-extrabold text-black leading-tight">
-            Boost Brain Health Through the Power of Music
-          </h1>
+         <h1 className="text-5xl font-extrabold text-black leading-tight">
+  <span className="block">Boost Brain Health</span>
+  <span className="block">Through the Power</span>
+  <span className="block">of Music</span>
+</h1>
           <p className="text-xl text-gray-900 leading-relaxed">
             Discover how SingFit helps you and your loved ones feel better through guided music sessions — start with free resources, try the app, or do both!
           </p>
