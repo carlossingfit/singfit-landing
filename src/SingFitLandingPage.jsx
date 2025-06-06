@@ -119,9 +119,16 @@ export default function SingFitLandingPage() {
         <Button aria-label="Start using SingFit today" className="text-xl px-10 py-5 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200">
           Experience the Benefits of SingFit
         </Button>
-        <p className="text-sm mt-3 text-[#EC1300]">
-          Only $8.39/month for AARP Members (30% Discount)
-        </p>
+      <p className="text-sm mt-3 text-[#EC1300] flex items-center justify-center gap-2">
+  Only $8.39/month for AARP Members (30% Discount)
+  <img
+    src="/aarp-member-benefit.png"
+    alt="AARP badge"
+    className="h-6 w-auto inline-block"
+  />
+</p>
+
+
       </div>
 
       <section id="why-people-use" className="bg-[#FEF8F5] p-10 rounded-xl shadow-md space-y-10 text-center mb-12">
@@ -188,9 +195,14 @@ export default function SingFitLandingPage() {
         <Button aria-label="Start using SingFit today" className="text-xl px-10 py-5 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200">
           Experience the Benefits of SingFit
         </Button>
-        <p className="text-sm mt-2 text-[#EC1300]">
-          Only $8.39/month for AARP Members (30% Discount)
-        </p>
+        <p className="text-sm mt-3 text-[#EC1300] flex items-center justify-center gap-2">
+  Only $8.39/month for AARP Members (30% Discount)
+  <img
+    src="/aarp-member-benefit.png"
+    alt="AARP badge"
+    className="h-6 w-auto inline-block"
+  />
+</p>
       </div>
 
     </div>
