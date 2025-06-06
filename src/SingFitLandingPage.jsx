@@ -141,17 +141,17 @@ export default function SingFitLandingPage() {
   </h2>
   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
     <div className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-200">
-  <img src="https://static.wixstatic.com/media/264616_4fdddb1004ae4cb1aa54da994d9f7c3b~mv2.png" alt="Engagement Icon" className="h-12 w-auto mb-2 mx-auto" />
+  <img src="/AARP_Caregiving-red.png" alt="Engagement Icon" className="h-12 w-auto mb-2 mx-auto" />
   <h3 className="text-lg font-semibold text-black mb-2">To care for someone who’s hard to engage</h3>
       <p className="text-sm text-gray-700">SingFit sessions provide structure and joy for both people.</p>
     </div>
     <div className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-200">
-  <img src="https://static.wixstatic.com/media/264616_bdc9b14448654d2686623cf00825e739~mv2.png" alt="Memory Icon" className="h-12 w-auto mb-2 mx-auto" />
+  <img src="/aarp-brain.png" alt="Memory Icon" className="h-12 w-auto mb-2 mx-auto" />
   <h3 className="text-lg font-semibold text-black mb-2">Dealing with memory lapses or cognitive decline</h3>
       <p className="text-sm text-gray-700">Music engages the brain and helps boost memory and focus.</p>
     </div>
     <div className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-200">
-  <img src="https://static.wixstatic.com/media/264616_4ff8e218f1294e6eba2efc7485b70029~mv2.png" alt="Mood Icon" className="h-12 w-auto mb-2 mx-auto" />
+  <img src="aarp-gifts.png" alt="Mood Icon" className="h-12 w-auto mb-2 mx-auto" />
   <h3 className="text-lg font-semibold text-black mb-2">Feeling down, anxious, or disconnected</h3>
       <p className="text-sm text-gray-700">Singing helps lift your mood and bring a sense of connection, especially on difficult days.</p>
     </div>
