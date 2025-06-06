@@ -58,7 +58,7 @@ export default function SingFitLandingPage() {
       </section>
 
       {/* What is the SingFit App Section */}
-      <section id="what-is-singfit" className="bg-white p-10 rounded-xl shadow-md space-y-6 text-center w-full">
+      <section id="what-is-singfit" className="bg-white p-10 rounded-xl shadow-md space-y-6 text-center w-full mb-12">
         <h2 className="text-4xl font-bold text-[#F47534] relative inline-block">
           <span className="relative z-10">What is the SingFit App?</span>
           <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
@@ -91,7 +91,7 @@ export default function SingFitLandingPage() {
       </section>
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="bg-white p-10 rounded-xl shadow-md space-y-10 text-center">
+      <section id="how-it-works" className="bg-white p-10 rounded-xl shadow-md space-y-10 text-center mb-12">
         <h2 className="text-4xl font-bold text-[#F47534] relative inline-block">
           <span className="relative z-10">How It Works</span>
           <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
@@ -124,7 +124,7 @@ export default function SingFitLandingPage() {
         </p>
       </div>
 
-      <section id="why-people-use" className="bg-[#FEF8F5] p-10 rounded-xl shadow-md space-y-10 text-center">
+      <section id="why-people-use" className="bg-[#FEF8F5] p-10 rounded-xl shadow-md space-y-10 text-center mb-12">
   <h2 className="text-4xl font-bold text-[#F47534] relative inline-block">
     <span className="relative z-10">Why People Use SingFit</span>
     <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
@@ -149,7 +149,7 @@ export default function SingFitLandingPage() {
 </section>
 
       {/* The Science Behind SingFit Section */}
-      <section className="bg-[#D1E4F0] p-10 rounded-xl shadow-md space-y-6 text-center">
+      <section className="bg-[#D1E4F0] p-10 rounded-xl shadow-md space-y-6 text-center mb-12">
         <h2 className="text-3xl font-bold text-[#F47534] relative inline-block">
           <span className="relative z-10">The Science Behind SingFit</span>
           <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
@@ -167,7 +167,7 @@ export default function SingFitLandingPage() {
       </section>
 
       {/* What Our Users Say Section */}
-      <section className="bg-[#FAF6F2] p-10 rounded-xl shadow-md space-y-6 text-center max-w-7xl mx-auto">
+      <section className="bg-[#FAF6F2] p-10 rounded-xl shadow-md space-y-6 text-center max-w-7xl mx-auto mb-12">
         <h2 className="text-3xl font-bold text-[#F47534] relative inline-block">
           <span className="relative z-10">What Our Users Say</span>
           <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
