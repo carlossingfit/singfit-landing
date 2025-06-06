@@ -1,5 +1,5 @@
 import { Button } from "./components/ui/button";
-import { HeartHandshake, Brain } from "lucide-react";
+import { HeartHandshake, Brain, Armchair } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function SingFitLandingPage() {
@@ -15,9 +15,9 @@ export default function SingFitLandingPage() {
   {/* Hero Section */}
 <section className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start bg-[#EEF6FA] pt-0 pb-10 px-10 rounded-xl shadow-xl bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] bg-repeat">        <div className="space-y-10">
          <h1 className="text-5xl font-extrabold text-black leading-tight">
-  <span className="block">Boost Brain Health</span>
-  <span className="block">Through the Power</span>
-  <span className="block">of Music</span>
+  <span className="block">Exercise Your Brain</span>
+  <span className="block">Through the</span>
+  <span className="block">Power of Music</span>
 </h1>
           <p className="text-xl text-gray-900 leading-relaxed">
             Discover how SingFit helps you and your loved ones feel better through guided music sessions — start with free resources, try the app, or do both!
@@ -71,23 +71,26 @@ export default function SingFitLandingPage() {
     Get the SingFit App
   </Button>
 </div>
-<p className="text-center text-lg font-bold underline decoration-[#FDD9C7] decoration-1 text-[#002F6C] tracking-wide mb-6">SingFit is Designed For:</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 text-left pt-6">
-          <div className="bg-[#FEF8F5] p-6 rounded-lg shadow hover:shadow-lg transition">
-            <HeartHandshake className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
-<h3 className="font-semibold text-lg">Caregivers & Their Loved Ones</h3>
-            <p className="text-sm leading-relaxed text-gray-800 leading-relaxed">
-              Whether you're caring for someone with dementia or simply want to bring more connection into your routine, SingFit provides structure, joy, and a powerful way to engage through music.
-            </p>
-          </div>
-          <div className="bg-[#FEF8F5] p-6 rounded-lg shadow hover:shadow-lg transition">
-            <Brain className="h-12 w-12 text-[#F47534] mx-auto mb-2" />
-<h3 className="font-semibold text-lg">Older Adults Supporting Brain Health</h3>
-            <p className="text-sm text-gray-700">
-              SingFit offers a fun, evidence-based way to stay sharp, elevate your mood, and maintain mental agility using the power of music and guided singing.
-            </p>
-          </div>
-        </div>
+<p className="text-center text-lg font-bold underline decoration-[#FDD9C7] decoration-1 text-[#002F6C] tracking-wide mb-6">
+  SingFit is Designed For:
+</p>
+<div className="grid grid-cols-1 sm:grid-cols-2 gap-10 text-left pt-6 items-stretch">
+  <div className="bg-[#FEF8F5] p-6 rounded-lg shadow hover:shadow-lg transition h-full flex flex-col justify-start">
+    <HeartHandshake className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
+    <h3 className="font-semibold text-lg">Caregivers & Their Loved Ones</h3>
+    <p className="text-sm leading-relaxed text-gray-800">
+      Whether you're caring for someone with dementia or simply want to bring more connection into your routine, SingFit provides structure, joy, and a powerful way to engage through music.
+    </p>
+  </div>
+  <div className="bg-[#FEF8F5] p-6 rounded-lg shadow hover:shadow-lg transition h-full flex flex-col justify-start">
+    <Brain className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
+    <h3 className="font-semibold text-lg">Older Adults Supporting Brain Health</h3>
+    <p className="text-sm text-gray-700">
+      SingFit provides engaging therapeutic music and guided singing activities that research has linked to benefits including improved mental sharpness, elevated mood, and maintained cognitive agility.
+    </p>
+  </div>
+</div>
+
       </section>
 
       {/* How It Works Section */}
