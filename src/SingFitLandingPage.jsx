@@ -35,18 +35,25 @@ export default function SingFitLandingPage() {
             </a>
           </div>
         </div>
-        <motion.div
-  initial={{ opacity: 0, scale: 0.9 }}
-  whileInView={{ opacity: 1, scale: 1 }}
-  transition={{ duration: 0.6 }}
-  className="relative w-full h-[300px] rounded-xl overflow-hidden shadow-xl"
->
-  <img
-    src="https://static.wixstatic.com/media/2b1376_b72d41ebdfdf4a5e8a0cf6da3721c52c~mv2.jpg"
-    alt="Smiling older woman singing with caregiver in sunny living room"
-    className="w-full h-full object-cover"
-  />
-</motion.div>
+       <div className="flex flex-col items-end">
+  <div className="mt-2 mb-2">
+    <img src="/aarp-logo.png" alt="AARP logo" className="h-10 w-auto" />
+  </div>
+
+  <div className="w-full rounded-xl overflow-hidden shadow-xl mt-9">
+    <motion.img
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.6 }}
+      src="https://static.wixstatic.com/media/2b1376_b72d41ebdfdf4a5e8a0cf6da3721c52c~mv2.jpg"
+      alt="Smiling older woman singing with caregiver in sunny living room"
+      className="w-full object-cover rounded-xl min-h-[340px]"
+    />
+  </div>
+</div>
+
+
+
 
       </section>
 
