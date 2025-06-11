@@ -20,7 +20,7 @@ export default function SingFitLandingPage() {
   <span className="block">Power of Music</span>
 </h1>
           <p className="text-xl text-gray-900 leading-relaxed">
-            Discover how SingFit helps you and your loved ones feel better through guided music sessions — start with free resources, try the app, or do both!
+            Discover how SingFit can support you and your loved ones through guided singing sessions — explore free resources, try the SingFit app, or do both!
           </p>
           <div className="flex flex-row gap-4">
             <Button aria-label="Access free therapeutic music resources" className="text-lg px-10 py-5 bg-[#F47534] text-[#FFFFFF] hover:bg-[#d9652c] transition-all duration-200 ease-in-out">
@@ -64,7 +64,7 @@ export default function SingFitLandingPage() {
           <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
         </h2>
         <p className="text-lg md:text-xl">
-          The SingFit mobile app is a therapeutic music tool designed to support cognitive and emotional wellbeing. With guided sing-along sessions, prompted lyrics, and progress tracking, SingFit makes it easy to bring the benefits of music into your daily routine; no musical experience needed.
+          SingFit is a mobile app designed by board-certified music therapists to support cognitive and emotional wellbeing. With guided singing sessions, voice prompted lyrics, and progress tracking, SingFit brings the benefits of singing into your daily routine; no musical background needed.
         </p>
         <div className="text-center mb-4">
   <Button aria-label="Download the SingFit App" className="text-xl px-12 py-6 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200">
@@ -79,14 +79,14 @@ export default function SingFitLandingPage() {
     <HeartHandshake className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
     <h3 className="font-semibold text-lg">Caregivers & Their Loved Ones</h3>
     <p className="text-sm leading-relaxed text-gray-800">
-      Whether you're caring for someone with dementia or simply want to bring more connection into your routine, SingFit provides structure, joy, and a powerful way to engage through music.
+      Whether you're caring for someone with dementia or simply want to add more connection into your daily routine, SingFit offers structure, joy, and a powerful way to engage through music.
     </p>
   </div>
   <div className="bg-[#FEF8F5] p-6 rounded-lg shadow hover:shadow-lg transition h-full flex flex-col justify-start">
     <Brain className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
     <h3 className="font-semibold text-lg">Older Adults Supporting Brain Health</h3>
     <p className="text-sm text-gray-700">
-      SingFit provides engaging therapeutic music and guided singing activities that research has linked to benefits including improved mental sharpness, elevated mood, and maintained cognitive agility.
+      SingFit features engaging therapeutic music and guided singing activities that research has shown may improve mental sharpness, elevate mood, and maintain cognitive agility.
     </p>
   </div>
 </div>
@@ -100,15 +100,15 @@ export default function SingFitLandingPage() {
           <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 max-w-6xl mx-auto">
-          {["Create your profile","Set your goal","Begin your session","Reflect on your session*"].map((title, i) => (
+          {["Create your profile","Set your goal","Begin your session","Wrap up your session"].map((title, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.2, duration: 0.5 }} className="space-y-4 hover:scale-105 transition-transform duration-200">
               <img src={`https://static.wixstatic.com/media/264616_${["2389c82006c446cca0f12db06a3d9000","44e07472013845718269c789f125b619","3804aa0322e047aa86b78c4f937e93d8","7696ff978e7e4f8bad929d3739f6043a"][i]}~mv2.png`} alt={`Step ${i + 1}`} className="mx-auto w-full max-w-[140px] h-auto object-contain bg-white shadow-lg rounded-xl p-2 hover:scale-110 transition-transform duration-300" />
               <h3 className="text-lg font-semibold">{title}</h3>
               <p className="text-sm text-gray-700">{[
                 "Tell us about yourself so we can customize your experience.",
-                "This is what you will focus on in this session yadda yadda.*",
-                "Follow step-by-steps instructions and sing along with the Lyric Coach*",
-                "Track your progress over time to measure SingFit's impact."
+                "Choose what you want to focus on for your session",
+                "Follow on-screen instructions and sing along with the prompted lyrics",
+                "Track your results with our simple before/after rating system"
               ][i]}</p>
             </motion.div>
           ))}
@@ -123,7 +123,7 @@ export default function SingFitLandingPage() {
           Experience the Benefits of SingFit
         </Button>
       <p className="text-sm mt-3 text-[#EC1300] flex items-center justify-center gap-2">
-  Only $8.39/month for AARP Members (30% Discount)
+  AARP Members: $8.39/month (includes 30% discount).
   <img
     src="/aarp-member-benefit.png"
     alt="AARP badge"
@@ -143,17 +143,17 @@ export default function SingFitLandingPage() {
     <div className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-200">
   <img src="/AARP_Caregiving-red.png" alt="Engagement Icon" className="h-12 w-auto mb-2 mx-auto" />
   <h3 className="text-lg font-semibold text-black mb-2">To care for someone who’s hard to engage</h3>
-      <p className="text-sm text-gray-700">SingFit sessions provide structure and joy for both people.</p>
+      <p className="text-sm text-gray-700">SingFit sessions are designed to provide structure and joy for family caregiver and participant.</p>
     </div>
     <div className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-200">
   <img src="/aarp-brain.png" alt="Memory Icon" className="h-12 w-auto mb-2 mx-auto" />
   <h3 className="text-lg font-semibold text-black mb-2">Dealing with memory lapses or cognitive decline</h3>
-      <p className="text-sm text-gray-700">Music engages the brain and helps boost memory and focus.</p>
+      <p className="text-sm text-gray-700">Singing has been shown to activate the brain and may help support memory and attention.</p>
     </div>
     <div className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-200">
   <img src="aarp-gifts.png" alt="Mood Icon" className="h-12 w-auto mb-2 mx-auto" />
   <h3 className="text-lg font-semibold text-black mb-2">Feeling down, anxious, or disconnected</h3>
-      <p className="text-sm text-gray-700">Singing helps lift your mood and bring a sense of connection, especially on difficult days.</p>
+      <p className="text-sm text-gray-700">Singing can help boost your mood and foster a sense of connection, especially on hard days.</p>
     </div>
   </div>
 </section>
@@ -167,11 +167,11 @@ export default function SingFitLandingPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto text-left">
           <div className="bg-white rounded-lg p-6 shadow">
             <h3 className="text-lg font-bold mb-2">Backed by Clinical Music Therapy</h3>
-            <p className="text-sm text-gray-700">SingFit is grounded in clinical music therapy and neuroscience. Created by certified music therapists, it delivers guided singing sessions designed to actively stimulate both hemispheres of the brain.</p>
+            <p className="text-sm text-gray-700">SingFit is grounded in clinical music therapy and neuroscience. Created by certified music therapists, it delivers guided singing sessions designed to exercise the whole brain and respiratory system.</p>
           </div>
           <div className="bg-white rounded-lg p-6 shadow">
             <h3 className="text-lg font-bold mb-2">Personalized for Better Outcomes</h3>
-            <p className="text-sm text-gray-700">Unlike passive listening, SingFit uses personalized playlists and therapeutic algorithms based on a user’s age, goals, and health conditions to promote memory, mood, and communication.</p>
+            <p className="text-sm text-gray-700">SingFit uses personalized playlists and therapeutic algorithms customized to each user's age, goals, and health condition, which may provide more effective support for memory, mood, and communication.</p>
           </div>
         </div>
       </section>
@@ -199,7 +199,7 @@ export default function SingFitLandingPage() {
           Experience the Benefits of SingFit
         </Button>
         <p className="text-sm mt-3 text-[#EC1300] flex items-center justify-center gap-2">
-  Only $8.39/month for AARP Members (30% Discount)
+  AARP Members: $8.39/month (includes 30% discount).
   <img
     src="/aarp-member-benefit.png"
     alt="AARP badge"
