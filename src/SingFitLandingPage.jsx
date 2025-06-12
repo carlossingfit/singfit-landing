@@ -85,7 +85,7 @@ export default function SingFitLandingPage() {
   <div className="bg-[#FEF8F5] p-6 rounded-lg shadow hover:shadow-lg transition h-full flex flex-col justify-start">
     <Brain className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
     <h3 className="font-semibold text-lg">Older Adults Supporting Brain Health</h3>
-    <p className="text-sm text-gray-700">
+    <p className="text-sm leading-relaxed text-gray-800">
       SingFit features engaging therapeutic music and guided singing activities that research has shown may improve mental sharpness, elevate mood, and maintain cognitive agility.
     </p>
   </div>
