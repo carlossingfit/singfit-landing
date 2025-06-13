@@ -1,8 +1,10 @@
 import { Button } from "./components/ui/button";
 import { HeartHandshake, Brain, Armchair } from "lucide-react";
 import { motion } from "framer-motion";
+import { useRef } from "react";
 
 export default function SingFitLandingPage() {
+  const whatIsRef = useRef(null);
 
   return (
 <div className="flex flex-col gap-2 px-8 pt-0 pb-16 max-w-7xl mx-auto font-sans text-gray-900 text-xl md:text-2xl">
@@ -29,13 +31,16 @@ export default function SingFitLandingPage() {
           <div className="flex flex-row gap-4">
             <Button aria-label="Access free therapeutic music resources" className="text-lg px-10 py-5 bg-[#F47534] text-[#FFFFFF] hover:bg-[#d9652c] transition-all duration-200 ease-in-out">
               Get Free Therapeutic Music Resources
-            </Button>
-            <a href="#what-is-singfit" aria-label="Scroll to What is the SingFit App section">
-              <Button
+           <Button
+  onClick={() => {
+    whatIsRef.current?.scrollIntoView({ behavior: "smooth" });
+  }}
+  aria-label="Scroll to What is the SingFit App section"
   className="text-lg font-semibold px-10 py-5 bg-white border border-[#002F6C] text-[#002F6C] hover:bg-[#eaf2f8] transition-all duration-200 ease-in-out"
 >
   Learn About the App ↓
 </Button>
+
             </a>
           </div>
         </div>
@@ -62,7 +67,11 @@ export default function SingFitLandingPage() {
       </section>
 
       {/* What is the SingFit App Section */}
-      <section id="what-is-singfit" className="bg-white p-10 rounded-xl shadow-md space-y-6 text-center w-full mb-12">
+      <section
+  id="what-is-singfit"
+  ref={whatIsRef}
+  className="bg-white p-10 rounded-xl shadow-md space-y-6 text-center w-full mb-12"
+>
         <h2 className="text-4xl font-bold text-[#F47534] relative inline-block">
           <span className="relative z-10">What is the SingFit App?</span>
           <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
