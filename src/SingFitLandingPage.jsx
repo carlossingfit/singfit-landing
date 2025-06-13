@@ -7,62 +7,60 @@ export default function SingFitLandingPage() {
   const whatIsRef = useRef(null);
 
   return (
-<div className="flex flex-col gap-2 px-8 pt-0 pb-16 max-w-7xl mx-auto font-sans text-gray-900 text-xl md:text-2xl">
+    <div className="flex flex-col gap-2 px-8 pt-0 pb-16 max-w-7xl mx-auto font-sans text-gray-900 text-xl md:text-2xl">
 
-    
+      <img
+        src={`${process.env.PUBLIC_URL}/singfit-header-cropped.png`}
+        alt="SingFit site header"
+        className="w-full block align-top shadow-[0_4px_4px_-2px_rgba(0,0,0,0.1)]"
+      />
 
-  <img
-  src={`${process.env.PUBLIC_URL}/singfit-header-cropped.png`}
-  alt="SingFit site header"
-  className="w-full block align-top shadow-[0_4px_4px_-2px_rgba(0,0,0,0.1)]"
-/>
-
-  
-  {/* Hero Section */}
-<section className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start bg-[#EEF6FA] pt-0 pb-10 px-10 rounded-xl shadow-xl bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] bg-repeat">        <div className="space-y-10">
-         <h1 className="text-5xl font-extrabold text-black leading-tight">
-  <span className="block">Exercise Your Brain</span>
-  <span className="block">Through the</span>
-  <span className="block">Power of Music</span>
-</h1>
+      {/* Hero Section */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start bg-[#EEF6FA] pt-0 pb-10 px-10 rounded-xl shadow-xl bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] bg-repeat">
+        <div className="space-y-10">
+          <h1 className="text-5xl font-extrabold text-black leading-tight">
+            <span className="block">Exercise Your Brain</span>
+            <span className="block">Through the</span>
+            <span className="block">Power of Music</span>
+          </h1>
           <p className="text-xl text-gray-900 leading-relaxed">
             Discover how SingFit can support you and your loved ones through guided singing sessions — explore free resources, try the SingFit app, or do both!
           </p>
           <div className="flex flex-row gap-4">
-  <Button
-    aria-label="Access free therapeutic music resources"
-    className="text-lg px-10 py-5 bg-[#F47534] text-[#FFFFFF] hover:bg-[#d9652c] transition-all duration-200 ease-in-out"
-  >
-    Get Free Therapeutic Music Resources
-  </Button>
+            <Button
+              aria-label="Access free therapeutic music resources"
+              className="text-lg px-10 py-5 bg-[#F47534] text-[#FFFFFF] hover:bg-[#d9652c] transition-all duration-200 ease-in-out"
+            >
+              Get Free Therapeutic Music Resources
+            </Button>
 
-  <Button
-    onClick={() => {
-      whatIsRef.current?.scrollIntoView({ behavior: "smooth" });
-    }}
-    aria-label="Scroll to What is the SingFit App section"
-    className="text-lg font-semibold px-10 py-5 bg-white border border-[#002F6C] text-[#002F6C] hover:bg-[#eaf2f8] transition-all duration-200 ease-in-out"
-  >
-    Learn About the App ↓
-  </Button>
-</div>
+            <Button
+              onClick={() => {
+                whatIsRef.current?.scrollIntoView({ behavior: "smooth" });
+              }}
+              aria-label="Scroll to What is the SingFit App section"
+              className="text-lg font-semibold px-10 py-5 bg-white border border-[#002F6C] text-[#002F6C] hover:bg-[#eaf2f8] transition-all duration-200 ease-in-out"
+            >
+              Learn About the App ↓
+            </Button>
+          </div>
+        </div>
 
-<div className="flex flex-col items-end">
-  <div className="mt-2 mb-2">
-    <img src="/aarp-logo.png" alt="AARP logo" className="h-10 w-auto" />
-  </div>
-
-
-  <div className="w-full rounded-xl overflow-hidden shadow-xl mt-9">
-    <motion.img
-      initial={{ opacity: 0, scale: 0.9 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.6 }}
-      src="https://static.wixstatic.com/media/2b1376_b72d41ebdfdf4a5e8a0cf6da3721c52c~mv2.jpg"
-      alt="Smiling older woman singing with caregiver in sunny living room"
-      className="w-full object-cover rounded-xl min-h-[340px]"
-    />
-  </div>
+        <div className="flex flex-col items-end">
+          <div className="mt-2 mb-2">
+            <img src="/aarp-logo.png" alt="AARP logo" className="h-10 w-auto" />
+          </div>
+          <div className="w-full rounded-xl overflow-hidden shadow-xl mt-9">
+            <motion.img
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              src="https://static.wixstatic.com/media/2b1376_b72d41ebdfdf4a5e8a0cf6da3721c52c~mv2.jpg"
+              alt="Smiling older woman singing with caregiver in sunny living room"
+              className="w-full object-cover rounded-xl min-h-[340px]"
+            />
+          </div>
+        </div>
       </section>
 
       {/* What is the SingFit App Section */}
