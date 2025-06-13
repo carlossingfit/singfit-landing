@@ -7,15 +7,19 @@ export default function SingFitLandingPage() {
   const [isEmbedded, setIsEmbedded] = useState(false);
 
   useEffect(() => {
-    const embedded = window.self !== window.top;
-    setIsEmbedded(embedded);
+  const embedded = window.self !== window.top;
 
-    if (embedded) {
-      document.body.classList.add('disable-scroll');
-    } else {
-      document.body.classList.remove('disable-scroll');
-    }
-  }, []);
+  if (embedded) {
+    document.body.classList.add('disable-scroll');
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+  } else {
+    document.body.classList.remove('disable-scroll');
+    document.body.style.overflow = 'auto';
+    document.documentElement.style.overflow = 'auto';
+  }
+}, []);
+
 
   return (
     <div
