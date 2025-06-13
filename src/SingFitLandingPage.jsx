@@ -1,35 +1,13 @@
 import { Button } from "./components/ui/button";
 import { HeartHandshake, Brain, Armchair } from "lucide-react";
 import { motion } from "framer-motion";
-import { useEffect, useState } from 'react';
 
 export default function SingFitLandingPage() {
-  const [isEmbedded, setIsEmbedded] = useState(false);
-
-  useEffect(() => {
-  const embedded = window.self !== window.top;
-
-  if (embedded) {
-    document.body.classList.add('disable-scroll');
-    document.body.style.overflow = 'hidden';
-    document.documentElement.style.overflow = 'hidden';
-  } else {
-    document.body.classList.remove('disable-scroll');
-    document.body.style.overflow = 'auto';
-    document.documentElement.style.overflow = 'auto';
-  }
-}, []);
-
 
   return (
-    <div
-      className={[
-        "flex flex-col gap-2 px-8 pt-0 pb-16 max-w-7xl mx-auto font-sans text-gray-900 text-xl md:text-2xl",
-        isEmbedded ? "overflow-hidden" : ""
-      ].join(" ")}
-      style={{ height: "100%" }}
-    >
+<div className="flex flex-col gap-2 px-8 pt-0 pb-16 max-w-7xl mx-auto font-sans text-gray-900 text-xl md:text-2xl">
 
+    
 
   <img
   src={`${process.env.PUBLIC_URL}/singfit-header-cropped.png`}
