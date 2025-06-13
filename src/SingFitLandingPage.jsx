@@ -29,22 +29,29 @@ export default function SingFitLandingPage() {
             Discover how SingFit can support you and your loved ones through guided singing sessions — explore free resources, try the SingFit app, or do both!
           </p>
           <div className="flex flex-row gap-4">
-            <Button aria-label="Access free therapeutic music resources" className="text-lg px-10 py-5 bg-[#F47534] text-[#FFFFFF] hover:bg-[#d9652c] transition-all duration-200 ease-in-out">
-              Get Free Therapeutic Music Resources
-           <Button
-  onClick={() => {
-    whatIsRef.current?.scrollIntoView({ behavior: "smooth" });
-  }}
-  aria-label="Scroll to What is the SingFit App section"
-  className="text-lg font-semibold px-10 py-5 bg-white border border-[#002F6C] text-[#002F6C] hover:bg-[#eaf2f8] transition-all duration-200 ease-in-out"
->
-  Learn About the App ↓
-</Button>
-        </div>
-       <div className="flex flex-col items-end">
+  <Button
+    aria-label="Access free therapeutic music resources"
+    className="text-lg px-10 py-5 bg-[#F47534] text-[#FFFFFF] hover:bg-[#d9652c] transition-all duration-200 ease-in-out"
+  >
+    Get Free Therapeutic Music Resources
+  </Button>
+
+  <Button
+    onClick={() => {
+      whatIsRef.current?.scrollIntoView({ behavior: "smooth" });
+    }}
+    aria-label="Scroll to What is the SingFit App section"
+    className="text-lg font-semibold px-10 py-5 bg-white border border-[#002F6C] text-[#002F6C] hover:bg-[#eaf2f8] transition-all duration-200 ease-in-out"
+  >
+    Learn About the App ↓
+  </Button>
+</div>
+
+<div className="flex flex-col items-end">
   <div className="mt-2 mb-2">
     <img src="/aarp-logo.png" alt="AARP logo" className="h-10 w-auto" />
   </div>
+
 
   <div className="w-full rounded-xl overflow-hidden shadow-xl mt-9">
     <motion.img
