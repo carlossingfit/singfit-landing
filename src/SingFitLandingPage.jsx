@@ -40,7 +40,6 @@ export default function SingFitLandingPage() {
 >
   Learn About the App ↓
 </Button>
-          </div>
         </div>
        <div className="flex flex-col items-end">
   <div className="mt-2 mb-2">
