@@ -63,11 +63,6 @@ export default function SingFitLandingPage() {
       className="w-full object-cover rounded-xl min-h-[340px]"
     />
   </div>
-</div>
-
-
-
-
       </section>
 
       {/* What is the SingFit App Section */}
