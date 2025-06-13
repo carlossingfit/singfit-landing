@@ -8,6 +8,9 @@ body.disable-scroll {
   overflow: hidden !important;
   height: 100vh;
 }
+html {
+  overflow: hidden !important;
+}
 
 @tailwind base;
 @tailwind components;
