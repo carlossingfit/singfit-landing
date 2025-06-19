@@ -9,11 +9,6 @@ export default function SingFitLandingPage() {
   return (
     <div className="flex flex-col gap-2 px-8 pt-0 pb-16 max-w-7xl mx-auto font-sans text-gray-900 text-xl md:text-2xl">
 
-      <img
-        src={`${process.env.PUBLIC_URL}/singfit-header-cropped.png`}
-        alt="SingFit site header"
-        className="w-full block align-top shadow-[0_4px_4px_-2px_rgba(0,0,0,0.1)]"
-      />
 
       {/* Hero Section */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start bg-[#EEF6FA] pt-0 pb-10 px-10 rounded-xl shadow-xl bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] bg-repeat">
