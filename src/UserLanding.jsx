@@ -156,23 +156,6 @@ export default function UserLanding() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="bg-[#FAF6F2] p-10 rounded-xl shadow-md space-y-6 text-center max-w-7xl mx-auto mb-12">
-        <h2 className="text-3xl font-bold text-[#F47534] relative inline-block">
-          <span className="relative z-10">What Our Users Say</span>
-          <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
-        </h2>
-        <div className="flex flex-col md:flex-row gap-6 justify-center">
-          <div className="w-full md:w-1/2 rounded-lg overflow-hidden shadow-lg">
-            <iframe className="w-full aspect-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="User Testimonial" allowFullScreen />
-          </div>
-          <div className="text-left space-y-2 max-w-md mx-auto">
-            <p className="text-lg italic">"My mom lights up when she uses SingFit. It's her favorite part of the day!"</p>
-            <p className="text-sm text-gray-700">— Linda, Caregiver from Los Angeles</p>
-          </div>
-        </div>
-      </section>
-
       {/* Final CTA */}
       <div className="text-center">
         <Button className="text-xl px-10 py-5 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200">
