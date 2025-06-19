@@ -25,26 +25,28 @@ export default function FreeContent() {
   });
 
   return (
-  <div className="bg-[#FCF8F5] min-h-screen">
+  <div className="bg-white min-h-screen">
     <div className="flex flex-col gap-10 px-8 pt-10 pb-16 max-w-7xl mx-auto font-sans text-gray-900 text-xl md:text-2xl">
 
 
       {/* Page Header */}
       <section className="text-center space-y-4">
         <h1 className="text-5xl font-extrabold text-[#002F6C]">Free Therapeutic Music Resources</h1>
-        <p className="text-lg text-gray-800 max-w-2xl mx-auto">
+        <p className="text-lg font-medium text-gray-700 max-w-2xl mx-auto">
           Watch helpful videos and sign up for upcoming webinars designed to support brain health and joyful caregiving.
         </p>
       </section>
+      <hr className="border-t border-gray-200 my-6" />
+
 
       {/* Main Layout */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch min-h-[500px]">
 
 
         {/* VIDEO COLUMN */}
-        <div className="flex flex-col justify-between h-full bg-[#FAF6F2] p-4 rounded-xl shadow-md">
+        <div className="flex flex-col justify-between h-full bg-[#FAF6F2] p-4 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
           <div className="min-h-[4rem] pt-[0.6rem]">
-            <h2 className="text-xl font-bold text-[#F47534] leading-snug">
+            <h2 className="text-xl font-bold text-[#243B53] leading-snug">
               {videoTitles[currentSlide]}
             </h2>
           </div>
@@ -79,7 +81,7 @@ export default function FreeContent() {
   />
 </div>
 
-              <div className="keen-slider__slide bg-white p-1 rounded-lg shadow h-[360px] flex items-center justify-center">
+              <div className="keen-slider__slide bg-white p-1 rounded-lg shadow h-[369px] flex items-center justify-center">
   <iframe
     className="w-full h-full rounded-md"
     src="https://www.youtube.com/embed/bSw5X9Hq3NU"
@@ -96,7 +98,7 @@ export default function FreeContent() {
 
           {/* Notify Me Form */}
           <div className="mt-auto pt-4 text-center space-y-1">
-            <p className="text-sm">Want more free content? We’ll notify you when new videos are released:</p>
+            <p className="text-base">Get notified when new videos are released:</p>
             <form className="flex flex-col sm:flex-row justify-center gap-2">
               <input
                 type="email"
@@ -115,14 +117,14 @@ export default function FreeContent() {
         </div>
 
         {/* WEBINAR COLUMN */}
-        <div className="flex flex-col justify-between h-full bg-[#EEF6FA] p-6 rounded-xl shadow-md">
-          <div className="flex items-start gap-4 pt-[0.6rem] min-h-[4rem]">
+        <div className="flex flex-col justify-between h-full bg-[#EEF6FA] p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
+          <div className="flex items-start gap-4 pt-[0.2rem] min-h-[4rem]">
             <img
               src="/andyheadshot.jpg"
               alt="Andy Tubman"
               className="w-16 h-16 object-cover rounded-full shadow"
             />
-            <h2 className="text-lg font-bold text-[#F47534] leading-tight">
+            <h2 className="text-xl font-bold text-[#243B53] leading-tight">
               Join Board Certified Music Therapist Andy Tubman for a series of webinars on the power of music as medicine.
             </h2>
           </div>
@@ -131,42 +133,32 @@ export default function FreeContent() {
             {/* Webinar Card 1 */}
             <div className="bg-white rounded-xl shadow p-4 flex items-start gap-4">
               <img
-                src="/date-july10.png"
+                src="date-july10.png"
                 alt="July 10, 2025"
-                className="w-16 h-16 object-contain rounded-md shadow"
+                className="w-20 h-20 object-contain rounded-md shadow"
               />
-              <div className="text-sm">
-                <p className="font-semibold text-[#002F6C] mb-1">Music as Medicine</p>
-                <p className="text-xs text-gray-600 mb-2">July 10, 2025</p>
-                <p className="text-xs text-gray-700 mb-1">
-                  Learn how music can support memory and mood in daily caregiving. This session introduces the basics of music therapy and includes sample routines for caregivers.
-                </p>
-                <ul className="list-disc list-inside text-xs text-gray-600 mt-1 space-y-1">
-                  <li>What is Music as Medicine?</li>
-                  <li>Using music to regulate energy</li>
-                  <li>Simple tools for at-home use</li>
-                </ul>
+              <div className="text-lg leading-relaxed">
+                <p className="font-semibold text-[#002F6C] text-xl mb-2">Music as Medicine</p>
+<p className="text-base text-gray-700 leading-relaxed">
+  Discover how music therapy can help caregivers support memory, mood, and energy in daily routines. More text here......................................
+</p>
+
               </div>
             </div>
 
             {/* Webinar Card 2 */}
             <div className="bg-white rounded-xl shadow p-4 flex items-start gap-4">
               <img
-                src="/date-july24.png"
+                src="date-july24.png"
                 alt="July 24, 2025"
-                className="w-16 h-16 object-contain rounded-md shadow"
+                className="w-20 h-20 object-contain rounded-md shadow"
               />
-              <div className="text-sm">
-                <p className="font-semibold text-[#002F6C] mb-1">The Joy of Singing</p>
-                <p className="text-xs text-gray-600 mb-2">July 24, 2025</p>
-                <p className="text-xs text-gray-700 mb-1">
-                  Explore how guided singing can elevate mood, increase engagement, and create joyful moments between caregivers and loved ones.
-                </p>
-                <ul className="list-disc list-inside text-xs text-gray-600 mt-1 space-y-1">
-                  <li>How singing activates the brain</li>
-                  <li>Warm-ups and vocal games</li>
-                  <li>Tips for non-musicians</li>
-                </ul>
+              <div className="text-lg leading-relaxed">
+                <p className="font-semibold text-[#002F6C] text-xl mb-2">The Joy of Singing</p>
+<p className="text-base text-gray-700 leading-relaxed">
+  Explore how guided singing can boost mood, deepen connection, and create joyful moments with loved ones. More text here....................................
+</p>
+
               </div>
             </div>
           </div>
