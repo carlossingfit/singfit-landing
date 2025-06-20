@@ -28,7 +28,7 @@ export default function FreeContent() {
   <div className="bg-white min-h-screen">
     <div className="flex flex-col gap-10 px-8 pt-0 pb-16 max-w-7xl mx-auto font-sans text-gray-900 text-xl md:text-2xl">
 
-<section className="bg-[#E6F0F7] rounded-2xl shadow-xl border border-gray-200 px-6 py-8 relative overflow-hidden mb-10">
+<section className="bg-[#E6F0F7] rounded-2xl shadow-xl border border-gray-200 px-6 py-8 relative overflow-hidden mb-2">
   {/* AARP Logo */}
   <img
     src="/aarp-logo.png"
