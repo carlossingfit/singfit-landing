@@ -22,12 +22,12 @@ export default function SingFitLandingPage() {
             Discover how SingFit can support you and your loved ones through guided singing sessions — explore free resources, try the SingFit app, or do both!
           </p>
           <div className="flex flex-row gap-4">
-            <Button
-              aria-label="Access free therapeutic music resources"
-              className="text-lg px-10 py-5 bg-[#F47534] text-[#FFFFFF] hover:bg-[#d9652c] transition-all duration-200 ease-in-out"
-            >
-              Get Free Therapeutic Music Resources
-            </Button>
+            <a href="https://www.singfit.com/aarp-free-resources" target="_blank" rel="noopener noreferrer">
+  <Button aria-label="Access free therapeutic music resources" className="text-lg px-10 py-5 bg-[#F47534] text-[#FFFFFF] hover:bg-[#d9652c] transition-all duration-200 ease-in-out">
+    Get Free Therapeutic Music Resources
+  </Button>
+</a>
+
 
             <Button
               onClick={() => {
@@ -72,9 +72,12 @@ export default function SingFitLandingPage() {
           SingFit is a mobile app designed by board-certified music therapists to support cognitive and emotional wellbeing. With guided singing sessions, voice prompted lyrics, and progress tracking, SingFit brings the benefits of singing into your daily routine; no musical background needed.
         </p>
         <div className="text-center mb-4">
+  <a href="https://www.singfit.com/aarp-member-pricing" target="_blank" rel="noopener noreferrer">
   <Button aria-label="Download the SingFit App" className="text-xl px-12 py-6 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200">
     Get the SingFit App
   </Button>
+</a>
+
 </div>
 <p className="text-center text-lg font-bold underline decoration-[#FDD9C7] decoration-1 text-[#002F6C] tracking-wide mb-6">
   SingFit is Designed For:
@@ -124,9 +127,12 @@ export default function SingFitLandingPage() {
 
       {/* Mid-Page CTA Section */}
       <div className="text-center">
-        <Button aria-label="Start using SingFit today" className="text-xl px-10 py-5 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200">
-          Experience the Benefits of SingFit
-        </Button>
+        <a href="https://www.singfit.com/aarp-member-pricing" target="_blank" rel="noopener noreferrer">
+  <Button aria-label="Start using SingFit today" className="text-xl px-10 py-5 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200">
+    Experience the Benefits of SingFit
+  </Button>
+</a>
+
       <p className="text-sm mt-3 text-[#EC1300] flex items-center justify-center gap-2">
   AARP Members: $8.39/month (includes 30% discount).
   <img
@@ -183,9 +189,12 @@ export default function SingFitLandingPage() {
 
       {/* Final CTA Section */}
       <div className="text-center">
-        <Button aria-label="Start using SingFit today" className="text-xl px-10 py-5 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200">
-          Experience the Benefits of SingFit
-        </Button>
+       <a href="https://www.singfit.com/aarp-member-pricing" target="_blank" rel="noopener noreferrer">
+  <Button aria-label="Start using SingFit today" className="text-xl px-10 py-5 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200">
+    Experience the Benefits of SingFit
+  </Button>
+</a>
+
         <p className="text-sm mt-3 text-[#EC1300] flex items-center justify-center gap-2">
   AARP Members: $8.39/month (includes 30% discount).
   <img
