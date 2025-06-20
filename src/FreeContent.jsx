@@ -28,18 +28,27 @@ export default function FreeContent() {
   <div className="bg-white min-h-screen">
     <div className="flex flex-col gap-10 px-8 pt-10 pb-16 max-w-7xl mx-auto font-sans text-gray-900 text-xl md:text-2xl">
 
+<section className="bg-[#E6F0F7] rounded-2xl shadow-xl border border-gray-200 px-6 py-8 relative overflow-hidden mb-10">
+  {/* AARP Logo */}
+  <img
+    src="/aarp-logo.png"
+    alt="AARP Logo"
+    className="absolute top-4 right-4 w-24 h-auto"
+  />
 
-      {/* Page Header */}
-      <section className="text-center space-y-4">
-        <h1 className="text-5xl font-extrabold text-[#002F6C]">Free Therapeutic Music Resources</h1>
-        <p className="text-lg font-medium text-gray-700 max-w-2xl mx-auto">
-          Watch helpful videos and sign up for upcoming webinars designed to support brain health and joyful caregiving.
-        </p>
-      </section>
-      <hr className="border-t border-gray-200 my-6" />
-
+  {/* Tagline Content */}
+  <div className="max-w-3xl mx-auto text-center">
+    <h1 className="text-4xl md:text-5xl font-extrabold text-[#002F6C] leading-tight mb-2">
+      Discover the Power of Music — For Free
+    </h1>
+    <p className="text-lg text-[#002F6C] font-medium">
+      Brought to you by SingFit in collaboration with AARP.
+    </p>
+  </div>
+</section>
 
       {/* Main Layout */}
+      <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-6">
       <section className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch min-h-[500px]">
 
 
@@ -104,7 +113,8 @@ export default function FreeContent() {
                 type="email"
                 required
                 placeholder="Enter your email"
-                className="px-3 py-2 rounded-md border border-gray-300 text-sm w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-[#F47534]"
+                className="px-3 py-2 rounded-md border border-gray-300 text-sm w-full sm:w-64 transition duration-200 focus:outline-none focus:ring-2 focus:ring-[#F47534] hover:border-[#F47534]"
+
               />
               <Button
                 type="submit"
@@ -117,7 +127,7 @@ export default function FreeContent() {
         </div>
 
         {/* WEBINAR COLUMN */}
-        <div className="flex flex-col justify-between h-full bg-[#EEF6FA] p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
+        <div className="flex flex-col justify-between h-full bg-[#FAF6F2] p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
           <div className="flex items-start gap-4 pt-[0.2rem] min-h-[4rem]">
             <img
               src="/andyheadshot.jpg"
@@ -179,6 +189,7 @@ export default function FreeContent() {
         </div>
       </section>
         </div>
+  </div>
   </div>
   );
 }
