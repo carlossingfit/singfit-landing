@@ -122,7 +122,7 @@ export default function FreeContent() {
       e.preventDefault();
       const email = e.target.email.value;
 
-      fetch("https://singfit-email-proxy.carlos-4ca.workers.dev", {
+      fetch("https://hook.us2.make.com/vl4dwb7wcunr13bghvani6mvji8imygv", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
