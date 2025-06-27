@@ -115,7 +115,7 @@ export default function FreeContent() {
           {/* Notify Me Form */}
           {/* Notify Me Form */}
 <div className="mt-auto pt-4 text-center space-y-1">
-  <p className="text-base">Get notified when new videos are released:</p>
+  <p className="text-base">Get notified when new resources are released:</p>
   <form
     className="flex flex-col sm:flex-row justify-center gap-2"
     onSubmit={(e) => {
