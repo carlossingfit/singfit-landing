@@ -119,7 +119,7 @@ export default function FreeContent() {
       e.preventDefault();
       const email = e.target.email.value;
 
-      fetch("https://hooks.zapier.com/hooks/catch/12406141/ubiutni/", {
+      fetch("https://script.google.com/macros/s/AKfycbz1kXGHVZUeRI52jNfZz8Xz0iFKJHtkUYj4zkMUTmJg8vL-KxEetsivHgDiXT9TU0JPVA/exec", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
