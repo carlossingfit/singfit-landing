@@ -17,10 +17,12 @@ export default function UserLanding() {
           <p className="text-xl text-gray-900 leading-relaxed">
             Discover how SingFit can support you and your loved ones through guided singing sessions — explore free resources, try the SingFit app, or do both!
           </p>
-          <div className="flex flex-row gap-4">
-            <Button className="text-lg px-10 py-5 bg-[#F47534] text-[#FFFFFF] hover:bg-[#d9652c] transition-all duration-200 ease-in-out">
-              Get Free Therapeutic Music Resources
-            </Button>
+         <div className="flex flex-row gap-4">
+            <a href="https://www.singfit.com/aarp-free-resources" target="_blank" rel="noopener noreferrer">
+  <Button aria-label="Access free therapeutic music resources" className="text-lg px-10 py-5 bg-[#F47534] text-[#FFFFFF] hover:bg-[#d9652c] transition-all duration-200 ease-in-out">
+    Get Free Therapeutic Music Resources
+  </Button>
+</a>
             <a href="#what-is-singfit">
               <Button className="text-lg font-semibold px-10 py-5 bg-white border border-[#002F6C] text-[#002F6C] hover:bg-[#eaf2f8] transition-all duration-200 ease-in-out">
                 Learn About the App ↓
@@ -56,10 +58,13 @@ export default function UserLanding() {
           SingFit is a mobile app designed by board-certified music therapists to support cognitive and emotional wellbeing. With guided singing sessions, voice prompted lyrics, and progress tracking, SingFit brings the benefits of singing into your daily routine; no musical background needed.
         </p>
         <div className="text-center mb-4">
-          <Button className="text-xl px-12 py-6 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200">
-            Get the SingFit App
-          </Button>
-        </div>
+  <a href="https://www.singfit.com/aarp-non-member-pricing" target="_blank" rel="noopener noreferrer">
+  <Button aria-label="Download the SingFit App" className="text-xl px-12 py-6 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200">
+    Get the SingFit App
+  </Button>
+</a>
+
+</div>
         <p className="text-center text-lg font-bold underline decoration-[#FDD9C7] decoration-1 text-[#002F6C] tracking-wide mb-6">
           SingFit is Designed For:
         </p>
@@ -105,11 +110,13 @@ export default function UserLanding() {
 
       {/* Why People Use SingFit Section */}
       <div className="text-center">
-        <Button className="text-xl px-10 py-5 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200">
-          Experience the Benefits of SingFit
-        </Button>
+        <a href="https://www.singfit.com/aarp-non-member-pricing" target="_blank" rel="noopener noreferrer">
+  <Button aria-label="Start using SingFit today" className="text-xl px-10 py-5 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200">
+    Experience the Benefits of SingFit
+  </Button>
+</a>
         <p className="text-sm mt-3 text-[#EC1300] flex items-center justify-center gap-2">
-          AARP Members: $8.39/month (includes 30% discount).
+          AARP Members: $10.19/month (includes 15% discount).
           <img src="/aarp-member-benefit.png" alt="AARP badge" className="h-6 w-auto inline-block" />
         </p>
       </div>
@@ -158,11 +165,13 @@ export default function UserLanding() {
 
       {/* Final CTA */}
       <div className="text-center">
-        <Button className="text-xl px-10 py-5 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200">
-          Experience the Benefits of SingFit
-        </Button>
+       <a href="https://www.singfit.com/aarp-non-member-pricing" target="_blank" rel="noopener noreferrer">
+  <Button aria-label="Start using SingFit today" className="text-xl px-10 py-5 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200">
+    Experience the Benefits of SingFit
+  </Button>
+</a>
         <p className="text-sm mt-3 text-[#EC1300] flex items-center justify-center gap-2">
-          AARP Members: $8.39/month (includes 30% discount).
+          AARP Members: $10.19/month (includes 15% discount).
           <img src="/aarp-member-benefit.png" alt="AARP badge" className="h-6 w-auto inline-block" />
         </p>
       </div>
