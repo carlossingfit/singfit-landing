@@ -9,7 +9,7 @@ export default function FreeContent() {
   const videoTitles = [
     "How Caregivers Can Build Musical Habits to Support a Happy, Healthy Life",
     "Music and Memory: How Singing Boosts Brain Health",
-    "More Videos Coming Soon"
+    "More Coming Soon"
   ];
 
   const [sliderRef, instanceRef] = useKeenSlider({
@@ -83,31 +83,35 @@ export default function FreeContent() {
             <div ref={sliderRef} className="keen-slider rounded-lg overflow-hidden shadow mt-2">
               <div className="keen-slider__slide bg-white p-1 rounded-lg shadow h-[369px] flex items-center justify-center">
   <iframe
-    className="w-full h-full rounded-md"
-    src="https://www.youtube.com/embed/bSw5X9Hq3NU"
-    title="SingFit Free Resource"
-    allowFullScreen
-  />
+  className="w-full h-full rounded-md"
+  src="https://www.youtube.com/embed/bSw5X9Hq3NU"
+  title="SingFit Free Resource"
+  sandbox="allow-scripts allow-same-origin allow-presentation"
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+/>
 </div>
 
               <div className="keen-slider__slide bg-white p-1 rounded-lg shadow h-[369px] flex items-center justify-center">
   <iframe
-    className="w-full h-full rounded-md"
-    src="https://www.youtube.com/embed/bSw5X9Hq3NU"
-    title="SingFit Free Resource"
-    allowFullScreen
-  />
+  className="w-full h-full rounded-md"
+  src="https://www.youtube.com/embed/bSw5X9Hq3NU"
+  title="SingFit Free Resource"
+  sandbox="allow-scripts allow-same-origin allow-presentation"
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+/>
 </div>
 
               <div className="keen-slider__slide bg-gray-100 p-1 rounded-lg shadow flex items-center justify-center text-gray-600 text-base font-medium aspect-video">
-                More Videos Coming Soon
+                More Coming Soon
               </div>
             </div>
           </div>
 
           {/* Notify Me Form */}
           <div className="mt-auto pt-4 text-center space-y-1">
-            <p className="text-base">Get notified when new videos are released:</p>
+            <p className="text-base">Get notified when new resources are released:</p>
             <form className="flex flex-col sm:flex-row justify-center gap-2">
               <input
                 type="email"
