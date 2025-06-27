@@ -110,24 +110,51 @@ export default function FreeContent() {
           </div>
 
           {/* Notify Me Form */}
-          <div className="mt-auto pt-4 text-center space-y-1">
-            <p className="text-base">Get notified when new resources are released:</p>
-            <form className="flex flex-col sm:flex-row justify-center gap-2">
-              <input
-                type="email"
-                required
-                placeholder="Enter your email"
-                className="px-3 py-2 rounded-md border border-gray-300 text-sm w-full sm:w-64 transition duration-200 focus:outline-none focus:ring-2 focus:ring-[#F47534] hover:border-[#F47534]"
+          {/* Notify Me Form */}
+<div className="mt-auto pt-4 text-center space-y-1">
+  <p className="text-base">Get notified when new videos are released:</p>
+  <form
+    className="flex flex-col sm:flex-row justify-center gap-2"
+    onSubmit={(e) => {
+      e.preventDefault();
+      const email = e.target.email.value;
 
-              />
-              <Button
-                type="submit"
-                className="text-sm px-4 py-2 bg-[#F47534] text-white hover:bg-[#d9652c] shadow"
-              >
-                Notify Me
-              </Button>
-            </form>
-          </div>
+      fetch("https://hooks.zapier.com/hooks/catch/12406141/ubiutni/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      })
+        .then((res) => {
+          if (res.ok) {
+            alert("Thanks! Please check your email for updates.");
+            e.target.reset();
+          } else {
+            alert("There was a problem submitting your email. Please try again.");
+          }
+        })
+        .catch(() => {
+          alert("There was a problem submitting your email. Please try again.");
+        });
+    }}
+  >
+    <input
+      type="email"
+      name="email"
+      required
+      placeholder="Enter your email"
+      className="px-3 py-2 rounded-md border border-gray-300 text-sm w-full sm:w-64 transition duration-200 focus:outline-none focus:ring-2 focus:ring-[#F47534] hover:border-[#F47534]"
+    />
+    <Button
+      type="submit"
+      className="text-sm px-4 py-2 bg-[#F47534] text-white hover:bg-[#d9652c] shadow"
+    >
+      Notify Me
+    </Button>
+  </form>
+</div>
+
         </div>
 
         {/* WEBINAR COLUMN */}

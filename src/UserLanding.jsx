@@ -116,7 +116,7 @@ export default function UserLanding() {
   </Button>
 </a>
         <p className="text-sm mt-3 text-[#EC1300] flex items-center justify-center gap-2">
-          AARP Members: $10.19/month (includes 15% discount).
+          AARP Registered Users: $10.19/month (includes 15% discount).
           <img src="/aarp-member-benefit.png" alt="AARP badge" className="h-6 w-auto inline-block" />
         </p>
       </div>
@@ -171,7 +171,7 @@ export default function UserLanding() {
   </Button>
 </a>
         <p className="text-sm mt-3 text-[#EC1300] flex items-center justify-center gap-2">
-          AARP Members: $10.19/month (includes 15% discount).
+          AARP Registered Users: $10.19/month (includes 15% discount).
           <img src="/aarp-member-benefit.png" alt="AARP badge" className="h-6 w-auto inline-block" />
         </p>
       </div>
