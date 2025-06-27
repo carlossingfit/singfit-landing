@@ -119,7 +119,7 @@ export default function FreeContent() {
       e.preventDefault();
       const email = e.target.email.value;
 
-      fetch("https://script.google.com/macros/s/AKfycbz1kXGHVZUeRI52jNfZz8Xz0iFKJHtkUYj4zkMUTmJg8vL-KxEetsivHgDiXT9TU0JPVA/exec", {
+      fetch("https://singfit-email-proxy.carlos-4ca.workers.dev", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
