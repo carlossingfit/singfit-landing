@@ -3,8 +3,11 @@ import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import { useState } from "react";
 
+
 export default function FreeContent() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [successMessage, setSuccessMessage] = useState("");
+
 
   const videoTitles = [
     "How Caregivers Can Build Musical Habits to Support a Happy, Healthy Life",
@@ -127,16 +130,18 @@ export default function FreeContent() {
         body: JSON.stringify({ email }),
       })
         .then((res) => {
-          if (res.ok) {
-            alert("Thanks! Please check your email for updates.");
-            e.target.reset();
-          } else {
-            alert("There was a problem submitting your email. Please try again.");
-          }
-        })
-        .catch(() => {
-          alert("There was a problem submitting your email. Please try again.");
-        });
+  if (res.ok) {
+    setSuccessMessage("Thanks! Check your inbox for updates.");
+    e.target.reset();
+    setTimeout(() => setSuccessMessage(""), 5000); // optional auto-clear
+  } else {
+    setSuccessMessage("There was a problem. Please try again.");
+  }
+})
+.catch(() => {
+  setSuccessMessage("There was a problem. Please try again.");
+});
+
     }}
   >
     <input
@@ -153,6 +158,10 @@ export default function FreeContent() {
       Notify Me
     </Button>
   </form>
+  {successMessage && (
+  <p className="text-sm text-green-600 mt-2">{successMessage}</p>
+)}
+
 </div>
 
         </div>
