@@ -95,16 +95,9 @@ export default function FreeContent() {
 />
 </div>
 
-              <div className="keen-slider__slide bg-white p-1 rounded-lg shadow h-[369px] flex items-center justify-center">
-  <iframe
-  className="w-full h-full rounded-md"
-  src="https://www.youtube.com/embed/bSw5X9Hq3NU"
-  title="SingFit Free Resource"
-  sandbox="allow-scripts allow-same-origin allow-presentation"
-  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-  allowFullScreen
-/>
-</div>
+              <div className="keen-slider__slide bg-gray-100 p-1 rounded-lg shadow flex items-center justify-center text-gray-600 text-base font-medium aspect-video">
+                Coming Soon
+              </div>
 
               <div className="keen-slider__slide bg-gray-100 p-1 rounded-lg shadow flex items-center justify-center text-gray-600 text-base font-medium aspect-video">
                 More Coming Soon
