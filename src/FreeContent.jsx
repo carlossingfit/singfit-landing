@@ -55,8 +55,9 @@ export default function FreeContent() {
       <section className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch min-h-[500px]">
 
 
+
         {/* VIDEO COLUMN */}
-        <div className="flex flex-col justify-between h-full bg-[#FAF6F2] p-4 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
+        <div className="flex flex-col justify-between h-full bg-[#f5ece4] p-4 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
           <div className="min-h-[4rem] pt-[0.6rem]">
             <h2 className="text-xl font-bold text-[#243B53] leading-snug">
               {videoTitles[currentSlide]}
