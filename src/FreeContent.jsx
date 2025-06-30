@@ -52,12 +52,13 @@ export default function FreeContent() {
 
       {/* Main Layout */}
       <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-6">
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch min-h-[500px]">
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-6 gap-y-10 items-stretch min-h-[500px]">
+
 
 
 
         {/* VIDEO COLUMN */}
-        <div className="flex flex-col justify-between h-full bg-[#f5ece4] p-4 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
+        <div className="flex flex-col justify-between h-full bg-[#FAF6F2] p-4 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
           <div className="min-h-[4rem] pt-[0.6rem]">
             <h2 className="text-xl font-bold text-[#243B53] leading-snug">
               {videoTitles[currentSlide]}
@@ -146,11 +147,12 @@ export default function FreeContent() {
       className="px-3 py-2 rounded-md border border-gray-300 text-sm w-full sm:w-64 transition duration-200 focus:outline-none focus:ring-2 focus:ring-[#F47534] hover:border-[#F47534]"
     />
     <Button
-      type="submit"
-      className="text-sm px-4 py-2 bg-[#F47534] text-white hover:bg-[#d9652c] shadow"
-    >
-      Notify Me
-    </Button>
+  type="submit"
+  className="text-sm px-4 py-3 bg-[#F47534] text-white hover:bg-[#d9652c] shadow"
+>
+  Notify Me
+</Button>
+
   </form>
   {successMessage && (
   <p className="text-sm text-green-600 mt-2">{successMessage}</p>
@@ -184,7 +186,7 @@ export default function FreeContent() {
               <div className="text-lg leading-relaxed">
                 <p className="font-semibold text-[#002F6C] text-xl mb-2">Music as Medicine</p>
 <p className="text-base text-gray-700 leading-relaxed">
-  Discover how music therapy can help caregivers support memory, mood, and energy in daily routines. More text here......................................
+  Discover how music therapy can help caregivers support memory, mood, and energy in daily routines. <span className="text-gray-400 italic">More text coming soon…</span>
 </p>
 
               </div>
@@ -200,7 +202,7 @@ export default function FreeContent() {
               <div className="text-lg leading-relaxed">
                 <p className="font-semibold text-[#002F6C] text-xl mb-2">The Joy of Singing</p>
 <p className="text-base text-gray-700 leading-relaxed">
-  Explore how guided singing can boost mood, deepen connection, and create joyful moments with loved ones. More text here....................................
+  Explore how guided singing can boost mood, deepen connection, and create joyful moments with loved ones.<span className="text-gray-400 italic">More text coming soon…</span>
 </p>
 
               </div>
@@ -211,7 +213,7 @@ export default function FreeContent() {
           <div className="mt-auto pt-4 text-center">
             <div className="relative">
               <Button
-                className="text-sm px-6 py-3 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-md transition relative"
+                className="text-sm px-6 py-4 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-md transition relative"
                 style={{ top: '13px' }}
                 onClick={() => window.open("https://yoursignuplink.com", "_blank")}
               >

@@ -132,7 +132,6 @@ export default function SingFitLandingPage() {
     Experience the Benefits of SingFit
   </Button>
 </a>
-
       <p className="text-sm mt-3 text-[#EC1300] flex items-center justify-center gap-2">
   AARP Members: $8.39/month (includes 30% discount).
   <img
@@ -194,7 +193,6 @@ export default function SingFitLandingPage() {
     Experience the Benefits of SingFit
   </Button>
 </a>
-
         <p className="text-sm mt-3 text-[#EC1300] flex items-center justify-center gap-2">
   AARP Members: $8.39/month (includes 30% discount).
   <img
