@@ -11,7 +11,8 @@ export default function SingFitLandingPage() {
 
 
       {/* Hero Section */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start bg-[#EEF6FA] pt-0 pb-10 px-10 rounded-xl shadow-xl bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] bg-repeat">
+      <section className="relative grid grid-cols-1 md:grid-cols-2 gap-12 items-start bg-[#EEF6FA] pt-0 pb-10 px-10 rounded-xl shadow-xl bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] bg-repeat">
+        
         <div className="space-y-10">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-black leading-snug md:leading-tight">
             <span className="block">Exercise Your Brain</span>
@@ -27,8 +28,6 @@ export default function SingFitLandingPage() {
     Get Free Therapeutic Music Resources
   </Button>
 </a>
-
-
             <Button
               onClick={() => {
                 whatIsRef.current?.scrollIntoView({ behavior: "smooth" });
