@@ -32,23 +32,21 @@ export default function FreeContent() {
     <div className="flex flex-col gap-10 px-8 pt-0 pb-16 max-w-7xl mx-auto font-sans text-gray-900 text-xl md:text-2xl">
 
 <section className="bg-[#E6F0F7] rounded-2xl shadow-xl border border-gray-200 px-6 py-8 relative overflow-hidden mb-2">
-  {/* AARP Logo */}
-  <img
-    src="/aarp-logo.png"
-    alt="AARP Logo"
-    className="absolute top-4 right-4 w-24 h-auto"
-  />
-
-  {/* Tagline Content */}
   <div className="max-w-3xl mx-auto text-center">
     <h1 className="text-4xl md:text-5xl font-extrabold text-[#002F6C] leading-tight mb-2">
       Discover the Power of Music — For Free
     </h1>
-    <p className="text-lg text-[#002F6C] font-medium">
-      Brought to you by SingFit in collaboration with AARP.
+    <p className="text-lg text-[#002F6C] font-medium flex items-center justify-center gap-2">
+      Brought to you by SingFit in collaboration with
+      <img
+        src="/aarp-logo.png"
+        alt="AARP Logo"
+        className="h-4 md:h-5 w-auto inline-block"
+      />
     </p>
   </div>
 </section>
+
 
       {/* Main Layout */}
       <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-6">

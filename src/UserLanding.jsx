@@ -125,10 +125,15 @@ export default function UserLanding() {
     Experience the Benefits of SingFit
   </Button>
 </a>
-        <p className="text-sm mt-3 text-[#EC1300] flex items-center justify-center gap-2">
-          AARP Registered Users: $10.19/month (includes 15% discount).
-          <img src="/aarp-member-benefit.png" alt="AARP badge" className="h-6 w-auto inline-block" />
-        </p>
+        <p className="text-base md:text-lg mt-3 text-[#EC1300] flex items-center justify-center gap-3">
+  <img
+    src="/aarp-member-benefit.png"
+    alt="AARP badge"
+    className="h-8 w-auto inline-block"
+  />
+  AARP Registered Users: $10.19/month (includes 15% discount).
+</p>
+
       </div>
 
       <section id="why-people-use" className="bg-[#FEF8F5] p-10 rounded-xl shadow-md space-y-10 text-center mb-12">
@@ -139,12 +144,12 @@ export default function UserLanding() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-6 max-w-6xl mx-auto">
           <div className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-200">
             <img src="/AARP_Caregiving-red.png" alt="Engagement Icon" className="h-12 w-auto mb-2 mx-auto" />
-            <h3 className="text-lg font-semibold text-black mb-2">To care for someone who’s hard to engage</h3>
+            <h3 className="text-lg font-semibold text-black mb-2">Increase engagement with your loved one</h3>
             <p className="text-sm text-gray-700">SingFit sessions are designed to provide structure and joy for family caregiver and participant.</p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-200">
             <img src="/aarp-brain.png" alt="Memory Icon" className="h-12 w-auto mb-2 mx-auto" />
-            <h3 className="text-lg font-semibold text-black mb-2">Dealing with memory lapses or cognitive decline</h3>
+            <h3 className="text-lg font-semibold text-black mb-2">To aid with memory lapses or cognitive decline</h3>
             <p className="text-sm text-gray-700">Singing has been shown to activate the brain and may help support memory and attention.</p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-200">
@@ -182,10 +187,15 @@ export default function UserLanding() {
     Experience the Benefits of SingFit
   </Button>
 </a>
-        <p className="text-sm mt-3 text-[#EC1300] flex items-center justify-center gap-2">
-          AARP Registered Users: $10.19/month (includes 15% discount).
-          <img src="/aarp-member-benefit.png" alt="AARP badge" className="h-6 w-auto inline-block" />
-        </p>
+        <p className="text-base md:text-lg mt-3 text-[#EC1300] flex items-center justify-center gap-3">
+  <img
+    src="/aarp-member-benefit.png"
+    alt="AARP badge"
+    className="h-8 w-auto inline-block"
+  />
+  AARP Registered Users: $10.19/month (includes 15% discount).
+</p>
+
       </div>
     </div>
   );
