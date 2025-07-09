@@ -2,6 +2,8 @@ import { Button } from "./components/ui/button";
 import { HeartHandshake, Brain, Armchair } from "lucide-react";
 import { motion } from "framer-motion";
 import { useRef } from "react";
+import { HealtcareIcon, Brain02Icon, SustainableEnergyIcon } from "hugeicons-react";
+
 
 export default function SingFitLandingPage() {
   const whatIsRef = useRef(null);
@@ -84,14 +86,14 @@ export default function SingFitLandingPage() {
 </p>
 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10 text-left pt-6 items-stretch">
   <div className="bg-[#FEF8F5] p-6 rounded-lg shadow hover:shadow-lg transition h-full flex flex-col justify-start">
-    <HeartHandshake className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
+    <HeartHandshake strokeWidth={1.5} className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
     <h3 className="font-semibold text-lg">Caregivers & Their Loved Ones</h3>
     <p className="text-sm leading-relaxed text-gray-800">
       Whether you're caring for someone with dementia or simply want to add more connection into your daily routine, SingFit offers structure, joy, and a powerful way to engage through music.
     </p>
   </div>
   <div className="bg-[#FEF8F5] p-6 rounded-lg shadow hover:shadow-lg transition h-full flex flex-col justify-start">
-    <Brain className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
+    <Brain strokeWidth={1.5} className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
     <h3 className="font-semibold text-lg">Older Adults Supporting Brain Health</h3>
     <p className="text-sm leading-relaxed text-gray-800">
       SingFit features engaging therapeutic music and guided singing activities that research has shown may improve mental sharpness, elevate mood, and maintain cognitive agility.
@@ -153,22 +155,33 @@ export default function SingFitLandingPage() {
   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-6 max-w-6xl mx-auto">
 
     <div className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-200">
-  <img src="/AARP_Caregiving-red.png" alt="Engagement Icon" className="h-12 w-auto mb-2 mx-auto" />
-  <h3 className="text-lg font-semibold text-black mb-2">Increase engagement with your loved one</h3>
-      <p className="text-sm text-gray-700">SingFit sessions are designed to provide structure and joy for family caregiver and participant.</p>
+      <HealtcareIcon className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
+      <h3 className="text-lg font-semibold text-black mb-2">Increase engagement with your loved one</h3>
+      <p className="text-sm text-gray-700">
+        SingFit sessions are designed to provide structure and joy for family caregiver and participant.
+      </p>
     </div>
+
     <div className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-200">
-  <img src="/aarp-brain.png" alt="Memory Icon" className="h-12 w-auto mb-2 mx-auto" />
-  <h3 className="text-lg font-semibold text-black mb-2">To aid with memory lapses or cognitive decline</h3>
-      <p className="text-sm text-gray-700">Singing has been shown to activate the brain and may help support memory and attention.</p>
+      <Brain02Icon className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
+      <h3 className="text-lg font-semibold text-black mb-2">To aid with memory lapses or cognitive decline</h3>
+      <p className="text-sm text-gray-700">
+        Singing has been shown to activate the brain and may help support memory and attention.
+      </p>
     </div>
+
     <div className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-200">
-  <img src="aarp-gifts.png" alt="Mood Icon" className="h-12 w-auto mb-2 mx-auto" />
-  <h3 className="text-lg font-semibold text-black mb-2">Feeling down, anxious, or disconnected</h3>
-      <p className="text-sm text-gray-700">Singing can help boost your mood and foster a sense of connection, especially on hard days.</p>
+      <SustainableEnergyIcon className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
+      <h3 className="text-lg font-semibold text-black mb-2">Elevate your emotional and mental wellbeing</h3>
+      <p className="text-sm text-gray-700">
+        Singing can help boost your mood and foster a sense of connection, especially on hard days.
+      </p>
     </div>
+
   </div>
 </section>
+
+
 
       {/* The Science Behind SingFit Section */}
       <section className="bg-[#D1E4F0] p-10 rounded-xl shadow-md space-y-6 text-center mb-12">
