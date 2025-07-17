@@ -34,7 +34,7 @@ export default function FreeContent() {
 <section className="bg-[#E6F0F7] rounded-2xl shadow-xl border border-gray-200 px-6 py-8 relative overflow-hidden mb-2">
   <div className="max-w-3xl mx-auto text-center">
     <h1 className="text-4xl md:text-5xl font-extrabold text-[#002F6C] leading-tight mb-2">
-      Discover the Power of Music — For Free
+      Discover the Power of Music  with SingFit — For Free
     </h1>
     <p className="text-lg text-[#002F6C] font-medium flex items-center justify-center gap-2">
       Brought to you by SingFit in collaboration with

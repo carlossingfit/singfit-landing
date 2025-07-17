@@ -8,54 +8,77 @@ export default function UserLanding() {
   return (
     <div className="flex flex-col gap-2 px-8 pt-0 pb-16 max-w-7xl mx-auto font-sans text-gray-900 text-xl md:text-2xl">
 
-      {/* Hero Section */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start bg-[#EEF6FA] pt-0 pb-10 px-10 rounded-xl shadow-xl bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] bg-repeat">
-        <div className="space-y-10">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-black leading-snug md:leading-tight">
+       {/* Hero Section */}
+      <section className="relative grid grid-cols-1 md:grid-cols-2 gap-12 items-start bg-[#EEF6FA] pt-0 pb-10 px-10 rounded-xl shadow-xl bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] bg-repeat">
+  
+  {/* Left Column */}
+  <div className="flex flex-col justify-start space-y-8">
+    {/* SingFit Logo */}
+    <img
+      src="/SingFit - Logo for App Header.png"
+      alt="SingFit logo"
+      className="w-[190px] object-contain pt-1.5 drop-shadow-sm"
+    />
 
-            <span className="block">Exercise Your Brain</span>
-            <span className="block">Through the</span>
-            <span className="block">Power of Music</span>
-          </h1>
-          <p className="text-xl text-gray-900 leading-relaxed">
-            Discover how SingFit can support you and your loved ones through guided singing sessions — explore free resources, try the SingFit app, or do both!
-          </p>
-         <div className="flex flex-col sm:flex-row gap-4 w-full">
-  <a href="https://www.singfit.com/aarp-free-resources" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-    <Button
-      aria-label="Access free therapeutic music resources"
-      className="w-full text-lg font-semibold px-10 py-4 min-h-[44px] bg-[#F47534] text-white hover:bg-[#d9652c] transition-all duration-200 ease-in-out"
-    >
-      Get Free Therapeutic Music Resources
-    </Button>
-  </a>
-  <a href="#what-is-singfit" className="w-full sm:w-auto">
-    <Button
-      className="w-full text-lg font-semibold px-10 py-4 min-h-[44px] bg-white border border-[#002F6C] text-[#002F6C] hover:bg-[#eaf2f8] transition-all duration-200 ease-in-out"
-    >
-      Learn About the App ↓
-    </Button>
-  </a>
-</div>
+    {/* Headline */}
+    <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-black leading-snug md:leading-tight">
+      <span className="block">Experience the Power</span>
+      <span className="block">of Music with SingFit</span>
+    </h1>
 
-        </div>
+    {/* Subhead */}
+    <p className="text-xl text-gray-900 leading-relaxed">
+      SingFit is an app designed by board-certified music therapists to support cognitive and emotional wellbeing for you and your loved ones–explore free resources and try the SingFit app!
+    </p>
 
-        <div className="flex flex-col items-end">
-          <div className="mt-2 mb-2">
-            <img src="/aarp-logo.png" alt="AARP logo" className="h-10 w-auto" />
-          </div>
-          <div className="w-full rounded-xl overflow-hidden shadow-xl mt-9">
-            <motion.img
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              src="https://static.wixstatic.com/media/2b1376_b72d41ebdfdf4a5e8a0cf6da3721c52c~mv2.jpg"
-              alt="Smiling older woman singing with caregiver in sunny living room"
-              className="w-full object-cover rounded-xl min-h-[340px]"
-            />
-          </div>
-        </div>
-      </section>
+    {/* CTA Buttons */}
+    <div className="flex flex-col sm:flex-row gap-4">
+      <a
+        href="https://www.singfit.com/aarp-free-resources"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Button
+          aria-label="Access free therapeutic music resources"
+          className="text-lg px-10 py-5 bg-[#F47534] text-white hover:bg-[#d9652c] transition-all duration-200 ease-in-out"
+        >
+          Get Free Therapeutic Music Resources
+        </Button>
+      </a>
+      <Button
+        onClick={() => {
+          whatIsRef.current?.scrollIntoView({ behavior: "smooth" });
+        }}
+        aria-label="Scroll to What is the SingFit App section"
+        className="text-lg font-semibold px-10 py-5 bg-white border border-[#002F6C] text-[#002F6C] hover:bg-[#eaf2f8] transition-all duration-200 ease-in-out"
+      >
+        Learn About the App ↓
+      </Button>
+    </div>
+  </div>
+
+  {/* Right Column */}
+  <div className="flex flex-col items-end justify-between h-full pt-2">
+    {/* AARP Logo */}
+    <img
+      src="/aarp-logo.png"
+      alt="AARP logo"
+      className="h-10 w-auto mb-2 self-end mt-[5px]"
+    />
+
+    {/* Image */}
+    <div className="w-full rounded-xl overflow-hidden shadow-xl mt-auto">
+      <motion.img
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6 }}
+        src="https://static.wixstatic.com/media/2b1376_b72d41ebdfdf4a5e8a0cf6da3721c52c~mv2.jpg"
+        alt="Smiling older woman singing with caregiver in sunny living room"
+        className="w-full object-cover rounded-xl min-h-[340px]"
+      />
+    </div>
+  </div>
+</section>
 
       {/* What is the SingFit App Section */}
       <section id="what-is-singfit" className="bg-white p-10 rounded-xl shadow-md space-y-6 text-center w-full mb-12">
@@ -64,7 +87,7 @@ export default function UserLanding() {
           <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
         </h2>
         <p className="text-lg md:text-xl">
-          SingFit is a mobile app designed by board-certified music therapists to support cognitive and emotional wellbeing. With guided singing sessions, voice prompted lyrics, and progress tracking, SingFit brings the benefits of singing into your daily routine; no musical background needed.
+          The SingFit app uses guided singing sessions, voice prompted lyrics, and progress tracking to bring the benefits of singing into your daily routine; no musical background required.
         </p>
         <div className="text-center mb-4 w-full">
   <a href="https://www.singfit.com/aarp-non-member-pricing" target="_blank" rel="noopener noreferrer">
@@ -104,13 +127,13 @@ export default function UserLanding() {
           <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 max-w-6xl mx-auto">
-          {["Create your profile", "Set your goal", "Begin your session", "Wrap up your session"].map((title, i) => (
+          {["Download the App", "Set your goal", "Begin your session", "Wrap up your session"].map((title, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.2, duration: 0.5 }} className="space-y-3 sm:space-y-4 hover:scale-105 transition-transform duration-200"
 >
               <img src={`https://static.wixstatic.com/media/264616_${["2389c82006c446cca0f12db06a3d9000", "44e07472013845718269c789f125b619", "3804aa0322e047aa86b78c4f937e93d8", "7696ff978e7e4f8bad929d3739f6043a"][i]}~mv2.png`} alt={`Step ${i + 1}`} className="mx-auto w-full max-w-[140px] h-auto object-contain bg-white shadow-lg rounded-xl p-2 hover:scale-110 transition-transform duration-300" />
               <h3 className="text-lg font-semibold">{title}</h3>
               <p className="text-sm text-gray-700">{[
-                "Tell us about yourself so we can customize your experience.",
+                "Log in and create your profile so we can customize your experience.",
                 "Choose what you want to focus on for your session",
                 "Follow on-screen instructions and sing along with the prompted lyrics",
                 "Track your results with our simple before/after rating system"
@@ -123,7 +146,7 @@ export default function UserLanding() {
       {/* Why People Use SingFit Section */}
       <div className="text-center">
         <a href="https://www.singfit.com/aarp-non-member-pricing" target="_blank" rel="noopener noreferrer">
-  <Button aria-label="Start using SingFit today" className="text-xl px-10 py-5 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200">
+  <Button aria-label="Start using SingFit today" className="w-full sm:w-auto text-xl px-10 py-4 min-h-[44px] bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200">
     Experience the Benefits of SingFit
   </Button>
 </a>
@@ -147,7 +170,7 @@ export default function UserLanding() {
 
     <div className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-200">
       <HealtcareIcon className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
-      <h3 className="text-lg font-semibold text-black mb-2">To care for someone who’s hard to engage</h3>
+      <h3 className="text-lg font-semibold text-black mb-2">Increase engagement with your loved one</h3>
       <p className="text-sm text-gray-700">
         SingFit sessions are designed to provide structure and joy for family caregiver and participant.
       </p>
@@ -155,7 +178,7 @@ export default function UserLanding() {
 
     <div className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-200">
       <Brain02Icon className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
-      <h3 className="text-lg font-semibold text-black mb-2">Dealing with memory lapses or cognitive decline</h3>
+      <h3 className="text-lg font-semibold text-black mb-2">To aid with memory lapses or cognitive decline</h3>
       <p className="text-sm text-gray-700">
         Singing has been shown to activate the brain and may help support memory and attention.
       </p>
@@ -163,7 +186,7 @@ export default function UserLanding() {
 
     <div className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-200">
       <SustainableEnergyIcon className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
-      <h3 className="text-lg font-semibold text-black mb-2">Feeling down, anxious, or disconnected</h3>
+      <h3 className="text-lg font-semibold text-black mb-2">Elevate your emotional and mental wellbeing</h3>
       <p className="text-sm text-gray-700">
         Singing can help boost your mood and foster a sense of connection, especially on hard days.
       </p>
@@ -210,6 +233,39 @@ export default function UserLanding() {
 </p>
 
       </div>
+      {/* Footer */}
+<footer className="text-center text-xs text-gray-500 border-t border-gray-200 pt-6 mt-12 px-4">
+  <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
+    <span>
+      ©2025 Musical Health Technologies. All Rights Reserved.
+    </span>
+    <span>1010 Wilshire Blvd. Los Angeles, CA 90017</span>
+    <a
+      href="https://www.singfit.com/privacypolicy"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:underline text-blue-600"
+    >
+      Privacy Policy
+    </a>
+    <a
+      href="https://www.singfit.com/terms-of-service"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:underline text-blue-600"
+    >
+      Terms of Service
+    </a>
+    <a
+      href="https://www.singfit.com/accessibility-statement"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:underline text-blue-600"
+    >
+      Accessibility Statement
+    </a>
+  </div>
+</footer>
     </div>
   );
 }
