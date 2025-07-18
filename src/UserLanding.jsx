@@ -28,7 +28,7 @@ export default function UserLanding() {
 
     {/* Subhead */}
     <p className="text-xl text-gray-900 leading-relaxed">
-      SingFit is an app designed by board-certified music therapists to support cognitive and emotional wellbeing for you and your loved ones–explore free resources and try the SingFit app!
+      SingFit is an app designed by board-certified music therapists to support cognitive and emotional wellbeing for you and your loved ones–explore free resources and try SingFit!
     </p>
 
     {/* CTA Buttons */}
@@ -150,14 +150,29 @@ export default function UserLanding() {
     Experience the Benefits of SingFit
   </Button>
 </a>
-        <p className="text-base md:text-lg mt-3 text-[#EC1300] flex items-center justify-center gap-3">
-  <img
-    src="/aarp-member-benefit.png"
-    alt="AARP badge"
-    className="h-8 w-auto inline-block"
-  />
-  AARP Registered Users: $10.19/month (includes 15% discount).
-</p>
+        <div className="text-base md:text-lg mt-3 text-[#EC1300] text-center space-y-1">
+  <p>AARP Registered Users: $10.19/month (includes 15% discount).</p>
+  <p className="flex justify-center items-center gap-2 flex-wrap">
+    <img
+      src="/aarp-member-benefit.png"
+      alt="AARP badge"
+      className="h-8 w-auto inline-block"
+    />
+    <span>
+      AARP members receive additional savings.&nbsp;
+      <a
+        href="https://www.aarp.org"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline text-blue-700 hover:text-blue-900"
+      >
+        Not a member? Join today.
+      </a>
+    </span>
+  </p>
+</div>
+
+
 
       </div>
 
@@ -223,14 +238,27 @@ export default function UserLanding() {
     Experience the Benefits of SingFit
   </Button>
 </a>
-        <p className="text-base md:text-lg mt-3 text-[#EC1300] flex items-center justify-center gap-3">
-  <img
-    src="/aarp-member-benefit.png"
-    alt="AARP badge"
-    className="h-8 w-auto inline-block"
-  />
-  AARP Registered Users: $10.19/month (includes 15% discount).
-</p>
+        <div className="text-base md:text-lg mt-3 text-[#EC1300] text-center space-y-1">
+  <p>AARP Registered Users: $10.19/month (includes 15% discount).</p>
+  <p className="flex justify-center items-center gap-2 flex-wrap">
+    <img
+      src="/aarp-member-benefit.png"
+      alt="AARP badge"
+      className="h-8 w-auto inline-block"
+    />
+    <span>
+      AARP members receive additional savings.&nbsp;
+      <a
+        href="https://www.aarp.org"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline text-blue-700 hover:text-blue-900"
+      >
+        Not a member? Join today.
+      </a>
+    </span>
+  </p>
+</div>
 
       </div>
       {/* Footer */}

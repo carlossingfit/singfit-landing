@@ -32,7 +32,7 @@ export default function SingFitLandingPage() {
 
     {/* Subhead */}
     <p className="text-xl text-gray-900 leading-relaxed">
-      SingFit is an app designed by board-certified music therapists to support cognitive and emotional wellbeing for you and your loved ones–explore free resources and try the SingFit app!
+      SingFit is an app designed by board-certified music therapists to support cognitive and emotional wellbeing for you and your loved ones–explore free resources and try SingFit!
     </p>
 
     {/* CTA Buttons */}
