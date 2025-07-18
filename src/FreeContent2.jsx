@@ -152,11 +152,10 @@ export default function FreeContent2() {
 </Button>
 
   </form>
-  {/*
-{successMessage && (
+  {typeof successMessage === "string" && successMessage && (
   <p className="text-sm text-green-600 mt-2">{successMessage}</p>
 )}
-*/}
+
 
 </div>
 
