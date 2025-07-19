@@ -224,6 +224,61 @@ export default function FreeContent() {
       </section>
         </div>
   </div>
+  <div className="text-center mt-4">
+  <a
+    href="https://www.singfit.com/aarp-member-pricing"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Button
+      aria-label="Start using SingFit today"
+      className="w-full sm:w-auto text-xl px-10 py-4 min-h-[44px] bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200"
+    >
+      Experience the Benefits of SingFit
+    </Button>
+  </a>
+  <p className="text-base md:text-lg mt-3 text-[#EC1300] flex items-center justify-center gap-3">
+    <img
+      src="/aarp-member-benefit.png"
+      alt="AARP badge"
+      className="h-8 w-auto inline-block"
+    />
+    AARP Members: $8.39/month (includes 30% discount).
+  </p>
+</div>
+{/* Footer */}
+<footer className="text-center text-xs text-gray-500 border-t border-gray-200 pt-6 mt-12 px-4">
+  <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
+    <span>
+      ©2025 Musical Health Technologies. All Rights Reserved.
+    </span>
+    <span>1010 Wilshire Blvd. Los Angeles, CA 90017</span>
+    <a
+      href="https://www.singfit.com/privacypolicy"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:underline text-blue-600"
+    >
+      Privacy Policy
+    </a>
+    <a
+      href="https://www.singfit.com/terms-of-service"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:underline text-blue-600"
+    >
+      Terms of Service
+    </a>
+    <a
+      href="https://www.singfit.com/accessibility-statement"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:underline text-blue-600"
+    >
+      Accessibility Statement
+    </a>
+  </div>
+</footer>
   </div>
   );
 }
