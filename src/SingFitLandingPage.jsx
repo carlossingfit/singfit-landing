@@ -19,9 +19,9 @@ export default function SingFitLandingPage() {
   <div className="flex flex-col justify-start space-y-8">
     {/* SingFit Logo */}
     <img
-      src="/SingFit - Logo for App Header.png"
+      src="/SingFit New Brand Logo.png"
       alt="SingFit logo"
-      className="w-[190px] object-contain pt-1.5 drop-shadow-sm"
+      className="w-[240px] object-contain pt-2 drop-shadow-sm"
     />
 
     {/* Headline */}

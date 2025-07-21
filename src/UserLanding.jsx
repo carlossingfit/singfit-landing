@@ -15,9 +15,9 @@ export default function UserLanding() {
   <div className="flex flex-col justify-start space-y-8">
     {/* SingFit Logo */}
     <img
-      src="/SingFit - Logo for App Header.png"
+      src="/SingFit New Brand Logo.png"
       alt="SingFit logo"
-      className="w-[190px] object-contain pt-1.5 drop-shadow-sm"
+      className="w-[240px] object-contain pt-2 drop-shadow-sm"
     />
 
     {/* Headline */}
@@ -34,7 +34,7 @@ export default function UserLanding() {
     {/* CTA Buttons */}
     <div className="flex flex-col sm:flex-row gap-4">
       <a
-        href="https://www.singfit.com/aarp-free-resources"
+        href="https://www.singfit.com/aarp-free-resources-non-member"
         target="_blank"
         rel="noopener noreferrer"
       >

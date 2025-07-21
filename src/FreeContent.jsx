@@ -182,10 +182,7 @@ export default function FreeContent() {
                 className="w-20 h-20 object-contain rounded-md shadow"
               />
               <div className="text-lg leading-relaxed">
-                <p className="font-semibold text-[#002F6C] text-xl mb-2">Music as Medicine</p>
-<p className="text-base text-gray-700 leading-relaxed">
-  Discover how music therapy can help caregivers support memory, mood, and energy in daily routines. <span className="text-gray-400 italic">More text coming soon…</span>
-</p>
+                <p className="font-semibold text-[#002F6C] text-xl mb-2">A Caregivers Guide to Transforming Health & Wellness Through Music as Medicine</p>
 
               </div>
             </div>
@@ -198,10 +195,19 @@ export default function FreeContent() {
                 className="w-20 h-20 object-contain rounded-md shadow"
               />
               <div className="text-lg leading-relaxed">
-                <p className="font-semibold text-[#002F6C] text-xl mb-2">The Joy of Singing</p>
-<p className="text-base text-gray-700 leading-relaxed">
-  Explore how guided singing can boost mood, deepen connection, and create joyful moments with loved ones.<span className="text-gray-400 italic">More text coming soon…</span>
-</p>
+                <p className="font-semibold text-[#002F6C] text-xl mb-2">How to Combat Sundowning and Agitation with Music</p>
+
+              </div>
+            </div>
+            {/* Webinar Card 3 */}
+            <div className="bg-white rounded-xl shadow p-4 flex items-start gap-4">
+              <img
+                src="date-july24.png"
+                alt="July 24, 2025"
+                className="w-20 h-20 object-contain rounded-md shadow"
+              />
+              <div className="text-lg leading-relaxed">
+                <p className="font-semibold text-[#002F6C] text-xl mb-2">Caregiver's Guide to Using Holiday and Classic Songs to Sing Away Stress</p>
 
               </div>
             </div>
@@ -213,7 +219,7 @@ export default function FreeContent() {
               <Button
                 className="text-sm px-6 py-4 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-md transition relative"
                 style={{ top: '13px' }}
-                onClick={() => window.open("https://yoursignuplink.com", "_blank")}
+                onClick={() => window.open("https://singfit.eventbrite.com/", "_blank")}
               >
                 Sign Up for a Webinar
               </Button>
