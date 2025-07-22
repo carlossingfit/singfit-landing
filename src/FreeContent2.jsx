@@ -178,7 +178,7 @@ export default function FreeContent2() {
             {/* Webinar Card 1 */}
             <div className="bg-white rounded-xl shadow p-4 flex items-start gap-4">
               <img
-                src="Sep 16.png"
+                src="/Sep 16.png"
                 alt="September 16, 2025"
                 className="w-20 h-20 object-contain rounded-md shadow"
               />
@@ -191,7 +191,7 @@ export default function FreeContent2() {
             {/* Webinar Card 2 */}
             <div className="bg-white rounded-xl shadow p-4 flex items-start gap-4">
               <img
-                src="Oct 14.png"
+                src="/Oct 14.png"
                 alt="October 14, 2025"
                 className="w-20 h-20 object-contain rounded-md shadow"
               />
@@ -203,7 +203,7 @@ export default function FreeContent2() {
             {/* Webinar Card 2 */}
             <div className="bg-white rounded-xl shadow p-4 flex items-start gap-4">
               <img
-                src="Nov 13.png"
+                src="/Nov 13.png"
                 alt="November 13, 2025"
                 className="w-20 h-20 object-contain rounded-md shadow"
               />
