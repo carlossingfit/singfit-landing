@@ -17,7 +17,7 @@ export default function UserLanding() {
     <img
       src="/SingFit New Brand Logo.png"
       alt="SingFit logo"
-      className="w-[240px] object-contain pt-2 drop-shadow-sm"
+      className="w-[250px] object-contain pt-2 drop-shadow-sm"
     />
 
     {/* Headline */}
