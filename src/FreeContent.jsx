@@ -251,12 +251,24 @@ if (res.ok) {
   <div className="text-center mt-4">
  <Button
   onClick={() => {
-    track("click_cta", {
-      button_text: "Experience the Benefits of SingFit",
-      destination_url: "https://www.singfit.com/aarp-member-pricing"
-    });
-    window.open("https://www.singfit.com/aarp-member-pricing", "_blank");
-  }}
+  const eventData = {
+    event: "click_cta",
+    button_text: "Experience the Benefits of SingFit",
+    destination_url: "https://www.singfit.com/aarp-member-pricing"
+  };
+
+  // Send to GTM running on Wix via postMessage
+  window.parent.postMessage(eventData, "*");
+
+  // Optional: still fire track inside iframe, for redundancy
+  if (typeof track === "function") {
+    track("click_cta", eventData);
+  }
+
+  // Navigate
+  window.open(eventData.destination_url, "_blank");
+}}
+
   aria-label="Start using SingFit today"
   className="w-full sm:w-auto text-xl px-10 py-4 min-h-[44px] bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200"
 >
