@@ -31,8 +31,8 @@ console.log("GA track function ready:", typeof track);
   setCurrentSlide(newIndex);
 
   const title = videoTitles[newIndex];
-  console.log("Slider changed to:", title);                // Already tested
-  console.log("Tracking video_change for:", title);        // ✅ NEW line
+  console.log("Slider changed to:", title);
+  console.log("Tracking video_change for:", title); // Make sure this appears
   track("video_change", {
     video_title: title,
     new_slide_index: newIndex
