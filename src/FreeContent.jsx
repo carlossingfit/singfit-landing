@@ -127,10 +127,14 @@ export default function FreeContent() {
         body: JSON.stringify({ email }),
       })
         .then((res) => {
-  if (res.ok) {
-    setSuccessMessage("Thanks! Check your inbox for updates.");
-    e.target.reset();
-    setTimeout(() => setSuccessMessage(""), 5000); // optional auto-clear
+if (res.ok) {
+  setSuccessMessage("Thanks! Check your inbox for updates.");
+  track("submit_form", {
+    form_id: "notify_me",
+    page_id: "FreeContent"
+  });
+  e.target.reset();
+  setTimeout(() => setSuccessMessage(""), 5000);// optional auto-clear
   } else {
     setSuccessMessage("There was a problem. Please try again.");
   }
