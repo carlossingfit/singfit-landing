@@ -235,18 +235,20 @@ export default function FreeContent() {
         </div>
   </div>
   <div className="text-center mt-4">
-  <a
-    href="https://www.singfit.com/aarp-member-pricing"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <Button
-      aria-label="Start using SingFit today"
-      className="w-full sm:w-auto text-xl px-10 py-4 min-h-[44px] bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200"
-    >
-      Experience the Benefits of SingFit
-    </Button>
-  </a>
+ <Button
+  onClick={() => {
+    track("click_cta", {
+      button_text: "Experience the Benefits of SingFit",
+      destination_url: "https://www.singfit.com/aarp-member-pricing"
+    });
+    window.open("https://www.singfit.com/aarp-member-pricing", "_blank");
+  }}
+  aria-label="Start using SingFit today"
+  className="w-full sm:w-auto text-xl px-10 py-4 min-h-[44px] bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200"
+>
+  Experience the Benefits of SingFit
+</Button>
+
   <p className="text-base md:text-lg mt-3 text-[#EC1300] flex items-center justify-center gap-3">
     <img
       src="/aarp-member-benefit.png"
