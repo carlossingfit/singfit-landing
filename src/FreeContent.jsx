@@ -13,44 +13,41 @@ export default function FreeContent() {
   const { track } = useAnalytics("FreeContent");
 console.log("GA track function ready:", typeof track);
 
-  useEffect(() => {
-  let cleanup = () => {};
+useEffect(() => {
+  let triggered = new Set();
+  let attached = false;
 
-  const waitForGtag = () => {
-    if (typeof window.gtag !== "function") {
-      console.log("Waiting for gtag to be ready...");
-      setTimeout(waitForGtag, 500);
-      return;
-    }
+  const thresholds = [25, 50, 75, 100];
 
-    console.log("Scroll tracking initialized");
+  const handleScroll = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = Math.round((scrollTop / docHeight) * 100);
 
-    const thresholds = [25, 50, 75, 100];
-    const triggered = new Set();
-
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = Math.round((scrollTop / docHeight) * 100);
-
-      thresholds.forEach((t) => {
-        if (scrollPercent >= t && !triggered.has(t)) {
-          triggered.add(t);
-          console.log(`Scrolled past ${t}%`);
-          window.gtag("event", "scroll_depth", {
-            percent_scrolled: t,
-            page_id: "FreeContent"
-          });
-        }
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    cleanup = () => window.removeEventListener("scroll", handleScroll);
+    thresholds.forEach((t) => {
+      if (scrollPercent >= t && !triggered.has(t)) {
+        triggered.add(t);
+        console.log(`Scrolled past ${t}%`);
+        window.gtag?.("event", "scroll_depth", {
+          percent_scrolled: t,
+          page_id: "FreeContent"
+        });
+      }
+    });
   };
 
-  waitForGtag();
-  return () => cleanup(); // ✅ Proper unmount cleanup
+  const interval = setInterval(() => {
+    if (typeof window.gtag === "function" && !attached) {
+      console.log("Scroll tracking initialized");
+      window.addEventListener("scroll", handleScroll);
+      attached = true;
+    }
+  }, 500);
+
+  return () => {
+    clearInterval(interval);
+    window.removeEventListener("scroll", handleScroll);
+  };
 }, []);
 
 
