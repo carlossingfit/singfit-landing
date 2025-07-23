@@ -4,6 +4,9 @@ import { useKeenSlider } from "keen-slider/react";
 import { useState } from "react";
 import { useAnalytics } from "./useAnalytics";
 import { useEffect } from "react";
+const MEASUREMENT_ID = "G-HMCYWJE753"; // Replace with your real ID
+const API_SECRET = "aZclKHBjQXGu-ucz3Bqeaw"; // Get from GA4 settings
+
 
 
 
@@ -14,10 +17,29 @@ export default function FreeContent() {
 console.log("GA track function ready:", typeof track);
 
 useEffect(() => {
-  let triggered = new Set();
-  let attached = false;
-
   const thresholds = [25, 50, 75, 100];
+  const triggered = new Set();
+
+  const sendEvent = (percent) => {
+    const clientId = localStorage.getItem("ga_client_id") || `client_${Date.now()}`;
+    localStorage.setItem("ga_client_id", clientId);
+
+    fetch(`https://www.google-analytics.com/mp/collect?measurement_id=${MEASUREMENT_ID}&api_secret=${API_SECRET}`, {
+      method: "POST",
+      body: JSON.stringify({
+        client_id: clientId,
+        events: [
+          {
+            name: "scroll_depth",
+            params: {
+              percent_scrolled: percent,
+              page_id: "FreeContent"
+            }
+          }
+        ]
+      })
+    });
+  };
 
   const handleScroll = () => {
     const scrollTop = window.scrollY;
@@ -28,27 +50,15 @@ useEffect(() => {
       if (scrollPercent >= t && !triggered.has(t)) {
         triggered.add(t);
         console.log(`Scrolled past ${t}%`);
-        window.gtag?.("event", "scroll_depth", {
-          percent_scrolled: t,
-          page_id: "FreeContent"
-        });
+        sendEvent(t);
       }
     });
   };
 
-  const interval = setInterval(() => {
-    if (typeof window.gtag === "function" && !attached) {
-      console.log("Scroll tracking initialized");
-      window.addEventListener("scroll", handleScroll);
-      attached = true;
-    }
-  }, 500);
-
-  return () => {
-    clearInterval(interval);
-    window.removeEventListener("scroll", handleScroll);
-  };
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
 }, []);
+
 
 
   const videoTitles = [
