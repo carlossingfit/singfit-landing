@@ -10,7 +10,7 @@ export default function FreeContent() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [successMessage, setSuccessMessage] = useState("");
   const { track } = useAnalytics("FreeContent");
-
+console.log("GA track function ready:", typeof track);
 
 
   const videoTitles = [
