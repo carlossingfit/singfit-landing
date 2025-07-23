@@ -32,26 +32,27 @@ useEffect(() => {
         params: {
           percent_scrolled: percent,
           page_id: "FreeContent",
-          debug_mode: true // THIS ensures visibility in DebugView
+          debug_mode: true
         }
       }
     ]
   };
 
-  console.log("Sending scroll event to GA:", payload);
+  console.log("📦 Sending custom GA4 event:", payload);
 
   fetch(`https://www.google-analytics.com/mp/collect?measurement_id=${MEASUREMENT_ID}&api_secret=${API_SECRET}`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload)
   })
   .then((res) => {
-    console.log("GA event response:", res.status);
-    if (!res.ok) console.error("Failed to send event to GA");
+    if (!res.ok) {
+      console.error("❌ GA4 event send failed:", res.status);
+    } else {
+      console.log("✅ GA4 event sent successfully");
+    }
   })
-  .catch((err) => console.error("Error sending GA event:", err));
+  .catch((err) => console.error("🚨 Fetch error:", err));
 };
 
 
