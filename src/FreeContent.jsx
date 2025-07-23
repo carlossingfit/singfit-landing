@@ -33,7 +33,8 @@ useEffect(() => {
             name: "scroll_depth",
             params: {
               percent_scrolled: percent,
-              page_id: "FreeContent"
+              page_id: "FreeContent",
+              debug_mode: true
             }
           }
         ]
