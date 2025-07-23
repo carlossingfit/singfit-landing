@@ -14,30 +14,30 @@ export default function FreeContent() {
 console.log("GA track function ready:", typeof track);
 
   useEffect(() => {
-    console.log("Scroll tracking initialized");
-    const thresholds = [25, 50, 75, 100];
-    const triggered = new Set();
+  console.log("Scroll tracking initialized");
+  const thresholds = [25, 50, 75, 100];
+  const triggered = new Set();
 
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = Math.round((scrollTop / docHeight) * 100);
+  const handleScroll = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = Math.round((scrollTop / docHeight) * 100);
 
-      thresholds.forEach((t) => {
-        if (scrollPercent >= t && !triggered.has(t)) {
-          triggered.add(t);
-          console.log(`Scrolled past ${t}%`);
-          track("scroll_depth", {
-            percent_scrolled: t,
-            page_id: "FreeContent"
-          });
-        }
-      });
-    };
+    thresholds.forEach((t) => {
+      if (scrollPercent >= t && !triggered.has(t)) {
+        triggered.add(t);
+        console.log(`Scrolled past ${t}%`);
+        track("scroll_depth", {
+          percent_scrolled: t,
+          page_id: "FreeContent"
+        });
+      }
+    });
+  };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, [track]); // ✅ Add track to dependencies
 
   const videoTitles = [
     "How Caregivers Can Build Musical Habits to Support a Happy, Healthy Life",
