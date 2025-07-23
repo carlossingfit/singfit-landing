@@ -2,11 +2,15 @@ import { Button } from "./components/ui/button";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import { useState } from "react";
+import { useAnalytics } from "./useAnalytics";
+
 
 
 export default function FreeContent() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [successMessage, setSuccessMessage] = useState("");
+  const { track } = useAnalytics("FreeContent");
+
 
 
   const videoTitles = [
