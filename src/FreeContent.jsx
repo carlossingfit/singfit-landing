@@ -14,30 +14,43 @@ export default function FreeContent() {
 console.log("GA track function ready:", typeof track);
 
   useEffect(() => {
-  console.log("Scroll tracking initialized");
-  const thresholds = [25, 50, 75, 100];
-  const triggered = new Set();
+  const waitForGtag = () => {
+    if (typeof window.gtag !== "function") {
+      console.log("Waiting for gtag to be ready...");
+      setTimeout(waitForGtag, 500);
+      return;
+    }
 
-  const handleScroll = () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = Math.round((scrollTop / docHeight) * 100);
+    console.log("Scroll tracking initialized");
 
-    thresholds.forEach((t) => {
-      if (scrollPercent >= t && !triggered.has(t)) {
-        triggered.add(t);
-        console.log(`Scrolled past ${t}%`);
-        track("scroll_depth", {
-          percent_scrolled: t,
-          page_id: "FreeContent"
-        });
-      }
-    });
+    const thresholds = [25, 50, 75, 100];
+    const triggered = new Set();
+
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = Math.round((scrollTop / docHeight) * 100);
+
+      thresholds.forEach((t) => {
+        if (scrollPercent >= t && !triggered.has(t)) {
+          triggered.add(t);
+          console.log(`Scrolled past ${t}%`);
+          window.gtag("event", "scroll_depth", {
+            percent_scrolled: t,
+            page_id: "FreeContent"
+          });
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    // Optional cleanup
+    return () => window.removeEventListener("scroll", handleScroll);
   };
 
-  window.addEventListener("scroll", handleScroll);
-  return () => window.removeEventListener("scroll", handleScroll);
-}, [track]); // ✅ Add track to dependencies
+  waitForGtag();
+}, []);
+
 
   const videoTitles = [
     "How Caregivers Can Build Musical Habits to Support a Happy, Healthy Life",
