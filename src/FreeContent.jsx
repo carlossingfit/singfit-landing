@@ -139,6 +139,13 @@ export default function FreeContent() {
         .then((res) => {
 if (res.ok) {
   setSuccessMessage("Thanks! Check your inbox for updates.");
+     window.parent.postMessage(
+            {
+              event: "email_signup",
+              email_address: email,
+            },
+            "*"
+          );
   track("submit_form", {
     form_id: "notify_me",
     page_id: "FreeContent"
