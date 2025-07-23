@@ -27,15 +27,17 @@ export default function FreeContent() {
     spacing: 16,
   },
   slideChanged(slider) {
-    const newIndex = slider.track.details.rel;
-    setCurrentSlide(newIndex);
+  const newIndex = slider.track.details.rel;
+  setCurrentSlide(newIndex);
 
-    const title = videoTitles[newIndex];
-    track("video_change", {
-      video_title: title,
-      new_slide_index: newIndex
-    });
-  }
+  const title = videoTitles[newIndex];
+  console.log("Slider changed to:", title); // 🔍 Add this line
+  track("video_change", {
+    video_title: title,
+    new_slide_index: newIndex
+  });
+}
+
 });
 
   return (
