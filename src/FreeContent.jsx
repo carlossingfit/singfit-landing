@@ -169,7 +169,7 @@ export default function FreeContent() {
               className="w-16 h-16 object-cover rounded-full shadow"
             />
             <h2 className="text-xl font-bold text-[#243B53] leading-tight">
-              Join Board Certified Music Therapist Andy Tubman for a series of webinars on the power of music as medicine.
+              Board Certified Music Therapist Andy Tubman hosts a series of webinars on music as medicine.
             </h2>
           </div>
 
@@ -249,7 +249,7 @@ export default function FreeContent() {
       alt="AARP badge"
       className="h-8 w-auto inline-block"
     />
-    AARP Members: $8.39/month (includes 30% discount).
+    AARP Member Price: $8.39/month (includes 30% discount).
   </p>
 </div>
 {/* Footer */}

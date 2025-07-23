@@ -170,7 +170,7 @@ export default function FreeContent2() {
               className="w-16 h-16 object-cover rounded-full shadow"
             />
             <h2 className="text-xl font-bold text-[#243B53] leading-tight">
-              Join Board Certified Music Therapist Andy Tubman for a series of webinars on the power of music as medicine.
+              Board Certified Music Therapist Andy Tubman hosts a series of webinars on music as medicine.
             </h2>
           </div>
 
@@ -246,7 +246,7 @@ export default function FreeContent2() {
   </a>
 
   <div className="text-base md:text-lg mt-3 text-[#EC1300] text-center space-y-1">
-    <p>AARP Registered Users: $10.19/month (includes 15% discount).</p>
+    <p>AARP Registered User Price: $10.19/month (includes 15% discount).</p>
     <p className="flex justify-center items-center gap-2 flex-wrap">
       <img
         src="/aarp-member-benefit.png"

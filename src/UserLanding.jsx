@@ -98,10 +98,10 @@ export default function UserLanding() {
 </a>
 
 </div>
-        <p className="text-center text-lg font-bold underline decoration-[#FDD9C7] decoration-1 text-[#002F6C] tracking-wide mb-6">
+        <p className="text-center text-2xl font-bold underline decoration-[#FDD9C7] decoration-1 text-[#002F6C] tracking-wide mb-6">
           SingFit is Designed For:
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10 text-left pt-6 items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10 text-left pt-3 items-stretch">
 
           <div className="bg-[#FEF8F5] p-6 rounded-lg shadow hover:shadow-lg transition h-full flex flex-col justify-start">
             <HeartHandshake strokeWidth={1.5} className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
@@ -127,13 +127,13 @@ export default function UserLanding() {
           <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 max-w-6xl mx-auto">
-          {["Download the App", "Set your goal", "Begin your session", "Wrap up your session"].map((title, i) => (
+          {["Download the app", "Set your goal", "Begin your session", "Wrap up your session"].map((title, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.2, duration: 0.5 }} className="space-y-3 sm:space-y-4 hover:scale-105 transition-transform duration-200"
 >
               <img src={`https://static.wixstatic.com/media/264616_${["2389c82006c446cca0f12db06a3d9000", "44e07472013845718269c789f125b619", "3804aa0322e047aa86b78c4f937e93d8", "7696ff978e7e4f8bad929d3739f6043a"][i]}~mv2.png`} alt={`Step ${i + 1}`} className="mx-auto w-full max-w-[140px] h-auto object-contain bg-white shadow-lg rounded-xl p-2 hover:scale-110 transition-transform duration-300" />
               <h3 className="text-lg font-semibold">{title}</h3>
               <p className="text-sm text-gray-700">{[
-                "Log in and create your profile so we can customize your experience.",
+                "Log in and create your profile so we can customize your experience",
                 "Choose what you want to focus on for your session",
                 "Follow on-screen instructions and sing along with the prompted lyrics",
                 "Track your results with our simple before/after rating system"
@@ -151,7 +151,7 @@ export default function UserLanding() {
   </Button>
 </a>
         <div className="text-base md:text-lg mt-3 text-[#EC1300] text-center space-y-1">
-  <p>AARP Registered Users: $10.19/month (includes 15% discount).</p>
+  <p>AARP Registered User Price: $10.19/month (includes 15% discount).</p>
   <p className="flex justify-center items-center gap-2 flex-wrap">
     <img
       src="/aarp-member-benefit.png"
@@ -239,7 +239,7 @@ export default function UserLanding() {
   </Button>
 </a>
         <div className="text-base md:text-lg mt-3 text-[#EC1300] text-center space-y-1">
-  <p>AARP Registered Users: $10.19/month (includes 15% discount).</p>
+  <p>AARP Registered User Price: $10.19/month (includes 15% discount).</p>
   <p className="flex justify-center items-center gap-2 flex-wrap">
     <img
       src="/aarp-member-benefit.png"
