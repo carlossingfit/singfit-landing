@@ -4,9 +4,6 @@ import { useKeenSlider } from "keen-slider/react";
 import { useState } from "react";
 import { useAnalytics } from "./useAnalytics";
 import { useEffect } from "react";
-const MEASUREMENT_ID = "G-HMCYWJE753"; // Replace with your real ID
-const API_SECRET = "aZclKHBjQXGu-ucz3Bqeaw"; // Get from GA4 settings
-
 
 
 
@@ -14,66 +11,6 @@ export default function FreeContent() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [successMessage, setSuccessMessage] = useState("");
   const { track } = useAnalytics("FreeContent");
-console.log("GA track function ready:", typeof track);
-
-useEffect(() => {
-  const thresholds = [25, 50, 75, 100];
-  const triggered = new Set();
-
-  const sendEvent = (percent) => {
-  const clientId = localStorage.getItem("ga_client_id") || `client_${Date.now()}`;
-  localStorage.setItem("ga_client_id", clientId);
-
-  const payload = {
-    client_id: clientId,
-    events: [
-      {
-        name: "scroll_depth",
-        params: {
-          percent_scrolled: percent,
-          page_id: "FreeContent",
-          debug_mode: true
-        }
-      }
-    ]
-  };
-
-  console.log("📦 Sending custom GA4 event:", payload);
-
-  fetch(`https://www.google-analytics.com/mp/collect?measurement_id=${MEASUREMENT_ID}&api_secret=${API_SECRET}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload)
-  })
-  .then((res) => {
-    if (!res.ok) {
-      console.error("❌ GA4 event send failed:", res.status);
-    } else {
-      console.log("✅ GA4 event sent successfully");
-    }
-  })
-  .catch((err) => console.error("🚨 Fetch error:", err));
-};
-
-
-  const handleScroll = () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = Math.round((scrollTop / docHeight) * 100);
-
-    thresholds.forEach((t) => {
-      if (scrollPercent >= t && !triggered.has(t)) {
-        triggered.add(t);
-        console.log(`Scrolled past ${t}%`);
-        sendEvent(t);
-      }
-    });
-  };
-
-  window.addEventListener("scroll", handleScroll);
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
-
 
 
   const videoTitles = [
