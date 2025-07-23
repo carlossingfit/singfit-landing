@@ -26,12 +26,13 @@ export default function FreeContent() {
     perView: 1,
     spacing: 16,
   },
-  slideChanged(slider) {
+ slideChanged(slider) {
   const newIndex = slider.track.details.rel;
   setCurrentSlide(newIndex);
 
   const title = videoTitles[newIndex];
-  console.log("Slider changed to:", title); // 🔍 Add this line
+  console.log("Slider changed to:", title);                // Already tested
+  console.log("Tracking video_change for:", title);        // ✅ NEW line
   track("video_change", {
     video_title: title,
     new_slide_index: newIndex
