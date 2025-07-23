@@ -3,6 +3,7 @@ import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import { useState } from "react";
 import { useAnalytics } from "./useAnalytics";
+import { useEffect } from "react";
 
 
 
@@ -12,6 +13,30 @@ export default function FreeContent() {
   const { track } = useAnalytics("FreeContent");
 console.log("GA track function ready:", typeof track);
 
+  useEffect(() => {
+    const thresholds = [25, 50, 75, 100];
+    const triggered = new Set();
+
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = Math.round((scrollTop / docHeight) * 100);
+
+      thresholds.forEach((t) => {
+        if (scrollPercent >= t && !triggered.has(t)) {
+          triggered.add(t);
+          console.log(`Scrolled past ${t}%`);
+          track("scroll_depth", {
+            percent_scrolled: t,
+            page_id: "FreeContent"
+          });
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const videoTitles = [
     "How Caregivers Can Build Musical Habits to Support a Happy, Healthy Life",
