@@ -14,6 +14,7 @@ export default function FreeContent() {
 console.log("GA track function ready:", typeof track);
 
   useEffect(() => {
+    console.log("Scroll tracking initialized");
     const thresholds = [25, 50, 75, 100];
     const triggered = new Set();
 
