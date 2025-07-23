@@ -21,26 +21,39 @@ useEffect(() => {
   const triggered = new Set();
 
   const sendEvent = (percent) => {
-    const clientId = localStorage.getItem("ga_client_id") || `client_${Date.now()}`;
-    localStorage.setItem("ga_client_id", clientId);
+  const clientId = localStorage.getItem("ga_client_id") || `client_${Date.now()}`;
+  localStorage.setItem("ga_client_id", clientId);
 
-    fetch(`https://www.google-analytics.com/mp/collect?measurement_id=${MEASUREMENT_ID}&api_secret=${API_SECRET}`, {
-      method: "POST",
-      body: JSON.stringify({
-        client_id: clientId,
-        events: [
-          {
-            name: "scroll_depth",
-            params: {
-              percent_scrolled: percent,
-              page_id: "FreeContent",
-              debug_mode: true
-            }
-          }
-        ]
-      })
-    });
+  const payload = {
+    client_id: clientId,
+    events: [
+      {
+        name: "scroll_depth",
+        params: {
+          percent_scrolled: percent,
+          page_id: "FreeContent",
+          debug_mode: true // THIS ensures visibility in DebugView
+        }
+      }
+    ]
   };
+
+  console.log("Sending scroll event to GA:", payload);
+
+  fetch(`https://www.google-analytics.com/mp/collect?measurement_id=${MEASUREMENT_ID}&api_secret=${API_SECRET}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload)
+  })
+  .then((res) => {
+    console.log("GA event response:", res.status);
+    if (!res.ok) console.error("Failed to send event to GA");
+  })
+  .catch((err) => console.error("Error sending GA event:", err));
+};
+
 
   const handleScroll = () => {
     const scrollTop = window.scrollY;
