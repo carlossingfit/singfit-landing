@@ -14,6 +14,8 @@ export default function FreeContent() {
 console.log("GA track function ready:", typeof track);
 
   useEffect(() => {
+  let cleanup = () => {};
+
   const waitForGtag = () => {
     if (typeof window.gtag !== "function") {
       console.log("Waiting for gtag to be ready...");
@@ -44,11 +46,11 @@ console.log("GA track function ready:", typeof track);
     };
 
     window.addEventListener("scroll", handleScroll);
-    // Optional cleanup
-    return () => window.removeEventListener("scroll", handleScroll);
+    cleanup = () => window.removeEventListener("scroll", handleScroll);
   };
 
   waitForGtag();
+  return () => cleanup(); // ✅ Proper unmount cleanup
 }, []);
 
 
