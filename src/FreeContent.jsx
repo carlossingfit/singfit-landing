@@ -27,8 +27,15 @@ export default function FreeContent() {
       spacing: 16,
     },
     slideChanged(slider) {
-      setCurrentSlide(slider.track.details.rel);
-    },
+  const newIndex = slider.track.details.rel;
+  setCurrentSlide(newIndex);
+
+  const title = videoTitles[newIndex];
+  track("video_change", {
+    video_title: title,
+    new_slide_index: newIndex
+  });
+},
   });
 
   return (
