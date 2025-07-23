@@ -20,23 +20,23 @@ export default function FreeContent() {
   ];
 
   const [sliderRef, instanceRef] = useKeenSlider({
-    loop: false,
-    mode: "snap",
-    slides: {
-      perView: 1,
-      spacing: 16,
-    },
-    slideChanged(slider) {
-  const newIndex = slider.track.details.rel;
-  setCurrentSlide(newIndex);
+  loop: false,
+  mode: "snap",
+  slides: {
+    perView: 1,
+    spacing: 16,
+  },
+  slideChanged(slider) {
+    const newIndex = slider.track.details.rel;
+    setCurrentSlide(newIndex);
 
-  const title = videoTitles[newIndex];
-  track("video_change", {
-    video_title: title,
-    new_slide_index: newIndex
-  });
-},
-  });
+    const title = videoTitles[newIndex];
+    track("video_change", {
+      video_title: title,
+      new_slide_index: newIndex
+    });
+  }
+});
 
   return (
   <div className="bg-white min-h-screen">
