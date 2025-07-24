@@ -118,21 +118,6 @@ export default function FreeContent() {
               </div>
             </div>
           </div>
-<button
-  type="button"
-  onClick={() => {
-    const testMessage = {
-      event: "test_message",
-      origin: "FreeContent test button",
-      timestamp: Date.now(),
-    };
-    window.parent.postMessage(testMessage, "*");
-    console.log("📤 test_message sent via postMessage", testMessage);
-  }}
-  className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
->
-  Send Test postMessage
-</button>
 
           {/* Notify Me Form */}
           {/* Notify Me Form */}
@@ -145,22 +130,19 @@ export default function FreeContent() {
     const email = e.target.email.value;
 
     const eventData = {
-      event: "email_signup",
-      form_id: "notify_me",
-      page_id: "FreeContent",
-      email_address: email,
-    };
+  event: "email_signup",
+  form_id: "notify_me",
+  page_id: "FreeContent"
+};
 
-    // Send to GTM via postMessage
-    window.parent.postMessage(eventData, "*");
+// Send to GTM running on Wix via postMessage
+window.parent.postMessage(eventData, "*");
 
-    // Optional: track locally too
-    if (typeof track === "function") {
-      track("submit_form", {
-        form_id: "notify_me",
-        page_id: "FreeContent"
-      });
-    }
+// Optional: also track inside iframe
+if (typeof track === "function") {
+  track("submit_form", eventData);
+}
+
 
     fetch("https://hook.us2.make.com/vl4dwb7wcunr13bghvani6mvji8imygv", {
       method: "POST",
