@@ -128,6 +128,7 @@ export default function FreeContent() {
   onSubmit={(e) => {
     e.preventDefault();
 const email = e.target.email.value;
+console.log("✅ Form submit handler is running");
 
 const eventData = {
   event: "email_signup",
