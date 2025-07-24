@@ -128,6 +128,13 @@ export default function FreeContent() {
     onSubmit={(e) => {
       e.preventDefault();
       const email = e.target.email.value;
+       const eventData = {
+    event: "email_signup",
+    form_id: "notify_me",
+    page_id: "FreeContent",
+    email_address: email,
+  };
+  window.parent.postMessage(eventData, "*");
 
       fetch("https://hook.us2.make.com/vl4dwb7wcunr13bghvani6mvji8imygv", {
         method: "POST",
@@ -139,13 +146,7 @@ export default function FreeContent() {
         .then((res) => {
 if (res.ok) {
   setSuccessMessage("Thanks! Check your inbox for updates.");
-     window.parent.postMessage(
-            {
-              event: "email_signup",
-              email_address: email,
-            },
-            "*"
-          );
+   
   track("submit_form", {
     form_id: "notify_me",
     page_id: "FreeContent"
