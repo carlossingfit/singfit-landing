@@ -127,16 +127,19 @@ export default function FreeContent() {
   className="flex flex-col sm:flex-row justify-center gap-2"
   onSubmit={(e) => {
     e.preventDefault();
-    const email = e.target.email.value;
+const email = e.target.email.value;
 
-    const eventData = {
+const eventData = {
   event: "email_signup",
   form_id: "notify_me",
-  page_id: "FreeContent"
+  page_id: "FreeContent",
+  email_address: email
 };
 
-// Send to GTM running on Wix via postMessage
+// Send message to parent (Wix) page
 window.parent.postMessage(eventData, "*");
+console.log("📤 postMessage sent from iframe:", eventData);
+
 
 // Optional: also track inside iframe
 if (typeof track === "function") {
