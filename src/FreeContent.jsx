@@ -124,47 +124,51 @@ export default function FreeContent() {
 <div className="mt-auto pt-4 text-center space-y-1">
   <p className="text-base">Get notified when new resources are released:</p>
   <form
-    className="flex flex-col sm:flex-row justify-center gap-2"
-    onSubmit={(e) => {
-      e.preventDefault();
-      const email = e.target.email.value;
-       const eventData = {
-    event: "email_signup",
-    form_id: "notify_me",
-    page_id: "FreeContent",
-    email_address: email,
-  };
-  console.log("📤 sending postMessage to parent:", eventData);
+  className="flex flex-col sm:flex-row justify-center gap-2"
+  onSubmit={(e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
 
-  window.parent.postMessage(eventData, "*");
+    const eventData = {
+      event: "email_signup",
+      form_id: "notify_me",
+      page_id: "FreeContent",
+      email_address: email,
+    };
 
-      fetch("https://hook.us2.make.com/vl4dwb7wcunr13bghvani6mvji8imygv", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
+    // Send to GTM via postMessage
+    window.parent.postMessage(eventData, "*");
+
+    // Optional: track locally too
+    if (typeof track === "function") {
+      track("submit_form", {
+        form_id: "notify_me",
+        page_id: "FreeContent"
+      });
+    }
+
+    fetch("https://hook.us2.make.com/vl4dwb7wcunr13bghvani6mvji8imygv", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          setSuccessMessage("Thanks! Check your inbox for updates.");
+          e.target.reset();
+          setTimeout(() => setSuccessMessage(""), 5000);
+        } else {
+          setSuccessMessage("There was a problem. Please try again.");
+        }
       })
-        .then((res) => {
-if (res.ok) {
-  setSuccessMessage("Thanks! Check your inbox for updates.");
-   
-  track("submit_form", {
-    form_id: "notify_me",
-    page_id: "FreeContent"
-  });
-  e.target.reset();
-  setTimeout(() => setSuccessMessage(""), 5000);// optional auto-clear
-  } else {
-    setSuccessMessage("There was a problem. Please try again.");
-  }
-})
-.catch(() => {
-  setSuccessMessage("There was a problem. Please try again.");
-});
+      .catch(() => {
+        setSuccessMessage("There was a problem. Please try again.");
+      });
+  }}
+>
 
-    }}
-  >
     <input
       type="email"
       name="email"
