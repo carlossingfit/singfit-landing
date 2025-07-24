@@ -125,49 +125,35 @@ export default function FreeContent() {
   <p className="text-base">Get notified when new resources are released:</p>
   <form
   className="flex flex-col sm:flex-row justify-center gap-2"
-  onSubmit={(e) => {
-    e.preventDefault();
-const email = e.target.email.value;
-console.log("✅ Form submit handler is running");
+ onSubmit={(e) => {
+  e.preventDefault();
+  const email = e.target.email.value;
 
-const eventData = {
-  event: "email_signup",
-  form_id: "notify_me",
-  page_id: "FreeContent",
-  email_address: email
-};
-
-// Send message to parent (Wix) page
-window.parent.postMessage(eventData, "*");
-console.log("📤 postMessage sent from iframe:", eventData);
-
-
-// Optional: also track inside iframe
-if (typeof track === "function") {
-  track("submit_form", eventData);
-}
-
-
-    fetch("https://hook.us2.make.com/vl4dwb7wcunr13bghvani6mvji8imygv", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email }),
-    })
-      .then((res) => {
-        if (res.ok) {
-          setSuccessMessage("Thanks! Check your inbox for updates.");
-          e.target.reset();
-          setTimeout(() => setSuccessMessage(""), 5000);
-        } else {
-          setSuccessMessage("There was a problem. Please try again.");
-        }
-      })
-      .catch(() => {
+  fetch("https://hook.us2.make.com/vl4dwb7wcunr13bghvani6mvji8imygv", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email }),
+  })
+    .then((res) => {
+      if (res.ok) {
+        setSuccessMessage("Thanks! Check your inbox for updates.");
+        track("submit_form", {
+          form_id: "notify_me",
+          page_id: "FreeContent",
+        });
+        e.target.reset();
+        setTimeout(() => setSuccessMessage(""), 5000); // optional auto-clear
+      } else {
         setSuccessMessage("There was a problem. Please try again.");
-      });
-  }}
+      }
+    })
+    .catch(() => {
+      setSuccessMessage("There was a problem. Please try again.");
+    });
+}}
+
 >
 
     <input
