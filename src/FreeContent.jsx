@@ -134,6 +134,8 @@ export default function FreeContent() {
     page_id: "FreeContent",
     email_address: email,
   };
+  console.log("📤 sending postMessage to parent:", eventData);
+
   window.parent.postMessage(eventData, "*");
 
       fetch("https://hook.us2.make.com/vl4dwb7wcunr13bghvani6mvji8imygv", {
