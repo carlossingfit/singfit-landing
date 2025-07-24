@@ -118,6 +118,21 @@ export default function FreeContent() {
               </div>
             </div>
           </div>
+<button
+  type="button"
+  onClick={() => {
+    const testMessage = {
+      event: "test_message",
+      origin: "FreeContent test button",
+      timestamp: Date.now(),
+    };
+    window.parent.postMessage(testMessage, "*");
+    console.log("📤 test_message sent via postMessage", testMessage);
+  }}
+  className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+>
+  Send Test postMessage
+</button>
 
           {/* Notify Me Form */}
           {/* Notify Me Form */}
