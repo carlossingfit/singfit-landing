@@ -18,11 +18,18 @@ export default function SingFitLandingPage() {
   {/* Left Column */}
   <div className="flex flex-col justify-start space-y-8">
     {/* SingFit Logo */}
-    <img
-      src="/SingFit New Brand Logo.png"
-      alt="SingFit logo"
-      className="w-[250px] object-contain pt-2 drop-shadow-sm"
-    />
+  <a
+  href="https://www.singfit.com/"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <img
+    src="/SingFit New Brand Logo.png"
+    alt="SingFit logo"
+    className="w-[250px] object-contain pt-2 drop-shadow-sm hover:opacity-90 transition-opacity duration-200"
+  />
+</a>
+
 
     {/* Headline */}
     <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-black leading-snug md:leading-tight">
@@ -139,10 +146,26 @@ export default function SingFitLandingPage() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 max-w-6xl mx-auto">
           {["Download the app","Set your goal","Begin your session","Wrap up your session"].map((title, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.2, duration: 0.5 }} className="space-y-3 sm:space-y-4 hover:scale-105 transition-transform duration-200">
-              <img src={`https://static.wixstatic.com/media/264616_${["2389c82006c446cca0f12db06a3d9000","44e07472013845718269c789f125b619","3804aa0322e047aa86b78c4f937e93d8","7696ff978e7e4f8bad929d3739f6043a"][i]}~mv2.png`} alt={`Step ${i + 1}`} className="mx-auto w-full max-w-[140px] h-auto object-contain bg-white shadow-lg rounded-xl p-2 hover:scale-110 transition-transform duration-300" />
+              <img
+  src={
+    i === 0
+      ? "/downloadapp.png"
+      : `https://static.wixstatic.com/media/264616_${
+          [
+            "2389c82006c446cca0f12db06a3d9000",
+            "44e07472013845718269c789f125b619",
+            "3804aa0322e047aa86b78c4f937e93d8",
+            "7696ff978e7e4f8bad929d3739f6043a",
+          ][i]
+        }~mv2.png`
+  }
+  alt={`Step ${i + 1}`}
+  className="mx-auto w-full max-w-[140px] h-auto object-contain bg-white shadow-lg rounded-xl p-2 hover:scale-110 transition-transform duration-300"
+/>
+
               <h3 className="text-lg font-semibold">{title}</h3>
               <p className="text-sm text-gray-700">{[
-                "Log in and create your profile so we can customize your experience",
+                "Download on iOS or Android, then log in and create your profile",
                 "Choose what you want to focus on for your session",
                 "Follow on-screen instructions and sing along with the prompted lyrics",
                 "Track your results with our simple before/after rating system"
