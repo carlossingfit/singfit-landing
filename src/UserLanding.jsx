@@ -148,11 +148,14 @@ export default function UserLanding() {
       </section>
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="bg-white p-10 rounded-xl shadow-md space-y-10 text-center mb-12">
+      <section id="how-it-works" className="bg-white p-10 rounded-xl shadow-md space-y-6 text-center mb-12">
         <h2 className="text-4xl font-bold text-[#F47534] relative inline-block">
           <span className="relative z-10">How It Works</span>
           <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
         </h2>
+          <p className="text-lg md:text-xl">
+  After subscribing on this website, you'll receive an email with app download instructions and your login credentials.
+</p>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 max-w-6xl mx-auto">
           {["Download the app", "Set your goal", "Begin your session", "Wrap up your session"].map((title, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.2, duration: 0.5 }} className="space-y-3 sm:space-y-4 hover:scale-105 transition-transform duration-200"
@@ -254,21 +257,37 @@ export default function UserLanding() {
 </section>
 
 
-      {/* Science Behind SingFit Section */}
+      {/* The Science Behind SingFit Section */}
       <section className="bg-[#D1E4F0] p-10 rounded-xl shadow-md space-y-6 text-center mb-12">
         <h2 className="text-3xl font-bold text-[#F47534] relative inline-block">
           <span className="relative z-10">The Science Behind SingFit</span>
           <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-6 max-w-5xl mx-auto text-left">
+
+         <div className="bg-white rounded-lg p-6 shadow">
+  <h3 className="text-lg font-bold mb-2">Backed by Clinical Music Therapy</h3>
+  <p className="text-sm text-gray-700">
+    SingFit is grounded in clinical music therapy and neuroscience.
+    Created by board-certified music therapists, the app delivers guided singing sessions that activate multiple areas of the brain.
+    These sessions are designed to support speech, memory, and emotional wellbeing.
+  </p>
+</div>
+
           <div className="bg-white rounded-lg p-6 shadow">
-            <h3 className="text-lg font-bold mb-2">Backed by Clinical Music Therapy</h3>
-            <p className="text-sm text-gray-700">SingFit is grounded in clinical music therapy and neuroscience. Created by certified music therapists, it delivers guided singing sessions designed to exercise the whole brain and respiratory system.</p>
-          </div>
-          <div className="bg-white rounded-lg p-6 shadow">
-            <h3 className="text-lg font-bold mb-2">Personalized for Better Outcomes</h3>
-            <p className="text-sm text-gray-700">SingFit uses personalized playlists and therapeutic algorithms customized to each user's age, goals, and health condition, which may provide more effective support for memory, mood, and communication.</p>
-          </div>
+  <h3 className="text-lg font-bold mb-2">Personalized for Better Outcomes</h3>
+  <p className="text-sm text-gray-700">
+    SingFit uses personalized playlists and therapeutic algorithms tailored to each user's age, goals, and health condition. This approach is backed by research showing that music interventions can improve cognitive function and mood in individuals with dementia.{" "}
+    <a
+      href="https://pubmed.ncbi.nlm.nih.gov/24009169/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="underline text-blue-700 hover:text-blue-900"
+    >
+      (Särkämö et al., 2014)
+    </a>.
+  </p>
+</div>
         </div>
       </section>
 

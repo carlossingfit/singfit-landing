@@ -80,7 +80,7 @@ export default function FreeContent() {
           <div className="relative mt-4">
             <button
               onClick={() => instanceRef.current?.prev()}
-              className="absolute left-0 top-1/2 -ml-10 transform -translate-y-1/2 z-10 bg-white border border-gray-300 rounded-full w-8 h-8 flex items-center justify-center shadow hover:bg-gray-100"
+              className="absolute left-0 top-1/2 -ml-10 transform -translate-y-1/2 z-10 bg-white border border-[#002F6C] rounded-full w-8 h-8 flex items-center justify-center shadow hover:bg-gray-100"
 
               aria-label="Previous video"
             >
@@ -90,7 +90,7 @@ export default function FreeContent() {
             </button>
             <button
               onClick={() => instanceRef.current?.next()}
-              className="absolute right-0 top-1/2 -mr-10 transform -translate-y-1/2 z-10 bg-white border border-gray-300 rounded-full w-8 h-8 flex items-center justify-center shadow hover:bg-gray-100"
+              className="absolute right-0 top-1/2 -mr-10 transform -translate-y-1/2 z-10 bg-white border border-[#002F6C] rounded-full w-8 h-8 flex items-center justify-center shadow hover:bg-gray-100"
               aria-label="Next video"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
