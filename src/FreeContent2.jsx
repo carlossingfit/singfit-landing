@@ -103,6 +103,21 @@ export default function FreeContent2() {
                 More Coming Soon
               </div>
             </div>
+            {/* Progress Dots */}
+<div className="flex justify-center items-center gap-2 mt-4">
+  {videoTitles.map((_, i) => (
+    <button
+      key={i}
+      onClick={() => instanceRef.current?.moveToIdx(i)}
+      className={`w-3 h-3 rounded-full focus:outline-none ${
+        currentSlide === i ? "bg-[#F47534]" : "bg-gray-300"
+      } transition-all duration-300`}
+      aria-label={`Go to slide ${i + 1}`}
+    />
+  ))}
+</div>
+
+
           </div>
 
           {/* Notify Me Form */}
@@ -176,42 +191,60 @@ export default function FreeContent2() {
 
           <div className="space-y-4 mt-4">
             {/* Webinar Card 1 */}
-            <div className="bg-white rounded-xl shadow p-4 flex items-start gap-4">
-              <img
-                src="/SEP16.png"
-                alt="September 16, 2025"
-                className="w-20 h-20 object-contain rounded-md shadow"
-              />
-              <div className="text-lg leading-relaxed">
-                <p className="font-semibold text-[#002F6C] text-xl mb-2">A Caregivers Guide to Transforming Health & Wellness Through Music as Medicine</p>
-
-              </div>
-            </div>
+<a
+  href="https://singfit.eventbrite.com/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200"
+>
+  <img
+    src="/SEP16.png"
+    alt="September 16, 2025"
+    className="w-20 h-20 object-contain rounded-md shadow"
+  />
+  <div className="text-lg leading-relaxed">
+    <p className="font-semibold text-[#002F6C] text-xl mb-2">
+      A Caregivers Guide to Transforming Health & Wellness Through Music as Medicine
+    </p>
+  </div>
+</a>
 
             {/* Webinar Card 2 */}
-            <div className="bg-white rounded-xl shadow p-4 flex items-start gap-4">
-              <img
-                src="/OCT14.png"
-                alt="October 14, 2025"
-                className="w-20 h-20 object-contain rounded-md shadow"
-              />
-              <div className="text-lg leading-relaxed">
-                <p className="font-semibold text-[#002F6C] text-xl mb-2">How to Combat Sundowning and Agitation with Music</p>
-
-              </div>
-            </div>
-            {/* Webinar Card 2 */}
-            <div className="bg-white rounded-xl shadow p-4 flex items-start gap-4">
-              <img
-                src="/NOV13.png"
-                alt="November 13, 2025"
-                className="w-20 h-20 object-contain rounded-md shadow"
-              />
-              <div className="text-lg leading-relaxed">
-                <p className="font-semibold text-[#002F6C] text-xl mb-2">Caregiver's Guide to Using Holiday and Classic Songs to Sing Away Stress</p>
-
-              </div>
-            </div>
+            <a
+  href="https://singfit.eventbrite.com/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200"
+>
+  <img
+    src="/OCT14.png"
+    alt="October 14, 2025"
+    className="w-20 h-20 object-contain rounded-md shadow"
+  />
+  <div className="text-lg leading-relaxed">
+    <p className="font-semibold text-[#002F6C] text-xl mb-2">
+      How to Combat Sundowning and Agitation with Music
+    </p>
+  </div>
+</a>
+            {/* Webinar Card 3 */}
+            <a
+  href="https://singfit.eventbrite.com/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200"
+>
+  <img
+    src="/NOV13.png"
+    alt="November 13, 2025"
+    className="w-20 h-20 object-contain rounded-md shadow"
+  />
+  <div className="text-lg leading-relaxed">
+    <p className="font-semibold text-[#002F6C] text-xl mb-2">
+      Caregiver's Guide to Using Holiday and Classic Songs to Sing Away Stress
+    </p>
+  </div>
+</a>
           </div>
 
           {/* Webinar Button – FINAL FIX */}
@@ -241,7 +274,7 @@ export default function FreeContent2() {
       aria-label="Start using SingFit today"
       className="text-xl px-12 py-4 min-h-[44px] bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200"
     >
-      Experience the Benefits of SingFit
+      Buy SingFit Now
     </Button>
   </a>
 

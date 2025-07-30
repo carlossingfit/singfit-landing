@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { HealtcareIcon, Brain02Icon, SustainableEnergyIcon } from "hugeicons-react";
 
 
+
 export default function SingFitLandingPage() {
   const whatIsRef = useRef(null);
 
@@ -57,14 +58,30 @@ export default function SingFitLandingPage() {
         </Button>
       </a>
       <Button
-        onClick={() => {
-          whatIsRef.current?.scrollIntoView({ behavior: "smooth" });
-        }}
-        aria-label="Scroll to What is the SingFit App section"
-        className="text-lg font-semibold px-10 py-5 bg-white border border-[#002F6C] text-[#002F6C] hover:bg-[#eaf2f8] transition-all duration-200 ease-in-out"
-      >
-        Learn About the App ↓
-      </Button>
+  onClick={() => {
+    whatIsRef.current?.scrollIntoView({ behavior: "smooth" });
+  }}
+  aria-label="Scroll to What is the SingFit App section"
+  className="text-lg font-semibold px-10 py-5 bg-white border border-[#002F6C] text-[#002F6C] hover:bg-[#eaf2f8] transition-all duration-200 ease-in-out"
+>
+  <span className="flex items-center justify-center gap-2">
+    Learn About the App
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-8 w-8 text-[#002F6C]"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={3}
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
+  </span>
+</Button>
+
+
+
+
     </div>
   </div>
 
@@ -149,7 +166,7 @@ export default function SingFitLandingPage() {
               <img
   src={
     i === 0
-      ? "/downloadapp.png"
+      ? "/downloadapp_resized.png"
       : `https://static.wixstatic.com/media/264616_${
           [
             "2389c82006c446cca0f12db06a3d9000",
@@ -181,7 +198,7 @@ export default function SingFitLandingPage() {
       <div className="text-center">
         <a href="https://www.singfit.com/aarp-member-pricing" target="_blank" rel="noopener noreferrer">
   <Button aria-label="Start using SingFit today" className="w-full sm:w-auto text-xl px-10 py-4 min-h-[44px] bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200">
-    Experience the Benefits of SingFit
+    Buy SingFit Now
   </Button>
 </a>
       <p className="text-base md:text-lg mt-3 text-[#EC1300] flex items-center justify-center gap-3">
@@ -257,7 +274,7 @@ export default function SingFitLandingPage() {
        <a href="https://www.singfit.com/aarp-member-pricing" target="_blank" rel="noopener noreferrer">
   <Button aria-label="Start using SingFit today" className="w-full sm:w-auto text-xl px-10 py-4 min-h-[44px] bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200">
 
-    Experience the Benefits of SingFit
+    Buy SingFit Now
   </Button>
 </a>
         <p className="text-base md:text-lg mt-3 text-[#EC1300] flex items-center justify-center gap-3">
