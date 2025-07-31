@@ -190,7 +190,7 @@ export default function UserLanding() {
     Buy SingFit Now
   </Button>
 </a>
-        <div className="text-base md:text-lg mt-3 text-[#EC1300] text-center space-y-1">
+        <div className="text-base md:text-lg mt-3 text-[#EC1300] text-center space-y-1 mb-6">
   <p>AARP Registered User Price: $10.19/month (includes 15% discount).</p>
   <p className="flex justify-center items-center gap-2 flex-wrap">
     <img

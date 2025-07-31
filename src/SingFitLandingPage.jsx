@@ -199,7 +199,7 @@ export default function SingFitLandingPage() {
     Buy SingFit Now
   </Button>
 </a>
-      <p className="text-base md:text-lg mt-3 text-[#EC1300] flex items-center justify-center gap-3">
+      <p className="text-base md:text-lg mt-3 text-[#EC1300] flex items-center justify-center gap-3 mb-6">
   <img
     src="/aarp-member-benefit.png"
     alt="AARP badge"
