@@ -46,7 +46,7 @@ export default function SingFitLandingPage() {
     {/* CTA Buttons */}
     <div className="flex flex-col sm:flex-row gap-4">
       <a
-        href="https://www.singfit.com/aarp-free-resources"
+        href="https://singfit-landing.vercel.app/free-content"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -62,22 +62,16 @@ export default function SingFitLandingPage() {
     whatIsRef.current?.scrollIntoView({ behavior: "smooth" });
   }}
   aria-label="Scroll to What is the SingFit App section"
-  className="text-lg font-semibold px-10 py-5 bg-white border border-[#002F6C] text-[#002F6C] hover:bg-[#eaf2f8] transition-all duration-200 ease-in-out"
+  className="text-lg font-semibold px-10 py-4 bg-white border border-[#002F6C] text-[#002F6C] hover:bg-[#eaf2f8] transition-all duration-200 ease-in-out flex flex-col items-center justify-center leading-tight"
 >
-  <span className="flex items-center justify-center gap-2">
-    Learn About the App
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-8 w-8 text-[#002F6C]"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth={3}
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+  <span className="whitespace-nowrap">Learn About the App</span>
+  <span className="mt-1 leading-none">
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
     </svg>
   </span>
 </Button>
+
 
 
 
