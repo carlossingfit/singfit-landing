@@ -226,7 +226,7 @@ export default function FreeContent() {
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      A Caregivers Guide to Transforming Health & Wellness Through Music as Medicine
+      A Caregiver's Guide to Transforming Health & Wellness Through Music as Medicine
     </p>
   </div>
 </a>

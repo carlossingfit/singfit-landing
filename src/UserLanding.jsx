@@ -108,7 +108,7 @@ export default function UserLanding() {
 >
 
         <h2 className="text-4xl font-bold text-[#F47534] relative inline-block">
-          <span className="relative z-10">What is the SingFit App?</span>
+          <span className="relative z-10">What Is the SingFit App?</span>
           <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
         </h2>
         <p className="text-lg md:text-xl">
@@ -124,7 +124,7 @@ export default function UserLanding() {
 
 </div>
         <p className="text-center text-2xl font-bold underline decoration-[#FDD9C7] decoration-1 text-[#002F6C] tracking-wide mb-6">
-          SingFit is Designed For:
+          SingFit Is Designed For:
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10 text-left pt-3 items-stretch">
 
@@ -231,7 +231,7 @@ export default function UserLanding() {
       <HealtcareIcon className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
       <h3 className="text-lg font-semibold text-black mb-2">Increase engagement with your loved one</h3>
       <p className="text-sm text-gray-700">
-        SingFit sessions are designed to provide structure and joy for family caregiver and participant.
+        SingFit sessions are designed to provide structure and joy for the family caregiver and participant.
       </p>
     </div>
 
