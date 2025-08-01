@@ -3,10 +3,14 @@ import { HeartHandshake, Brain, Armchair } from "lucide-react";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import { HealtcareIcon, Brain02Icon, SustainableEnergyIcon } from "hugeicons-react";
+import { useEffect } from "react";
 
 
 
 export default function SingFitLandingPage() {
+    useEffect(() => {
+    document.title = "SingFit AARP Member Page";
+  }, []);
   const whatIsRef = useRef(null);
 
   return (

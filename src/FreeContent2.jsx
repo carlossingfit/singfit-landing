@@ -2,9 +2,13 @@ import { Button } from "./components/ui/button";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import { useState } from "react";
+import { useEffect } from "react";
 
 
 export default function FreeContent2() {
+  useEffect(() => {
+  document.title = "SingFit AARP Non Member Resources";
+}, []);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [successMessage, setSuccessMessage] = useState("");
 

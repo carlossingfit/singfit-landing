@@ -3,10 +3,14 @@ import { HeartHandshake, Brain } from "lucide-react";
 import { motion } from "framer-motion";
 import { HealtcareIcon, Brain02Icon, SustainableEnergyIcon } from "hugeicons-react";
 import { useRef } from "react";
+import { useEffect } from "react";
 
 
 
 export default function UserLanding() {
+  useEffect(() => {
+    document.title = "SingFit AARP Non Member Page";
+  }, []);
  const whatIsRef = useRef(null);
   return (
     <div className="flex flex-col gap-2 px-8 pt-0 pb-16 max-w-7xl mx-auto font-sans text-gray-900 text-xl md:text-2xl">

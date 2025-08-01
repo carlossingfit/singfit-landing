@@ -7,7 +7,11 @@ import { useEffect } from "react";
 
 
 
+
 export default function FreeContent() {
+  useEffect(() => {
+  document.title = "SingFit AARP Member Resources";
+}, []);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [successMessage, setSuccessMessage] = useState("");
   const { track } = useAnalytics("FreeContent");
