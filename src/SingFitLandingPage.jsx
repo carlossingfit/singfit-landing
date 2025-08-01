@@ -122,14 +122,30 @@ export default function SingFitLandingPage() {
           The SingFit app uses guided singing sessions, voice prompted lyrics, and progress tracking to bring the benefits of singing into your daily routine; no musical background required.
         </p>
         <div className="text-center mb-4">
-  <a href="https://www.singfit.com/aarp-member-pricing" target="_blank" rel="noopener noreferrer">
-  <Button aria-label="Download the SingFit App" className="w-full sm:w-auto text-xl px-12 py-4 min-h-[44px] bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200">
+  <Button
+    onClick={() => {
+      const eventData = {
+        event: "click_cta",
+        button_text: "Top - Get the SingFit App",
+        destination_url: "https://www.singfit.com/aarp-member-pricing"
+      };
 
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(eventData);
+
+      if (typeof track === "function") {
+        track("click_cta", eventData);
+      }
+
+      window.open(eventData.destination_url, "_blank");
+    }}
+    aria-label="Download the SingFit App"
+    className="w-full sm:w-auto text-xl px-12 py-4 min-h-[44px] bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200"
+  >
     Get the SingFit App
   </Button>
-</a>
-
 </div>
+
 <p className="text-center text-2xl font-bold underline decoration-[#FDD9C7] decoration-1 text-[#002F6C] tracking-wide mb-4">
   SingFit Is Designed For:
 </p>
@@ -198,23 +214,40 @@ export default function SingFitLandingPage() {
 
       {/* Mid-Page CTA Section */}
       <div className="text-center">
-        <a href="https://www.singfit.com/aarp-member-pricing" target="_blank" rel="noopener noreferrer">
-  <Button aria-label="Start using SingFit today" className="w-full sm:w-auto text-xl px-10 py-4 min-h-[44px] bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200">
+  <Button
+    aria-label="Start using SingFit today"
+    className="w-full sm:w-auto text-xl px-10 py-4 min-h-[44px] bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200"
+    onClick={() => {
+      const eventData = {
+        event: "click_cta",
+        button_text: "Mid - Buy SingFit Now",
+        destination_url: "https://www.singfit.com/aarp-member-pricing"
+      };
+
+      // Send to GTM via postMessage (no iframe anymore, but harmless)
+      window.parent.postMessage(eventData, "*");
+
+      // Push to GTM dataLayer
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(eventData);
+
+      // Navigate
+      window.open(eventData.destination_url, "_blank");
+    }}
+  >
     Buy SingFit Now
   </Button>
-</a>
-      <p className="text-base md:text-lg mt-3 text-[#EC1300] flex items-center justify-center gap-3 mb-6">
-  <img
-    src="/aarp-member-benefit.png"
-    alt="AARP badge"
-    className="h-8 w-auto inline-block"
-  />
-  AARP Member Price: $8.39/month (includes 30% discount).
-</p>
 
+  <p className="text-base md:text-lg mt-3 text-[#EC1300] flex items-center justify-center gap-3 mb-6">
+    <img
+      src="/aarp-member-benefit.png"
+      alt="AARP badge"
+      className="h-8 w-auto inline-block"
+    />
+    AARP Member Price: $8.39/month (includes 30% discount).
+  </p>
+</div>
 
-
-      </div>
 
       <section id="why-people-use" className="bg-[#FEF8F5] p-10 rounded-xl shadow-md space-y-10 text-center mb-12">
   <h2 className="text-4xl font-bold text-[#F47534] relative inline-block">
@@ -288,22 +321,40 @@ export default function SingFitLandingPage() {
 
       {/* Final CTA Section */}
       <div className="text-center">
-       <a href="https://www.singfit.com/aarp-member-pricing" target="_blank" rel="noopener noreferrer">
-  <Button aria-label="Start using SingFit today" className="w-full sm:w-auto text-xl px-10 py-4 min-h-[44px] bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200">
+  <Button
+    aria-label="Start using SingFit today"
+    className="w-full sm:w-auto text-xl px-10 py-4 min-h-[44px] bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200"
+    onClick={() => {
+      const eventData = {
+        event: "click_cta",
+        button_text: "End - Buy SingFit Now",
+        destination_url: "https://www.singfit.com/aarp-member-pricing"
+      };
 
+      // Send to GTM via postMessage (no iframe anymore, but harmless)
+      window.parent.postMessage(eventData, "*");
+
+      // Push to GTM dataLayer
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(eventData);
+
+      // Navigate
+      window.open(eventData.destination_url, "_blank");
+    }}
+  >
     Buy SingFit Now
   </Button>
-</a>
-        <p className="text-base md:text-lg mt-3 text-[#EC1300] flex items-center justify-center gap-3">
-  <img
-    src="/aarp-member-benefit.png"
-    alt="AARP badge"
-    className="h-8 w-auto inline-block"
-  />
-  AARP Member Price: $8.39/month (includes 30% discount).
-</p>
 
-      </div>
+  <p className="text-base md:text-lg mt-3 text-[#EC1300] flex items-center justify-center gap-3 mb-6">
+    <img
+      src="/aarp-member-benefit.png"
+      alt="AARP badge"
+      className="h-8 w-auto inline-block"
+    />
+    AARP Member Price: $8.39/month (includes 30% discount).
+  </p>
+</div>
+
 {/* Footer */}
 <footer className="text-center text-xs text-gray-500 border-t border-gray-200 pt-6 mt-12 px-4">
   <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
