@@ -18,23 +18,33 @@ export default function SingFitLandingPage() {
 
 
       {/* Hero Section */}
-      <section className="relative grid grid-cols-1 md:grid-cols-2 gap-12 items-start bg-[#EEF6FA] pt-0 pb-10 px-10 rounded-xl shadow-xl bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] bg-repeat">
-  
-  {/* Left Column */}
-  <div className="flex flex-col justify-start space-y-8">
-    {/* SingFit Logo */}
-  <a
-  href="https://www.singfit.com/"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <img
-    src="/SingFit New Brand Logo.png"
-    alt="SingFit logo"
-    className="w-[250px] object-contain pt-2 drop-shadow-sm hover:opacity-90 transition-opacity duration-200"
-  />
-</a>
+<section className="relative grid grid-cols-1 md:grid-cols-2 gap-12 items-start bg-[#EEF6FA] pt-0 pb-10 px-10 rounded-xl shadow-xl bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] bg-repeat">
 
+  {/* Left Column */}
+  <div className="flex flex-col justify-start space-y-8 w-full">
+
+    {/* Logos Row */}
+    <div className="flex justify-between items-start w-full flex-wrap gap-2 md:gap-0">
+      {/* SingFit Logo */}
+      <a
+        href="https://www.singfit.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="/SingFit New Brand Logo.png"
+          alt="SingFit logo"
+          className="w-[250px] object-contain pt-2 drop-shadow-sm hover:opacity-90 transition-opacity duration-200"
+        />
+      </a>
+
+      {/* AARP Logo – mobile only */}
+      <img
+        src="/aarp-logo.png"
+        alt="AARP logo"
+        className="h-8 w-auto mt-4 md:hidden"
+      />
+    </div>
 
     {/* Headline */}
     <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-black leading-snug md:leading-tight">
@@ -48,68 +58,65 @@ export default function SingFitLandingPage() {
     </p>
 
     {/* CTA Buttons */}
-   <div className="flex flex-col sm:flex-row gap-4">
-  {/* External CTA – Open Free Resources Page */}
-  <Button
-    onClick={() => {
-      const eventData = {
-        event: "click_cta",
-        button_text: "Get Free Therapeutic Music Resources",
-        destination_url: "https://musicismedicine.singfit.com/aarp-member-resources"
-      };
+    <div className="flex flex-col sm:flex-row gap-4">
+      {/* External CTA – Open Free Resources Page */}
+      <Button
+        onClick={() => {
+          const eventData = {
+            event: "click_cta",
+            button_text: "Get Free Therapeutic Music Resources",
+            destination_url: "https://musicismedicine.singfit.com/aarp-member-resources"
+          };
 
-      window.parent.postMessage(eventData, "*");
+          window.parent.postMessage(eventData, "*");
+          if (typeof track === "function") {
+            track("click_cta", eventData);
+          }
 
-      if (typeof track === "function") {
-        track("click_cta", eventData);
-      }
+          window.open(eventData.destination_url, "_blank");
+        }}
+        aria-label="Access free therapeutic music resources"
+        className="text-lg px-10 py-5 bg-[#F47534] text-white hover:bg-[#d9652c] transition-all duration-200 ease-in-out"
+      >
+        Get Free Therapeutic Music Resources
+      </Button>
 
-      window.open(eventData.destination_url, "_blank");
-    }}
-    aria-label="Access free therapeutic music resources"
-    className="text-lg px-10 py-5 bg-[#F47534] text-white hover:bg-[#d9652c] transition-all duration-200 ease-in-out"
-  >
-    Get Free Therapeutic Music Resources
-  </Button>
+      {/* Internal Scroll CTA – Learn About App */}
+      <Button
+        onClick={() => {
+          const eventData = {
+            event: "click_cta",
+            button_text: "Learn About the App",
+            destination_url: "#what-is-singfit"
+          };
 
-  {/* Internal Scroll CTA – Learn About App */}
-  <Button
-    onClick={() => {
-      const eventData = {
-        event: "click_cta",
-        button_text: "Learn About the App",
-        destination_url: "#what-is-singfit"
-      };
+          window.parent.postMessage(eventData, "*");
+          if (typeof track === "function") {
+            track("click_cta", eventData);
+          }
 
-      window.parent.postMessage(eventData, "*");
-
-      if (typeof track === "function") {
-        track("click_cta", eventData);
-      }
-
-      whatIsRef.current?.scrollIntoView({ behavior: "smooth" });
-    }}
-    aria-label="Scroll to What is the SingFit App section"
-    className="text-lg font-semibold px-10 py-4 bg-white border border-[#002F6C] text-[#002F6C] hover:bg-[#eaf2f8] transition-all duration-200 ease-in-out flex flex-col items-center justify-center leading-tight"
-  >
-    <span className="whitespace-nowrap">Learn About the App</span>
-    <span className="mt-1 leading-none">
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-      </svg>
-    </span>
-  </Button>
-</div>
-
+          whatIsRef.current?.scrollIntoView({ behavior: "smooth" });
+        }}
+        aria-label="Scroll to What is the SingFit App section"
+        className="text-lg font-semibold px-10 py-4 bg-white border border-[#002F6C] text-[#002F6C] hover:bg-[#eaf2f8] transition-all duration-200 ease-in-out flex flex-col items-center justify-center leading-tight"
+      >
+        <span className="whitespace-nowrap">Learn About the App</span>
+        <span className="mt-1 leading-none">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </span>
+      </Button>
+    </div>
   </div>
 
   {/* Right Column */}
   <div className="flex flex-col items-end justify-between h-full pt-2">
-    {/* AARP Logo */}
+    {/* AARP Logo – desktop only */}
     <img
       src="/aarp-logo.png"
       alt="AARP logo"
-      className="h-10 w-auto mb-2 self-end mt-[5px]"
+      className="h-10 w-auto mb-2 self-end mt-[5px] hidden md:block"
     />
 
     {/* Image */}
@@ -125,6 +132,7 @@ export default function SingFitLandingPage() {
     </div>
   </div>
 </section>
+
 
 
 
