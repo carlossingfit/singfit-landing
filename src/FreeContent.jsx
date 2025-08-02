@@ -15,6 +15,33 @@ export default function FreeContent() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [successMessage, setSuccessMessage] = useState("");
   const { track } = useAnalytics("FreeContent");
+  useEffect(() => {
+    const thresholds = [25, 50, 75, 100];
+    const triggered = new Set();
+
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const percentScrolled = Math.round((scrollTop / docHeight) * 100);
+
+      thresholds.forEach((t) => {
+        if (percentScrolled >= t && !triggered.has(t)) {
+          triggered.add(t);
+          const eventData = {
+            event: "scroll_depth",
+            percent_scrolled: t,
+            page_id: "FreeContent"
+          };
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push(eventData);
+          console.log("Scroll Depth Fired:", eventData);
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
 
   const videoTitles = [
