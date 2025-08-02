@@ -48,7 +48,7 @@ export default function UserLanding() {
     {/* CTA Buttons */}
     <div className="flex flex-col sm:flex-row gap-4">
       <a
-        href="https://singfit-landing.vercel.app/free-content-2"
+        href="https://musicismedicine.singfit.com/aarp-non-member-resources"
         target="_blank"
         rel="noopener noreferrer"
       >

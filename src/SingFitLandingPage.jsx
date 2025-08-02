@@ -48,39 +48,59 @@ export default function SingFitLandingPage() {
     </p>
 
     {/* CTA Buttons */}
-    <div className="flex flex-col sm:flex-row gap-4">
-      <a
-        href="https://singfit-landing.vercel.app/free-content"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Button
-          aria-label="Access free therapeutic music resources"
-          className="text-lg px-10 py-5 bg-[#F47534] text-white hover:bg-[#d9652c] transition-all duration-200 ease-in-out"
-        >
-          Get Free Therapeutic Music Resources
-        </Button>
-      </a>
-      <Button
-  onClick={() => {
-    whatIsRef.current?.scrollIntoView({ behavior: "smooth" });
-  }}
-  aria-label="Scroll to What is the SingFit App section"
-  className="text-lg font-semibold px-10 py-4 bg-white border border-[#002F6C] text-[#002F6C] hover:bg-[#eaf2f8] transition-all duration-200 ease-in-out flex flex-col items-center justify-center leading-tight"
->
-  <span className="whitespace-nowrap">Learn About the App</span>
-  <span className="mt-1 leading-none">
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-    </svg>
-  </span>
-</Button>
+   <div className="flex flex-col sm:flex-row gap-4">
+  {/* External CTA – Open Free Resources Page */}
+  <Button
+    onClick={() => {
+      const eventData = {
+        event: "click_cta",
+        button_text: "Get Free Therapeutic Music Resources",
+        destination_url: "https://musicismedicine.singfit.com/aarp-member-resources"
+      };
 
+      window.parent.postMessage(eventData, "*");
 
+      if (typeof track === "function") {
+        track("click_cta", eventData);
+      }
 
+      window.open(eventData.destination_url, "_blank");
+    }}
+    aria-label="Access free therapeutic music resources"
+    className="text-lg px-10 py-5 bg-[#F47534] text-white hover:bg-[#d9652c] transition-all duration-200 ease-in-out"
+  >
+    Get Free Therapeutic Music Resources
+  </Button>
 
+  {/* Internal Scroll CTA – Learn About App */}
+  <Button
+    onClick={() => {
+      const eventData = {
+        event: "click_cta",
+        button_text: "Learn About the App",
+        destination_url: "#what-is-singfit"
+      };
 
-    </div>
+      window.parent.postMessage(eventData, "*");
+
+      if (typeof track === "function") {
+        track("click_cta", eventData);
+      }
+
+      whatIsRef.current?.scrollIntoView({ behavior: "smooth" });
+    }}
+    aria-label="Scroll to What is the SingFit App section"
+    className="text-lg font-semibold px-10 py-4 bg-white border border-[#002F6C] text-[#002F6C] hover:bg-[#eaf2f8] transition-all duration-200 ease-in-out flex flex-col items-center justify-center leading-tight"
+  >
+    <span className="whitespace-nowrap">Learn About the App</span>
+    <span className="mt-1 leading-none">
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+      </svg>
+    </span>
+  </Button>
+</div>
+
   </div>
 
   {/* Right Column */}
