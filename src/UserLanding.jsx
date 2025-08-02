@@ -80,16 +80,19 @@ export default function UserLanding() {
     <div className="flex flex-col sm:flex-row gap-4">
       <Button
   onClick={() => {
-    const eventData = {
-      event: "click_cta",
-      button_text: "Get Free Therapeutic Music Resources",
-      destination_url: "https://musicismedicine.singfit.com/aarp-member-resources"
-    };
-    window.parent.postMessage(eventData, "*");
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(eventData);
-    window.open(eventData.destination_url, "_blank");
-  }}
+  const eventData = {
+    event: "click_cta",
+    button_text: "Get Free Therapeutic Music Resources",
+    destination_url: "https://musicismedicine.singfit.com/aarp-member-resources"
+  };
+
+  // Send event to GTM on parent
+  window.parent.postMessage(eventData, "*");
+
+  // Do NOT also push to dataLayer — that's handled by the parent
+  window.open(eventData.destination_url, "_blank");
+}}
+
   aria-label="Access free therapeutic music resources"
   className="text-lg px-10 py-5 bg-[#F47534] text-white hover:bg-[#d9652c] transition-all duration-200 ease-in-out"
 >
@@ -98,16 +101,16 @@ export default function UserLanding() {
 
      <Button
   onClick={() => {
-    const eventData = {
-      event: "click_cta",
-      button_text: "Learn About the App",
-      destination_url: "#what-is-singfit" // use this if you want to track anchor target
-    };
-    window.parent.postMessage(eventData, "*");
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(eventData);
-    whatIsRef.current?.scrollIntoView({ behavior: "smooth" });
-  }}
+  const eventData = {
+    event: "click_cta",
+    button_text: "Learn About the App",
+    destination_url: "#what-is-singfit"
+  };
+
+  window.parent.postMessage(eventData, "*");
+  whatIsRef.current?.scrollIntoView({ behavior: "smooth" });
+}}
+
   aria-label="Scroll to What is the SingFit App section"
   className="text-lg font-semibold px-10 py-4 bg-white border border-[#002F6C] text-[#002F6C] hover:bg-[#eaf2f8] transition-all duration-200 ease-in-out flex flex-col items-center justify-center leading-tight"
 >
@@ -163,20 +166,19 @@ export default function UserLanding() {
         <div className="text-center mb-4 w-full">
   <Button
     onClick={() => {
-      const eventData = {
-        event: "click_cta",
-        button_text: "Get the SingFit App",
-        destination_url: "https://www.singfit.com/aarp-non-member-pricing"
-      };
+  const eventData = {
+    event: "click_cta",
+    button_text: "Top - Get the SingFit App",
+    destination_url: "https://www.singfit.com/aarp-non-member-pricing"
+  };
 
-      window.parent.postMessage(eventData, "*");
+  // Send only to GTM via parent
+  window.parent.postMessage(eventData, "*");
 
-      if (typeof track === "function") {
-        track("click_cta", eventData);
-      }
+  // Remove the local tracking — not needed
+  window.open(eventData.destination_url, "_blank");
+}}
 
-      window.open(eventData.destination_url, "_blank");
-    }}
     aria-label="Download the SingFit App"
     className="w-full sm:w-auto text-xl px-12 py-4 min-h-[44px] bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200"
   >
@@ -253,22 +255,53 @@ export default function UserLanding() {
     <Button
       aria-label="Start using SingFit today"
       className="w-full sm:w-auto text-xl px-10 py-4 min-h-[44px] bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200"
-      onClick={() => {
-        const eventData = {
-          event: "click_cta",
-          button_text: "Buy SingFit Now (Mid CTA)",
-          destination_url: "https://www.singfit.com/aarp-non-member-pricing",
-          page_id: "UserLanding"
-        };
+     onClick={() => {
+  const eventData = {
+    event: "click_cta",
+    button_text: "Mid -Buy SingFit Now",
+    destination_url: "https://www.singfit.com/aarp-non-member-pricing",
+    page_id: "UserLanding"
+  };
 
-        window.parent.postMessage(eventData, "*");
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push(eventData);
-        window.open(eventData.destination_url, "_blank");
-      }}
+  // Send only to GTM via parent
+  window.parent.postMessage(eventData, "*");
+
+  // Removed: local dataLayer push
+  window.open(eventData.destination_url, "_blank");
+}}
     >
       Buy SingFit Now
     </Button>
+    <div className="text-base md:text-lg mt-3 text-[#EC1300] text-center space-y-1">
+  <p>AARP Registered User Price: $10.19/month (includes 15% discount).</p>
+  <p className="flex justify-center items-center gap-2 flex-wrap">
+    <img
+      src="/aarp-member-benefit.png"
+      alt="AARP badge"
+      className="h-8 w-auto inline-block"
+    />
+    <span>
+      AARP members receive additional savings.&nbsp;
+      <a
+  href="https://www.aarp.org"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="underline text-blue-700 hover:text-blue-900"
+  onClick={() => {
+    const eventData = {
+      event: "click_cta",
+      button_text: "Mid -Join AARP",
+      destination_url: "https://www.aarp.org",
+      page_id: "UserLanding"
+    };
+    window.parent.postMessage(eventData, "*");
+  }}
+>
+  Not a member? Join today.
+</a>
+    </span>
+  </p>
+</div>
   </div>
       <section id="why-people-use" className="bg-[#FEF8F5] p-10 rounded-xl shadow-md space-y-10 text-center mb-12">
   <h2 className="text-4xl font-bold text-[#F47534] relative inline-block">
@@ -341,29 +374,25 @@ export default function UserLanding() {
 
       {/* Final CTA */}
       <div className="text-center">
-      <Button
-  onClick={() => {
-    const eventData = {
-      event: "click_cta",
-      button_text: "Buy SingFit Now",
-      destination_url: "https://www.singfit.com/aarp-non-member-pricing"
-    };
+  <Button
+    onClick={() => {
+      const eventData = {
+        event: "click_cta",
+        button_text: "End-Buy SingFit Now",
+        destination_url: "https://www.singfit.com/aarp-non-member-pricing"
+      };
 
-    // Send event to GTM via postMessage
-    window.parent.postMessage(eventData, "*");
+      // Send event to GTM via postMessage
+      window.parent.postMessage(eventData, "*");
 
-    // Also push to dataLayer for local GA4 tracking
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(eventData);
-
-    // Navigate
-    window.open(eventData.destination_url, "_blank");
-  }}
-  aria-label="Start using SingFit today"
-  className="text-xl px-12 py-4 min-h-[44px] bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200"
->
-  Buy SingFit Now
-</Button>
+      // Navigate
+      window.open(eventData.destination_url, "_blank");
+    }}
+    aria-label="Start using SingFit today"
+    className="text-xl px-12 py-4 min-h-[44px] bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200"
+  >
+    Buy SingFit Now
+  </Button>
 
         <div className="text-base md:text-lg mt-3 text-[#EC1300] text-center space-y-1">
   <p>AARP Registered User Price: $10.19/month (includes 15% discount).</p>
@@ -376,13 +405,22 @@ export default function UserLanding() {
     <span>
       AARP members receive additional savings.&nbsp;
       <a
-        href="https://www.aarp.org"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="underline text-blue-700 hover:text-blue-900"
-      >
-        Not a member? Join today.
-      </a>
+  href="https://www.aarp.org"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="underline text-blue-700 hover:text-blue-900"
+  onClick={() => {
+    const eventData = {
+      event: "click_cta",
+      button_text: "Bottom -Join AARP",
+      destination_url: "https://www.aarp.org",
+      page_id: "UserLanding"
+    };
+    window.parent.postMessage(eventData, "*");
+  }}
+>
+  Not a member? Join today.
+</a>
     </span>
   </p>
 </div>
