@@ -41,13 +41,13 @@ export function useAnalytics(pageId) {
     ...params
   };
 
-  // Push to GTM dataLayer so custom tags work
+  // Send to GTM for custom tags (including GA4 tag)
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push(fullEvent);
 
-  // Send directly to GA4 as a backup
-  window.gtag?.('event', eventName, fullEvent);
+  // DO NOT call gtag here — GA4 tag in GTM already handles this event
 };
+
 
 
   return { track };
