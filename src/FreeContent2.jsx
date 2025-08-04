@@ -343,11 +343,27 @@ export default function FreeContent2() {
     rel="noopener noreferrer"
   >
     <Button
-      aria-label="Start using SingFit today"
-      className="text-xl px-12 py-4 min-h-[44px] bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200"
-    >
-      Buy SingFit Now
-    </Button>
+  onClick={() => {
+  const eventData = {
+    event: "click_cta",
+    button_text: "Buy SingFit Now",
+    destination_url: "https://www.singfit.com/aarp-non-member-pricing"
+  };
+
+  // Optional: still fire track inside iframe, for redundancy
+  if (typeof track === "function") {
+    track("click_cta", eventData);
+  }
+
+  // Navigate
+  window.open(eventData.destination_url, "_blank");
+}}
+
+  aria-label="Start using SingFit today"
+  className="w-full sm:w-auto text-xl px-10 py-4 min-h-[44px] bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200"
+>
+  Buy SingFit Now
+</Button>
   </a>
 
   <div className="text-base md:text-lg mt-3 text-[#EC1300] text-center space-y-1">
@@ -361,13 +377,22 @@ export default function FreeContent2() {
       <span>
         AARP members receive additional savings.&nbsp;
         <a
-          href="https://www.aarp.org"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline text-blue-700 hover:text-blue-900"
-        >
-          Not a member? Join today.
-        </a>
+  href="https://www.aarp.org"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="underline text-blue-700 hover:text-blue-900"
+  onClick={() => {
+    const eventData = {
+      event: "click_cta",
+      button_text: "Bottom -Join AARP",
+      destination_url: "https://www.aarp.org",
+      page_id: "UserLanding"
+    };
+    window.parent.postMessage(eventData, "*");
+  }}
+>
+  Not a member? Join today.
+</a>
       </span>
     </p>
   </div>
