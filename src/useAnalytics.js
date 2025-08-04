@@ -33,9 +33,22 @@ export function useAnalytics(pageId) {
   }, [pageId]);
 
   const track = (eventName, params = {}) => {
-    if (typeof window === "undefined") return;
-    window.gtag?.('event', eventName, { page_id: pageId, ...params });
+  if (typeof window === "undefined") return;
+
+  const fullEvent = {
+    event: eventName,
+    page_id: pageId,
+    ...params
   };
+
+  // Push to GTM dataLayer so custom tags work
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(fullEvent);
+
+  // Send directly to GA4 as a backup
+  window.gtag?.('event', eventName, fullEvent);
+};
+
 
   return { track };
 }
