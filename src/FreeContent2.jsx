@@ -3,15 +3,73 @@ import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useAnalytics } from "./useAnalytics";
 
 
 export default function FreeContent2() {
   useEffect(() => {
-  document.title = "SingFit AARP Non Member Resources";
-}, []);
+    document.title = "SingFit AARP Member Resources";
+  }, []);
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const [successMessage, setSuccessMessage] = useState("");
+  const { track } = useAnalytics("FreeContent2");
 
+  // SCROLL DEPTH TRACKING
+  useEffect(() => {
+    const thresholds = [25, 50, 75, 100];
+    const triggered = new Set();
+
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const percentScrolled = Math.round((scrollTop / docHeight) * 100);
+
+      thresholds.forEach((t) => {
+        if (percentScrolled >= t && !triggered.has(t)) {
+          triggered.add(t);
+          const eventData = {
+            event: "Scroll Depth",
+            percent_scrolled: t,
+            page_id: "FreeContent2"
+          };
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push(eventData);
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // YOUTUBE VIDEO PLAY TRACKING
+  useEffect(() => {
+    let player;
+
+    const tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+
+    window.onYouTubeIframeAPIReady = () => {
+      player = new window.YT.Player("yt-video", {
+        events: {
+          onStateChange: (event) => {
+            if (event.data === window.YT.PlayerState.PLAYING) {
+              track("video_play", {
+                video_title: "How Caregivers Can Build Musical Habits to Support a Happy, Healthy Life",
+                page_id: "FreeContent2"
+              });
+            }
+          }
+        }
+      });
+    };
+
+    return () => {
+      window.onYouTubeIframeAPIReady = null;
+    };
+  }, []);
 
   const videoTitles = [
     "How Caregivers Can Build Musical Habits to Support a Happy, Healthy Life",
@@ -27,11 +85,19 @@ export default function FreeContent2() {
       spacing: 16,
     },
     slideChanged(slider) {
-      setCurrentSlide(slider.track.details.rel);
-    },
+      const newIndex = slider.track.details.rel;
+      setCurrentSlide(newIndex);
+
+      const title = videoTitles[newIndex];
+      track("video_change", {
+        video_title: title,
+        new_slide_index: newIndex
+      });
+    }
   });
 
   return (
+
   <div className="bg-white min-h-screen">
     <div className="flex flex-col gap-10 px-8 pt-0 pb-16 max-w-7xl mx-auto font-sans text-gray-900 text-xl md:text-2xl">
 

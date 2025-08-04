@@ -10,11 +10,14 @@ import { useEffect } from "react";
 
 export default function FreeContent() {
   useEffect(() => {
-  document.title = "SingFit AARP Member Resources";
-}, []);
+    document.title = "SingFit AARP Member Resources";
+  }, []);
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const [successMessage, setSuccessMessage] = useState("");
   const { track } = useAnalytics("FreeContent");
+
+  // SCROLL DEPTH TRACKING
   useEffect(() => {
     const thresholds = [25, 50, 75, 100];
     const triggered = new Set();
@@ -34,7 +37,6 @@ export default function FreeContent() {
           };
           window.dataLayer = window.dataLayer || [];
           window.dataLayer.push(eventData);
-          console.log("Scroll Depth Fired:", eventData);
         }
       });
     };
@@ -43,6 +45,33 @@ export default function FreeContent() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // YOUTUBE VIDEO PLAY TRACKING
+  useEffect(() => {
+    let player;
+
+    const tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+
+    window.onYouTubeIframeAPIReady = () => {
+      player = new window.YT.Player("yt-video", {
+        events: {
+          onStateChange: (event) => {
+            if (event.data === window.YT.PlayerState.PLAYING) {
+              track("video_play", {
+                video_title: "How Caregivers Can Build Musical Habits to Support a Happy, Healthy Life",
+                page_id: "FreeContent"
+              });
+            }
+          }
+        }
+      });
+    };
+
+    return () => {
+      window.onYouTubeIframeAPIReady = null;
+    };
+  }, []);
 
   const videoTitles = [
     "How Caregivers Can Build Musical Habits to Support a Happy, Healthy Life",
@@ -51,26 +80,26 @@ export default function FreeContent() {
   ];
 
   const [sliderRef, instanceRef] = useKeenSlider({
-  loop: false,
-  mode: "snap",
-  slides: {
-    perView: 1,
-    spacing: 16,
-  },
- slideChanged(slider) {
-  const newIndex = slider.track.details.rel;
-  setCurrentSlide(newIndex);
+    loop: false,
+    mode: "snap",
+    slides: {
+      perView: 1,
+      spacing: 16,
+    },
+    slideChanged(slider) {
+      const newIndex = slider.track.details.rel;
+      setCurrentSlide(newIndex);
 
-  const title = videoTitles[newIndex];
-   track("video_change", {
-    video_title: title,
-    new_slide_index: newIndex
+      const title = videoTitles[newIndex];
+      track("video_change", {
+        video_title: title,
+        new_slide_index: newIndex
+      });
+    }
   });
-}
-
-});
 
   return (
+
   <div className="bg-white min-h-screen">
     <div className="flex flex-col gap-10 px-8 pt-0 pb-16 max-w-7xl mx-auto font-sans text-gray-900 text-xl md:text-2xl">
 
@@ -142,8 +171,9 @@ export default function FreeContent() {
             <div ref={sliderRef} className="keen-slider rounded-lg overflow-hidden shadow mt-2">
               <div className="keen-slider__slide bg-white p-1 rounded-lg shadow h-[369px] flex items-center justify-center">
   <iframe
+  id="yt-video"
   className="w-full h-full rounded-md"
-  src="https://www.youtube.com/embed/bSw5X9Hq3NU"
+  src="https://www.youtube.com/embed/bSw5X9Hq3NU?enablejsapi=1"
   title="SingFit Free Resource"
   sandbox="allow-scripts allow-same-origin allow-presentation"
   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
