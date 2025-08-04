@@ -255,11 +255,20 @@ export default function FreeContent() {
 
           <div className="space-y-4 mt-4">
            {/* Webinar Card 1 */}
-<a
-  href="https://singfit.eventbrite.com/"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200"
+<button
+  onClick={() => {
+    const eventData = {
+      event: "click_cta",
+      button_text: "Webinar: A Caregiver's Guide (Sep 16)",
+      destination_url: "https://singfit.eventbrite.com",
+      page_id: "FreeContent"
+    };
+    window.parent.postMessage(eventData, "*");
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(eventData);
+    window.open(eventData.destination_url, "_blank");
+  }}
+  className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
   <img
     src="/SEP16.png"
@@ -271,14 +280,24 @@ export default function FreeContent() {
       A Caregiver's Guide to Transforming Health & Wellness Through Music as Medicine
     </p>
   </div>
-</a>
+</button>
+
 
             {/* Webinar Card 2 */}
-            <a
-  href="https://singfit.eventbrite.com/"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200"
+   <button
+  onClick={() => {
+    const eventData = {
+      event: "click_cta",
+      button_text: "Webinar: Combat Sundowning (Oct 14)",
+      destination_url: "https://singfit.eventbrite.com",
+      page_id: "FreeContent"
+    };
+    window.parent.postMessage(eventData, "*");
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(eventData);
+    window.open(eventData.destination_url, "_blank");
+  }}
+  className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
   <img
     src="/OCT14.png"
@@ -290,13 +309,23 @@ export default function FreeContent() {
       How to Combat Sundowning and Agitation with Music
     </p>
   </div>
-</a>
+</button>
+
             {/* Webinar Card 3 */}
-            <a
-  href="https://singfit.eventbrite.com/"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200"
+  <button
+  onClick={() => {
+    const eventData = {
+      event: "click_cta",
+      button_text: "Webinar: Holiday Songs to Reduce Stress (Nov 13)",
+      destination_url: "https://singfit.eventbrite.com",
+      page_id: "FreeContent"
+    };
+    window.parent.postMessage(eventData, "*");
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(eventData);
+    window.open(eventData.destination_url, "_blank");
+  }}
+  className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
   <img
     src="/NOV13.png"
@@ -308,19 +337,32 @@ export default function FreeContent() {
       Caregiver's Guide to Using Holiday and Classic Songs to Sing Away Stress
     </p>
   </div>
-</a>
+</button>
+
           </div>
 
           {/* Webinar Button – FINAL FIX */}
           <div className="mt-auto pt-4 text-center">
             <div className="relative">
               <Button
-                className="text-sm px-6 py-4 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-md transition relative"
-                style={{ top: '13px' }}
-                onClick={() => window.open("https://singfit.eventbrite.com/", "_blank")}
-              >
-                Sign Up for a Webinar
-              </Button>
+  className="text-sm px-6 py-4 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-md transition relative"
+  style={{ top: '13px' }}
+  onClick={() => {
+    const eventData = {
+      event: "click_cta",
+      button_text: "Sign Up for a Webinar",
+      destination_url: "https://singfit.eventbrite.com",
+      page_id: "FreeContent"
+    };
+    window.parent.postMessage(eventData, "*");
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(eventData);
+    window.open(eventData.destination_url, "_blank");
+  }}
+>
+  Sign Up for a Webinar
+</Button>
+
             </div>
           </div>
 
