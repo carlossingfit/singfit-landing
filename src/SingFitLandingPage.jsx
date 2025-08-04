@@ -253,8 +253,7 @@ export default function SingFitLandingPage() {
       };
 
       // Send to GTM via postMessage (no iframe anymore, but harmless)
-      window.parent.postMessage(eventData, "*");
-
+   
       // Push to GTM dataLayer
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push(eventData);
