@@ -8,7 +8,7 @@ import { useAnalytics } from "./useAnalytics";
 
 export default function FreeContent2() {
   useEffect(() => {
-    document.title = "SingFit AARP Member Resources";
+    document.title = "SingFit AARP Non Member Resources";
   }, []);
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -45,31 +45,34 @@ export default function FreeContent2() {
 
   // YOUTUBE VIDEO PLAY TRACKING
   useEffect(() => {
-    let player;
+  let player;
 
+  if (!window.YT) {
     const tag = document.createElement("script");
     tag.src = "https://www.youtube.com/iframe_api";
     document.body.appendChild(tag);
+  }
 
-    window.onYouTubeIframeAPIReady = () => {
-      player = new window.YT.Player("yt-video", {
-        events: {
-          onStateChange: (event) => {
-            if (event.data === window.YT.PlayerState.PLAYING) {
-              track("video_play", {
-                video_title: "How Caregivers Can Build Musical Habits to Support a Happy, Healthy Life",
-                page_id: "FreeContent2"
-              });
-            }
+  window.onYouTubeIframeAPIReady = () => {
+    player = new window.YT.Player("yt-video", {
+      events: {
+        onStateChange: (event) => {
+          if (event.data === window.YT.PlayerState.PLAYING) {
+            track("video_play", {
+              video_title: "How Caregivers Can Build Musical Habits to Support a Happy, Healthy Life",
+              page_id: "FreeContent2",
+            });
           }
-        }
-      });
-    };
+        },
+      },
+    });
+  };
 
-    return () => {
-      window.onYouTubeIframeAPIReady = null;
-    };
-  }, []);
+  return () => {
+    window.onYouTubeIframeAPIReady = null;
+  };
+}, []);
+
 
   const videoTitles = [
     "How Caregivers Can Build Musical Habits to Support a Happy, Healthy Life",
@@ -157,7 +160,8 @@ export default function FreeContent2() {
               <div className="keen-slider__slide bg-white p-1 rounded-lg shadow h-[369px] flex items-center justify-center">
   <iframe
   className="w-full h-full rounded-md"
-  src="https://www.youtube.com/embed/bSw5X9Hq3NU"
+  id="yt-video"
+  src="https://www.youtube.com/embed/bSw5X9Hq3NU?enablejsapi=1"
   title="SingFit Free Resource"
   sandbox="allow-scripts allow-same-origin allow-presentation"
   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
