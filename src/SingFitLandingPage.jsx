@@ -334,13 +334,24 @@ export default function SingFitLandingPage() {
   <p className="text-sm text-gray-700">
     SingFit uses personalized playlists and therapeutic algorithms tailored to each user's age, goals, and health condition. This approach is backed by research showing that music interventions can improve cognitive function and mood in individuals with dementia.{" "}
     <a
-      href="https://pubmed.ncbi.nlm.nih.gov/24009169/"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="underline text-blue-700 hover:text-blue-900"
-    >
-      (Särkämö et al., 2014)
-    </a>.
+  href="https://pubmed.ncbi.nlm.nih.gov/24009169/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="underline text-blue-700 hover:text-blue-900"
+  onClick={() => {
+    const eventData = {
+      event: "click_cta",
+      button_text: "Research Link - Särkämö 2014",
+      destination_url: "https://pubmed.ncbi.nlm.nih.gov/24009169/",
+      page_id: "MemberLanding"
+    };
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(eventData);
+  }}
+>
+  (Särkämö et al., 2014)
+</a>
+
   </p>
 </div>
         </div>
@@ -358,9 +369,7 @@ export default function SingFitLandingPage() {
         destination_url: "https://www.singfit.com/aarp-member-pricing"
       };
 
-      // Send to GTM via postMessage (no iframe anymore, but harmless)
-      window.parent.postMessage(eventData, "*");
-
+    
       // Push to GTM dataLayer
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push(eventData);
