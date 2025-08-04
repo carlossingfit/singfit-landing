@@ -28,7 +28,7 @@ export default function FreeContent() {
         if (percentScrolled >= t && !triggered.has(t)) {
           triggered.add(t);
           const eventData = {
-            event: "scroll_depth",
+            event: "Scroll Depth",
             percent_scrolled: t,
             page_id: "FreeContent"
           };
@@ -110,7 +110,16 @@ export default function FreeContent() {
 
           <div className="relative mt-4">
             <button
-              onClick={() => instanceRef.current?.prev()}
+             onClick={() => {
+  const target = Math.max(currentSlide - 1, 0);
+  const title = videoTitles[target];
+  track("video_change", {
+    video_title: title,
+    new_slide_index: target
+  });
+  instanceRef.current?.moveToIdx(target);
+}}
+
               className="absolute left-0 top-1/2 -ml-10 transform -translate-y-1/2 z-10 bg-white border border-[#002F6C] rounded-full w-8 h-8 flex items-center justify-center shadow hover:bg-gray-100"
 
               aria-label="Previous video"
@@ -120,7 +129,16 @@ export default function FreeContent() {
               </svg>
             </button>
             <button
-              onClick={() => instanceRef.current?.next()}
+              onClick={() => {
+  const target = Math.min(currentSlide + 1, videoTitles.length - 1);
+  const title = videoTitles[target];
+  track("video_change", {
+    video_title: title,
+    new_slide_index: target
+  });
+  instanceRef.current?.moveToIdx(target);
+}}
+
               className="absolute right-0 top-1/2 -mr-10 transform -translate-y-1/2 z-10 bg-white border border-[#002F6C] rounded-full w-8 h-8 flex items-center justify-center shadow hover:bg-gray-100"
               aria-label="Next video"
             >
@@ -154,7 +172,15 @@ export default function FreeContent() {
   {videoTitles.map((_, i) => (
     <button
       key={i}
-      onClick={() => instanceRef.current?.moveToIdx(i)}
+      onClick={() => {
+  const title = videoTitles[i];
+  track("video_change", {
+    video_title: title,
+    new_slide_index: i
+  });
+  instanceRef.current?.moveToIdx(i);
+}}
+
       className={`w-3 h-3 rounded-full focus:outline-none ${
         currentSlide === i ? "bg-[#F47534]" : "bg-gray-300"
       } transition-all duration-300`}
