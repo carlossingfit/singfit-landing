@@ -378,9 +378,6 @@ export default function FreeContent() {
     destination_url: "https://www.singfit.com/aarp-member-pricing"
   };
 
-  // Send to GTM running on Wix via postMessage
-  window.parent.postMessage(eventData, "*");
-
   // Optional: still fire track inside iframe, for redundancy
   if (typeof track === "function") {
     track("click_cta", eventData);
