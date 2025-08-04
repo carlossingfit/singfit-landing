@@ -43,35 +43,33 @@ export default function FreeContent2() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // YOUTUBE VIDEO PLAY TRACKING
+ // YOUTUBE VIDEO PLAY TRACKING
   useEffect(() => {
-  let player;
+    let player;
 
-  if (!window.YT) {
     const tag = document.createElement("script");
     tag.src = "https://www.youtube.com/iframe_api";
     document.body.appendChild(tag);
-  }
 
-  window.onYouTubeIframeAPIReady = () => {
-    player = new window.YT.Player("yt-video", {
-      events: {
-        onStateChange: (event) => {
-          if (event.data === window.YT.PlayerState.PLAYING) {
-            track("video_play", {
-              video_title: "How Caregivers Can Build Musical Habits to Support a Happy, Healthy Life",
-              page_id: "FreeContent2",
-            });
+    window.onYouTubeIframeAPIReady = () => {
+      player = new window.YT.Player("yt-video", {
+        events: {
+          onStateChange: (event) => {
+            if (event.data === window.YT.PlayerState.PLAYING) {
+              track("video_play", {
+                video_title: "How Caregivers Can Build Musical Habits to Support a Happy, Healthy Life",
+                page_id: "FreeContent2"
+              });
+            }
           }
-        },
-      },
-    });
-  };
+        }
+      });
+    };
 
-  return () => {
-    window.onYouTubeIframeAPIReady = null;
-  };
-}, []);
+    return () => {
+      window.onYouTubeIframeAPIReady = null;
+    };
+  }, []);
 
 
   const videoTitles = [
