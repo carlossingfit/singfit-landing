@@ -263,8 +263,7 @@ export default function FreeContent() {
       destination_url: "https://singfit.eventbrite.com",
       page_id: "FreeContent"
     };
-    window.parent.postMessage(eventData, "*");
-    window.dataLayer = window.dataLayer || [];
+     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(eventData);
     window.open(eventData.destination_url, "_blank");
   }}
@@ -292,7 +291,7 @@ export default function FreeContent() {
       destination_url: "https://singfit.eventbrite.com",
       page_id: "FreeContent"
     };
-    window.parent.postMessage(eventData, "*");
+    
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(eventData);
     window.open(eventData.destination_url, "_blank");
@@ -320,7 +319,7 @@ export default function FreeContent() {
       destination_url: "https://singfit.eventbrite.com",
       page_id: "FreeContent"
     };
-    window.parent.postMessage(eventData, "*");
+    
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(eventData);
     window.open(eventData.destination_url, "_blank");
@@ -354,7 +353,7 @@ export default function FreeContent() {
       destination_url: "https://singfit.eventbrite.com",
       page_id: "FreeContent"
     };
-    window.parent.postMessage(eventData, "*");
+    
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(eventData);
     window.open(eventData.destination_url, "_blank");
