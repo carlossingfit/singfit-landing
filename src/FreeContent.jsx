@@ -62,9 +62,7 @@ export default function FreeContent() {
   setCurrentSlide(newIndex);
 
   const title = videoTitles[newIndex];
-  console.log("Slider changed to:", title);
-  console.log("Tracking video_change for:", title); // Make sure this appears
-  track("video_change", {
+   track("video_change", {
     video_title: title,
     new_slide_index: newIndex
   });
@@ -113,10 +111,7 @@ export default function FreeContent() {
              onClick={() => {
   const target = Math.max(currentSlide - 1, 0);
   const title = videoTitles[target];
-  track("video_change", {
-    video_title: title,
-    new_slide_index: target
-  });
+  
   instanceRef.current?.moveToIdx(target);
 }}
 
@@ -132,10 +127,7 @@ export default function FreeContent() {
               onClick={() => {
   const target = Math.min(currentSlide + 1, videoTitles.length - 1);
   const title = videoTitles[target];
-  track("video_change", {
-    video_title: title,
-    new_slide_index: target
-  });
+  
   instanceRef.current?.moveToIdx(target);
 }}
 
@@ -174,10 +166,7 @@ export default function FreeContent() {
       key={i}
       onClick={() => {
   const title = videoTitles[i];
-  track("video_change", {
-    video_title: title,
-    new_slide_index: i
-  });
+  
   instanceRef.current?.moveToIdx(i);
 }}
 
