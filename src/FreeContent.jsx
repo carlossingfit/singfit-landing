@@ -76,7 +76,7 @@ export default function FreeContent() {
   const videoTitles = [
     "What a Song Can Do!",
     "How Caregivers Can Build Musical Habits for a Happy, Healthy Life",
-    "More Coming Soon"
+    "5 Signs Singing is Helping"
   ];
 
   const [sliderRef, instanceRef] = useKeenSlider({
@@ -208,7 +208,7 @@ export default function FreeContent() {
 
 
               <div className="keen-slider__slide bg-gray-100 p-1 rounded-lg shadow flex items-center justify-center text-gray-600 text-base font-medium aspect-video">
-                More Coming Soon
+                Coming Soon
               </div>
             </div>
             {/* Progress Dots */}
