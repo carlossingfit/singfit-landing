@@ -31,7 +31,7 @@ export default function UserLanding() {
           const eventData = {
             event: "scroll_depth",
             percent_scrolled: t,
-            page_id: "UserLanding"
+            page_id: "NonMemberLanding"
           };
           window.parent.postMessage(eventData, "*");
           window.dataLayer = window.dataLayer || [];
@@ -64,7 +64,7 @@ export default function UserLanding() {
     track("click_cta", {
       button_text: "SingFit Logo",
       destination_url: "https://www.singfit.com/",
-      page_id: "UserLanding" // change to "UserLanding" on the other page
+      page_id: "NonMemberLanding" // change to "UserLanding" on the other page
     });
   }}
 >
@@ -102,7 +102,8 @@ export default function UserLanding() {
           const eventData = {
             event: "click_cta",
             button_text: "Get Free Therapeutic Music Resources",
-            destination_url: "https://musicismedicine.singfit.com/aarp-member-resources"
+            destination_url: "https://musicismedicine.singfit.com/aarp-member-resources",
+            page_id: "NonMemberLanding"
           };
           window.parent.postMessage(eventData, "*");
           window.open(eventData.destination_url, "_blank");
@@ -118,7 +119,8 @@ export default function UserLanding() {
           const eventData = {
             event: "click_cta",
             button_text: "Learn About the App",
-            destination_url: "#what-is-singfit"
+            destination_url: "#what-is-singfit",
+            page_id: "NonMemberLanding"
           };
           window.parent.postMessage(eventData, "*");
           whatIsRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -181,7 +183,8 @@ export default function UserLanding() {
   const eventData = {
     event: "click_cta",
     button_text: "Top - Get the SingFit App",
-    destination_url: "https://www.singfit.com/aarp-non-member-pricing"
+    destination_url: "https://www.singfit.com/aarp-non-member-pricing",
+    page_id: "NonMemberLanding"
   };
 
   // Send only to GTM via parent
@@ -272,7 +275,7 @@ export default function UserLanding() {
     event: "click_cta",
     button_text: "Mid -Buy SingFit Now",
     destination_url: "https://www.singfit.com/aarp-non-member-pricing",
-    page_id: "UserLanding"
+    page_id: "NonMemberLanding"
   };
 
   // Send only to GTM via parent
@@ -304,7 +307,7 @@ export default function UserLanding() {
       event: "click_cta",
       button_text: "Mid -Join AARP",
       destination_url: "https://www.aarp.org",
-      page_id: "UserLanding"
+      page_id: "NonMemberLanding"
     };
     window.parent.postMessage(eventData, "*");
   }}
@@ -436,7 +439,7 @@ export default function UserLanding() {
       event: "click_cta",
       button_text: "Bottom -Join AARP",
       destination_url: "https://www.aarp.org",
-      page_id: "UserLanding"
+      page_id: "NonMemberLanding"
     };
     window.parent.postMessage(eventData, "*");
   }}

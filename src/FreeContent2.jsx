@@ -31,7 +31,7 @@ export default function FreeContent2() {
           const eventData = {
             event: "Scroll Depth",
             percent_scrolled: t,
-            page_id: "FreeContent2"
+            page_id: "NonMemberResources"
           };
           window.dataLayer = window.dataLayer || [];
           window.dataLayer.push(eventData);
@@ -58,7 +58,7 @@ export default function FreeContent2() {
             if (event.data === window.YT.PlayerState.PLAYING) {
               track("video_play", {
                 video_title: "How Caregivers Can Build Musical Habits to Support a Happy, Healthy Life",
-                page_id: "FreeContent2"
+                page_id: "NonMemberResources"
               });
             }
           }
@@ -269,7 +269,7 @@ export default function FreeContent2() {
       event: "click_cta",
       button_text: "Webinar: A Caregiver's Guide (Sep 16)",
       destination_url: "https://singfit.eventbrite.com",
-      page_id: "NonMemberResource"
+      page_id: "NonMemberResources"
     };
      window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(eventData);
@@ -296,7 +296,7 @@ export default function FreeContent2() {
       event: "click_cta",
       button_text: "Webinar: Combat Sundowning (Oct 14)",
       destination_url: "https://singfit.eventbrite.com",
-      page_id: "NonMemberResource"
+      page_id: "NonMemberResources"
     };
     
     window.dataLayer = window.dataLayer || [];
@@ -323,7 +323,7 @@ export default function FreeContent2() {
       event: "click_cta",
       button_text: "Webinar: Holiday Songs to Reduce Stress (Nov 13)",
       destination_url: "https://singfit.eventbrite.com",
-      page_id: "NonMemberResource"
+      page_id: "NonMemberResources"
     };
     
     window.dataLayer = window.dataLayer || [];
@@ -356,7 +356,7 @@ export default function FreeContent2() {
       event: "click_cta",
       button_text: "Sign Up for a Webinar",
       destination_url: "https://singfit.eventbrite.com",
-      page_id: "NonMemberResource"
+      page_id: "NonMemberResources"
     };
     
     window.dataLayer = window.dataLayer || [];
@@ -384,7 +384,8 @@ export default function FreeContent2() {
   const eventData = {
     event: "click_cta",
     button_text: "Buy SingFit Now",
-    destination_url: "https://www.singfit.com/aarp-non-member-pricing"
+    destination_url: "https://www.singfit.com/aarp-non-member-pricing",
+    page_id: "NonMemberResources"
   };
 
   // Optional: still fire track inside iframe, for redundancy
@@ -423,7 +424,7 @@ export default function FreeContent2() {
       event: "click_cta",
       button_text: "Bottom -Join AARP",
       destination_url: "https://www.aarp.org",
-      page_id: "UserLanding"
+      page_id: "NonMemberResources"
     };
     window.parent.postMessage(eventData, "*");
   }}

@@ -12,7 +12,33 @@ export default function SingFitLandingPage() {
     document.title = "SingFit AARP Member Page";
   }, []);
   const whatIsRef = useRef(null);
+useEffect(() => {
+    const thresholds = [25, 50, 75, 100];
+    const triggered = new Set();
 
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const percentScrolled = Math.round((scrollTop / docHeight) * 100);
+
+      thresholds.forEach((t) => {
+        if (percentScrolled >= t && !triggered.has(t)) {
+          triggered.add(t);
+          const eventData = {
+            event: "scroll_depth",
+            percent_scrolled: t,
+            page_id: "MemberLanding"
+          };
+          window.parent.postMessage(eventData, "*");
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push(eventData);
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <div className="flex flex-col gap-2 px-8 pt-0 pb-16 max-w-7xl mx-auto font-sans text-gray-900 text-xl md:text-2xl">
 
@@ -27,16 +53,24 @@ export default function SingFitLandingPage() {
     <div className="flex justify-between items-start w-full flex-wrap gap-2 md:gap-0">
       {/* SingFit Logo */}
       <a
-        href="https://www.singfit.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          src="/SingFit New Brand Logo.png"
-          alt="SingFit logo"
-          className="w-[250px] object-contain pt-2 drop-shadow-sm hover:opacity-90 transition-opacity duration-200"
-        />
-      </a>
+  href="https://www.singfit.com/"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={() => {
+    track("click_cta", {
+      button_text: "SingFit Logo",
+      destination_url: "https://www.singfit.com/",
+      page_id: "SingFitLandingPage" // change to "UserLanding" on the other page
+    });
+  }}
+>
+  <img
+    src="/SingFit New Brand Logo.png"
+    alt="SingFit logo"
+    className="w-[250px] object-contain pt-2 drop-shadow-sm hover:opacity-90 transition-opacity duration-200"
+  />
+</a>
+
 
       {/* AARP Logo – mobile only */}
       <img
