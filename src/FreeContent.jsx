@@ -60,7 +60,7 @@ export default function FreeContent() {
             if (event.data === window.YT.PlayerState.PLAYING) {
               track("video_play", {
                 video_title: "How Caregivers Can Build Musical Habits to Support a Happy, Healthy Life",
-                page_id: "FreeContent"
+                page_id: "MemberResources"
               });
             }
           }
@@ -74,8 +74,8 @@ export default function FreeContent() {
   }, []);
 
   const videoTitles = [
-    "How Caregivers Can Build Musical Habits to Support a Happy, Healthy Life",
-    "Music and Memory: How Singing Boosts Brain Health",
+    "What a Song Can Do!",
+    "How Caregivers Can Build Musical Habits for a Happy, Healthy Life",
     "More Coming Soon"
   ];
 
@@ -181,9 +181,31 @@ export default function FreeContent() {
 />
 </div>
 
-              <div className="keen-slider__slide bg-gray-100 p-1 rounded-lg shadow flex items-center justify-center text-gray-600 text-base font-medium aspect-video">
-                Coming Soon
-              </div>
+              {/* Slide 2: Downloadable PDF */}
+<div className="keen-slider__slide bg-white p-6 rounded-lg shadow flex flex-col justify-center items-center text-center text-[#243B53] gap-4">
+  <h3 className="text-xl font-semibold">
+    How Caregivers Can Build Musical Habits for a Happy, Healthy Life
+  </h3>
+  <p className="text-sm text-gray-700 max-w-xs">
+    Download our free guide to start using music as a caregiving tool.
+  </p>
+  <a
+    href="/webinarplan.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-white bg-[#F47534] hover:bg-[#d9652c] px-6 py-3 rounded shadow text-sm"
+    onClick={() => {
+      track("click_cta", {
+        button_text: "Download Caregiver PDF",
+        destination_url: "/webinarplan.pdf",
+        page_id: "MemberResources"
+      });
+    }}
+  >
+    Download PDF
+  </a>
+</div>
+
 
               <div className="keen-slider__slide bg-gray-100 p-1 rounded-lg shadow flex items-center justify-center text-gray-600 text-base font-medium aspect-video">
                 More Coming Soon
@@ -232,7 +254,7 @@ export default function FreeContent() {
         setSuccessMessage("Thanks! Check your inbox for updates.");
         track("submit_form", {
           form_id: "notify_me",
-          page_id: "FreeContent",
+          page_id: "MemberResources",
         });
         e.target.reset();
         setTimeout(() => setSuccessMessage(""), 5000); // optional auto-clear
@@ -291,7 +313,7 @@ export default function FreeContent() {
       event: "click_cta",
       button_text: "Webinar: A Caregiver's Guide (Sep 16)",
       destination_url: "https://singfit.eventbrite.com",
-      page_id: "FreeContent"
+      page_id: "MemberResources"
     };
      window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(eventData);
@@ -319,7 +341,7 @@ export default function FreeContent() {
       event: "click_cta",
       button_text: "Webinar: Combat Sundowning (Oct 14)",
       destination_url: "https://singfit.eventbrite.com",
-      page_id: "FreeContent"
+      page_id: "MemberResources"
     };
     
     window.dataLayer = window.dataLayer || [];
@@ -347,7 +369,7 @@ export default function FreeContent() {
       event: "click_cta",
       button_text: "Webinar: Holiday Songs to Reduce Stress (Nov 13)",
       destination_url: "https://singfit.eventbrite.com",
-      page_id: "FreeContent"
+      page_id: "MemberResources"
     };
     
     window.dataLayer = window.dataLayer || [];
@@ -381,7 +403,7 @@ export default function FreeContent() {
       event: "click_cta",
       button_text: "Sign Up for a Webinar",
       destination_url: "https://singfit.eventbrite.com",
-      page_id: "FreeContent"
+      page_id: "MemberResources"
     };
     
     window.dataLayer = window.dataLayer || [];
@@ -404,8 +426,9 @@ export default function FreeContent() {
   onClick={() => {
   const eventData = {
     event: "click_cta",
-    button_text: "Experience the Benefits of SingFit",
-    destination_url: "https://www.singfit.com/aarp-member-pricing"
+    button_text: "Buy SingFit",
+    destination_url: "https://www.singfit.com/aarp-member-pricing",
+    page_id: "MemberResources"
   };
 
   // Optional: still fire track inside iframe, for redundancy

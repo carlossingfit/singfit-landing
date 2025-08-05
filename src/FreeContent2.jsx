@@ -73,8 +73,8 @@ export default function FreeContent2() {
 
 
   const videoTitles = [
-    "How Caregivers Can Build Musical Habits to Support a Happy, Healthy Life",
-    "Music and Memory: How Singing Boosts Brain Health",
+    "What a Song Can Do!",
+    "How Caregivers Can Build Musical Habits for a Happy, Healthy Life",
     "More Coming Soon"
   ];
 
@@ -167,9 +167,31 @@ export default function FreeContent2() {
 />
 </div>
 
-              <div className="keen-slider__slide bg-gray-100 p-1 rounded-lg shadow flex items-center justify-center text-gray-600 text-base font-medium aspect-video">
-                Coming Soon
-              </div>
+              {/* Slide 2: Downloadable PDF */}
+<div className="keen-slider__slide bg-white p-6 rounded-lg shadow flex flex-col justify-center items-center text-center text-[#243B53] gap-4">
+  <h3 className="text-xl font-semibold">
+    How Caregivers Can Build Musical Habits for a Happy, Healthy Life
+  </h3>
+  <p className="text-sm text-gray-700 max-w-xs">
+    Download our free guide to start using music as a caregiving tool.
+  </p>
+  <a
+    href="/webinarplan.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-white bg-[#F47534] hover:bg-[#d9652c] px-6 py-3 rounded shadow text-sm"
+    onClick={() => {
+      track("click_cta", {
+        button_text: "Download Caregiver PDF",
+        destination_url: "/webinarplan.pdf",
+        page_id: "NonMemberResources"
+      });
+    }}
+  >
+    Download PDF
+  </a>
+</div>
+
 
               <div className="keen-slider__slide bg-gray-100 p-1 rounded-lg shadow flex items-center justify-center text-gray-600 text-base font-medium aspect-video">
                 More Coming Soon
