@@ -57,16 +57,24 @@ export default function UserLanding() {
 
       {/* SingFit Logo */}
       <a
-        href="https://www.singfit.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          src="/SingFit New Brand Logo.png"
-          alt="SingFit logo"
-          className="w-[250px] object-contain pt-2 drop-shadow-sm hover:opacity-90 transition-opacity duration-200"
-        />
-      </a>
+  href="https://www.singfit.com/"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={() => {
+    track("click_cta", {
+      button_text: "SingFit Logo",
+      destination_url: "https://www.singfit.com/",
+      page_id: "UserLanding" // change to "UserLanding" on the other page
+    });
+  }}
+>
+  <img
+    src="/SingFit New Brand Logo.png"
+    alt="SingFit logo"
+    className="w-[250px] object-contain pt-2 drop-shadow-sm hover:opacity-90 transition-opacity duration-200"
+  />
+</a>
+
 
       {/* AARP logo - only visible on small screens */}
       <img
