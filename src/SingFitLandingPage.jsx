@@ -193,7 +193,7 @@ useEffect(() => {
           <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
         </h2>
         <p className="text-lg md:text-xl">
-          The SingFit app uses guided singing sessions, voice prompted lyrics, and progress tracking to bring the benefits of singing into your daily routine; no musical background required.
+          The SingFit app uses personalized guided singing sessions, voice prompted lyrics, and progress tracking to bring the benefits of singing into your daily routine; no musical background required.
         </p>
         <div className="text-center mb-4">
   <Button
@@ -341,7 +341,7 @@ useEffect(() => {
 
     <div className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-200">
       <Brain02Icon className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
-      <h3 className="text-lg font-semibold text-black mb-2">To aid with memory lapses or cognitive decline</h3>
+      <h3 className="text-lg font-semibold text-black mb-2">To aid with memory and cognitive decline</h3>
       <p className="text-sm text-gray-700">
         Singing has been shown to activate the brain and may help support memory and attention.
       </p>
