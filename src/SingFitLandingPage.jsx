@@ -56,12 +56,21 @@ useEffect(() => {
   href="https://www.singfit.com/"
   target="_blank"
   rel="noopener noreferrer"
-  onClick={() => {
+  onClick={(e) => {
+    e.preventDefault(); // prevent default navigation
+    const url = "https://www.singfit.com/";
+
+    // Fire analytics tracking
     track("click_cta", {
       button_text: "SingFit Logo",
-      destination_url: "https://www.singfit.com/",
-      page_id: "SingFitLandingPage" // change to "UserLanding" on the other page
+      destination_url: url,
+      page_id: "MemberLanding" // or "UserLanding"
     });
+
+    // Give time for tracking, then navigate
+    setTimeout(() => {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }, 200);
   }}
 >
   <img
@@ -70,6 +79,7 @@ useEffect(() => {
     className="w-[250px] object-contain pt-2 drop-shadow-sm hover:opacity-90 transition-opacity duration-200"
   />
 </a>
+
 
 
       {/* AARP Logo – mobile only */}
@@ -99,7 +109,8 @@ useEffect(() => {
           const eventData = {
             event: "click_cta",
             button_text: "Get Free Therapeutic Music Resources",
-            destination_url: "https://musicismedicine.singfit.com/aarp-member-resources"
+            destination_url: "https://musicismedicine.singfit.com/aarp-member-resources",
+            page_id: "MemberLanding"
           };
 
           window.parent.postMessage(eventData, "*");
@@ -121,7 +132,8 @@ useEffect(() => {
           const eventData = {
             event: "click_cta",
             button_text: "Learn About the App",
-            destination_url: "#what-is-singfit"
+            destination_url: "#what-is-singfit",
+            page_id: "MemberLanding"
           };
 
           window.parent.postMessage(eventData, "*");
@@ -189,7 +201,8 @@ useEffect(() => {
       const eventData = {
         event: "click_cta",
         button_text: "Top - Get the SingFit App",
-        destination_url: "https://www.singfit.com/aarp-member-pricing"
+        destination_url: "https://www.singfit.com/aarp-member-pricing",
+        page_id: "MemberLanding"
       };
 
       window.dataLayer = window.dataLayer || [];
@@ -283,7 +296,8 @@ useEffect(() => {
       const eventData = {
         event: "click_cta",
         button_text: "Mid - Buy SingFit Now",
-        destination_url: "https://www.singfit.com/aarp-member-pricing"
+        destination_url: "https://www.singfit.com/aarp-member-pricing",
+        page_id: "MemberLanding"
       };
 
       // Send to GTM via postMessage (no iframe anymore, but harmless)
@@ -400,7 +414,8 @@ useEffect(() => {
       const eventData = {
         event: "click_cta",
         button_text: "End - Buy SingFit Now",
-        destination_url: "https://www.singfit.com/aarp-member-pricing"
+        destination_url: "https://www.singfit.com/aarp-member-pricing",
+        page_id: "MemberLanding"
       };
 
     
