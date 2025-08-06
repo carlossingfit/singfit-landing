@@ -102,7 +102,7 @@ export default function UserLanding() {
           const eventData = {
             event: "click_cta",
             button_text: "Get Free Therapeutic Music Resources",
-            destination_url: "https://musicismedicine.singfit.com/aarp-member-resources",
+            destination_url: "https://musicismedicine.singfit.com/aarp-non-member-resources",
             page_id: "NonMemberLanding"
           };
           window.parent.postMessage(eventData, "*");
