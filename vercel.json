@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/index.html",
+      "source": "/(.*)",  // <-- wildcard to apply to ALL routes
       "headers": [
         {
           "key": "X-Robots-Tag",
