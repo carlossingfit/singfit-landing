@@ -6,6 +6,7 @@ import SingFitLandingPage from './SingFitLandingPage';
 import UserLanding from './UserLanding';
 import FreeContent from './FreeContent';
 import FreeContent2 from './FreeContent2';
+import CampaignLanding from './CampaignLanding';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/aarp-non-member" element={<UserLanding />} />
         <Route path="/aarp-member-resources" element={<FreeContent />} />
         <Route path="/aarp-non-member-resources" element={<FreeContent2 />} />
+        <Route path="/campaign-landing" element={<CampaignLanding />} />
       </Routes>
     </Router>
   );
