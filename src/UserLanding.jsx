@@ -153,7 +153,7 @@ export default function UserLanding() {
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6 }}
-        src="https://static.wixstatic.com/media/2b1376_b72d41ebdfdf4a5e8a0cf6da3721c52c~mv2.jpg"
+        src="/heroimage.jpg"
         alt="Smiling older woman singing with caregiver in sunny living room"
         className="w-full object-cover rounded-xl min-h-[340px]"
       />
