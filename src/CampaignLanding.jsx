@@ -10,9 +10,9 @@ export default function CampaignLanding() {
   const handleSegmentClick = (segment) => {
     track("select_segment", { segment });
     if (segment === "Caregiver") {
-      window.open("https://www.singfit.com/aarp-member-pricing", "_blank");
+      window.open("https://www.singfit.com/studiocaregiver", "_blank");
     } else if (segment === "Therapist") {
-      window.open("https://www.singfit.com/pro", "_blank");
+      window.open("https://www.singfit.com/studiopro", "_blank");
     } else if (segment === "Senior Living") {
       setStep(1); // Show email capture form
     }
