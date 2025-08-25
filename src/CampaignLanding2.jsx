@@ -85,7 +85,7 @@ export default function CampaignLanding2() {
       {!persona && (
         <section className="text-center mt-12">
           <h2 className="text-2xl font-bold mb-6 text-[#002F6C]">
-            Let’s Get You to the Right Product
+            Let’s Get You to the Right Place
           </h2>
           <div className="flex flex-col md:flex-row justify-center items-stretch gap-4">
             {["Caregiver", "Therapist", "Senior Living"].map((segment) => {
