@@ -50,52 +50,99 @@ export default function CampaignLanding() {
       {/* PRODUCT HIGHLIGHT */}
       <section className="grid md:grid-cols-3 gap-6 mb-12">
         {[
-          {
-            title: "SingFit PRIME",
-            desc: "Group-based programming for senior living communities.",
-            image: "/primecard.png",
-          },
-          {
-            title: "SingFit STUDIO Caregiver",
-            desc: "For individuals supporting loved ones at home.",
-            image: "/caregivercard.png",
-          },
-          {
-            title: "SingFit STUDIO PRO",
-            desc: "For individual therapists and clinical use.",
-            image: "/procard.png",
-          },
-        ].map((p, i) => (
-          <div key={i} className="bg-[#FAF6F2] p-6 rounded-xl shadow-md text-center">
-            <img src={p.image} alt={p.title} className="h-32 object-contain mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-[#F47534]">{p.title}</h3>
-            <p className="text-sm text-gray-700 mt-2">{p.desc}</p>
-          </div>
-        ))}
+  {
+    title: "SingFit PRIME",
+    desc: "Group-based programming for senior living communities.",
+    videoEmbed: "https://www.youtube.com/watch?v=stknfT1FagU&t=96s"
+  },
+  {
+    title: "SingFit STUDIO Caregiver",
+    desc: "For individuals supporting loved ones at home.",
+    image: "/caregivercard.png",
+  },
+  {
+    title: "SingFit STUDIO PRO",
+    desc: "For individual therapists and clinical use.",
+    image: "/procard.png",
+  }
+].map((p, i) => (
+  <div key={i} className="bg-[#FAF6F2] p-6 rounded-xl shadow-md text-center">
+    <div className="mb-4">
+      {p.videoEmbed ? (
+        <div className="aspect-w-16 aspect-h-9">
+          <iframe
+            className="w-full h-full rounded-md"
+            src={p.videoEmbed}
+            title={p.title}
+            sandbox="allow-scripts allow-same-origin allow-presentation"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
+      ) : (
+        <img
+          src={p.image}
+          alt={p.title}
+          className="h-32 object-contain mx-auto"
+        />
+      )}
+    </div>
+    <h3 className="text-xl font-semibold text-[#F47534]">{p.title}</h3>
+    <p className="text-sm text-gray-700 mt-2">{p.desc}</p>
+  </div>
+))}
+
       </section>
 
       {/* AUDIENCE SEGMENTATION */}
       {step === 0 && (
-        <section className="text-center">
-          <h2 className="text-2xl font-bold mb-6 text-[#002F6C]">
-            Let’s Get You to the Right Product
-          </h2>
-          <div className="flex flex-col md:flex-row justify-center gap-4">
-            {[
-              { label: "I'm a Caregiver", segment: "Caregiver" },
-              { label: "I'm a Therapist", segment: "Therapist" },
-              { label: "I'm with a Senior Living Community", segment: "Senior Living" },
-            ].map(({ label, segment }) => (
-              <Button
-                key={segment}
-                className="px-6 py-4 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-md text-lg"
-                onClick={() => handleSegmentClick(segment)}
-              >
-                {label}
-              </Button>
-            ))}
-          </div>
-        </section>
+        <section className="text-center mt-12">
+  <h2 className="text-2xl font-bold mb-6 text-[#002F6C]">
+    Let’s Get You to the Right Product
+  </h2>
+  <div className="flex flex-col md:flex-row justify-center items-stretch gap-4">
+    {[
+      {
+        label: "I'm a Caregiver",
+        segment: "Caregiver",
+        icon: "🏠",
+        bg: "bg-[#FEF8F5]",
+        text: "text-[#F47534]",
+        border: "border-[#F47534]",
+        hover: "hover:bg-[#fff3eb]",
+      },
+      {
+        label: "I'm a Therapist",
+        segment: "Therapist",
+        icon: "🩺",
+        bg: "bg-[#EEF6FA]",
+        text: "text-[#002F6C]",
+        border: "border-[#002F6C]",
+        hover: "hover:bg-[#e3eff8]",
+      },
+      {
+        label: "Senior Living Community",
+        segment: "Senior Living",
+        icon: "🏢",
+        bg: "bg-[#F7F9FA]",
+        text: "text-[#243B53]",
+        border: "border-[#243B53]",
+        hover: "hover:bg-[#edf1f4]",
+      },
+    ].map(({ label, segment, icon, bg, text, border, hover }) => (
+      <button
+        key={segment}
+        onClick={() => handleSegmentClick(segment)}
+        className={`flex flex-col items-center justify-center ${bg} ${text} ${border} ${hover} border rounded-xl px-6 py-6 shadow-sm transition-all duration-200 w-full md:w-64`}
+      >
+        <span className="text-3xl mb-2">{icon}</span>
+        <span className="text-center font-semibold text-base">{label}</span>
+      </button>
+    ))}
+  </div>
+</section>
+
+
       )}
 
       {/* B2B EMAIL CAPTURE */}
