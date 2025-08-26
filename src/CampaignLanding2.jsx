@@ -55,7 +55,14 @@ export default function CampaignLanding2() {
   };
 
   return (
-    <div className="bg-white min-h-screen px-6 py-10 max-w-5xl mx-auto font-sans text-gray-900">
+    <div className="relative min-h-screen font-sans text-gray-900">
+  {/* Background Image Layer */}
+  <div
+    className="absolute inset-0 -z-10 bg-cover bg-center opacity-40 blur-md"
+    style={{ backgroundImage: "url('heroimage.jpg')" }}
+  />
+  <div className="px-6 py-10 max-w-5xl mx-auto">
+
       {/* HERO */}
       <section className="bg-[#0091c8] rounded-2xl shadow-xl border border-gray-200 px-6 pt-6 pb-10 relative overflow-hidden mb-10">
         <div className="max-w-3xl mx-auto text-center mt-6 space-y-6">
@@ -73,7 +80,7 @@ export default function CampaignLanding2() {
                 <img
                   src="/White no smile.png"
                   alt="SingFit"
-                  className="h-8 md:h-12 relative top-[2px]"
+                  className="h-10 md:h-12 relative top-[2.8px] cursor-pointer hover:opacity-80 transition-opacity duration-200"
                 />
               </a>
             </span>
@@ -223,5 +230,6 @@ export default function CampaignLanding2() {
         </div>
       </footer>
     </div>
-  );
+ </div>
+ );
 }
