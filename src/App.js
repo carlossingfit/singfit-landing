@@ -8,6 +8,7 @@ import FreeContent from './FreeContent';
 import FreeContent2 from './FreeContent2';
 import CampaignLanding from './CampaignLanding';
 import CampaignLanding2 from './CampaignLanding2';
+import CampaignLanding3 from "./CampaignLanding3";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/aarp-non-member-resources" element={<FreeContent2 />} />
         <Route path="/campaign-landing" element={<CampaignLanding />} />
         <Route path="/campaign-landing2" element={<CampaignLanding2 />} />
+        <Route path="/campaign-landing3" element={<CampaignLanding3 />} />
       </Routes>
     </Router>
   );
