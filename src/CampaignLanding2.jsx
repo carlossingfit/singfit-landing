@@ -11,7 +11,7 @@ export default function CampaignLanding2() {
   const handleSegmentClick = (segment) => {
     track("select_segment", { segment });
     setPersona(segment);
-    if (segment === "Senior Living") {
+    if (segment === "Senior Living" || segment === "Home Health/Care") {
       setStep(1);
     }
   };
@@ -29,53 +29,56 @@ export default function CampaignLanding2() {
     setStep(2);
   };
 
-  const sharedVideo = "https://www.youtube.com/embed/stknfT1FagU?start=96";
-
   const personaContent = {
     "Caregiver": {
       title: "SingFit STUDIO Caregiver",
       desc: "For individuals supporting loved ones at home.",
-      videoEmbed: sharedVideo,
+      videoEmbed: "https://www.youtube.com/embed/stknfT1FagU?start=96",
       cta: "https://www.singfit.com/studiocaregiver",
     },
     "Therapist": {
       title: "SingFit STUDIO PRO",
       desc: "For individual therapists and clinical use.",
-      videoEmbed: sharedVideo,
+      videoEmbed: "https://www.youtube.com/embed/stknfT1FagU?start=96",
       cta: "https://www.singfit.com/studiopro",
     },
     "Senior Living": {
       title: "SingFit PRIME",
       desc: "Group-based programming for senior living communities.",
-      videoEmbed: sharedVideo,
+      videoEmbed: "https://www.youtube.com/embed/stknfT1FagU?start=96",
+    },
+    "Home Health/Care": {
+      title: "SingFit for Home Health & Care",
+      desc: "A scalable tool for agencies and providers serving patients in the home.",
+      videoEmbed: "https://www.youtube.com/embed/stknfT1FagU?start=96",
     }
   };
 
   return (
     <div className="bg-white min-h-screen px-6 py-10 max-w-5xl mx-auto font-sans text-gray-900">
       {/* HERO */}
-      <section className="bg-[#E6F0F7] rounded-2xl shadow-xl border border-gray-200 px-6 pt-6 pb-10 relative overflow-hidden mb-10">
-        <div className="max-w-3xl mx-auto text-center mt-4">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#002F6C] leading-tight mb-2 text-center">
-  <span className="block">Discover the Power of Music</span>
-  <span className="inline-flex items-center justify-center gap-2">
-    <span>with</span>
-    <a
-      href="https://www.singfit.com/"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-block"
-    >
-      <img
-        src="/SingFit - Logo for App Header.png"
-        alt="SingFit"
-        className="h-8 md:h-12 relative top-[3px]"
-      />
-    </a>
-  </span>
-</h1>
+      <section className="bg-[#0091c8] rounded-2xl shadow-xl border border-gray-200 px-6 pt-6 pb-10 relative overflow-hidden mb-10">
+        <div className="max-w-3xl mx-auto text-center mt-6 space-y-6">
 
-          <p className="text-lg text-[#243B53] font-medium">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-[1.5] mb-2 text-center">
+            <span className="block mb-3">Discover the Power of Music</span>
+<span className="inline-flex items-center justify-center gap-2">
+              <span>with</span>
+              <a
+                href="https://www.singfit.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block"
+              >
+                <img
+                  src="/White no smile.png"
+                  alt="SingFit"
+                  className="h-8 md:h-12 relative top-[2px]"
+                />
+              </a>
+            </span>
+          </h1>
+          <p className="text-lg text-white font-medium">
             A digital therapeutic platform built to support wellness through song — at home, in therapy, and in senior living.
           </p>
         </div>
@@ -87,36 +90,44 @@ export default function CampaignLanding2() {
           <h2 className="text-2xl font-bold mb-6 text-[#002F6C]">
             Let’s Get You to the Right Place
           </h2>
-          <div className="flex flex-col md:flex-row justify-center items-stretch gap-4">
-            {["Caregiver", "Therapist", "Senior Living"].map((segment) => {
-              const label =
-                segment === "Senior Living"
-                  ? "I work in Senior Living"
-                  : `I'm a ${segment}`;
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {["Caregiver", "Therapist", "Senior Living", "Home Health/Care"].map((segment, index) => {
+  const label =
+    segment === "Senior Living"
+      ? "I work in Senior Living"
+      : segment === "Home Health/Care"
+      ? "I work in Home Health/Care"
+      : `I'm a ${segment}`;
 
-              return (
-                <button
-                  key={segment}
-                  onClick={() => handleSegmentClick(segment)}
-                  className="flex flex-col items-center justify-center bg-[#FAF6F2] text-[#002F6C] border border-[#D1D5DB] hover:bg-[#f3ebe6] rounded-xl px-6 py-6 shadow-sm transition-all duration-200 w-full md:w-64"
-                >
-                  <span className="text-3xl mb-2">
-                    {segment === "Caregiver"
-                      ? "🏠"
-                      : segment === "Therapist"
-                      ? "🩺"
-                      : "🏢"}
-                  </span>
-                  <span className="text-center font-semibold text-base">{label}</span>
-                </button>
-              );
-            })}
+  const bgColor = index % 2 === 0 ? "bg-[#FFF4EC]" : "bg-[#FFF4EC]";
+
+  return (
+    <button
+      key={segment}
+      onClick={() => handleSegmentClick(segment)}
+      className="w-full h-full flex flex-col items-center justify-center bg-[#FFF4EC] text-[#002F6C] border border-[#FFD7B8] hover:shadow-lg hover:-translate-y-1 transform transition duration-200 ease-in-out rounded-xl px-6 py-6 shadow-sm"
+
+    >
+      <span className="text-4xl md:text-5xl mb-3">
+        {segment === "Caregiver"
+          ? "🏠"
+          : segment === "Therapist"
+          ? "🩺"
+          : segment === "Home Health/Care"
+          ? "🚑"
+          : "🏢"}
+      </span>
+      <span className="text-center font-semibold text-base">{label}</span>
+    </button>
+  );
+})}
+
           </div>
         </section>
       )}
 
       {/* STEP 2: SHOW MATCHED PRODUCT */}
-      {persona && persona !== "Senior Living" && (
+      {persona && persona !== "Senior Living" && persona !== "Home Health/Care" && (
         <section className="bg-[#FAF6F2] mt-10 px-6 py-8 rounded-xl shadow-md max-w-5xl mx-auto text-center space-y-6">
           <div className="mx-auto w-full max-w-3xl aspect-[16/9]">
             <iframe
@@ -142,21 +153,21 @@ export default function CampaignLanding2() {
         </section>
       )}
 
-      {/* STEP 2 (Senior Living): EMAIL CAPTURE */}
-      {persona === "Senior Living" && step === 1 && (
+      {/* STEP 2 (Senior Living or Home Health/Care): EMAIL CAPTURE */}
+      {(persona === "Senior Living" || persona === "Home Health/Care") && step === 1 && (
         <section className="bg-[#FAF6F2] mt-10 px-6 py-8 rounded-xl shadow-md max-w-5xl mx-auto text-center space-y-6">
           <div className="mx-auto w-full max-w-3xl aspect-[16/9]">
             <iframe
               className="w-full h-full rounded-md"
-              src={personaContent["Senior Living"].videoEmbed}
-              title="SingFit PRIME Video"
+              src={personaContent[persona].videoEmbed}
+              title={personaContent[persona].title + " Video"}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
           </div>
           <h3 className="text-xl md:text-2xl font-bold text-[#002F6C]">Let’s Connect</h3>
           <p className="text-sm md:text-base text-gray-700 max-w-xl mx-auto">
-            Enter your email and our team will reach out with pricing and program details for SingFit PRIME.
+            Enter your email and our team will reach out with pricing and program details for {personaContent[persona].title}.
           </p>
           <form className="flex flex-col sm:flex-row justify-center items-center gap-2 pt-2" onSubmit={handleB2BSubmit}>
             <input
