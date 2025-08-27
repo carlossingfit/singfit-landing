@@ -58,7 +58,7 @@ export default function CampaignLanding2() {
     <div className="relative min-h-screen font-sans text-gray-900">
   {/* Background Image Layer */}
   <div
-    className="absolute inset-0 -z-10 bg-cover bg-center opacity-99 blur-lg brightness-[0.9]"
+    className="absolute inset-0 -z-10 bg-cover bg-center opacity-80 brightness-[0.9]"
     style={{ backgroundImage: "url('Bgimage1.jpg')" }}
   />
   <div className="px-6 py-10 max-w-5xl mx-auto">
@@ -94,7 +94,7 @@ export default function CampaignLanding2() {
       {/* STEP 1: SELECT PERSONA */}
       {!persona && (
         <section className="text-center mt-12">
-          <h2 className="text-2xl font-bold mb-6 text-[#002F6C]">
+          <h2 className="text-2xl font-bold mb-6 text-[#FFFFFF]">
             Let’s Get You to the Right Place
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
@@ -215,7 +215,7 @@ export default function CampaignLanding2() {
       )}
 
       {/* FOOTER */}
-      <footer className="text-center text-xs text-gray-500 border-t border-gray-200 pt-6 mt-12 px-4">
+      <footer className="text-center font-bold text-xs text-black border-t border-gray-200 pt-6 mt-12 px-4">
         <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
           <span>©2025 Musical Health Technologies. All Rights Reserved.</span>
           <span>1010 Wilshire Blvd. Los Angeles, CA 90017</span>

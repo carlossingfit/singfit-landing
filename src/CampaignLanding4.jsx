@@ -11,7 +11,7 @@ export default function CampaignLanding4() {
   const MAKE_WEBHOOK_URL = "https://hook.us2.make.com/YOUR_UNIQUE_WEBHOOK";
 
   // Use different start times so it's obvious the video swapped.
-  const YT = "https://www.youtube.com/embed/stknfT1FagU";
+  
   const panels = {
     caregiver: {
       tabLabel: "Caregiver",
@@ -22,8 +22,8 @@ export default function CampaignLanding4() {
         "Lyrics on screen with voice coaching",
         "Track mood and engagement over time",
       ],
-      video: `${YT}?start=60`,
-      cta: { type: "link", label: "Go to Caregiver App", url: "https://www.singfit.com/studiocaregiver" },
+      video: "https://player.vimeo.com/video/736275780?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
+      cta: { type: "link", label: "Learn More", url: "https://www.singfit.com/studiocaregiver" },
     },
     therapist: {
       tabLabel: "Therapist",
@@ -34,8 +34,8 @@ export default function CampaignLanding4() {
         "Clinical documentation support",
         "Flexible session building",
       ],
-      video: `${YT}?start=120`,
-      cta: { type: "link", label: "For Therapists", url: "https://www.singfit.com/studiopro" },
+      video: "https://player.vimeo.com/video/1089881903?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
+      cta: { type: "link", label: "Learn More", url: "https://www.singfit.com/studiopro" },
     },
     senior: {
       tabLabel: "Senior Living",
@@ -46,7 +46,7 @@ export default function CampaignLanding4() {
         "Evidence-based, created by board-certified music therapists",
         "Training and implementation support",
       ],
-      video: `${YT}?start=180`,
+      video: "https://www.youtube.com/embed/7a2YFIkNbrM?si=5nrz4ZWD6m8YrMWe",
       cta: { type: "form", label: "Get Pricing & Details", formType: "Senior Living" },
     },
     homehealth: {
@@ -58,7 +58,7 @@ export default function CampaignLanding4() {
         "Clinical and family-facing options",
         "Program design and onboarding",
       ],
-      video: `${YT}?start=240`,
+      video: "https://player.vimeo.com/video/1089881903?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
       cta: { type: "form", label: "Discuss Home Health", formType: "Home Health/Care" },
     },
   };
