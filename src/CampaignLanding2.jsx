@@ -33,24 +33,24 @@ export default function CampaignLanding2() {
     "Caregiver": {
       title: "SingFit STUDIO Caregiver",
       desc: "For individuals supporting loved ones at home.",
-      videoEmbed: "https://www.youtube.com/embed/stknfT1FagU?start=96",
+      videoEmbed: "https://player.vimeo.com/video/736275780?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
       cta: "https://www.singfit.com/studiocaregiver",
     },
     "Therapist": {
       title: "SingFit STUDIO PRO",
       desc: "For individual therapists and clinical use.",
-      videoEmbed: "https://www.youtube.com/embed/stknfT1FagU?start=96",
+      videoEmbed: "https://player.vimeo.com/video/1089881903?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
       cta: "https://www.singfit.com/studiopro",
     },
     "Senior Living": {
       title: "SingFit PRIME",
       desc: "Group-based programming for senior living communities.",
-      videoEmbed: "https://www.youtube.com/embed/stknfT1FagU?start=96",
+      videoEmbed: "https://www.youtube.com/embed/7a2YFIkNbrM?si=5nrz4ZWD6m8YrMWe",
     },
     "Home Health/Care": {
       title: "SingFit for Home Health & Care",
       desc: "A scalable tool for agencies and providers serving patients in the home.",
-      videoEmbed: "https://www.youtube.com/embed/stknfT1FagU?start=96",
+      videoEmbed: "https://player.vimeo.com/video/1089881903?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
     }
   };
 
@@ -58,8 +58,8 @@ export default function CampaignLanding2() {
     <div className="relative min-h-screen font-sans text-gray-900">
   {/* Background Image Layer */}
   <div
-    className="absolute inset-0 -z-10 bg-cover bg-center opacity-40 blur-md"
-    style={{ backgroundImage: "url('heroimage.jpg')" }}
+    className="absolute inset-0 -z-10 bg-cover bg-center opacity-99 blur-lg brightness-[0.9]"
+    style={{ backgroundImage: "url('Bgimage1.jpg')" }}
   />
   <div className="px-6 py-10 max-w-5xl mx-auto">
 
