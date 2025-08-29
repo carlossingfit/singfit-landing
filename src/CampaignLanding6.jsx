@@ -44,7 +44,7 @@ export default function CampaignLanding6() {
         "Coaching cues and mood tracking",
         "Designed for everyday use",
       ],
-      video: "https://www.youtube.com/embed/stknfT1FagU?start=60",
+      video: "https://player.vimeo.com/video/736275780?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
       cta: { type: "link", label: "Go to Caregiver App", href: "https://www.singfit.com/studiocaregiver" },
     },
     therapists: {
@@ -55,7 +55,7 @@ export default function CampaignLanding6() {
         "Supports documentation needs",
         "Built by board-certified music therapists",
       ],
-      video: "https://www.youtube.com/embed/stknfT1FagU?start=120",
+      video: "https://player.vimeo.com/video/1089881903?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
       cta: { type: "link", label: "For Therapists", href: "https://www.singfit.com/studiopro" },
     },
     senior: {
@@ -66,7 +66,7 @@ export default function CampaignLanding6() {
         "Evidence-based sessions ready to run",
         "Implementation and ongoing support",
       ],
-      video: "https://www.youtube.com/embed/stknfT1FagU?start=180",
+      video: "https://www.youtube.com/embed/7a2YFIkNbrM?si=5nrz4ZWD6m8YrMWe",
       cta: { type: "form", label: "Get Pricing & Details", formType: "Senior Living" },
     },
     homehealth: {
@@ -77,7 +77,7 @@ export default function CampaignLanding6() {
         "Program design and onboarding",
         "Fits existing care workflows",
       ],
-      video: "https://www.youtube.com/embed/stknfT1FagU?start=240",
+      video: "https://player.vimeo.com/video/1089881903?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
       cta: { type: "form", label: "Discuss Home Health", formType: "Home Health/Care" },
     },
   };
@@ -236,7 +236,7 @@ export default function CampaignLanding6() {
       <style dangerouslySetInnerHTML={{ __html: styleBlock }} />
 
       {/* Top bar with logo */}
-      <header className="w-full">
+      <header className="w-full mb-8 md:mb-12 lg:mb-14">
         <div className="max-w-6xl mx-auto px-6 py-5 flex items-center">
           <a
             href="https://www.singfit.com/"
@@ -267,41 +267,44 @@ export default function CampaignLanding6() {
       </section>
 
       {/* Oval segmented selector — same size as before; pulsing until click */}
-      <section className="max-w-6xl mx-auto px-6 pb-10">
-        <div
-          className={`w-full rounded-full bg-[#DAECF6] border border-gray-200 shadow-md px-6 py-6 ${pulseOn ? "sf-pulse-loop" : ""}`}
-          role="tablist"
-          aria-label="Choose your audience"
-        >
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
-            {options.map(({ key, label }) => {
-              const isActive = active === key;
-              return (
-                <button
-                  key={key}
-                  role="tab"
-                  aria-selected={!!isActive}
-                  onClick={() => {
-                    setActive(key);
-                    setPulseOn(false);
-                  }}
-                  className={`w-full rounded-full transition font-semibold text-center
-                              px-8 py-5 text-base md:text-lg
-                              ${isActive
-                                ? "text-white"
-                                : "text-[#243B53] bg-white border border-gray-300 hover:bg-white/80"}`}
-                  style={{
-                    backgroundColor: isActive ? BRAND_NAVY : undefined,
-                    boxShadow: isActive ? `0 0 0 3px ${BRAND_ORANGE}` : "none",
-                  }}
-                >
-                  {label}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      {/* Oval segmented selector — slimmer pill, same full width */}
+<section className="max-w-6xl mx-auto px-6 pb-10">
+  <div
+    className={`w-full rounded-full bg-[#DAECF6] border border-gray-200 shadow-md
+                px-4 md:px-5 py-3 md:py-4 ${pulseOn ? "sf-pulse-loop" : ""}`}
+    role="tablist"
+    aria-label="Choose your audience"
+  >
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+      {options.map(({ key, label }) => {
+        const isActive = active === key;
+        return (
+          <button
+            key={key}
+            role="tab"
+            aria-selected={!!isActive}
+            onClick={() => {
+              setActive(key);
+              setPulseOn(false);
+            }}
+            className={`w-full rounded-full transition font-semibold text-center
+                        px-6 md:px-7 py-4 md:py-4 text-base
+                        ${isActive
+                          ? "text-white"
+                          : "text-[#243B53] bg-white border border-gray-300 hover:bg-white/80"}`}
+            style={{
+              backgroundColor: isActive ? "#002F6C" : undefined,
+              boxShadow: isActive ? "0 0 0 3px #F47534" : "none",
+            }}
+          >
+            {label}
+          </button>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
 
       {/* Product Intro Panel — only after a selection */}
       {product && (
