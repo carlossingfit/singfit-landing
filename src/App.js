@@ -12,6 +12,7 @@ import CampaignLanding3 from "./CampaignLanding3";
 import CampaignLanding4 from "./CampaignLanding4";
 import CampaignLanding5 from "./CampaignLanding5";
 import CampaignLanding6 from "./CampaignLanding6";
+import CampaignLanding7 from "./CampaignLanding7";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/campaign-landing4" element={<CampaignLanding4 />} />
         <Route path="/campaign-landing5" element={<CampaignLanding5 />} />
         <Route path="/campaign-landing6" element={<CampaignLanding6 />} />
+        <Route path="/campaign-landing7" element={<CampaignLanding7 />} />
       </Routes>
     </Router>
   );

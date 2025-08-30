@@ -10,6 +10,7 @@ export default function CampaignLanding6() {
 
   const BRAND_ORANGE = "#F47534";
   const BRAND_NAVY = "#002F6C";
+  const [hovered, setHovered] = useState(null);
 
   // One tiny CSS block for the looping pulse (until click)
   const styleBlock = `
@@ -37,16 +38,24 @@ export default function CampaignLanding6() {
   // Product content
   const PRODUCTS = {
     caregivers: {
-      title: "SingFit STUDIO Caregiver",
-      tagline: "Guided music sessions you can lead at home.",
-      bullets: [
-        "Step-by-step activities with on-screen lyrics",
-        "Coaching cues and mood tracking",
-        "Designed for everyday use",
-      ],
-      video: "https://player.vimeo.com/video/736275780?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
-      cta: { type: "link", label: "Go to Caregiver App", href: "https://www.singfit.com/studiocaregiver" },
-    },
+  title: "SingFit STUDIO Caregiver",
+  tagline: "Guided music sessions you can lead at home.",
+  bullets: [
+    "Step-by-step activities with on-screen lyrics",
+    "Coaching cues and mood tracking",
+    "Designed for everyday use",
+  ],
+  video: "https://player.vimeo.com/video/736275780?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
+  cta: {
+    type: "link",
+    label: "Learn More",
+    href: "https://www.singfit.com/studiocaregiver",
+    secondary: {
+      label: "Buy Now",
+      href: "https://www.singfit.com/caregiver-pricing"
+    }
+  },
+},
     therapists: {
       title: "SingFit STUDIO PRO",
       tagline: "Clinical tools for 1:1 and small-group work.",
@@ -56,7 +65,7 @@ export default function CampaignLanding6() {
         "Built by board-certified music therapists",
       ],
       video: "https://player.vimeo.com/video/1089881903?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
-      cta: { type: "link", label: "For Therapists", href: "https://www.singfit.com/studiopro" },
+      cta: { type: "form", label: "For Therapists", href: "https://www.singfit.com/studiopro" },
     },
     senior: {
       title: "SingFit PRIME",
@@ -84,22 +93,39 @@ export default function CampaignLanding6() {
 
   const MAKE_WEBHOOK_URL = "https://hook.us2.make.com/YOUR_UNIQUE_WEBHOOK";
 
-  const InlineForm = ({ formType }) => (
+  const InlineForm = ({ formType }) => {
+  const [status, setStatus] = useState(""); // "", "ok", "err"
+  const [msg, setMsg] = useState("");
+
+  return (
     <form
       className="mt-4 flex flex-col gap-3"
       onSubmit={async (e) => {
         e.preventDefault();
+        setStatus(""); setMsg("");
         const email = e.currentTarget.email.value.trim();
         const name = e.currentTarget.name?.value?.trim() || "";
         const company = e.currentTarget.company?.value?.trim() || "";
+
         try {
-          await fetch(MAKE_WEBHOOK_URL, {
+          const res = await fetch(MAKE_WEBHOOK_URL, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, name, company, formType }),
           });
-        } catch {}
-        e.currentTarget.reset();
+
+          if (res.ok) {
+            setStatus("ok");
+            setMsg("Thanks! We’ll be in touch soon.");
+            e.currentTarget.reset();
+          } else {
+            setStatus("err");
+            setMsg("There was a problem. Please try again.");
+          }
+        } catch {
+          setStatus("err");
+          setMsg("There was a problem. Please try again.");
+        }
       }}
     >
       <input
@@ -123,9 +149,21 @@ export default function CampaignLanding6() {
           Submit
         </button>
       </div>
-      <p className="text-xs text-gray-500">We’ll reach out with next steps for {formType}.</p>
+
+      {/* Inline feedback */}
+      {msg && (
+        <p
+          role="status"
+          aria-live="polite"
+          className={`text-sm mt-1 ${status === "ok" ? "text-green-600" : "text-red-600"}`}
+        >
+          {msg}
+        </p>
+      )}
     </form>
   );
+};
+
 
   // -------- Continuous ticker (safe, no resets) --------
   const wrapRef = useRef(null);
@@ -268,36 +306,73 @@ export default function CampaignLanding6() {
 
       {/* Oval segmented selector — same size as before; pulsing until click */}
       {/* Oval segmented selector — slimmer pill, same full width */}
+{/* Oval segmented selector — slim pill + persistent button shadows */}
+{/* Oval segmented selector — slim pill + always-on 3D depth buttons */}
+{/* Oval segmented selector — slimmer bevel/depth */}
 <section className="max-w-6xl mx-auto px-6 pb-10">
   <div
-    className={`w-full rounded-full bg-[#DAECF6] border border-gray-200 shadow-md
-                px-4 md:px-5 py-3 md:py-4 ${pulseOn ? "sf-pulse-loop" : ""}`}
+    className="w-full rounded-full bg-[#DAEDF6] border border-gray-200 shadow-md px-4 md:px-5 py-3 md:py-4"
     role="tablist"
     aria-label="Choose your audience"
   >
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
       {options.map(({ key, label }) => {
         const isActive = active === key;
+        const isHovered = hovered === key;
+
+        // Softer default shadow; deeper on hover; pressed when active
+        const inactiveShadow =
+          "0 6px 0 rgba(0,0,0,0.08), 0 14px 22px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.60), inset 0 -3px 6px rgba(0,0,0,0.04)";
+        const hoverShadow =
+          "0 8px 0 rgba(0,0,0,0.10), 0 18px 26px rgba(0,0,0,0.16), inset 0 1px 0 rgba(255,255,255,0.60), inset 0 -3px 6px rgba(0,0,0,0.05)";
+        const activeShadow =
+          "0 0 0 3px #F47534, inset 0 4px 8px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.20), 0 2px 0 rgba(0,0,0,0.10)";
+
         return (
           <button
             key={key}
             role="tab"
             aria-selected={!!isActive}
-            onClick={() => {
-              setActive(key);
-              setPulseOn(false);
-            }}
-            className={`w-full rounded-full transition font-semibold text-center
-                        px-6 md:px-7 py-4 md:py-4 text-base
-                        ${isActive
-                          ? "text-white"
-                          : "text-[#243B53] bg-white border border-gray-300 hover:bg-white/80"}`}
+            onClick={() => setActive(key)}
+            onMouseEnter={() => setHovered(key)}
+            onMouseLeave={() => setHovered(null)}
+            onFocus={() => setHovered(key)}
+            onBlur={() => setHovered(null)}
+            className="relative w-full rounded-full select-none cursor-pointer font-semibold text-center text-base
+                       transition-[transform,box-shadow,background] duration-150 ease-out
+                       focus:outline-none focus:ring-2 focus:ring-[#F47534] focus:ring-offset-1"
             style={{
-              backgroundColor: isActive ? "#002F6C" : undefined,
-              boxShadow: isActive ? "0 0 0 3px #F47534" : "none",
+             padding: "0.95rem 1.4rem",
+color: isActive ? "#F47534" : "#243B53",
+background: "linear-gradient(180deg, #FFFFFF 0%, #F7F9FC 100%)",
+border: isActive ? "2px solid #F47534" : "1px solid #D1D5DB",
+boxShadow: isActive
+  ? "inset 0 0 6px rgba(244,117,52,0.3), 0 2px 0 rgba(0,0,0,0.1)"
+  : isHovered
+  ? hoverShadow
+  : inactiveShadow,
+transform: isActive ? "translateY(3px)" : isHovered ? "translateY(-2px)" : "translateY(0)",
+willChange: "transform, box-shadow",
+
             }}
           >
-            {label}
+            {/* Subtle bevel highlights (unchanged) */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 rounded-full"
+              style={{
+                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -1px 0 rgba(0,0,0,0.04)",
+              }}
+            />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-2 top-0 rounded-full"
+              style={{
+                height: "50%",
+                background: "linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 100%)",
+              }}
+            />
+            <span className="relative z-10">{label}</span>
           </button>
         );
       })}
@@ -331,17 +406,27 @@ export default function CampaignLanding6() {
                   </ul>
                 ) : null}
                 {product.cta?.type === "link" ? (
-                  <div className="mt-6">
-                    <a
-                      href={product.cta.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center px-5 py-3 rounded-md text-white bg-[#F47534] hover:bg-[#d9652c] shadow text-sm md:text-base"
-                    >
-                      {product.cta.label}
-                    </a>
-                  </div>
-                ) : (
+  <div className="mt-6 flex gap-3 flex-wrap">
+    <a
+      href={product.cta.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center justify-center px-5 py-3 rounded-md text-white bg-[#F47534] hover:bg-[#d9652c] shadow text-sm md:text-base"
+    >
+      {product.cta.label}
+    </a>
+    {product.cta.secondary && (
+      <a
+        href={product.cta.secondary.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center justify-center px-5 py-3 rounded-md text-white bg-[#F47534] hover:bg-[#001F4A] shadow text-sm md:text-base"
+      >
+        {product.cta.secondary.label}
+      </a>
+    )}
+  </div>
+) : (
                   <div className="mt-6">
                     <div className="text-sm text-gray-700 mb-2">Enter your details and our team will reach out.</div>
                     <InlineForm formType={product.cta.formType} />
@@ -361,7 +446,7 @@ export default function CampaignLanding6() {
                       sandbox="allow-scripts allow-same-origin allow-presentation"
                     />
                   </div>
-                  <p className="text-[11px] text-gray-500 mt-2">Video is illustrative; content may vary by product.</p>
+                  
                 </div>
               ) : null}
             </div>
@@ -408,6 +493,21 @@ export default function CampaignLanding6() {
           </div>
         </div>
       </section>
+      {/* FOOTER */}
+      <footer className="text-center text-xs text-gray-500 border-t border-gray-200 pt-6 mt-8 px-4">
+        <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
+          <span>©2025 Musical Health Technologies. All Rights Reserved.</span>
+          <span>1010 Wilshire Blvd. Los Angeles, CA 90017</span>
+          <a
+            href="https://www.singfit.com/privacypolicy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline text-blue-600"
+          >
+            Privacy Policy
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }

@@ -157,7 +157,7 @@ export default function CampaignLanding5() {
       {/* Header above content */}
       <div className="text-center mb-6 md:mb-8">
         <h2 className="text-2xl md:text-3xl font-extrabold text-black">
-          Which Product is the Right <span className="text-[#F47534]">FIT</span> for you?
+          Find the Right <span className="text-[#F47534]">FIT</span> for You
         </h2>
       </div>
 
