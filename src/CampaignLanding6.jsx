@@ -338,7 +338,7 @@ export default function CampaignLanding6() {
             onMouseLeave={() => setHovered(null)}
             onFocus={() => setHovered(key)}
             onBlur={() => setHovered(null)}
-            className="relative w-full rounded-full select-none cursor-pointer font-semibold text-center text-base
+            className="relative w-full rounded-full select-none cursor-pointer font-semibold text-center text-base md:text-lg
                        transition-[transform,box-shadow,background] duration-150 ease-out
                        focus:outline-none focus:ring-2 focus:ring-[#F47534] focus:ring-offset-1"
             style={{
@@ -383,7 +383,7 @@ willChange: "transform, box-shadow",
 
       {/* Product Intro Panel — only after a selection */}
       {product && (
-        <section className="max-w-6xl mx-auto px-6 pb-14">
+        <section className="max-w-6xl mx-auto px-6 pb-4">
           <div
             key={active}
             className="rounded-2xl border border-gray-200 shadow-sm bg-white/80 backdrop-blur-sm transition-opacity duration-200 ease-out opacity-100"
@@ -397,9 +397,9 @@ willChange: "transform, box-shadow",
                 >
                   {product.title}
                 </h3>
-                <p className="mt-2 text-gray-800 text-base md:text-lg">{product.tagline}</p>
+                <p className="mt-2 text-gray-800 text-base md:text-xl">{product.tagline}</p>
                 {product.bullets?.length ? (
-                  <ul className="mt-4 list-disc pl-5 text-sm md:text-base text-gray-800 space-y-1">
+                  <ul className="mt-4 list-disc pl-5 text-base md:text-lg text-gray-800 space-y-1">
                     {product.bullets.map((b, idx) => (
                       <li key={idx}>{b}</li>
                     ))}

@@ -46,10 +46,10 @@ export default function CampaignLanding5() {
       icon: "🏢",
       label: "Senior Living",
       title: "SingFit PRIME",
-      desc: "Group-based programming for senior living communities.",
+      desc: "Turnkey programming for senior living communities.",
       bullets: [
-        "Turnkey, staff-friendly group sessions",
-        "Evidence-based, created by board-certified music therapists",
+        "Staff-friendly group sessions",
+        "Created by board-certified music therapists",
         "Training and implementation support",
       ],
       video: "https://www.youtube.com/embed/7a2YFIkNbrM?si=5nrz4ZWD6m8YrMWe",
@@ -59,7 +59,7 @@ export default function CampaignLanding5() {
       icon: "🏥",
       label: "Home Health/Care",
       title: "Home Health/Care",
-      desc: "Tailored implementations for home health and in-home care.",
+      desc: "Implementations for home health and home care.",
       bullets: [
         "Deployable across distributed teams",
         "Clinical and family-facing options",
@@ -73,6 +73,35 @@ export default function CampaignLanding5() {
   const ORDER = ["caregiver", "therapist", "senior", "homehealth"];
   
   // ---------- END CONFIG ----------
+const [showContactNudge, setShowContactNudge] = useState(false);
+const [nudgeBottom, setNudgeBottom] = useState(24); // px from bottom
+const contactNudgeSentinelRef = useRef(null);
+const [nudgeEntered, setNudgeEntered] = useState(false);
+
+// show after 5s
+useEffect(() => {
+  const t = setTimeout(() => setShowContactNudge(true), 5000); // 5s
+  return () => clearTimeout(t);
+}, []);
+// NEW: trigger entrance animation when it appears
+useEffect(() => {
+  if (!showContactNudge) return;
+  setNudgeEntered(false);
+  const r = requestAnimationFrame(() => setNudgeEntered(true));
+  return () => cancelAnimationFrame(r);
+}, [showContactNudge]);
+// lift above footer when it appears
+useEffect(() => {
+  const el = contactNudgeSentinelRef.current;
+  if (!el) return;
+
+   const io = new IntersectionObserver(([entry]) => {
+    setNudgeBottom(entry.isIntersecting ? 120 : 24); // adjust 120 if needed
+  }, { threshold: 0 });
+
+    io.observe(el);
+  return () => io.disconnect();
+}, []);
 
   const [activeKey, setActiveKey] = useState("caregiver");
   const active = PANELS[activeKey];
@@ -185,7 +214,7 @@ export default function CampaignLanding5() {
   return (
     <div className="bg-white min-h-screen px-6 py-8 max-w-6xl mx-auto font-sans text-gray-900">
       {/* HERO (reuse your CampaignLanding2 hero styling) */}
-      <section className="bg-[#0091c8] rounded-2xl shadow-xl border border-gray-200 px-6 pt-6 pb-10 relative overflow-hidden mb-8">
+      <section className="bg-[#0091C8] rounded-2xl shadow-xl border border-gray-200 px-6 pt-6 pb-10 relative overflow-hidden mb-8">
         <div className="max-w-3xl mx-auto text-center mt-6 space-y-6">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-[1.5] mb-2">
             <span className="block mb-3">Discover the Power of Music</span>
@@ -200,7 +229,7 @@ export default function CampaignLanding5() {
               </a>
             </span>
           </h1>
-          <p className="text-lg text-white font-medium">
+          <p className="text-xl text-white font-medium">
             A digital therapeutic platform built to support wellness through song — at home, in therapy, and in senior living.
           </p>
         </div>
@@ -233,21 +262,9 @@ export default function CampaignLanding5() {
   `}
 >
   <div className="p-5 h-full flex flex-col items-center justify-center">
-    <div className="text-3xl leading-none">{p.icon}</div>
-    <div
-      className={`mt-2 font-bold text-base md:text-lg ${
-        active ? "text-[#F47534]" : "text-[#002F6C]"
-      }`}
-    >
-      {p.label}
-    </div>
-    <div
-      className={`text-sm md:text-base mt-1 line-clamp-2 ${
-        active ? "text-gray-700" : "text-gray-600"
-      }`}
-    >
-      {p.desc}
-    </div>
+    <div className="text-4xl leading-none">{p.icon}</div>
+    <div className="mt-2 font-bold text-lg md:text-xl text-[#002F6C]">{p.label}</div>
+    <div className="text-base md:text-lg text-gray-700 mt-2 line-clamp-2">{p.desc}</div>
   </div>
 </button>
 
@@ -278,20 +295,22 @@ export default function CampaignLanding5() {
           </div>
 
           {/* RIGHT: COPY + CTA / FORM */}
-          <div className="p-5 md:p-7 border-t lg:border-t-0 lg:border-l border-gray-200 bg-white/70 backdrop-blur">
-            <h3 className="text-3xl font-bold" style={{ color: BRAND_ORANGE }}>
-  {active.title}
-</h3>
-<p className="mt-3 text-lg text-gray-800">{active.desc}</p>
-{active.bullets?.length ? (
-  <ul className="mt-5 list-disc pl-6 text-base text-gray-800 space-y-2">
-    {active.bullets.map((b, idx) => (
-      <li key={idx}>{b}</li>
-    ))}
-  </ul>
-) : null}
+          <div className="p-5 md:p-7 border-t lg:border-t-0 lg:border-l border-gray-200 bg-white/70 backdrop-blur flex flex-col justify-between">
+  <div>
+    <h3 className="text-3xl font-extrabold" style={{ color: BRAND_ORANGE }}>
+      {active.title}
+    </h3>
+    <p className="mt-4 text-xl text-gray-800 leading-relaxed">{active.desc}</p>
+    {active.bullets?.length ? (
+      <ul className="mt-6 list-disc pl-6 text-lg text-gray-800 space-y-3">
+        {active.bullets.map((b, idx) => (
+          <li key={idx}>{b}</li>
+        ))}
+      </ul>
+    ) : null}
+  </div>
 
-
+<div className="mt-8">
            {Array.isArray(active.cta) ? (
   <div className="mt-6 flex flex-wrap gap-3">
     {active.cta.map((cta, idx) => (
@@ -335,23 +354,47 @@ export default function CampaignLanding5() {
             )}
           </div>
         </div>
+ </div>       
       </section>
+      {/* Existing CTA block(s) here… */}
 
-{/* Subtle Contact Prompt */}
-<div className="mt-8 text-center text-sm text-gray-600">
-  <p>
-    Didn’t find what you’re looking for?{" "}
-    <a
-      href="https://www.singfit.com/contact"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-[#F47534] font-medium hover:underline"
-    >
-      Contact us
-    </a>{" "}
-    and we’ll help you find the right fit.
-  </p>
-</div>
+
+
+<div ref={contactNudgeSentinelRef} aria-hidden="true" />
+{showContactNudge && (
+  <div
+    className={`fixed z-50 transition-all duration-300 ease-out
+      ${nudgeEntered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}
+      motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
+    `}
+    style={{ right: 16, bottom: nudgeBottom, left: "auto" }}
+  >
+    <div className="flex items-center gap-3 rounded-full bg-white/95 backdrop-blur border border-gray-200 shadow-lg px-4 py-2">
+      <span className="text-sm text-gray-700 hidden sm:inline">
+        Need Help?
+      </span>
+      <a
+        href="https://www.singfit.com/contact"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-sm px-3 py-1 rounded-full bg-[#F47534] text-white hover:bg-[#d9652c] transition"
+      >
+        Contact us
+      </a>
+      <button
+        aria-label="Dismiss"
+        onClick={() => setShowContactNudge(false)}
+        className="ml-1 p-1 rounded-full hover:bg-gray-100"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+)}
+
+
 
       {/* FOOTER */}
       <footer className="text-center text-xs text-gray-500 border-t border-gray-200 pt-6 mt-8 px-4">
