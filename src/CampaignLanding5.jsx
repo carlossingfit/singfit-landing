@@ -454,13 +454,25 @@ useEffect(() => {
             <span className="block mb-3">Discover the Power of Music</span>
             <span className="inline-flex items-center justify-center gap-2">
               <span>with</span>
-              <a href="https://www.singfit.com/" target="_blank" rel="noopener noreferrer" className="inline-block">
-                <img
-                  src="/White no smile.png"
-                  alt="SingFit"
-                  className="h-10 md:h-12 relative top-[2.8px] hover:opacity-80 transition-opacity duration-200"
-                />
-              </a>
+              <a
+  href="https://www.singfit.com/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block"
+  onClick={() => {
+    track("click_cta", {
+      button_text: "SingFit Logo",
+      destination_url: "https://www.singfit.com/",
+      page_id: "CampaignLanding5",
+    });
+  }}
+>
+  <img
+    src="/White no smile.png"
+    alt="SingFit"
+    className="h-10 md:h-12 relative top-[2.8px] hover:opacity-80 transition-opacity duration-200"
+  />
+</a>
             </span>
           </h1>
           <p className="text-xl text-white font-medium">
