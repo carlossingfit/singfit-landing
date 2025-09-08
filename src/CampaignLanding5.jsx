@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Button } from "./components/ui/button";
 // Optional analytics hook — remove import + track calls if you don’t use it.
 import { useAnalytics } from "./useAnalytics";
+import { HealtcareIcon, StethoscopeIcon, UserGroupIcon, House03Icon } from "hugeicons-react";
 
 export default function CampaignLanding5() {
   const { track = () => {} } = useAnalytics ? useAnalytics("CampaignLanding5") : { track: () => {} };
@@ -13,24 +14,23 @@ export default function CampaignLanding5() {
   // Swap these video URLs with your real embeds
   const PANELS = {
     caregiver: {
-      icon: "🏠",
+      icon: <HealtcareIcon className="h-10 w-10 text-[#F47534]" />,
       label: "Caregiver",
       title: "SingFit STUDIO Caregiver",
       desc: "For individuals supporting loved ones at home.",
       bullets: [
-        "Guided, step-by-step sessions",
+        "Guided, step-by-step sessions to help you do stuff more a",
         "Lyrics on screen with voice coaching",
         "Track mood and engagement over time",
       ],
       video: "https://player.vimeo.com/video/736275780?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
       cta:[
-
        { type: "link", label: "Learn More", url: "https://www.singfit.com/studiocaregiver" },
        { type: "link", label: "Buy Now", url: "https://www.singfit.com/caregiver-pricing" }
       ],
     },
     therapist: {
-      icon: "🩺",
+      icon: <StethoscopeIcon className="h-10 w-10 text-[#F47534]" />,
       label: "Rehab Therapy",
       title: "SingFit STUDIO PRO",
       desc: "For individual therapists and clinical use.",
@@ -43,7 +43,7 @@ export default function CampaignLanding5() {
       cta: { type: "form", label: "Get Pricing & Details", formType: "Senior Living" },
     },
     senior: {
-      icon: "🏢",
+      icon: <UserGroupIcon className="h-10 w-10 text-[#F47534]" />,
       label: "Senior Living",
       title: "SingFit PRIME",
       desc: "Turnkey programming for senior living communities.",
@@ -56,7 +56,7 @@ export default function CampaignLanding5() {
       cta: { type: "form", label: "Get Pricing & Details", formType: "Senior Living" },
     },
     homehealth: {
-      icon: "🏥",
+      icon: <House03Icon className="h-10 w-10 text-[#F47534]" />,
       label: "Home Health/Care",
       title: "Home Health/Care",
       desc: "Implementations for home health and home care.",
@@ -73,144 +73,150 @@ export default function CampaignLanding5() {
   const ORDER = ["caregiver", "therapist", "senior", "homehealth"];
   
   // ---------- END CONFIG ----------
-const [showContactNudge, setShowContactNudge] = useState(false);
-const [nudgeBottom, setNudgeBottom] = useState(24); // px from bottom
-const contactNudgeSentinelRef = useRef(null);
-const [nudgeEntered, setNudgeEntered] = useState(false);
+  const [showContactNudge, setShowContactNudge] = useState(false);
+  const [nudgeBottom, setNudgeBottom] = useState(24); // px from bottom
+  const contactNudgeSentinelRef = useRef(null);
+  const [nudgeEntered, setNudgeEntered] = useState(false);
 
-// show after 5s
-useEffect(() => {
-  const t = setTimeout(() => setShowContactNudge(true), 5000); // 5s
-  return () => clearTimeout(t);
-}, []);
-// NEW: trigger entrance animation when it appears
-useEffect(() => {
-  if (!showContactNudge) return;
-  setNudgeEntered(false);
-  const r = requestAnimationFrame(() => setNudgeEntered(true));
-  return () => cancelAnimationFrame(r);
-}, [showContactNudge]);
-// lift above footer when it appears
-useEffect(() => {
-  const el = contactNudgeSentinelRef.current;
-  if (!el) return;
+  // show after 5s
+  useEffect(() => {
+    const t = setTimeout(() => setShowContactNudge(true), 5000); // 5s
+    return () => clearTimeout(t);
+  }, []);
+  // NEW: trigger entrance animation when it appears
+  useEffect(() => {
+    if (!showContactNudge) return;
+    setNudgeEntered(false);
+    const r = requestAnimationFrame(() => setNudgeEntered(true));
+    return () => cancelAnimationFrame(r);
+  }, [showContactNudge]);
+  // lift above footer when it appears
+  useEffect(() => {
+    const el = contactNudgeSentinelRef.current;
+    if (!el) return;
 
-   const io = new IntersectionObserver(([entry]) => {
-    setNudgeBottom(entry.isIntersecting ? 120 : 24); // adjust 120 if needed
-  }, { threshold: 0 });
+    const io = new IntersectionObserver(([entry]) => {
+      setNudgeBottom(entry.isIntersecting ? 120 : 24); // adjust 120 if needed
+    }, { threshold: 0 });
 
     io.observe(el);
-  return () => io.disconnect();
-}, []);
+    return () => io.disconnect();
+  }, []);
 
   const [activeKey, setActiveKey] = useState("caregiver");
   const active = PANELS[activeKey];
 
+  // STEP 1: Enhanced profile selection tracking (unique count per session)
   const onSelect = (key) => {
     setActiveKey(key);
-    track("sleeve_select", { key });
+
+    try {
+      const STORE_KEY = "cl5_profile_keys";
+      const prev = JSON.parse(sessionStorage.getItem(STORE_KEY) || "[]");
+      const set = new Set(prev);
+      set.add(key);
+      const arr = Array.from(set);
+      sessionStorage.setItem(STORE_KEY, JSON.stringify(arr));
+
+      track("sleeve_select", {
+        key,                         // caregiver | therapist | senior | homehealth
+        selection_index: arr.length, // 1, 2, 3, 4 (unique within session)
+        selection_keys: arr.join(","), // debugging/helpful for analysis
+      });
+    } catch {
+      // If sessionStorage is unavailable, still send a basic event
+      track("sleeve_select", { key, selection_index: 1, selection_keys: key });
+    }
+
     // scroll the detail panel into view on mobile
-    document.getElementById("detail-panel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document
+      .getElementById("detail-panel")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   const InlineForm = ({ formType }) => {
-  const [status, setStatus] = useState({ type: null, message: "" });
-  const [submitting, setSubmitting] = useState(false);
+    const [status, setStatus] = useState({ type: null, message: "" });
+    const [submitting, setSubmitting] = useState(false);
 
-  return (
-    <form
-      className="mt-4 flex flex-col gap-3"
-      onSubmit={async (e) => {
-        e.preventDefault();
-        const email = e.currentTarget.email.value.trim();
-        const name = e.currentTarget.name?.value?.trim() || "";
+    return (
+      <form
+        className="mt-4 flex flex-col gap-3"
+        onSubmit={async (e) => {
+          e.preventDefault();
+          const email = e.currentTarget.email.value.trim();
+          const name = e.currentTarget.name?.value?.trim() || "";
 
-        // basic guard
-        if (!email) {
-          setStatus({ type: "error", message: "Please enter a valid email." });
-          return;
-        }
-
-        setSubmitting(true);
-        setStatus({ type: null, message: "" });
-
-        // track
-        track("submit_form", { form_id: "campaign_inline", formType, email });
-
-        try {
-          const res = await fetch(MAKE_WEBHOOK_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, name, formType }),
-          });
-
-          if (res.ok) {
-            setStatus({
-              type: "success",
-              message: "Thanks! We’ll be in touch shortly.",
-            });
-            e.currentTarget.reset();
-          } else {
-            setStatus({
-              type: "error",
-              message: "There was a problem. Please try again.",
-            });
+          if (!email) {
+            setStatus({ type: "error", message: "Please enter a valid email." });
+            return;
           }
-        } catch {
-          setStatus({
-            type: "error",
-            message: "Network error. Please try again.",
-          });
-        } finally {
-          setSubmitting(false);
-          // auto-clear after a few seconds
-          setTimeout(() => setStatus({ type: null, message: "" }), 6000);
-        }
-      }}
-    >
-      <input
-        type="text"
-        name="name"
-        placeholder="Your name (optional)"
-        className="px-3 py-2 rounded-md border border-gray-300 text-base w-full focus:ring-2 focus:ring-[#F47534]"
-        disabled={submitting}
-      />
-      <div className="flex flex-col sm:flex-row gap-2">
+
+          setSubmitting(true);
+          setStatus({ type: null, message: "" });
+
+          track("submit_form", { form_id: "campaign_inline", formType, email });
+
+          try {
+            const res = await fetch(MAKE_WEBHOOK_URL, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email, name, formType }),
+            });
+
+            if (res.ok) {
+              setStatus({ type: "success", message: "Thanks! We’ll be in touch shortly." });
+              e.currentTarget.reset();
+            } else {
+              setStatus({ type: "error", message: "There was a problem. Please try again." });
+            }
+          } catch {
+            setStatus({ type: "error", message: "Network error. Please try again." });
+          } finally {
+            setSubmitting(false);
+            setTimeout(() => setStatus({ type: null, message: "" }), 6000);
+          }
+        }}
+      >
         <input
-          type="email"
-          name="email"
-          required
-          placeholder="Email (required)"
+          type="text"
+          name="name"
+          placeholder="Your name (optional)"
           className="px-3 py-2 rounded-md border border-gray-300 text-base w-full focus:ring-2 focus:ring-[#F47534]"
           disabled={submitting}
         />
-        <Button
-          type="submit"
-          disabled={submitting}
-          className={`text-base px-5 py-3 bg-[#F47534] text-white hover:bg-[#d9652c] shadow ${
-            submitting ? "opacity-80 cursor-not-allowed" : ""
-          }`}
-        >
-          {submitting ? "Submitting…" : "Submit"}
-        </Button>
-      </div>
-
-      {/* Accessible status message */}
-      {status.message ? (
-        <div
-          role="status"
-          aria-live="polite"
-          className={`text-sm mt-2 ${
-            status.type === "success" ? "text-green-700" : "text-red-600"
-          }`}
-        >
-          {status.message}
+        <div className="flex flex-col sm:flex-row gap-2">
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="Email (required)"
+            className="px-3 py-2 rounded-md border border-gray-300 text-base w-full focus:ring-2 focus:ring-[#F47534]"
+            disabled={submitting}
+          />
+          <Button
+            type="submit"
+            disabled={submitting}
+            className={`text-base px-5 py-3 bg-[#F47534] text-white hover:bg-[#d9652c] shadow ${
+              submitting ? "opacity-80 cursor-not-allowed" : ""
+            }`}
+          >
+            {submitting ? "Submitting…" : "Submit"}
+          </Button>
         </div>
-      ) : null}
 
-          </form>
-  );
-};
+        {status.message ? (
+          <div
+            role="status"
+            aria-live="polite"
+            className={`text-sm mt-2 ${status.type === "success" ? "text-green-700" : "text-red-600"}`}
+          >
+            {status.message}
+          </div>
+        ) : null}
+      </form>
+    );
+  };
+
   return (
     <div className="bg-white min-h-screen px-6 py-8 max-w-6xl mx-auto font-sans text-gray-900">
       {/* HERO (reuse your CampaignLanding2 hero styling) */}
@@ -250,26 +256,32 @@ useEffect(() => {
             const active = key === activeKey;
             return (
               <button
-  key={key}
-  onClick={() => onSelect(key)}
-  aria-pressed={active}
-  className={`w-full h-44 rounded-2xl text-center transition
-    focus:outline-none focus:ring-2 focus:ring-[#F47534]
-    ${active
-      ? "bg-[#FFF5F0] border-2 border-[#F47534] shadow-md"
-      : "bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-[#F47534]/50 hover:bg-gradient-to-br hover:from-[#FEF8F5] hover:to-white"
-    }
-  `}
->
-  <div className="p-5 h-full flex flex-col items-center justify-center">
-    <div className="text-4xl leading-none">{p.icon}</div>
-    <div className="mt-2 font-bold text-lg md:text-xl text-[#002F6C]">{p.label}</div>
-    <div className="text-base md:text-lg text-gray-700 mt-2 line-clamp-2">{p.desc}</div>
-  </div>
-</button>
+                key={key}
+                onClick={() => onSelect(key)}
+                aria-pressed={active}
+                className={`w-full min-h-48 rounded-2xl text-center transition
+                  focus:outline-none focus:ring-2 focus:ring-[#F47534]
+                  ${
+                    active
+                      ? "bg-[#FFF5F0] border-2 border-[#F47534] shadow-md"
+                      : "bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-[#F47534]/50 hover:bg-gradient-to-br hover:from-[#FEF8F5] hover:to-white"
+                  }
+                `}
+              >
+                <div className="p-5 h-full flex flex-col items-center justify-between">
+                  {/* Normalized icon box */}
+                  <div className="flex items-center justify-center h-12 w-12">
+                    {p.icon}
+                  </div>
 
-
-
+                  <div className="mt-2 font-bold text-lg md:text-xl text-[#002F6C]">
+                    {p.label}
+                  </div>
+                  <div className="text-base md:text-lg text-gray-700 mt-1 line-clamp-2">
+                    {p.desc}
+                  </div>
+                </div>
+              </button>
             );
           })}
         </div>
@@ -277,12 +289,12 @@ useEffect(() => {
 
       {/* DETAIL PANEL */}
       <section id="detail-panel" className="rounded-2xl shadow-xl border border-gray-200 overflow-hidden bg-gradient-to-br from-[#EEF6FA] via-white to-[#FAF6F2]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch">
           {/* LEFT: VIDEO (left-justified; minimal padding) */}
           <div className="p-5 md:p-7">
             <div className="relative w-full max-w-2xl rounded-2xl overflow-hidden shadow ring-1 ring-black/5">
               <iframe
-                key={activeKey} // force re-mount when active changes
+                key={activeKey}
                 className="w-full h-[260px] md:h-[380px]"
                 src={active.video}
                 title={`${active.title} video`}
@@ -291,110 +303,115 @@ useEffect(() => {
                 sandbox="allow-scripts allow-same-origin allow-presentation"
               />
             </div>
-           
           </div>
 
           {/* RIGHT: COPY + CTA / FORM */}
-          <div className="p-5 md:p-7 border-t lg:border-t-0 lg:border-l border-gray-200 bg-white/70 backdrop-blur flex flex-col justify-between">
-  <div>
-    <h3 className="text-3xl font-extrabold" style={{ color: BRAND_ORANGE }}>
-      {active.title}
-    </h3>
-    <p className="mt-4 text-xl text-gray-800 leading-relaxed">{active.desc}</p>
-    {active.bullets?.length ? (
-      <ul className="mt-6 list-disc pl-6 text-lg text-gray-800 space-y-3">
-        {active.bullets.map((b, idx) => (
-          <li key={idx}>{b}</li>
-        ))}
-      </ul>
-    ) : null}
-  </div>
+          <div className="p-5 md:p-6 border-t lg:border-t-0 lg:border-l border-gray-200 bg-white/70 backdrop-blur flex flex-col justify-between h-full">
+            <div>
+              <h3 className="text-3xl font-extrabold" style={{ color: BRAND_ORANGE }}>
+                {active.title}
+              </h3>
+              <p className="mt-3 text-xl text-gray-800 leading-relaxed">{active.desc}</p>
+              {active.bullets?.length ? (
+                <ul className="mt-4 list-disc pl-6 text-lg text-gray-800 space-y-2">
+                  {active.bullets.map((b, idx) => (
+                    <li key={idx}>{b}</li>
+                  ))}
+                </ul>
+              ) : null}
+              {/* Caregiver-only filler */}
+              {activeKey === "caregiver" && (
+                <>
+                  <p className="mt-20 text-base text-gray-500 italic">
+                    Ready to see how SingFit can help you?
+                  </p>
+                </>
+              )}
+            </div>
 
-<div className="mt-8">
-           {Array.isArray(active.cta) ? (
-  <div className="mt-6 flex flex-wrap gap-3">
-    {active.cta.map((cta, idx) => (
-      <Button
-        key={idx}
-        onClick={() => {
-          track("click_cta", {
-            button_text: cta.label,
-            destination_url: cta.url,
-            page_id: "CampaignLanding5",
-          });
-          window.open(cta.url, "_blank");
-        }}
-        className="text-sm px-5 py-3 bg-[#F47534] text-white hover:bg-[#d9652c] shadow"
-      >
-        {cta.label}
-      </Button>
-    ))}
-  </div>
-) : active.cta?.type === "link" ? (
-  <div className="mt-6">
-    <Button
-      onClick={() => {
-        track("click_cta", {
-          button_text: active.cta.label,
-          destination_url: active.cta.url,
-          page_id: "CampaignLanding5",
-        });
-        window.open(active.cta.url, "_blank");
-      }}
-      className="text-sm px-5 py-3 bg-[#F47534] text-white hover:bg-[#d9652c] shadow"
-    >
-      {active.cta.label}
-    </Button>
-  </div>
-) : (
-              <div className="mt-6">
-                <div className="text-sm text-gray-700 mb-2">Enter your details and our team will reach out.</div>
-                <InlineForm formType={active.cta.formType} />
-              </div>
-            )}
+            {/* CTA: sits directly under content, but pinned to bottom by justify-between */}
+            <div className="mt-6">
+              {Array.isArray(active.cta) ? (
+                <div className="flex flex-wrap gap-3">
+                  {active.cta.map((cta, idx) => (
+                    <Button
+                      key={idx}
+                      onClick={() => {
+                        track("click_cta", {
+                          button_text: cta.label,
+                          destination_url: cta.url,
+                          page_id: "CampaignLanding5",
+                        });
+                        window.open(cta.url, "_blank");
+                      }}
+                      className="text-base px-5 py-2 bg-[#F47534] text-white hover:bg-[#d9652c] shadow"
+                    >
+                      {cta.label}
+                    </Button>
+                  ))}
+                </div>
+              ) : active.cta?.type === "link" ? (
+                <Button
+                  onClick={() => {
+                    track("click_cta", {
+                      button_text: active.cta.label,
+                      destination_url: active.cta.url,
+                      page_id: "CampaignLanding5",
+                    });
+                    window.open(active.cta.url, "_blank");
+                  }}
+                  className="text-base px-5 py-2 bg-[#F47534] text-white hover:bg-[#d9652c] shadow"
+                >
+                  {active.cta.label}
+                </Button>
+              ) : (
+                <div>
+                  <div className="text-base text-gray-700 mb-2">
+                    Enter your details and our team will reach out.
+                  </div>
+                  <InlineForm formType={active.cta.formType} />
+                </div>
+              )}
+            </div>
           </div>
-        </div>
- </div>       
+
+        </div>       
       </section>
       {/* Existing CTA block(s) here… */}
 
-
-
-<div ref={contactNudgeSentinelRef} aria-hidden="true" />
-{showContactNudge && (
-  <div
-    className={`fixed z-50 transition-all duration-300 ease-out
-      ${nudgeEntered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}
-      motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
-    `}
-    style={{ right: 16, bottom: nudgeBottom, left: "auto" }}
-  >
-    <div className="flex items-center gap-3 rounded-full bg-white/95 backdrop-blur border border-gray-200 shadow-lg px-4 py-2">
-      <span className="text-sm text-gray-700 hidden sm:inline">
-        Need Help?
-      </span>
-      <a
-        href="https://www.singfit.com/contact"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-sm px-3 py-1 rounded-full bg-[#F47534] text-white hover:bg-[#d9652c] transition"
-      >
-        Contact us
-      </a>
-      <button
-        aria-label="Dismiss"
-        onClick={() => setShowContactNudge(false)}
-        className="ml-1 p-1 rounded-full hover:bg-gray-100"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/>
-        </svg>
-      </button>
-    </div>
-  </div>
-)}
-
-
+      <div ref={contactNudgeSentinelRef} aria-hidden="true" />
+      {showContactNudge && (
+        <div
+          className={`fixed z-50 transition-all duration-300 ease-out
+            ${nudgeEntered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}
+            motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
+          `}
+          style={{ right: 16, bottom: nudgeBottom, left: "auto" }}
+        >
+          <div className="flex items-center gap-3 rounded-full bg-white/95 backdrop-blur border border-gray-200 shadow-lg px-4 py-2">
+            <span className="text-sm text-gray-700 hidden sm:inline">
+              Need Help?
+            </span>
+            <a
+              href="https://www.singfit.com/contact"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm px-3 py-1 rounded-full bg-[#F47534] text-white hover:bg-[#d9652c] transition"
+            >
+              Contact us
+            </a>
+            <button
+              aria-label="Dismiss"
+              onClick={() => setShowContactNudge(false)}
+              className="ml-1 p-1 rounded-full hover:bg-gray-100"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* FOOTER */}
       <footer className="text-center text-xs text-gray-500 border-t border-gray-200 pt-6 mt-8 px-4">
