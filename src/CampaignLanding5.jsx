@@ -15,6 +15,34 @@ function loadVimeoSDK() {
     document.head.appendChild(s);
   });
 }
+// --- YouTube tracking helper ---
+function loadYouTubeSDK() {
+  return new Promise((resolve) => {
+    // If it's already available, we're done
+    if (window.YT && window.YT.Player) return resolve();
+
+    // Inject the IFrame API script once
+    const existing = document.querySelector('script[src="https://www.youtube.com/iframe_api"]');
+    if (!existing) {
+      const tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      document.head.appendChild(tag);
+    }
+
+    // The API calls this global when ready
+    const prev = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = function () {
+      if (typeof prev === "function") prev();
+      resolve();
+    };
+
+    // Safety poll in case onYouTubeIframeAPIReady already fired
+    (function check() {
+      if (window.YT && window.YT.Player) return resolve();
+      setTimeout(check, 50);
+    })();
+  });
+}
 
 export default function CampaignLanding5() {
   const { track = () => {} } = useAnalytics ? useAnalytics("CampaignLanding5") : { track: () => {} };
@@ -64,7 +92,7 @@ export default function CampaignLanding5() {
         "Created by board-certified music therapists",
         "Training and implementation support",
       ],
-      video: "https://www.youtube.com/embed/7a2YFIkNbrM?si=5nrz4ZWD6m8YrMWe",
+      video: "https://www.youtube.com/embed/7a2YFIkNbrM?enablejsapi=1",
       cta: { type: "form", label: "Get Pricing & Details", formType: "Senior Living" },
     },
     homehealth: {
@@ -118,58 +146,183 @@ export default function CampaignLanding5() {
   const [activeKey, setActiveKey] = useState("caregiver");
   const active = PANELS[activeKey];
 
-  // Track Vimeo "video_start" when playback begins
+// Track YouTube "video_start" and "video_complete" (Senior Living)
 useEffect(() => {
-  // Only wire Vimeo; YouTube comes in the next step
-  if (!active?.video || !/vimeo\.com/i.test(active.video)) return;
+  if (!active?.video || !/youtube\.com\/embed/i.test(active.video)) {
+    console.log("[YTDebug] Skipping: not a YouTube URL", active?.video);
+    return;
+  }
 
   let player;
   let started = false;
+  let completed = false;
 
   (async () => {
+    console.log("[YTDebug] Effect start for key:", activeKey, "url:", active.video);
+    await loadYouTubeSDK();
+    console.log("[YTDebug] SDK ready");
+
+    const iframeId = `video-${activeKey}`;
+    const iframe = document.getElementById(iframeId);
+    console.log("[YTDebug] iframe lookup:", iframeId, iframe ? "found" : "NOT FOUND");
+    if (!iframe || !window.YT || !window.YT.Player) return;
+
+    player = new window.YT.Player(iframe, {
+      events: {
+        onReady: () => console.log("[YTDebug] Player ready"),
+        onStateChange: (e) => {
+          if (!window.YT || !player) return;
+
+          if (e.data === window.YT.PlayerState.PLAYING && !started) {
+            started = true;
+
+            let videoId = "";
+            let title = active.title || "Unknown";
+            try {
+              const data = player.getVideoData();
+              if (data) {
+                videoId = data.video_id || "";
+                title = data.title || title;
+              }
+            } catch {}
+
+            console.log("[YTDebug] Tracking video_start", { title, videoId });
+            track("video_start", {
+              video_provider: "youtube",
+              video_title: title,
+              video_id: videoId,
+              page_id: "CampaignLanding5",
+              sleeve_key: activeKey,
+            });
+          }
+
+          if (e.data === window.YT.PlayerState.ENDED && !completed) {
+            completed = true;
+
+            let videoId = "";
+            let title = active.title || "Unknown";
+            try {
+              const data = player.getVideoData();
+              if (data) {
+                videoId = data.video_id || "";
+                title = data.title || title;
+              }
+            } catch {}
+
+            console.log("[YTDebug] Tracking video_complete", { title, videoId });
+            track("video_complete", {
+              video_provider: "youtube",
+              video_title: title,
+              video_id: videoId,
+              page_id: "CampaignLanding5",
+              sleeve_key: activeKey,
+            });
+          }
+        },
+      },
+    });
+    console.log("[YTDebug] Player created");
+  })();
+
+  return () => {
+    try {
+      if (player && player.destroy) player.destroy();
+    } catch {}
+  };
+}, [activeKey, active?.video]);
+
+
+// Track Vimeo "video_start" and "video_complete"
+useEffect(() => {
+  if (!active?.video || !/vimeo\.com/i.test(active.video)) {
+    console.log("[VimeoDebug] Skipping: not a Vimeo URL", active?.video);
+    return;
+  }
+
+  let player;
+  let started = false;
+  let completed = false;
+
+  (async () => {
+    console.log("[VimeoDebug] Effect start for key:", activeKey, "url:", active.video);
+
     await loadVimeoSDK();
-    const iframe = document.getElementById(`video-${activeKey}`);
+    const iframeId = `video-${activeKey}`;
+    const iframe = document.getElementById(iframeId);
+    console.log("[VimeoDebug] iframe lookup:", iframeId, iframe ? "found" : "NOT FOUND");
+
     if (!iframe || !window.Vimeo || !window.Vimeo.Player) return;
 
-    // Create Vimeo player and listen for first 'play'
     player = new window.Vimeo.Player(iframe);
+    console.log("[VimeoDebug] Player created");
 
+    // START
     player.on("play", async () => {
+      console.log("[VimeoDebug] 'play' event received");
       if (started) return;
       started = true;
 
-      // Try to get a nice title; fall back to your panel title
       let title = active.title || "Unknown";
       try {
         const t = await player.getVideoTitle();
         if (t) title = t;
       } catch {}
 
-      // Extract numeric ID from the Vimeo URL, if present
       let videoId = "";
       try {
         const m = String(active.video).match(/video\/(\d+)/);
         if (m && m[1]) videoId = m[1];
       } catch {}
 
-      // Push to dataLayer using your existing track()
+      console.log("[VimeoDebug] Tracking video_start", { title, videoId });
       track("video_start", {
         video_provider: "vimeo",
         video_title: title,
         video_id: videoId,
         page_id: "CampaignLanding5",
-        sleeve_key: activeKey, // which profile’s video
+        sleeve_key: activeKey,
+      });
+    });
+
+    // COMPLETE
+    player.on("ended", async () => {
+      if (completed) return;
+      completed = true;
+
+      let title = active.title || "Unknown";
+      try {
+        const t = await player.getVideoTitle();
+        if (t) title = t;
+      } catch {}
+
+      let videoId = "";
+      try {
+        const m = String(active.video).match(/video\/(\d+)/);
+        if (m && m[1]) videoId = m[1];
+      } catch {}
+
+      console.log("[VimeoDebug] Tracking video_complete", { title, videoId });
+      track("video_complete", {
+        video_provider: "vimeo",
+        video_title: title,
+        video_id: videoId,
+        page_id: "CampaignLanding5",
+        sleeve_key: activeKey,
       });
     });
   })();
 
   return () => {
-    // Best-effort cleanup
     try {
-      if (player && player.off) player.off("play");
+      if (player && player.off) {
+        player.off("play");
+        player.off("ended");
+      }
     } catch {}
   };
 }, [activeKey, active?.video]);
+
+
 
 
   // STEP 1: Enhanced profile selection tracking (unique count per session)
@@ -369,7 +522,7 @@ useEffect(() => {
           <div className="p-5 md:p-7">
             <div className="relative w-full max-w-2xl rounded-2xl overflow-hidden shadow ring-1 ring-black/5">
               <iframe
-  id={`video-${activeKey}`}
+  id={`video-${activeKey}`}    
   key={activeKey}
   className="w-full h-[260px] md:h-[380px]"
   src={active.video}
