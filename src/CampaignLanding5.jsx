@@ -80,7 +80,7 @@ export default function CampaignLanding5() {
         "Flexible session building",
       ],
       video: "https://player.vimeo.com/video/1089881903?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
-      cta: { type: "form", label: "Get Pricing & Details", formType: "Senior Living" },
+      cta: { type: "form", label: "Get Pricing & Details", formType: "Rehab Therapy" },
     },
     senior: {
       icon: <UserGroupIcon className="h-10 w-10 text-[#F47534]" />,
@@ -598,7 +598,7 @@ useEffect(() => {
                   <div className="text-base text-gray-700 mb-2">
                     Enter your details and our team will reach out.
                   </div>
-                  <InlineForm formType={active.cta.formType} />
+                  <InlineForm formType={active.cta?.formType ?? active.label} />
                 </div>
               )}
             </div>
