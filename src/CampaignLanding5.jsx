@@ -622,13 +622,20 @@ useEffect(() => {
               Need Help?
             </span>
             <a
-              href="https://www.singfit.com/contact"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm px-3 py-1 rounded-full bg-[#F47534] text-white hover:bg-[#d9652c] transition"
-            >
-              Contact us
-            </a>
+  href="https://www.singfit.com/contact"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={() => {
+    track("click_contact", {
+      placement: "nudge",
+      destination_url: "https://www.singfit.com/contact",
+      page_id: "CampaignLanding5",
+    });
+  }}
+  className="text-sm px-3 py-1 rounded-full bg-[#F47534] text-white hover:bg-[#d9652c] transition"
+>
+  Contact us
+</a>
             <button
               aria-label="Dismiss"
               onClick={() => setShowContactNudge(false)}
