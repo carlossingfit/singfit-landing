@@ -4,6 +4,18 @@ import { Button } from "./components/ui/button";
 import { useAnalytics } from "./useAnalytics";
 import { HealtcareIcon, StethoscopeIcon, UserGroupIcon, House03Icon } from "hugeicons-react";
 
+// --- Vimeo tracking helper ---
+function loadVimeoSDK() {
+  return new Promise((resolve) => {
+    if (window.Vimeo && window.Vimeo.Player) return resolve();
+    const s = document.createElement("script");
+    s.src = "https://player.vimeo.com/api/player.js";
+    s.async = true;
+    s.onload = () => resolve();
+    document.head.appendChild(s);
+  });
+}
+
 export default function CampaignLanding5() {
   const { track = () => {} } = useAnalytics ? useAnalytics("CampaignLanding5") : { track: () => {} };
 
@@ -105,6 +117,60 @@ export default function CampaignLanding5() {
 
   const [activeKey, setActiveKey] = useState("caregiver");
   const active = PANELS[activeKey];
+
+  // Track Vimeo "video_start" when playback begins
+useEffect(() => {
+  // Only wire Vimeo; YouTube comes in the next step
+  if (!active?.video || !/vimeo\.com/i.test(active.video)) return;
+
+  let player;
+  let started = false;
+
+  (async () => {
+    await loadVimeoSDK();
+    const iframe = document.getElementById(`video-${activeKey}`);
+    if (!iframe || !window.Vimeo || !window.Vimeo.Player) return;
+
+    // Create Vimeo player and listen for first 'play'
+    player = new window.Vimeo.Player(iframe);
+
+    player.on("play", async () => {
+      if (started) return;
+      started = true;
+
+      // Try to get a nice title; fall back to your panel title
+      let title = active.title || "Unknown";
+      try {
+        const t = await player.getVideoTitle();
+        if (t) title = t;
+      } catch {}
+
+      // Extract numeric ID from the Vimeo URL, if present
+      let videoId = "";
+      try {
+        const m = String(active.video).match(/video\/(\d+)/);
+        if (m && m[1]) videoId = m[1];
+      } catch {}
+
+      // Push to dataLayer using your existing track()
+      track("video_start", {
+        video_provider: "vimeo",
+        video_title: title,
+        video_id: videoId,
+        page_id: "CampaignLanding5",
+        sleeve_key: activeKey, // which profile’s video
+      });
+    });
+  })();
+
+  return () => {
+    // Best-effort cleanup
+    try {
+      if (player && player.off) player.off("play");
+    } catch {}
+  };
+}, [activeKey, active?.video]);
+
 
   // STEP 1: Enhanced profile selection tracking (unique count per session)
   const onSelect = (key) => {
@@ -303,14 +369,15 @@ export default function CampaignLanding5() {
           <div className="p-5 md:p-7">
             <div className="relative w-full max-w-2xl rounded-2xl overflow-hidden shadow ring-1 ring-black/5">
               <iframe
-                key={activeKey}
-                className="w-full h-[260px] md:h-[380px]"
-                src={active.video}
-                title={`${active.title} video`}
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                allowFullScreen
-                sandbox="allow-scripts allow-same-origin allow-presentation"
-              />
+  id={`video-${activeKey}`}
+  key={activeKey}
+  className="w-full h-[260px] md:h-[380px]"
+  src={active.video}
+  title={`${active.title} video`}
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+  allowFullScreen
+  sandbox="allow-scripts allow-same-origin allow-presentation"
+/>
             </div>
           </div>
 
