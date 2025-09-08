@@ -108,31 +108,40 @@ export default function CampaignLanding5() {
 
   // STEP 1: Enhanced profile selection tracking (unique count per session)
   const onSelect = (key) => {
-    setActiveKey(key);
+  setActiveKey(key);
 
-    try {
-      const STORE_KEY = "cl5_profile_keys";
-      const prev = JSON.parse(sessionStorage.getItem(STORE_KEY) || "[]");
-      const set = new Set(prev);
-      set.add(key);
-      const arr = Array.from(set);
-      sessionStorage.setItem(STORE_KEY, JSON.stringify(arr));
+  try {
+    const STORE_KEY = "cl5_profile_keys";
+    const prev = JSON.parse(sessionStorage.getItem(STORE_KEY) || "[]");
+    const set = new Set(prev);
+    set.add(key);
+    const arr = Array.from(set);
+    sessionStorage.setItem(STORE_KEY, JSON.stringify(arr));
 
-      track("sleeve_select", {
-        key,                         // caregiver | therapist | senior | homehealth
-        selection_index: arr.length, // 1, 2, 3, 4 (unique within session)
-        selection_keys: arr.join(","), // debugging/helpful for analysis
+    // Always track the normal selection
+    track("sleeve_select", {
+      key,
+      selection_index: arr.length,
+      selection_keys: arr.join(","),
+    });
+
+    // NEW: fire multi_profile_select only the first time count reaches 2+
+    if (arr.length === 2 && !sessionStorage.getItem("cl5_multi_fired")) {
+      track("multi_profile_select", {
+        count: arr.length,
+        selection_keys: arr.join(","),
+        page_id: "CampaignLanding5",
       });
-    } catch {
-      // If sessionStorage is unavailable, still send a basic event
-      track("sleeve_select", { key, selection_index: 1, selection_keys: key });
+      sessionStorage.setItem("cl5_multi_fired", "true");
     }
+  } catch {
+    track("sleeve_select", { key, selection_index: 1, selection_keys: key });
+  }
 
-    // scroll the detail panel into view on mobile
-    document
-      .getElementById("detail-panel")
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+  document
+    .getElementById("detail-panel")
+    ?.scrollIntoView({ behavior: "smooth", block: "start" });
+};
 
   const InlineForm = ({ formType }) => {
     const [status, setStatus] = useState({ type: null, message: "" });
