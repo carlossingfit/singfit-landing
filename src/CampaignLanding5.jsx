@@ -382,7 +382,7 @@ useEffect(() => {
           setSubmitting(true);
           setStatus({ type: null, message: "" });
 
-          track("submit_form", { form_id: "campaign_inline", formType, email });
+          track("submit_form", { form_id: "campaign_inline", formType });
 
           try {
             const res = await fetch(MAKE_WEBHOOK_URL, {
