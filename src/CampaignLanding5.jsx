@@ -574,39 +574,46 @@ useEffect(() => {
             {/* CTA: sits directly under content, but pinned to bottom by justify-between */}
             <div className="mt-6">
               {Array.isArray(active.cta) ? (
-                <div className="flex flex-wrap gap-3">
-                  {active.cta.map((cta, idx) => (
-                    <Button
-                      key={idx}
-                      onClick={() => {
-                        track("click_cta", {
-                          button_text: cta.label,
-                          destination_url: cta.url,
-                          page_id: "CampaignLanding5",
-                        });
-                        window.open(cta.url, "_blank");
-                      }}
-                      className="text-base px-5 py-2 bg-[#F47534] text-white hover:bg-[#d9652c] shadow"
-                    >
-                      {cta.label}
-                    </Button>
-                  ))}
-                </div>
+  <div className="flex flex-wrap gap-3">
+    {active.cta.map((cta, idx) => (
+      <Button key={idx} className="text-base px-5 py-2 bg-[#F47534] text-white hover:bg-[#d9652c] shadow" asChild>
+        <a
+          href={cta.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => {
+            track("click_cta", {
+              button_text: cta.label,
+              destination_url: cta.url,
+              page_id: "CampaignLanding5",
+              // optional (nice to have): sleeve_key: activeKey,
+            });
+          }}
+        >
+          {cta.label}
+        </a>
+      </Button>
+    ))}
+  </div>
               ) : active.cta?.type === "link" ? (
-                <Button
-                  onClick={() => {
-                    track("click_cta", {
-                      button_text: active.cta.label,
-                      destination_url: active.cta.url,
-                      page_id: "CampaignLanding5",
-                    });
-                    window.open(active.cta.url, "_blank");
-                  }}
-                  className="text-base px-5 py-2 bg-[#F47534] text-white hover:bg-[#d9652c] shadow"
-                >
-                  {active.cta.label}
-                </Button>
-              ) : (
+  <Button className="text-base px-5 py-2 bg-[#F47534] text-white hover:bg-[#d9652c] shadow" asChild>
+    <a
+      href={active.cta.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={() => {
+        track("click_cta", {
+          button_text: active.cta.label,
+          destination_url: active.cta.url,
+          page_id: "CampaignLanding5",
+          // optional: sleeve_key: activeKey,
+        });
+      }}
+    >
+      {active.cta.label}
+    </a>
+  </Button>
+) : (
                 <div>
                   <div className="text-base text-gray-700 mb-2">
                     Enter your details and our team will reach out.
@@ -631,8 +638,8 @@ useEffect(() => {
           style={{ right: 16, bottom: nudgeBottom, left: "auto" }}
         >
           <div className="flex items-center gap-3 rounded-full bg-white/95 backdrop-blur border border-gray-200 shadow-lg px-4 py-2">
-            <span className="text-sm text-gray-700 hidden sm:inline">
-              Need Help?
+            <span className="text-md text-gray-700 hidden sm:inline">
+              Something else?
             </span>
             <a
   href="https://www.singfit.com/contact"
@@ -645,7 +652,7 @@ useEffect(() => {
       page_id: "CampaignLanding5",
     });
   }}
-  className="text-sm px-3 py-1 rounded-full bg-[#F47534] text-white hover:bg-[#d9652c] transition"
+  className="text-md px-3 py-1 rounded-full bg-[#F47534] text-white hover:bg-[#d9652c] transition"
 >
   Contact us
 </a>
