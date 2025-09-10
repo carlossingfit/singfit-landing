@@ -154,10 +154,16 @@ export default function CampaignLanding6() {
 
           try {
             const res = await fetch(MAKE_WEBHOOK_URL, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ email, name, company, formType }),
-            });
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    name,
+    email,
+    company,
+    page_id: "CampaignLanding6",   // <-- exact key & value
+    product: formType,
+  }),
+});
 
             if (res.ok) {
               setStatus("ok");

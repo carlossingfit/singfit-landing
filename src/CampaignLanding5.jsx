@@ -49,7 +49,7 @@ export default function CampaignLanding5() {
 
   // ---------- CONFIG ----------
   const BRAND_ORANGE = "#F47534";
-  const MAKE_WEBHOOK_URL = "https://hook.us2.make.com/YOUR_UNIQUE_WEBHOOK";
+  const MAKE_WEBHOOK_URL = "https://hook.us2.make.com/8t1ri7o1r73cfvkb2udx1rkiaxexnexb";
 
   // Swap these video URLs with your real embeds
   const PANELS = {
@@ -386,10 +386,16 @@ useEffect(() => {
 
           try {
             const res = await fetch(MAKE_WEBHOOK_URL, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ email, name, formType }),
-            });
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    name,
+    email,
+    company,
+    page_id: "CampaignLanding5",   // <-- exact key & value
+    product: formType,             // Rehab Therapy | Senior Living | Home Health/Care
+  }),
+});
 
             if (res.ok) {
               setStatus({ type: "success", message: "Thanks! We’ll be in touch shortly." });
