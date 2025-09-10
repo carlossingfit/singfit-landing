@@ -373,6 +373,7 @@ useEffect(() => {
           e.preventDefault();
           const email = e.currentTarget.email.value.trim();
           const name = e.currentTarget.name?.value?.trim() || "";
+          const company = e.currentTarget.company?.value?.trim() || ""; 
 
           if (!email) {
             setStatus({ type: "error", message: "Please enter a valid email." });
