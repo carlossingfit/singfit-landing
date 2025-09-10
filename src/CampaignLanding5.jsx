@@ -46,7 +46,10 @@ function loadYouTubeSDK() {
 
 export default function CampaignLanding5() {
   const { track = () => {} } = useAnalytics ? useAnalytics("CampaignLanding5") : { track: () => {} };
-
+const PAGE_ID = "CampaignLanding5";
+const safeTrack = (event, params) => {
+  try { if (typeof track === "function") track(event, params); } catch (_) {}
+};
   // ---------- CONFIG ----------
   const BRAND_ORANGE = "#F47534";
   const MAKE_WEBHOOK_URL = "https://hook.us2.make.com/8t1ri7o1r73cfvkb2udx1rkiaxexnexb";
@@ -371,52 +374,56 @@ useEffect(() => {
     <form
       className="mt-4 flex flex-col gap-3"
       onSubmit={async (e) => {
-        e.preventDefault();
-        if (submitting) return;
+  e.preventDefault();
+  if (submitting) return;
 
-        setStatus("");
-        setMsg("");
-        setSubmitting(true);
+  setStatus("");
+  setMsg("");
+  setSubmitting(true);
 
-        const email = e.currentTarget.email.value.trim();
-        const name = e.currentTarget.name?.value?.trim() || "";
-        const company = e.currentTarget.company?.value?.trim() || "";
+  const email = e.currentTarget.email.value.trim();
+  const name = e.currentTarget.name?.value?.trim() || "";
+  const company = e.currentTarget.company?.value?.trim() || "";
 
-        // GA4 (no PII)
-        track("submit_form", { form_id: "campaign_inline", formType, page_id: PAGE_ID });
+  const payload = {
+    name,
+    email,
+    company,
+    page_id: PAGE_ID,        // "CampaignLanding5" or "CampaignLanding6"
+    product: formType,
+  };
 
-        try {
-          const res = await fetch(MAKE_WEBHOOK_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              name,
-              email,
-              company,
-              page_id: PAGE_ID, // "CampaignLanding5" or "CampaignLanding6"
-              product: formType,
-            }),
-          });
+  try {
+    // 1) Send to Make (primary action)
+    const res = await fetch(MAKE_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
 
-          // Treat any 2xx as success; don't parse JSON (Make often returns plain text "Accepted")
-          if (res.status >= 200 && res.status < 300) {
-            setStatus("ok");
-            setMsg("Thanks! We’ll be in touch soon.");
-            e.currentTarget.reset();
-          } else {
-            const text = await res.text().catch(() => "");
-            console.warn("Webhook responded non-2xx", res.status, text);
-            setStatus("err");
-            setMsg("There was a problem. Please try again.");
-          }
-        } catch (err) {
-          console.error("Webhook fetch failed", err);
-          setStatus("err");
-          setMsg("There was a network problem. Please try again.");
-        } finally {
-          setSubmitting(false); // <-- always restore the button
-        }
-      }}
+    // Count any 2xx as success; don't parse JSON (Make often returns "Accepted")
+    if (res.status >= 200 && res.status < 300) {
+      setStatus("ok");
+      setMsg("Thanks! We’ll be in touch soon.");
+      e.currentTarget.reset();
+    } else {
+      const text = await res.text().catch(() => "");
+      console.warn("Webhook responded non-2xx", res.status, text);
+      setStatus("err");
+      setMsg("There was a problem. Please try again.");
+    }
+
+    // 2) Fire GA4 AFTER the webhook so it can never block submit
+    safeTrack("submit_form", { form_id: "campaign_inline", formType, page_id: PAGE_ID });
+  } catch (err) {
+    console.error("Webhook fetch failed", err);
+    setStatus("err");
+    setMsg("There was a network problem. Please try again.");
+  } finally {
+    setSubmitting(false); // always re-enable the button
+  }
+}}
+
     >
       <input
         type="text"
