@@ -136,7 +136,8 @@ const safeTrack = (event, params) => {
     },
   };
 
-  const MAKE_WEBHOOK_URL = "https://hook.us2.make.com/8t1ri7o1r73cfvkb2udx1rkiaxexnexb";
+  const MAKE_WEBHOOK_URL = "/api/lead";
+
 
   // ---------- Inline Form (tracks submit_form; keeps PII out of GA) ----------
   const InlineForm = ({ formType }) => {

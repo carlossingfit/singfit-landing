@@ -52,7 +52,8 @@ const safeTrack = (event, params) => {
 };
   // ---------- CONFIG ----------
   const BRAND_ORANGE = "#F47534";
-  const MAKE_WEBHOOK_URL = "https://hook.us2.make.com/8t1ri7o1r73cfvkb2udx1rkiaxexnexb";
+ const MAKE_WEBHOOK_URL = "/api/lead";
+
 
   // Swap these video URLs with your real embeds
   const PANELS = {
@@ -377,52 +378,58 @@ useEffect(() => {
   e.preventDefault();
   if (submitting) return;
 
-  const email = e.currentTarget.email.value.trim();
-  const name = e.currentTarget.name?.value?.trim() || "";
-  const company = e.currentTarget.company?.value?.trim() || "";
+  setStatus("");
+  setMsg("");
+  setSubmitting(true);
 
-  // HTML 'required' enforces email, but we guard anyway
-  if (!email) return;
+  const email   = e.currentTarget.email.value.trim();
+  const name    = e.currentTarget.name?.value?.trim() || "";
+  const company = e.currentTarget.company?.value?.trim() || "";
 
   const payload = {
     name,
     email,
     company,
-    page_id: PAGE_ID,     // "CampaignLanding5" or "CampaignLanding6"
+    page_id: PAGE_ID,      // "CampaignLanding5" or "CampaignLanding6"
     product: formType,
   };
 
-  // 1) Show success immediately (optimistic UI)
-  setStatus("ok");
-  setMsg("Thanks! We’ll be in touch soon.");
-  e.currentTarget.reset();
-
-  // Briefly disable the button to prevent double submits
-  setSubmitting(true);
-  setTimeout(() => setSubmitting(false), 800);
-
-  // 2) Fire webhook in the background (do NOT await, ignore errors)
   try {
-    let sent = false;
-    if (navigator.sendBeacon) {
-      try {
-        const blob = new Blob([JSON.stringify(payload)], { type: "application/json" });
-        sent = navigator.sendBeacon(MAKE_WEBHOOK_URL, blob);
-      } catch {}
-    }
-    if (!sent) {
-      fetch(MAKE_WEBHOOK_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-        // no await; fire-and-forget
-      }).catch(() => {});
-    }
-  } catch { /* ignore */ }
+    const res = await fetch(MAKE_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
 
-  // 3) Track in GA4 (guarded so errors never affect the UI)
-  safeTrack("submit_form", { form_id: "campaign_inline", formType, page_id: PAGE_ID });
+    // Accept any 2xx as success
+    if (res.status >= 200 && res.status < 300) {
+      setStatus("ok");
+      setMsg("Thanks! We’ll be in touch soon.");
+      e.currentTarget.reset();
+    } else {
+      setStatus("err");
+      setMsg("Something went wrong. Please try again.");
+    }
+  } catch (err) {
+    console.error("Form submit error:", err);
+    setStatus("err");
+    setMsg("There was a network problem. Please try again.");
+  } finally {
+    setSubmitting(false);
+  }
+
+  // Fire analytics after (non-blocking)
+  try {
+    if (typeof track === "function") {
+      track("submit_form", {
+        form_id: "campaign_inline",
+        formType,
+        page_id: PAGE_ID,
+      });
+    }
+  } catch (_) {}
 }}
+
 
 
     >
