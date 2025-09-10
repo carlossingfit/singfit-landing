@@ -131,7 +131,7 @@ export default function CampaignLanding6() {
     },
   };
 
-  const MAKE_WEBHOOK_URL = "https://hook.us2.make.com/YOUR_UNIQUE_WEBHOOK";
+  const MAKE_WEBHOOK_URL = "https://hook.us2.make.com/8t1ri7o1r73cfvkb2udx1rkiaxexnexb";
 
   // ---------- Inline Form (tracks submit_form; keeps PII out of GA) ----------
   const InlineForm = ({ formType }) => {
