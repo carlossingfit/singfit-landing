@@ -398,18 +398,21 @@ useEffect(() => {
   }),
 });
 
-            if (res.ok) {
-              setStatus({ type: "success", message: "Thanks! We’ll be in touch shortly." });
-              e.currentTarget.reset();
-            } else {
-              setStatus({ type: "error", message: "There was a problem. Please try again." });
-            }
-          } catch {
-            setStatus({ type: "error", message: "Network error. Please try again." });
-          } finally {
-            setSubmitting(false);
-            setTimeout(() => setStatus({ type: null, message: "" }), 6000);
-          }
+            if (res && res.status >= 200 && res.status < 300) {
+    setStatus("ok");
+    setMsg("Thanks! We’ll be in touch soon.");
+    e.currentTarget.reset();
+  } else {
+    const text = await res.text().catch(() => "");
+    console.warn("Webhook responded non-2xx", res.status, text);
+    setStatus("err");
+    setMsg("There was a problem. Please try again.");
+  }
+} catch (err) {
+  console.error("Webhook fetch failed", err);
+  setStatus("err");
+  setMsg("There was a network problem. Please try again.");
+}
         }}
       >
         <input

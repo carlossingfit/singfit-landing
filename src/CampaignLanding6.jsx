@@ -165,18 +165,21 @@ export default function CampaignLanding6() {
   }),
 });
 
-            if (res.ok) {
-              setStatus("ok");
-              setMsg("Thanks! We’ll be in touch soon.");
-              e.currentTarget.reset();
-            } else {
-              setStatus("err");
-              setMsg("There was a problem. Please try again.");
-            }
-          } catch {
-            setStatus("err");
-            setMsg("There was a problem. Please try again.");
-          }
+            if (res && res.status >= 200 && res.status < 300) {
+    setStatus("ok");
+    setMsg("Thanks! We’ll be in touch soon.");
+    e.currentTarget.reset();
+  } else {
+    const text = await res.text().catch(() => "");
+    console.warn("Webhook responded non-2xx", res.status, text);
+    setStatus("err");
+    setMsg("There was a problem. Please try again.");
+  }
+} catch (err) {
+  console.error("Webhook fetch failed", err);
+  setStatus("err");
+  setMsg("There was a network problem. Please try again.");
+}
         }}
       >
         <input
