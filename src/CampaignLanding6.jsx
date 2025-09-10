@@ -135,81 +135,93 @@ export default function CampaignLanding6() {
 
   // ---------- Inline Form (tracks submit_form; keeps PII out of GA) ----------
   const InlineForm = ({ formType }) => {
-    const [status, setStatus] = useState(""); // "", "ok", "err"
-    const [msg, setMsg] = useState("");
+  const [status, setStatus] = useState("");   // "", "ok", "err"
+  const [msg, setMsg] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
-    return (
-      <form
-        className="mt-4 flex flex-col gap-3"
-        onSubmit={async (e) => {
-          e.preventDefault();
-          setStatus("");
-          setMsg("");
-          const email = e.currentTarget.email.value.trim();
-          const name = e.currentTarget.name?.value?.trim() || "";
-          const company = e.currentTarget.company?.value?.trim() || "";
+  return (
+    <form
+      className="mt-4 flex flex-col gap-3"
+      onSubmit={async (e) => {
+        e.preventDefault();
+        if (submitting) return;
 
-          // Track to GA4 (no PII)
-          track("submit_form", { form_id: "campaign_inline", formType, page_id: PAGE_ID });
+        setStatus("");
+        setMsg("");
+        setSubmitting(true);
 
-          try {
-            const res = await fetch(MAKE_WEBHOOK_URL, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    name,
-    email,
-    company,
-    page_id: "CampaignLanding6",   // <-- exact key & value
-    product: formType,
-  }),
-});
+        const email = e.currentTarget.email.value.trim();
+        const name = e.currentTarget.name?.value?.trim() || "";
+        const company = e.currentTarget.company?.value?.trim() || "";
 
-            if (res && res.status >= 200 && res.status < 300) {
-    setStatus("ok");
-    setMsg("Thanks! We’ll be in touch soon.");
-    e.currentTarget.reset();
-  } else {
-    const text = await res.text().catch(() => "");
-    console.warn("Webhook responded non-2xx", res.status, text);
-    setStatus("err");
-    setMsg("There was a problem. Please try again.");
-  }
-} catch (err) {
-  console.error("Webhook fetch failed", err);
-  setStatus("err");
-  setMsg("There was a network problem. Please try again.");
-}
-        }}
-      >
+        // GA4 (no PII)
+        track("submit_form", { form_id: "campaign_inline", formType, page_id: PAGE_ID });
+
+        try {
+          const res = await fetch(MAKE_WEBHOOK_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name,
+              email,
+              company,
+              page_id: PAGE_ID, // "CampaignLanding5" or "CampaignLanding6"
+              product: formType,
+            }),
+          });
+
+          // Treat any 2xx as success; don't parse JSON (Make often returns plain text "Accepted")
+          if (res.status >= 200 && res.status < 300) {
+            setStatus("ok");
+            setMsg("Thanks! We’ll be in touch soon.");
+            e.currentTarget.reset();
+          } else {
+            const text = await res.text().catch(() => "");
+            console.warn("Webhook responded non-2xx", res.status, text);
+            setStatus("err");
+            setMsg("There was a problem. Please try again.");
+          }
+        } catch (err) {
+          console.error("Webhook fetch failed", err);
+          setStatus("err");
+          setMsg("There was a network problem. Please try again.");
+        } finally {
+          setSubmitting(false); // <-- always restore the button
+        }
+      }}
+    >
+      <input
+        type="text"
+        name="name"
+        placeholder="Your name (optional)"
+        className="px-3 py-2 rounded-md border border-gray-300 text-sm w-full focus:ring-2 focus:ring-[#F47534]"
+      />
+      <div className="flex flex-col sm:flex-row gap-2">
         <input
-          type="text"
-          name="name"
-          placeholder="Your name (optional)"
+          type="email"
+          name="email"
+          required
+          placeholder="Email (required)"
           className="px-3 py-2 rounded-md border border-gray-300 text-sm w-full focus:ring-2 focus:ring-[#F47534]"
         />
-        <div className="flex flex-col sm:flex-row gap-2">
-          <input
-            type="email"
-            name="email"
-            required
-            placeholder="Email (required)"
-            className="px-3 py-2 rounded-md border border-gray-300 text-sm w-full focus:ring-2 focus:ring-[#F47534]"
-          />
-          <button type="submit" className="px-4 py-3 rounded-md text-white text-sm bg-[#F47534] hover:bg-[#d9652c] shadow">
-            Submit
-          </button>
-        </div>
+        <button
+          type="submit"
+          disabled={submitting}
+          className="px-4 py-3 rounded-md text-white text-sm bg-[#F47534] hover:bg-[#d9652c] shadow disabled:opacity-60 disabled:cursor-not-allowed"
+        >
+          {submitting ? "Submitting..." : "Submit"}
+        </button>
+      </div>
 
-        {/* Inline feedback */}
-        {msg && (
-          <p role="status" aria-live="polite" className={`text-sm mt-1 ${status === "ok" ? "text-green-600" : "text-red-600"}`}>
-            {msg}
-          </p>
-        )}
-      </form>
-    );
-  };
+      {msg && (
+        <p role="status" aria-live="polite" className={`text-sm mt-1 ${status === "ok" ? "text-green-600" : "text-red-600"}`}>
+          {msg}
+        </p>
+      )}
+    </form>
+  );
+};
+
 
   // -------- Continuous ticker (safe, no resets) --------
   const wrapRef = useRef(null);

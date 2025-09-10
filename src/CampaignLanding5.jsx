@@ -363,97 +363,93 @@ useEffect(() => {
 };
 
   const InlineForm = ({ formType }) => {
-    const [status, setStatus] = useState({ type: null, message: "" });
-    const [submitting, setSubmitting] = useState(false);
+  const [status, setStatus] = useState("");   // "", "ok", "err"
+  const [msg, setMsg] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
-    return (
-      <form
-        className="mt-4 flex flex-col gap-3"
-        onSubmit={async (e) => {
-          e.preventDefault();
-          const email = e.currentTarget.email.value.trim();
-          const name = e.currentTarget.name?.value?.trim() || "";
-          const company = e.currentTarget.company?.value?.trim() || ""; 
+  return (
+    <form
+      className="mt-4 flex flex-col gap-3"
+      onSubmit={async (e) => {
+        e.preventDefault();
+        if (submitting) return;
 
-          if (!email) {
-            setStatus({ type: "error", message: "Please enter a valid email." });
-            return;
+        setStatus("");
+        setMsg("");
+        setSubmitting(true);
+
+        const email = e.currentTarget.email.value.trim();
+        const name = e.currentTarget.name?.value?.trim() || "";
+        const company = e.currentTarget.company?.value?.trim() || "";
+
+        // GA4 (no PII)
+        track("submit_form", { form_id: "campaign_inline", formType, page_id: PAGE_ID });
+
+        try {
+          const res = await fetch(MAKE_WEBHOOK_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name,
+              email,
+              company,
+              page_id: PAGE_ID, // "CampaignLanding5" or "CampaignLanding6"
+              product: formType,
+            }),
+          });
+
+          // Treat any 2xx as success; don't parse JSON (Make often returns plain text "Accepted")
+          if (res.status >= 200 && res.status < 300) {
+            setStatus("ok");
+            setMsg("Thanks! We’ll be in touch soon.");
+            e.currentTarget.reset();
+          } else {
+            const text = await res.text().catch(() => "");
+            console.warn("Webhook responded non-2xx", res.status, text);
+            setStatus("err");
+            setMsg("There was a problem. Please try again.");
           }
-
-          setSubmitting(true);
-          setStatus({ type: null, message: "" });
-
-          track("submit_form", { form_id: "campaign_inline", formType });
-
-          try {
-            const res = await fetch(MAKE_WEBHOOK_URL, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    name,
-    email,
-    company,
-    page_id: "CampaignLanding5",   // <-- exact key & value
-    product: formType,             // Rehab Therapy | Senior Living | Home Health/Care
-  }),
-});
-
-            if (res && res.status >= 200 && res.status < 300) {
-    setStatus("ok");
-    setMsg("Thanks! We’ll be in touch soon.");
-    e.currentTarget.reset();
-  } else {
-    const text = await res.text().catch(() => "");
-    console.warn("Webhook responded non-2xx", res.status, text);
-    setStatus("err");
-    setMsg("There was a problem. Please try again.");
-  }
-} catch (err) {
-  console.error("Webhook fetch failed", err);
-  setStatus("err");
-  setMsg("There was a network problem. Please try again.");
-}
-        }}
-      >
+        } catch (err) {
+          console.error("Webhook fetch failed", err);
+          setStatus("err");
+          setMsg("There was a network problem. Please try again.");
+        } finally {
+          setSubmitting(false); // <-- always restore the button
+        }
+      }}
+    >
+      <input
+        type="text"
+        name="name"
+        placeholder="Your name (optional)"
+        className="px-3 py-2 rounded-md border border-gray-300 text-sm w-full focus:ring-2 focus:ring-[#F47534]"
+      />
+      <div className="flex flex-col sm:flex-row gap-2">
         <input
-          type="text"
-          name="name"
-          placeholder="Your name (optional)"
-          className="px-3 py-2 rounded-md border border-gray-300 text-base w-full focus:ring-2 focus:ring-[#F47534]"
-          disabled={submitting}
+          type="email"
+          name="email"
+          required
+          placeholder="Email (required)"
+          className="px-3 py-2 rounded-md border border-gray-300 text-sm w-full focus:ring-2 focus:ring-[#F47534]"
         />
-        <div className="flex flex-col sm:flex-row gap-2">
-          <input
-            type="email"
-            name="email"
-            required
-            placeholder="Email (required)"
-            className="px-3 py-2 rounded-md border border-gray-300 text-base w-full focus:ring-2 focus:ring-[#F47534]"
-            disabled={submitting}
-          />
-          <Button
-            type="submit"
-            disabled={submitting}
-            className={`text-base px-5 py-3 bg-[#F47534] text-white hover:bg-[#d9652c] shadow ${
-              submitting ? "opacity-80 cursor-not-allowed" : ""
-            }`}
-          >
-            {submitting ? "Submitting…" : "Submit"}
-          </Button>
-        </div>
+        <button
+          type="submit"
+          disabled={submitting}
+          className="px-4 py-3 rounded-md text-white text-sm bg-[#F47534] hover:bg-[#d9652c] shadow disabled:opacity-60 disabled:cursor-not-allowed"
+        >
+          {submitting ? "Submitting..." : "Submit"}
+        </button>
+      </div>
 
-        {status.message ? (
-          <div
-            role="status"
-            aria-live="polite"
-            className={`text-sm mt-2 ${status.type === "success" ? "text-green-700" : "text-red-600"}`}
-          >
-            {status.message}
-          </div>
-        ) : null}
-      </form>
-    );
-  };
+      {msg && (
+        <p role="status" aria-live="polite" className={`text-sm mt-1 ${status === "ok" ? "text-green-600" : "text-red-600"}`}>
+          {msg}
+        </p>
+      )}
+    </form>
+  );
+};
+
 
   return (
     <div className="bg-white min-h-screen px-6 py-8 max-w-6xl mx-auto font-sans text-gray-900">
