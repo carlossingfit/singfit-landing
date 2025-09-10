@@ -405,7 +405,8 @@ useEffect(() => {
     if (res.status >= 200 && res.status < 300) {
       setStatus("ok");
       setMsg("Thanks! We’ll be in touch soon.");
-      e.currentTarget.reset();
+      e.target.reset?.();
+
     } else {
       setStatus("err");
       setMsg("Something went wrong. Please try again.");
