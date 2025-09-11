@@ -75,9 +75,9 @@ useEffect(() => {
       title: "SingFit STUDIO Caregiver",
       desc: "For individuals supporting loved ones at home.",
       bullets: [
-        "Guided, step-by-step sessions to help you do stuff more a",
-        "Lyrics on screen with voice coaching",
-        "Track mood and engagement over time",
+        "Foster a sense of connection with your loved one",
+        "Structured sessions tailored to your loved one’s goals",
+        "Lyric prompting supports a failure-free singing experience",
       ],
       video: "https://player.vimeo.com/video/736275780?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
       cta:[
@@ -91,9 +91,9 @@ useEffect(() => {
       title: "SingFit STUDIO PRO",
       desc: "For individual therapists and clinical use.",
       bullets: [
-        "Tools for 1:1 and small groups",
-        "Clinical documentation support",
-        "Flexible session building",
+        "Designed by board-certified music therapists",
+        "Track client progress towards goals over time",
+        "Personalize sessions for each client’s goals and needs",
       ],
       video: "https://player.vimeo.com/video/1089881903?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
       cta: { type: "form", label: "Get Pricing & Details", formType: "Rehab Therapy" },
@@ -104,9 +104,9 @@ useEffect(() => {
       title: "SingFit PRIME",
       desc: "Turnkey programming for senior living communities.",
       bullets: [
-        "Staff-friendly group sessions",
-        "Created by board-certified music therapists",
-        "Training and implementation support",
+        "Promote brain health, mood elevation and socialization",
+        "Online training and implementation support",
+        "Full-body therapeutic singing program to engage residents",
       ],
       video: "https://www.youtube.com/embed/7a2YFIkNbrM?enablejsapi=1",
       cta: { type: "form", label: "Get Pricing & Details", formType: "Senior Living" },
@@ -117,9 +117,9 @@ useEffect(() => {
       title: "Home Health/Care",
       desc: "Implementations for home health and home care.",
       bullets: [
-        "Deployable across distributed teams",
-        "Clinical and family-facing options",
-        "Program design and onboarding",
+        "Captivate users with age-appropriate popular songs",
+        "Clinical & family-facing options",
+        "Easily fits into existing care workflows",
       ],
       video: "https://player.vimeo.com/video/1089881903?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
       cta: { type: "form", label: "Discuss Home Health", formType: "Home Health/Care" },
@@ -553,7 +553,7 @@ useEffect(() => {
             </span>
           </h1>
           <p className="text-xl text-white font-medium">
-            A digital therapeutic platform built to support wellness through song — at home, in therapy, and in senior living.
+             From clinical settings to home care, SingFit engages, uplifts, and supports clients and loved ones through the proven power of singing.
           </p>
         </div>
       </section>
