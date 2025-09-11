@@ -54,7 +54,19 @@ const safeTrack = (event, params) => {
   const BRAND_ORANGE = "#F47534";
  const MAKE_WEBHOOK_URL = "/api/lead";
 
+const [utmParams, setUtmParams] = useState({});
 
+useEffect(() => {
+  const params = new URLSearchParams(window.location.search);
+  const utms = {
+    utm_source: params.get("utm_source") || "",
+    utm_medium: params.get("utm_medium") || "",
+    utm_campaign: params.get("utm_campaign") || "",
+    utm_term: params.get("utm_term") || "",
+    utm_content: params.get("utm_content") || "",
+  };
+  setUtmParams(utms);
+}, []);
   // Swap these video URLs with your real embeds
   const PANELS = {
     caregiver: {
