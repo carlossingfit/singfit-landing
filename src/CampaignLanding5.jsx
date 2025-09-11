@@ -399,12 +399,18 @@ useEffect(() => {
   const company = e.currentTarget.company?.value?.trim() || "";
 
   const payload = {
-    name,
-    email,
-    company,
-    page_id: PAGE_ID,      // "CampaignLanding5" or "CampaignLanding6"
-    product: formType,
-  };
+  name,
+  email,
+  company,
+  page_id: PAGE_ID,
+  product: formType,
+  utm_source: utmParams.utm_source,
+  utm_medium: utmParams.utm_medium,
+  utm_campaign: utmParams.utm_campaign,
+  utm_term: utmParams.utm_term,
+  utm_content: utmParams.utm_content,
+};
+
 
   try {
     const res = await fetch(MAKE_WEBHOOK_URL, {
