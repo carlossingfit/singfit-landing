@@ -208,6 +208,11 @@ useEffect(() => {
               video_title: title,
               video_id: videoId,
               page_id: "CampaignLanding5",
+               utm_source: utmParams.utm_source,
+  utm_medium: utmParams.utm_medium,
+  utm_campaign: utmParams.utm_campaign,
+  utm_term: utmParams.utm_term,
+  utm_content: utmParams.utm_content,
               sleeve_key: activeKey,
             });
           }
@@ -231,6 +236,11 @@ useEffect(() => {
               video_title: title,
               video_id: videoId,
               page_id: "CampaignLanding5",
+               utm_source: utmParams.utm_source,
+  utm_medium: utmParams.utm_medium,
+  utm_campaign: utmParams.utm_campaign,
+  utm_term: utmParams.utm_term,
+  utm_content: utmParams.utm_content,
               sleeve_key: activeKey,
             });
           }
@@ -296,6 +306,11 @@ useEffect(() => {
         video_title: title,
         video_id: videoId,
         page_id: "CampaignLanding5",
+         utm_source: utmParams.utm_source,
+  utm_medium: utmParams.utm_medium,
+  utm_campaign: utmParams.utm_campaign,
+  utm_term: utmParams.utm_term,
+  utm_content: utmParams.utm_content,
         sleeve_key: activeKey,
       });
     });
@@ -323,6 +338,11 @@ useEffect(() => {
         video_title: title,
         video_id: videoId,
         page_id: "CampaignLanding5",
+         utm_source: utmParams.utm_source,
+  utm_medium: utmParams.utm_medium,
+  utm_campaign: utmParams.utm_campaign,
+  utm_term: utmParams.utm_term,
+  utm_content: utmParams.utm_content,
         sleeve_key: activeKey,
       });
     });
@@ -366,6 +386,11 @@ useEffect(() => {
         count: arr.length,
         selection_keys: arr.join(","),
         page_id: "CampaignLanding5",
+         utm_source: utmParams.utm_source,
+  utm_medium: utmParams.utm_medium,
+  utm_campaign: utmParams.utm_campaign,
+  utm_term: utmParams.utm_term,
+  utm_content: utmParams.utm_content,
       });
       sessionStorage.setItem("cl5_multi_fired", "true");
     }
@@ -440,11 +465,17 @@ useEffect(() => {
   // Fire analytics after (non-blocking)
   try {
     if (typeof track === "function") {
-      track("submit_form", {
-        form_id: "campaign_inline",
-        formType,
-        page_id: PAGE_ID,
-      });
+     track("submit_form", {
+  form_id: "campaign_inline",
+  formType,
+  page_id: PAGE_ID,
+  utm_source: utmParams.utm_source,
+  utm_medium: utmParams.utm_medium,
+  utm_campaign: utmParams.utm_campaign,
+  utm_term: utmParams.utm_term,
+  utm_content: utmParams.utm_content,
+});
+
     }
   } catch (_) {}
 }}
@@ -504,6 +535,11 @@ useEffect(() => {
       button_text: "SingFit Logo",
       destination_url: "https://www.singfit.com/",
       page_id: "CampaignLanding5",
+       utm_source: utmParams.utm_source,
+  utm_medium: utmParams.utm_medium,
+  utm_campaign: utmParams.utm_campaign,
+  utm_term: utmParams.utm_term,
+  utm_content: utmParams.utm_content,
       sleeve_key: activeKey,
     });
   }}
@@ -626,6 +662,11 @@ useEffect(() => {
               button_text: cta.label,
               destination_url: cta.url,
               page_id: "CampaignLanding5",
+               utm_source: utmParams.utm_source,
+  utm_medium: utmParams.utm_medium,
+  utm_campaign: utmParams.utm_campaign,
+  utm_term: utmParams.utm_term,
+  utm_content: utmParams.utm_content,
               // optional (nice to have): sleeve_key: activeKey,
             });
           }}
@@ -646,6 +687,11 @@ useEffect(() => {
           button_text: active.cta.label,
           destination_url: active.cta.url,
           page_id: "CampaignLanding5",
+           utm_source: utmParams.utm_source,
+  utm_medium: utmParams.utm_medium,
+  utm_campaign: utmParams.utm_campaign,
+  utm_term: utmParams.utm_term,
+  utm_content: utmParams.utm_content,
           // optional: sleeve_key: activeKey,
         });
       }}
@@ -690,6 +736,11 @@ useEffect(() => {
       placement: "nudge",
       destination_url: "https://www.singfit.com/contact",
       page_id: "CampaignLanding5",
+       utm_source: utmParams.utm_source,
+  utm_medium: utmParams.utm_medium,
+  utm_campaign: utmParams.utm_campaign,
+  utm_term: utmParams.utm_term,
+  utm_content: utmParams.utm_content,
     });
   }}
   className="text-md px-3 py-1 rounded-full bg-[#F47534] text-white hover:bg-[#d9652c] transition"

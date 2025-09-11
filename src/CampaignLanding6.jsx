@@ -214,11 +214,17 @@ useEffect(() => {
   // Fire analytics after (non-blocking)
   try {
     if (typeof track === "function") {
-      track("submit_form", {
-        form_id: "campaign_inline",
-        formType,
-        page_id: PAGE_ID,
-      });
+      ttrack("submit_form", {
+  form_id: "campaign_inline",
+  formType,
+  page_id: PAGE_ID,
+  utm_source: utmParams.utm_source,
+  utm_medium: utmParams.utm_medium,
+  utm_campaign: utmParams.utm_campaign,
+  utm_term: utmParams.utm_term,
+  utm_content: utmParams.utm_content,
+});
+
     }
   } catch (_) {}
 }}
@@ -380,6 +386,11 @@ useEffect(() => {
         selection_index: arr.length,
         selection_keys: arr.join(","),
         page_id: PAGE_ID,
+         utm_source: utmParams.utm_source,
+  utm_medium: utmParams.utm_medium,
+  utm_campaign: utmParams.utm_campaign,
+  utm_term: utmParams.utm_term,
+  utm_content: utmParams.utm_content,
       });
 
       if (arr.length === 2 && !sessionStorage.getItem("cl6_multi_fired")) {
@@ -387,6 +398,11 @@ useEffect(() => {
           count: arr.length,
           selection_keys: arr.join(","),
           page_id: PAGE_ID,
+           utm_source: utmParams.utm_source,
+  utm_medium: utmParams.utm_medium,
+  utm_campaign: utmParams.utm_campaign,
+  utm_term: utmParams.utm_term,
+  utm_content: utmParams.utm_content,
         });
         sessionStorage.setItem("cl6_multi_fired", "true");
       }
@@ -435,6 +451,11 @@ useEffect(() => {
           video_title: title,
           video_id: vid,
           page_id: PAGE_ID,
+           utm_source: utmParams.utm_source,
+  utm_medium: utmParams.utm_medium,
+  utm_campaign: utmParams.utm_campaign,
+  utm_term: utmParams.utm_term,
+  utm_content: utmParams.utm_content,
           sleeve_key: normalizeKey(active),
         });
       });
@@ -460,6 +481,11 @@ useEffect(() => {
           video_title: title,
           video_id: vid,
           page_id: PAGE_ID,
+           utm_source: utmParams.utm_source,
+  utm_medium: utmParams.utm_medium,
+  utm_campaign: utmParams.utm_campaign,
+  utm_term: utmParams.utm_term,
+  utm_content: utmParams.utm_content,
           sleeve_key: normalizeKey(active),
         });
       });
@@ -513,6 +539,11 @@ useEffect(() => {
                 video_title: title,
                 video_id: vid,
                 page_id: PAGE_ID,
+                 utm_source: utmParams.utm_source,
+  utm_medium: utmParams.utm_medium,
+  utm_campaign: utmParams.utm_campaign,
+  utm_term: utmParams.utm_term,
+  utm_content: utmParams.utm_content,
                 sleeve_key: normalizeKey(active),
               });
             }
@@ -535,6 +566,11 @@ useEffect(() => {
                 video_title: title,
                 video_id: vid,
                 page_id: PAGE_ID,
+                 utm_source: utmParams.utm_source,
+  utm_medium: utmParams.utm_medium,
+  utm_campaign: utmParams.utm_campaign,
+  utm_term: utmParams.utm_term,
+  utm_content: utmParams.utm_content,
                 sleeve_key: normalizeKey(active),
               });
             }
@@ -596,6 +632,11 @@ useEffect(() => {
                 button_text: "SingFit Logo",
                 destination_url: "https://www.singfit.com/",
                 page_id: PAGE_ID,
+                 utm_source: utmParams.utm_source,
+  utm_medium: utmParams.utm_medium,
+  utm_campaign: utmParams.utm_campaign,
+  utm_term: utmParams.utm_term,
+  utm_content: utmParams.utm_content,
               })
             }
           >
@@ -718,6 +759,11 @@ useEffect(() => {
                           button_text: product.cta.label,
                           destination_url: product.cta.href,
                           page_id: PAGE_ID,
+                           utm_source: utmParams.utm_source,
+  utm_medium: utmParams.utm_medium,
+  utm_campaign: utmParams.utm_campaign,
+  utm_term: utmParams.utm_term,
+  utm_content: utmParams.utm_content,
                           sleeve_key: normalizeKey(active),
                         })
                       }
@@ -735,6 +781,11 @@ useEffect(() => {
                             button_text: product.cta.secondary.label,
                             destination_url: product.cta.secondary.href,
                             page_id: PAGE_ID,
+                             utm_source: utmParams.utm_source,
+  utm_medium: utmParams.utm_medium,
+  utm_campaign: utmParams.utm_campaign,
+  utm_term: utmParams.utm_term,
+  utm_content: utmParams.utm_content,
                             sleeve_key: normalizeKey(active),
                           })
                         }
@@ -824,6 +875,11 @@ useEffect(() => {
                   placement: "nudge",
                   destination_url: "https://www.singfit.com/contact",
                   page_id: PAGE_ID,
+                   utm_source: utmParams.utm_source,
+  utm_medium: utmParams.utm_medium,
+  utm_campaign: utmParams.utm_campaign,
+  utm_term: utmParams.utm_term,
+  utm_content: utmParams.utm_content,
                 })
               }
             >
