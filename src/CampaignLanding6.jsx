@@ -138,7 +138,7 @@ useEffect(() => {
       title: "SingFit STUDIO PRO",
       tagline: "Clinical tools for 1:1 and small-group work",
       bullets: [
-        "Personalized program for your client’s unique abilities",
+        "Personalize sessions for each client’s goals and needs",
         "Supports SLP, OT, and other therapy-related goals",
         "In-app data capture to measure progress over time",
       ],
