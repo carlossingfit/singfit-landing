@@ -149,9 +149,9 @@ useEffect(() => {
       title: "SingFit PRIME",
       tagline: "Group programming for senior living",
       bullets: [
-        "Turn-key solution, no prior musical experience required",
-        "Music therapist designed program to maximize benefits",
-        "Unlimited online training to get staff up and running",
+        "Promote brain health, mood elevation and socialization",
+        "Online training and implementation support",
+        "Full-body therapeutic singing program to engage residents",
       ],
       // IMPORTANT: enable JS API for YT tracking
       video: "https://www.youtube.com/embed/7a2YFIkNbrM?enablejsapi=1",
