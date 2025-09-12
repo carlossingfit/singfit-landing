@@ -115,7 +115,7 @@ useEffect(() => {
       icon: <House03Icon className="h-10 w-10 text-[#F47534]" />,
       label: "Home Health/Care",
       title: "Home Health/Care",
-      desc: "Implementations for home health and home care.",
+      desc: "For home health and home care professionals.",
       bullets: [
         "Captivate users with age-appropriate popular songs",
         "Clinical & family-facing options",

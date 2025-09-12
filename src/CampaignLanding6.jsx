@@ -78,14 +78,35 @@ useEffect(() => {
 
   // One tiny CSS block for the looping pulse (until click)
   const styleBlock = `
-    @keyframes sf-pulse-loop {
-      0%   { box-shadow: 0 0 0 0 rgba(244,117,52,0.35); transform: scale(1); }
-      60%  { box-shadow: 0 0 0 12px rgba(244,117,52,0);  transform: scale(1.007); }
-      100% { box-shadow: 0 0 0 0 rgba(244,117,52,0);    transform: scale(1); }
-    }
-    .sf-pulse-loop { animation: sf-pulse-loop 1200ms ease-out infinite; }
-    @media (prefers-reduced-motion: reduce) { .sf-pulse-loop { animation: none !important; } }
-  `;
+  @keyframes sf-pulse-loop {
+    0%   { box-shadow: 0 0 0 0 rgba(244,117,52,0.35); transform: scale(1); }
+    60%  { box-shadow: 0 0 0 12px rgba(244,117,52,0);  transform: scale(1.007); }
+    100% { box-shadow: 0 0 0 0 rgba(244,117,52,0);    transform: scale(1); }
+  }
+  .sf-pulse-loop { animation: sf-pulse-loop 1200ms ease-out infinite; }
+  @media (prefers-reduced-motion: reduce) { .sf-pulse-loop { animation: none !important; } }
+
+  /* Ticker sizing (consistent visual footprint regardless of source image aspect ratio) */
+  .sf-ticker { --ticker-gap: 3rem; gap: var(--ticker-gap); }
+ .sf-ticker-item {
+  width: 200px;
+  height: 60px;
+  flex: 0 0 auto;
+  min-width: 200px;
+  max-width: 200px;
+}
+@media (min-width: 768px) {
+  .sf-ticker-item {
+    width: 240px;
+    height: 72px;
+    flex: 0 0 auto;
+    min-width: 240px;
+    max-width: 240px;
+  }
+}
+
+`;
+
 
   // Selector options
   const options = [
@@ -101,9 +122,9 @@ useEffect(() => {
       title: "SingFit STUDIO Caregiver",
       tagline: "Guided music sessions you can lead at home.",
       bullets: [
-        "Step-by-step activities with on-screen lyrics",
-        "Coaching cues and mood tracking",
-        "Designed for everyday use",
+        "Improve cognitive health, communication and well-being",
+        "Connect with your loved one through singing",
+        "Easy to use, no training or musical experience required",
       ],
       video: "https://player.vimeo.com/video/736275780?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
       cta: {
@@ -117,9 +138,9 @@ useEffect(() => {
       title: "SingFit STUDIO PRO",
       tagline: "Clinical tools for 1:1 and small-group work.",
       bullets: [
-        "Flexible session building",
-        "Supports documentation needs",
-        "Built by board-certified music therapists",
+        "Personalized program for your client’s unique abilities",
+        "Supports SLP, OT, and other therapy-related goals",
+        "In-app data capture to measure progress over time",
       ],
       video: "https://player.vimeo.com/video/1089881903?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
       cta: { type: "form", label: "For Therapists", href: "https://www.singfit.com/studiopro", formType: "Rehab Therapy" },
@@ -128,9 +149,9 @@ useEffect(() => {
       title: "SingFit PRIME",
       tagline: "Turnkey group programming for senior living.",
       bullets: [
-        "Train staff quickly and consistently",
-        "Evidence-based sessions ready to run",
-        "Implementation and ongoing support",
+        "Turn-key solution, no prior musical experience required",
+        "Music therapist designed program to maximize benefits",
+        "Unlimited online training to get staff up and running",
       ],
       // IMPORTANT: enable JS API for YT tracking
       video: "https://www.youtube.com/embed/7a2YFIkNbrM?enablejsapi=1",
@@ -138,11 +159,11 @@ useEffect(() => {
     },
     homehealth: {
       title: "Home Health/Care",
-      tagline: "Deploy across distributed teams and families.",
+      tagline: "For home health and home care professionals.",
       bullets: [
-        "Clinical & family-facing options",
-        "Program design and onboarding",
-        "Fits existing care workflows",
+        "Personalized music to facilitate progress towards goals",
+        "Unlock joy while improving emotional and cognitive health",
+        "In-app reporting tracks user progress over time",
       ],
       video: "https://player.vimeo.com/video/1089881903?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
       cta: { type: "form", label: "Discuss Home Health", formType: "Home Health/Care" },
@@ -214,7 +235,7 @@ useEffect(() => {
   // Fire analytics after (non-blocking)
   try {
     if (typeof track === "function") {
-      ttrack("submit_form", {
+      track("submit_form", {
   form_id: "campaign_inline",
   formType,
   page_id: PAGE_ID,
@@ -270,100 +291,135 @@ useEffect(() => {
   const trackRef = useRef(null);
 
   useEffect(() => {
-    const wrap = wrapRef.current;
-    const trackEl = trackRef.current;
-    if (!wrap || !trackEl) return;
+  const wrap = wrapRef.current;
+  const trackEl = trackRef.current;
+  if (!wrap || !trackEl) return;
 
-    const mql = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (mql && mql.matches) return;
+  const mql = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
+  if (mql && mql.matches) return;
 
-    const waitForImages = () => {
-      const imgs = Array.from(trackEl.querySelectorAll("img"));
-      if (!imgs.length) return Promise.resolve();
-      let pending = imgs.length;
-      return new Promise((resolve) => {
-        const done = () => (--pending <= 0 ? resolve() : null);
-        imgs.forEach((img) => {
-          if (img.complete) done();
-          else {
-            img.addEventListener("load", done, { once: true });
-            img.addEventListener("error", done, { once: true });
-          }
-        });
+  const waitForImages = () => {
+    const imgs = Array.from(trackEl.querySelectorAll("img"));
+    if (!imgs.length) return Promise.resolve();
+    let pending = imgs.length;
+    return new Promise((resolve) => {
+      const done = () => (--pending <= 0 ? resolve() : null);
+      imgs.forEach((img) => {
+        if (img.complete) done();
+        else {
+          img.addEventListener("load", done, { once: true });
+          img.addEventListener("error", done, { once: true });
+        }
       });
-    };
-
-    let rafId = 0;
-    let paused = false;
-    let offset = 0;
-    const SPEED = 0.45; // px/frame
-
-    const getFirstSpan = () => {
-      const first = trackEl.children[0];
-      if (!first) return 0;
-      const rect = first.getBoundingClientRect();
-      const cs = getComputedStyle(trackEl);
-      const gap = parseFloat(cs.columnGap || cs.gap || "0") || 0;
-      return rect.width + gap;
-    };
-
-    const step = () => {
-      if (!paused) {
-        offset -= SPEED;
-        trackEl.style.transform = `translate3d(${offset}px,0,0)`;
-        let span = getFirstSpan();
-        while (span > 0 && -offset >= span) {
-          trackEl.appendChild(trackEl.children[0]);
-          offset += span;
-          trackEl.style.transform = `translate3d(${offset}px,0,0)`;
-          span = getFirstSpan();
-        }
-      }
-      rafId = requestAnimationFrame(step);
-    };
-
-    const onEnter = () => (paused = true);
-    const onLeave = () => (paused = false);
-    const onResize = () => {
-      offset = 0;
-      trackEl.style.transform = "translate3d(0,0,0)";
-    };
-
-    let cleanup = () => {};
-    waitForImages().then(() => {
-      if (!trackEl.dataset.cloned) {
-        const originals = Array.from(trackEl.children);
-        if (trackEl.scrollWidth < wrap.offsetWidth + 200) {
-          originals.forEach((n) => trackEl.appendChild(n.cloneNode(true)));
-        }
-        trackEl.dataset.cloned = "1";
-      }
-      wrap.addEventListener("mouseenter", onEnter);
-      wrap.addEventListener("mouseleave", onLeave);
-      wrap.addEventListener("focusin", onEnter);
-      wrap.addEventListener("focusout", onLeave);
-      window.addEventListener("resize", onResize);
-      rafId = requestAnimationFrame(step);
-      cleanup = () => {
-        cancelAnimationFrame(rafId);
-        wrap.removeEventListener("mouseenter", onEnter);
-        wrap.removeEventListener("mouseleave", onLeave);
-        wrap.removeEventListener("focusin", onEnter);
-        wrap.removeEventListener("focusout", onLeave);
-        window.removeEventListener("resize", onResize);
-      };
     });
+  };
 
-    return () => cleanup();
-  }, []);
+  let rafId = 0;
+  let paused = false;
+  let offset = 0;
+  const PX_PER_FRAME_AT_60FPS = 0.45;
+  let lastTime = 0;
+
+  const getGap = () => {
+    // Prefer our CSS var; fall back to inline style or 0
+    const cs = getComputedStyle(trackEl);
+    const fromVar = parseFloat(cs.getPropertyValue("--ticker-gap")) || 0;
+    const fromInline = parseFloat(cs.columnGap || cs.gap || "0") || 0;
+    return fromVar || fromInline || 0;
+  };
+
+  const getFirstSpan = () => {
+    const first = trackEl.children[0];
+    if (!(first instanceof HTMLElement)) return 0;
+    const gap = getGap();
+    // offsetWidth is stable (not affected by current transform)
+    return first.offsetWidth + gap;
+  };
+
+  const step = (now) => {
+  if (!lastTime) lastTime = now;
+  const dt = now - lastTime;
+  lastTime = now;
+
+  if (!paused) {
+    const dx = PX_PER_FRAME_AT_60FPS * (dt / 16.6667);
+    offset -= dx;
+
+    // Always scroll leftward
+    trackEl.style.transform = `translate3d(${offset}px,0,0)`;
+
+    // If entire loop has gone off screen, reset cleanly
+    const loopLength = trackEl.scrollWidth / 3; // We’ll clone 3x content
+    if (-offset >= loopLength) {
+      offset += loopLength;
+      trackEl.style.transform = `translate3d(${offset}px,0,0)`;
+    }
+  }
+
+  rafId = requestAnimationFrame(step);
+};
+
+
+  const onEnter = () => (paused = true);
+  const onLeave = () => (paused = false);
+  const onResize = () => {
+    // Rebuild clones if needed and reset transform cleanly
+    buildClones();
+    offset = 0;
+    trackEl.style.transform = "translate3d(0,0,0)";
+  };
+
+  const buildClones = () => {
+  const originals = Array.from(trackEl.children);
+
+  // Only run once
+  if (trackEl.dataset.cloned === "1") return;
+
+  // Clone the original logos 2 more times (3 total loops)
+  for (let i = 0; i < 2; i++) {
+    originals.forEach((n) => trackEl.appendChild(n.cloneNode(true)));
+  }
+
+  trackEl.dataset.cloned = "1";
+};
+
+
+  let cleanup = () => {};
+  waitForImages().then(() => {
+    buildClones();
+    wrap.addEventListener("mouseenter", onEnter);
+    wrap.addEventListener("mouseleave", onLeave);
+    wrap.addEventListener("focusin", onEnter);
+    wrap.addEventListener("focusout", onLeave);
+    window.addEventListener("resize", onResize);
+
+    rafId = requestAnimationFrame(step);
+
+    cleanup = () => {
+      cancelAnimationFrame(rafId);
+      wrap.removeEventListener("mouseenter", onEnter);
+      wrap.removeEventListener("mouseleave", onLeave);
+      wrap.removeEventListener("focusin", onEnter);
+      wrap.removeEventListener("focusout", onLeave);
+      window.removeEventListener("resize", onResize);
+    };
+  });
+
+  return () => cleanup();
+}, []);
+
 
   // Press logos from /public
   const FEATURED_LOGOS = [
-    { src: "/billboard.png", alt: "Billboard", href: "https://www.singfit.com/press" },
-    { src: "/forbes.png", alt: "Forbes", href: "https://www.singfit.com/press" },
-    { src: "/temple.png", alt: "Temple University", href: "https://www.singfit.com/press" },
-    { src: "/Senior-Housing-News-Logo.png", alt: "Senior Housing News", href: "https://www.singfit.com/press" },
-    { src: "/aarp-logo.png", alt: "AARP", href: "https://www.singfit.com/press" },
+    { src: "/Billboard_logo.svg-2.png", alt: "Billboard", href: "https://www.singfit.com/post/singfit-featured-in-billboard " },
+    { src: "/forbes.png", alt: "Forbes", href: "https://www.singfit.com/post/singfit-featured-in-forbes " },
+    { src: "/temple.png", alt: "Temple University", href: "https://www.singfit.com/post/temple-university-features-singfit" },
+    { src: "/Senior-Housing-News-Logo.png", alt: "Senior Housing News", href: "https://www.singfit.com/post/singfit-featured-in-senior-housing-news " },
+    { src: "/aarp-logo.png", alt: "AARP", href: "https://www.singfit.com/post/rachel-francine-ceo-of-singfit-named-a-50-innovation-leader" },
+    { src: "/kecklogo-2.jpg", alt: "Keck", href: "https://www.singfit.com/about" },
+    { src: "/Fast-Company-Logo.png", alt: "Fast Company", href: "https://www.singfit.com/post/singfit-featured-in-fast-company" },
+    { src: "/fierce.jpeg", alt: "Fierce", href: "https://www.fiercehealthcare.com/payers/longevity-health-plan-now-covering-therapeutic-music-platform-singfit " },
+    { src: "/imageedit_11_4620365173.png", alt: "BBC", href: "https://www.singfit.com/videos?pgid=jzsr2nh4-2e38cc47-e723-4de9-bded-bc4211fd9abe  " },
   ];
 
   const product = active ? PRODUCTS[active] : null;
@@ -651,13 +707,13 @@ useEffect(() => {
           className="text-center leading-tight tracking-tight text-black text-[34px] md:text-[57px]"
           style={{ fontFamily: "Gotham, Montserrat, Inter, Arial, sans-serif", fontWeight: 700 }}
         >
-          Discover the Power of Music
+          Discover the Power of Music with SingFit
         </h1>
         <p
           className="mt-4 text-center text-gray-700 mx-auto text-[18px] md:text-[29px] max-w-4xl leading-snug"
           style={{ fontFamily: "Gotham Light, Gotham, Montserrat, Inter, Arial, sans-serif", fontWeight: 300 }}
         >
-          A digital therapeutic platform built to support wellness through song — at home, in therapy, and in senior living.
+          From clinical settings to home care, SingFit engages, uplifts, and supports clients and loved ones through the proven power of singing. 
         </p>
       </section>
 
@@ -831,21 +887,40 @@ useEffect(() => {
             <div className="relative overflow-hidden" ref={wrapRef}>
               <div className="pointer-events-none absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-white to-transparent" />
               <div className="pointer-events-none absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-white to-transparent" />
-              <ul ref={trackRef} className="flex items-center will-change-transform" style={{ gap: "3rem" }} aria-label="Press logos">
-                {FEATURED_LOGOS.map((logo, i) => (
-                  <li key={i} className="shrink-0">
-                    <a
-                      href={logo.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center opacity-70 hover:opacity-100 transition"
-                      aria-label={logo.alt}
-                    >
-                      <img src={logo.src} alt={logo.alt} className="h-8 md:h-10 w-auto object-contain" loading="eager" decoding="async" />
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <ul
+  ref={trackRef}
+  className="sf-ticker flex items-center will-change-transform"
+  style={{ gap: "3rem" }}
+  aria-label="Press logos"
+>
+  {FEATURED_LOGOS.map((logo, i) => (
+    <li key={i} className="shrink-0">
+      <a
+        href={logo.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center opacity-70 hover:opacity-100 transition"
+        aria-label={logo.alt}
+      >
+        {/* Fixed-size logo box for consistent visual size */}
+       <div className="sf-ticker-item flex items-center justify-center">
+  <div className="w-full h-full flex items-center justify-center p-1">
+    <img
+      src={logo.src}
+      alt={logo.alt}
+      className={`h-[85%] w-auto max-w-full object-contain ${logo.alt === "Keck" ? "scale-175" : ""}`}
+      loading="eager"
+      decoding="async"
+    />
+  </div>
+</div>
+
+
+      </a>
+    </li>
+  ))}
+</ul>
+
             </div>
             <p className="sr-only">Logos scroll continuously. Hover to pause.</p>
           </div>
