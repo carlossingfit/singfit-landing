@@ -413,13 +413,13 @@ useEffect(() => {
   const FEATURED_LOGOS = [
     { src: "/Billboard_logo.svg-2.png", alt: "Billboard", href: "https://www.singfit.com/post/singfit-featured-in-billboard " },
     { src: "/forbes.png", alt: "Forbes", href: "https://www.singfit.com/post/singfit-featured-in-forbes " },
-    { src: "/temple.png", alt: "Temple University", href: "https://www.singfit.com/post/temple-university-features-singfit" },
+    { src: "/Temple_University_Logo.svg", alt: "Temple University", href: "https://www.singfit.com/post/temple-university-features-singfit" },
     { src: "/Senior-Housing-News-Logo.png", alt: "Senior Housing News", href: "https://www.singfit.com/post/singfit-featured-in-senior-housing-news " },
     { src: "/aarp-logo.png", alt: "AARP", href: "https://www.singfit.com/post/rachel-francine-ceo-of-singfit-named-a-50-innovation-leader" },
-    { src: "/kecklogo-2.jpg", alt: "Keck", href: "https://www.singfit.com/about" },
+    { src: "/Keck_logo.svg.png", alt: "Keck", href: "https://www.singfit.com/about" },
     { src: "/Fast-Company-Logo.png", alt: "Fast Company", href: "https://www.singfit.com/post/singfit-featured-in-fast-company" },
     { src: "/fierce.jpeg", alt: "Fierce", href: "https://www.fiercehealthcare.com/payers/longevity-health-plan-now-covering-therapeutic-music-platform-singfit " },
-    { src: "/imageedit_11_4620365173.png", alt: "BBC", href: "https://www.singfit.com/videos?pgid=jzsr2nh4-2e38cc47-e723-4de9-bded-bc4211fd9abe  " },
+    { src: "/BBC-logo.jpg", alt: "BBC", href: "https://www.singfit.com/videos?pgid=jzsr2nh4-2e38cc47-e723-4de9-bded-bc4211fd9abe  " },
   ];
 
   const product = active ? PRODUCTS[active] : null;
@@ -980,6 +980,9 @@ useEffect(() => {
           <span>1010 Wilshire Blvd. Los Angeles, CA 90017</span>
           <a href="https://www.singfit.com/privacypolicy" target="_blank" rel="noopener noreferrer" className="hover:underline text-blue-600">
             Privacy Policy
+          </a>
+          <a href="https://www.singfit.com/" target="_blank" rel="noopener noreferrer" className="hover:underline text-blue-600">
+            SingFit.com
           </a>
         </div>
       </footer>
