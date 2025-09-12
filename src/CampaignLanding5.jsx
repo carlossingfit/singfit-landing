@@ -73,7 +73,7 @@ useEffect(() => {
       icon: <HealtcareIcon className="h-10 w-10 text-[#F47534]" />,
       label: "Caregiver",
       title: "SingFit STUDIO Caregiver",
-      desc: "For individuals supporting loved ones at home.",
+      desc: "For individuals supporting loved ones at home",
       bullets: [
         "Foster a sense of connection with your loved one",
         "Structured sessions tailored to your loved one’s goals",
@@ -89,7 +89,7 @@ useEffect(() => {
       icon: <StethoscopeIcon className="h-10 w-10 text-[#F47534]" />,
       label: "Rehab Therapy",
       title: "SingFit STUDIO PRO",
-      desc: "For individual therapists and clinical use.",
+      desc: "For individual therapists and clinical use",
       bullets: [
         "Designed by board-certified music therapists",
         "Track client progress towards goals over time",
@@ -102,7 +102,7 @@ useEffect(() => {
       icon: <UserGroupIcon className="h-10 w-10 text-[#F47534]" />,
       label: "Senior Living",
       title: "SingFit PRIME",
-      desc: "Turnkey programming for senior living communities.",
+      desc: "Turnkey programming for senior living communities",
       bullets: [
         "Promote brain health, mood elevation and socialization",
         "Online training and implementation support",
@@ -115,7 +115,7 @@ useEffect(() => {
       icon: <House03Icon className="h-10 w-10 text-[#F47534]" />,
       label: "Home Health/Care",
       title: "Home Health/Care",
-      desc: "For home health and home care professionals.",
+      desc: "For home health and home care professionals",
       bullets: [
         "Captivate users with age-appropriate popular songs",
         "Clinical & family-facing options",

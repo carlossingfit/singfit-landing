@@ -120,7 +120,7 @@ useEffect(() => {
   const PRODUCTS = {
     caregivers: {
       title: "SingFit STUDIO Caregiver",
-      tagline: "Guided music sessions you can lead at home.",
+      tagline: "Guided music sessions you can lead at home",
       bullets: [
         "Improve cognitive health, communication and well-being",
         "Connect with your loved one through singing",
@@ -136,7 +136,7 @@ useEffect(() => {
     },
     therapists: {
       title: "SingFit STUDIO PRO",
-      tagline: "Clinical tools for 1:1 and small-group work.",
+      tagline: "Clinical tools for 1:1 and small-group work",
       bullets: [
         "Personalized program for your client’s unique abilities",
         "Supports SLP, OT, and other therapy-related goals",
@@ -147,7 +147,7 @@ useEffect(() => {
     },
     senior: {
       title: "SingFit PRIME",
-      tagline: "Turnkey group programming for senior living.",
+      tagline: "Group programming for senior living",
       bullets: [
         "Turn-key solution, no prior musical experience required",
         "Music therapist designed program to maximize benefits",
@@ -159,7 +159,7 @@ useEffect(() => {
     },
     homehealth: {
       title: "Home Health/Care",
-      tagline: "For home health and home care professionals.",
+      tagline: "For home health and home care professionals",
       bullets: [
         "Personalized music to facilitate progress towards goals",
         "Unlock joy while improving emotional and cognitive health",
