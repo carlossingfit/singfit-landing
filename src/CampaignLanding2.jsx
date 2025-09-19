@@ -700,13 +700,13 @@ export default function CampaignLanding2() {
           className="text-center leading-tight tracking-tight text-black text-[34px] md:text-[57px]"
           style={{ fontFamily: "Gotham, Montserrat, Inter, Arial, sans-serif", fontWeight: 700 }}
         >
-          Discover the Benefits of Active Music Making with SingFit
+          Discover Evidence-Based Music Programming That Works
         </h1>
         <p
           className="mt-4 text-center text-gray-700 mx-auto text-[18px] md:text-[29px] max-w-4xl leading-snug"
           style={{ fontFamily: "Gotham Light, Gotham, Montserrat, Inter, Arial, sans-serif", fontWeight: 300 }}
         >
-          From clinical settings to home care, SingFit engages, uplifts, and supports clients and loved ones through the proven power of singing.
+          SingFit reduces depression by 48% and improves cognition through therapeutic singing.
         </p>
       </section>
 
