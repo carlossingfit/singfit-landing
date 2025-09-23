@@ -700,13 +700,13 @@ export default function CampaignLanding2() {
           className="text-center leading-tight tracking-tight text-black text-[34px] md:text-[57px]"
           style={{ fontFamily: "Gotham, Montserrat, Inter, Arial, sans-serif", fontWeight: 700 }}
         >
-          Discover Evidence-Based Music Programming That Works
+          A Music Program That Delivers ROI and Results
         </h1>
         <p
           className="mt-4 text-center text-gray-700 mx-auto text-[18px] md:text-[29px] max-w-4xl leading-snug"
           style={{ fontFamily: "Gotham Light, Gotham, Montserrat, Inter, Arial, sans-serif", fontWeight: 300 }}
         >
-          SingFit reduces depression by 48% and improves cognition through therapeutic singing.
+          Every $1 invested in SingFit PRIME delivers $2.40 in value — while boosting resident participation.
         </p>
       </section>
 
