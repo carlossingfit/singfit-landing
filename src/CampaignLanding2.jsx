@@ -706,7 +706,7 @@ export default function CampaignLanding2() {
           className="mt-4 text-center text-gray-700 mx-auto text-[18px] md:text-[29px] max-w-4xl leading-snug"
           style={{ fontFamily: "Gotham Light, Gotham, Montserrat, Inter, Arial, sans-serif", fontWeight: 300 }}
         >
-          Every $1 invested in SingFit PRIME delivers $2.40 in value — while boosting resident participation.
+          Every $1 invested in SingFit PRIME delivers $2.40 in value; while boosting resident participation.
         </p>
       </section>
 
