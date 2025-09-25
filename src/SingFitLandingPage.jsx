@@ -369,7 +369,7 @@ useEffect(() => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-6 max-w-5xl mx-auto text-left">
 
          <div className="bg-white rounded-lg p-6 shadow">
-  <h3 className="text-lg font-bold mb-2">Backed by Clinical Music Therapy</h3>
+  <h3 className="text-lg font-bold mb-2">Designed by Board-Certified Music Therapists</h3>
   <p className="text-sm text-gray-700">
     SingFit is grounded in clinical music therapy and neuroscience and is designed to enable failure-free singing. Research shows that singing engages multiple brain functions, supporting memory, social connection, and emotional wellbeing.{" "}
      <a
