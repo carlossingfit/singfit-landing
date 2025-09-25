@@ -179,77 +179,70 @@ export default function CampaignLanding2() {
   e.preventDefault();
   if (submitting) return;
 
-  setStatus("");
-  setMsg("");
-  setSubmitting(true);
+  // keep a stable form element reference (React synthetic events can null currentTarget after awaits)
+  const formEl = e.currentTarget;
 
-  const email   = e.currentTarget.email.value.trim();
-  const name    = e.currentTarget.name?.value?.trim() || "";
-  const company = e.currentTarget.company?.value?.trim() || "";
+  // read values
+  const email   = formEl.email.value.trim();
+  const name    = formEl.name?.value?.trim() || "";
+  const company = formEl.company?.value?.trim() || "";
 
-  const payload = {
-  name,
-  email,
-  company,
-  page_id: PAGE_ID,
-  product: formType,
-  utm_source: utmParams.utm_source,
-  utm_medium: utmParams.utm_medium,
-  utm_campaign: utmParams.utm_campaign,
-  utm_term: utmParams.utm_term,
-  utm_content: utmParams.utm_content,
-};
-
-
-  try {
-    const res = await fetch(MAKE_WEBHOOK_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-
-    // Accept any 2xx as success
-    if (res.status >= 200 && res.status < 300) {
-      setStatus("ok");
-      setMsg("Thanks! We’ll be in touch soon.");
-      e.currentTarget.reset();
-    } else {
-      setStatus("err");
-      setMsg("Something went wrong. Please try again.");
-    }
-  } catch (err) {
-    console.error("Form submit error:", err);
+  // minimal validation: both fields must be present; otherwise show a friendly error
+  if (!name || !email) {
     setStatus("err");
-    setMsg("There was a network problem. Please try again.");
-  } finally {
-    setSubmitting(false);
+    setMsg("Please enter your name and email.");
+    return;
   }
 
-  // Fire analytics after (non-blocking)
+  // optimistic UX: show success immediately and reset the form
+  setStatus("ok");
+  setMsg("Thanks! We’ll be in touch soon.");
+  formEl?.reset();
+
+  // briefly throttle multiple clicks
+  setSubmitting(true);
+  setTimeout(() => setSubmitting(false), 800);
+
+  // payload for Make
+  const payload = {
+    name,
+    email,
+    company,
+    page_id: PAGE_ID,          // "CampaignLanding5" or "CampaignLanding6"
+    product: formType,
+  };
+
+  // fire the webhook in the background (do NOT await)
+  try {
+    let sent = false;
+    if (navigator.sendBeacon) {
+      try {
+        const blob = new Blob([JSON.stringify(payload)], { type: "application/json" });
+        sent = navigator.sendBeacon(MAKE_WEBHOOK_URL, blob);
+      } catch {}
+    }
+    if (!sent) {
+      fetch(MAKE_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      }).catch(() => {});
+    }
+  } catch {}  // ignore background errors
+
+  // GA4 (guarded so it never affects UX)
   try {
     if (typeof track === "function") {
-      track("submit_form", {
-  form_id: "campaign_inline",
-  formType,
-  page_id: PAGE_ID,
-  utm_source: utmParams.utm_source,
-  utm_medium: utmParams.utm_medium,
-  utm_campaign: utmParams.utm_campaign,
-  utm_term: utmParams.utm_term,
-  utm_content: utmParams.utm_content,
-});
-
+      track("submit_form", { form_id: "campaign_inline", formType, page_id: PAGE_ID });
     }
-  } catch (_) {}
+  } catch {}
 }}
-
-
-
     >
       <input
         type="text"
         name="name"
-        placeholder="Your name (optional)"
+        required
+        placeholder="Your name"
         className="px-3 py-2 rounded-md border border-gray-300 text-sm w-full focus:ring-2 focus:ring-[#F47534]"
       />
       <div className="flex flex-col sm:flex-row gap-2">
@@ -257,7 +250,7 @@ export default function CampaignLanding2() {
           type="email"
           name="email"
           required
-          placeholder="Email (required)"
+          placeholder="Email"
           className="px-3 py-2 rounded-md border border-gray-300 text-sm w-full focus:ring-2 focus:ring-[#F47534]"
         />
         <button
