@@ -98,7 +98,7 @@ useEffect(() => {
 
     {/* Subhead */}
     <p className="text-xl text-gray-900 leading-relaxed">
-      SingFit is an app designed by board-certified music therapists to support cognitive and emotional wellbeing for you and your loved ones–explore free resources and try SingFit!
+      SingFit is an app designed to deliver guided singing sessions which can support cognitive and emotional wellbeing for you and your loved ones; explore free resources and try SingFit!
     </p>
 
     {/* CTA Buttons */}
@@ -229,7 +229,7 @@ useEffect(() => {
     <HeartHandshake strokeWidth={1.5} className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
     <h3 className="font-semibold text-lg">Caregivers & Their Loved Ones</h3>
     <p className="text-sm leading-relaxed text-gray-800">
-      Whether you're caring for someone with dementia or simply want to add more connection into your daily routine, SingFit offers structure, joy, and a powerful way to engage through music.
+      SingFit offers a structured path to engage with music and singing. Singing has been shown to not only improve mood for people with dementia, but also to enhance caregiver wellbeing.
     </p>
   </div>
   <div className="bg-[#FEF8F5] p-6 rounded-lg shadow hover:shadow-lg transition h-full flex flex-col justify-start">
@@ -333,15 +333,15 @@ useEffect(() => {
 
     <div className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-200">
       <HealtcareIcon className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
-      <h3 className="text-lg font-semibold text-black mb-2">Increase engagement with your loved one</h3>
+      <h3 className="text-lg font-semibold text-black mb-2">Increase engagement with loved one</h3>
       <p className="text-sm text-gray-700">
-        SingFit sessions are designed to provide structure and joy for the family caregiver and participant.
+        SingFit delivers engaging and structured singing sessions for the family caregiver and participant.
       </p>
     </div>
 
     <div className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-200">
       <Brain02Icon className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
-      <h3 className="text-lg font-semibold text-black mb-2">To aid with memory and cognitive decline</h3>
+      <h3 className="text-lg font-semibold text-black mb-2">To aid with memory challenges</h3>
       <p className="text-sm text-gray-700">
         Singing has been shown to activate the brain and may help support memory and attention.
       </p>
@@ -349,9 +349,9 @@ useEffect(() => {
 
     <div className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-200">
       <SustainableEnergyIcon className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
-      <h3 className="text-lg font-semibold text-black mb-2">Elevate your emotional and mental wellbeing</h3>
+      <h3 className="text-lg font-semibold text-black mb-2">Elevate your emotional wellbeing</h3>
       <p className="text-sm text-gray-700">
-        Singing can help boost your mood and foster a sense of connection, especially on hard days.
+        Singing can enhance mood and foster social connection for people with dementia.
       </p>
     </div>
 
@@ -371,10 +371,26 @@ useEffect(() => {
          <div className="bg-white rounded-lg p-6 shadow">
   <h3 className="text-lg font-bold mb-2">Backed by Clinical Music Therapy</h3>
   <p className="text-sm text-gray-700">
-    SingFit is grounded in clinical music therapy and neuroscience.
-    Created by board-certified music therapists, the app delivers guided singing sessions that activate multiple areas of the brain.
-    These sessions are designed to support speech, memory, and emotional wellbeing.
-  </p>
+    SingFit is grounded in clinical music therapy and neuroscience and is designed to enable failure-free singing. Research shows that singing engages multiple brain functions, supporting memory, social connection, and emotional wellbeing.{" "}
+     <a
+  href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11940398/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="underline text-blue-700 hover:text-blue-900"
+  onClick={() => {
+    const eventData = {
+      event: "click_cta",
+      button_text: "Research Link - Tragantzopoulou",
+      destination_url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11940398/",
+      page_id: "MemberLanding"
+    };
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(eventData);
+  }}
+>
+  (Tragantzopoulou & Giannouli, 2025)
+</a>
+</p>
 </div>
 
           <div className="bg-white rounded-lg p-6 shadow">
