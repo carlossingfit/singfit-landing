@@ -98,7 +98,7 @@ useEffect(() => {
 
     {/* Subhead */}
     <p className="text-xl text-gray-900 leading-relaxed">
-      SingFit is an app designed to deliver guided singing sessions which can support cognitive and emotional wellbeing for you and your loved ones; explore free resources and try SingFit!
+      Use music to improve emotional wellbeing for you and your loved one. Explore free resources and try the SingFit App, which is designed to deliver guided singing sessions that can elevate mood and reduce stress.
     </p>
 
     {/* CTA Buttons */}
@@ -108,7 +108,7 @@ useEffect(() => {
         onClick={() => {
           const eventData = {
             event: "click_cta",
-            button_text: "Get Free Therapeutic Music Resources",
+            button_text: "Get Free Music Resources",
             destination_url: "https://musicismedicine.singfit.com/aarp-member-resources",
             page_id: "MemberLanding"
           };
@@ -123,7 +123,7 @@ useEffect(() => {
         aria-label="Access free therapeutic music resources"
         className="text-lg px-10 py-5 bg-[#F47534] text-white hover:bg-[#d9652c] transition-all duration-200 ease-in-out"
       >
-        Get Free Therapeutic Music Resources
+        Get Free Music Resources
       </Button>
 
       {/* Internal Scroll CTA – Learn About App */}
@@ -146,11 +146,9 @@ useEffect(() => {
         aria-label="Scroll to What is the SingFit App section"
         className="text-lg font-semibold px-10 py-4 bg-white border border-[#002F6C] text-[#002F6C] hover:bg-[#eaf2f8] transition-all duration-200 ease-in-out flex flex-col items-center justify-center leading-tight"
       >
-        <span className="whitespace-nowrap">Learn About the App</span>
+        <span className="whitespace-nowrap">Learn About the SingFit App</span>
         <span className="mt-1 leading-none">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
+        
         </span>
       </Button>
     </div>
@@ -229,14 +227,14 @@ useEffect(() => {
     <HeartHandshake strokeWidth={1.5} className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
     <h3 className="font-semibold text-lg">Caregivers & Their Loved Ones</h3>
     <p className="text-sm leading-relaxed text-gray-800">
-      SingFit offers a structured path to engage with music and singing. Singing has been shown to not only improve mood for people with dementia, but also to enhance caregiver wellbeing.
+      SingFit offers a structured path to engage with music and singing. Singing has been shown to not only help those with mood and emotion chanllenges, but also to enhance caregiver wellbeing.
     </p>
   </div>
   <div className="bg-[#FEF8F5] p-6 rounded-lg shadow hover:shadow-lg transition h-full flex flex-col justify-start">
     <Brain strokeWidth={1.5} className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
     <h3 className="font-semibold text-lg">Older Adults Supporting Brain Health</h3>
     <p className="text-sm leading-relaxed text-gray-800">
-      SingFit features engaging therapeutic music and guided singing activities that research has shown may improve mental sharpness, elevate mood, and maintain cognitive agility.
+      SingFit features engaging music and guided singing activities. Research suggests that taking part in singing can help older adults stay mentally engaged and support mood;  both important parts of brain health as we age.
     </p>
   </div>
 </div>
@@ -310,7 +308,7 @@ useEffect(() => {
       window.open(eventData.destination_url, "_blank");
     }}
   >
-    Buy SingFit Now
+    Get SingFit Now
   </Button>
 
   <p className="text-base md:text-lg mt-3 text-[#EC1300] flex items-center justify-center gap-3 mb-6">
@@ -335,7 +333,7 @@ useEffect(() => {
       <HealtcareIcon className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
       <h3 className="text-lg font-semibold text-black mb-2">Increase engagement with loved one</h3>
       <p className="text-sm text-gray-700">
-        SingFit delivers engaging and structured singing sessions for the family caregiver and participant.
+        SingFit delivers structured singing sessions for the family caregiver and participant.
       </p>
     </div>
 
@@ -343,7 +341,7 @@ useEffect(() => {
       <Brain02Icon className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
       <h3 className="text-lg font-semibold text-black mb-2">To aid with memory challenges</h3>
       <p className="text-sm text-gray-700">
-        Singing has been shown to activate the brain and may help support memory and attention.
+        Singing has been shown to activate the brain and may help support memory.
       </p>
     </div>
 
@@ -351,7 +349,7 @@ useEffect(() => {
       <SustainableEnergyIcon className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
       <h3 className="text-lg font-semibold text-black mb-2">Elevate your emotional wellbeing</h3>
       <p className="text-sm text-gray-700">
-        Singing can enhance mood and foster social connection for people with dementia.
+        Singing can enhance mood and foster social connection.
       </p>
     </div>
 
@@ -443,7 +441,7 @@ useEffect(() => {
       window.open(eventData.destination_url, "_blank");
     }}
   >
-    Buy SingFit Now
+    Get SingFit Now
   </Button>
 
   <p className="text-base md:text-lg mt-3 text-[#EC1300] flex items-center justify-center gap-3 mb-6">
