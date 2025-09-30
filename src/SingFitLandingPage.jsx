@@ -227,14 +227,14 @@ useEffect(() => {
     <HeartHandshake strokeWidth={1.5} className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
     <h3 className="font-semibold text-lg">Caregivers & Their Loved Ones</h3>
     <p className="text-sm leading-relaxed text-gray-800">
-      SingFit offers a structured path to engage with music and singing. Singing has been shown to not only help those with mood and emotion chanllenges, but also to enhance caregiver wellbeing.
+      SingFit offers a structured path to engage with music and singing. Singing has been shown to not only help those struggling with mood and emotions, but also to enhance caregiver wellbeing.
     </p>
   </div>
   <div className="bg-[#FEF8F5] p-6 rounded-lg shadow hover:shadow-lg transition h-full flex flex-col justify-start">
     <Brain strokeWidth={1.5} className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
     <h3 className="font-semibold text-lg">Older Adults Supporting Brain Health</h3>
     <p className="text-sm leading-relaxed text-gray-800">
-      SingFit features engaging music and guided singing activities. Research suggests that taking part in singing can help older adults stay mentally engaged and support mood;  both important parts of brain health as we age.
+      SingFit features engaging music and guided singing activities. Research suggests that taking part in singing can help older adults support mood and memory; both important parts of brain health as we age.
     </p>
   </div>
 </div>
@@ -361,7 +361,7 @@ useEffect(() => {
       {/* The Science Behind SingFit Section */}
       <section className="bg-[#D1E4F0] p-10 rounded-xl shadow-md space-y-6 text-center mb-12">
         <h2 className="text-3xl font-bold text-[#F47534] relative inline-block">
-          <span className="relative z-10">The Science Behind SingFit</span>
+          <span className="relative z-10">The Science Behind SingFit*</span>
           <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-6 max-w-5xl mx-auto text-left">
@@ -394,7 +394,7 @@ useEffect(() => {
           <div className="bg-white rounded-lg p-6 shadow">
   <h3 className="text-lg font-bold mb-2">Personalized for Better Outcomes</h3>
   <p className="text-sm text-gray-700">
-    SingFit uses personalized playlists and therapeutic algorithms tailored to each user's age, goals, and health condition. This approach is backed by research showing that music interventions can improve cognitive function and mood in individuals with dementia.{" "}
+    SingFit uses personalized playlists and therapeutic algorithms tailored to each user's age, goals, and health condition. This approach is backed by research showing that music interventions can improve cognitive function and mood in aging populations.{" "}
     <a
   href="https://pubmed.ncbi.nlm.nih.gov/24009169/"
   target="_blank"
