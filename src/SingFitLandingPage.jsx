@@ -98,7 +98,7 @@ useEffect(() => {
 
     {/* Subhead */}
     <p className="text-xl text-gray-900 leading-relaxed">
-      Use music to improve emotional wellbeing for you and your loved one. Explore free resources and try the SingFit App, which is designed to deliver guided singing sessions that can elevate mood and reduce stress.
+      Use music to improve emotional wellbeing for you and your loved one. Explore free resources and try the SingFit App, which is designed to deliver guided singing sessions that can help elevate mood and reduce stress.
     </p>
 
     {/* CTA Buttons */}
@@ -358,66 +358,55 @@ useEffect(() => {
 
 
 
-      {/* The Science Behind SingFit Section */}
-      <section className="bg-[#D1E4F0] p-10 rounded-xl shadow-md space-y-6 text-center mb-12">
-        <h2 className="text-3xl font-bold text-[#F47534] relative inline-block">
-          <span className="relative z-10">The Science Behind SingFit*</span>
-          <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-6 max-w-5xl mx-auto text-left">
+     {/* The Science Behind SingFit Section */}
+<section className="bg-[#D1E4F0] p-10 rounded-xl shadow-md space-y-6 text-center mb-12">
+  <h2 className="text-3xl font-bold text-[#F47534] relative inline-block">
+    <span className="relative z-10">The Science Behind SingFit*</span>
+    <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
+  </h2>
 
-         <div className="bg-white rounded-lg p-6 shadow">
-  <h3 className="text-lg font-bold mb-2">Designed by Board-Certified Music Therapists</h3>
-  <p className="text-sm text-gray-700">
-    SingFit is grounded in clinical music therapy and neuroscience and is designed to enable failure-free singing. Research shows that singing engages multiple brain functions, supporting memory, social connection, and emotional wellbeing.{" "}
-     <a
-  href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11940398/"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="underline text-blue-700 hover:text-blue-900"
-  onClick={() => {
-    const eventData = {
-      event: "click_cta",
-      button_text: "Research Link - Tragantzopoulou",
-      destination_url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11940398/",
-      page_id: "MemberLanding"
-    };
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(eventData);
-  }}
->
-  (Tragantzopoulou & Giannouli, 2025)
-</a>
-</p>
-</div>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-6 max-w-5xl mx-auto text-left">
+    <div className="bg-white rounded-lg p-6 shadow">
+      <h3 className="text-lg font-bold mb-2">Designed by Board-Certified Music Therapists</h3>
+      <p className="text-sm text-gray-700">
+        SingFit is grounded in clinical music therapy and neuroscience and is designed to enable failure-free singing.
+        Research shows that singing engages multiple brain functions, supporting memory, social connection, and emotional wellbeing.*
+      </p>
+    </div>
 
-          <div className="bg-white rounded-lg p-6 shadow">
-  <h3 className="text-lg font-bold mb-2">Personalized for Better Outcomes</h3>
-  <p className="text-sm text-gray-700">
-    SingFit uses personalized playlists and therapeutic algorithms tailored to each user's age, goals, and health condition. This approach is backed by research showing that music interventions can improve cognitive function and mood in aging populations.{" "}
+    <div className="bg-white rounded-lg p-6 shadow">
+      <h3 className="text-lg font-bold mb-2">Personalized for Better Outcomes</h3>
+      <p className="text-sm text-gray-700">
+        SingFit uses personalized playlists and therapeutic algorithms tailored to each user's age, goals, and health condition.
+        This approach is backed by research showing that music interventions can improve cognitive function and mood in aging populations.*
+      </p>
+    </div>
+  </div>
+
+  {/* Single centered attribution inside the blue container */}
+  <p className="text-xs text-gray-700 italic text-center max-w-5xl mx-auto mt-2">
+    *&nbsp;
     <a
-  href="https://pubmed.ncbi.nlm.nih.gov/24009169/"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="underline text-blue-700 hover:text-blue-900"
-  onClick={() => {
-    const eventData = {
-      event: "click_cta",
-      button_text: "Research Link - Särkämö 2014",
-      destination_url: "https://pubmed.ncbi.nlm.nih.gov/24009169/",
-      page_id: "MemberLanding"
-    };
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(eventData);
-  }}
->
-  (Särkämö et al., 2014)
-</a>
-
+      href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11940398/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="underline text-blue-700 hover:text-blue-900"
+      onClick={() => {
+        const eventData = {
+          event: "click_cta",
+          button_text: "Research Link - Tragantzopoulou (footnote)",
+          destination_url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11940398/",
+          page_id: "MemberLanding"
+        };
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(eventData);
+      }}
+    >
+      Tragantzopoulou &amp; Giannouli, 2025
+    </a>.
   </p>
-</div>
-        </div>
-      </section>
+</section>
+
 
       {/* Final CTA Section */}
       <div className="text-center">
