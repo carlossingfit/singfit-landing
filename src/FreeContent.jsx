@@ -329,8 +329,8 @@ export default function FreeContent() {
   className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
   <img
-    src="/SEP16.png"
-    alt="September 16, 2025"
+    src="/Nov42025.png"
+    alt="November 4, 2025"
     className="w-20 h-20 object-contain rounded-md shadow"
   />
   <div className="text-lg leading-relaxed">
@@ -358,13 +358,13 @@ export default function FreeContent() {
   className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
   <img
-    src="/OCT14.png"
-    alt="October 14, 2025"
+    src="/Dec22025.png"
+    alt="December 2, 2025"
     className="w-20 h-20 object-contain rounded-md shadow"
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      How to Combat Sundowning and Agitation with Music
+      Caregiver's Guide to Using Holiday and Classic Songs to Sing Away Stress
     </p>
   </div>
 </button>
@@ -386,13 +386,13 @@ export default function FreeContent() {
   className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
   <img
-    src="/NOV13.png"
-    alt="November 13, 2025"
+    src="/Jan62026.png"
+    alt="January 6, 2025"
     className="w-20 h-20 object-contain rounded-md shadow"
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      Caregiver's Guide to Using Holiday and Classic Songs to Sing Away Stress
+      How to Combat Sundowning and Agitation with Music
     </p>
   </div>
 </button>
