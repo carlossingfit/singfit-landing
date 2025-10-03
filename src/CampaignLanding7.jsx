@@ -176,13 +176,13 @@ export default function CampaignLanding7() {
           className="text-center leading-tight tracking-tight text-black text-[34px] md:text-[57px]"
           style={{ fontFamily: "Gotham, Montserrat, Inter, Arial, sans-serif", fontWeight: 700 }}
         >
-          Discover the Power of Music
+          Win a Year of Music-Driven Wellness
         </h1>
         <p
           className="mt-4 text-center text-gray-700 mx-auto text-[18px] md:text-[29px] max-w-4xl leading-snug"
           style={{ fontFamily: "Gotham Light, Gotham, Montserrat, Inter, Arial, sans-serif", fontWeight: 300 }}
         >
-          A digital therapeutic platform built to support wellness through song — at home, in therapy, and in senior living.
+          Thank you for singing with us at the ICAA Lunch & Learn! Want even more therapeutic music, movement, and smiles? Enter our raffle for a chance to win a free year of SingFit PRIME for your community. Winner announced Friday, October 17, 2025.
         </p>
       </section>
 
