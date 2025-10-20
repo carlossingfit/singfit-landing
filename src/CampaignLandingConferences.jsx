@@ -438,7 +438,7 @@ export default function CampaignLandingConferences() {
           className="mt-4 text-center text-gray-700 mx-auto text-[18px] md:text-[29px] max-w-4xl leading-snug"
           style={{ fontFamily: "Gotham Light, Gotham, Montserrat, Inter, Arial, sans-serif", fontWeight: 300 }}
         >
-          Want even more therapeutic music, movement, and smiles? Enter our raffle for a chance to win a free year of SingFit PRIME for your community. Winner announced by Friday, October 14, 2025.
+          Want even more therapeutic music, movement, and smiles? Enter our raffle for a chance to win a free year of SingFit PRIME for your community. Winner announced by Friday, October 24, 2025.
         </p>
       </section>
 
