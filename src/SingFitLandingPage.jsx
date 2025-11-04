@@ -341,7 +341,7 @@ export default function SingFitLandingPage() {
 
       {/* The Science Behind SingFit Section */}
       <section className="bg-[#D1E4F0] p-10 rounded-xl shadow-md space-y-6 text-center mb-12">
-        <h2 className="text-3xl font-bold text-[#F47534] relative inline-block">
+        <h2 className="text-4xl font-bold text-[#F47534] relative inline-block">
           <span className="relative z-10">The Research Behind Singing*</span>
           <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
         </h2>
