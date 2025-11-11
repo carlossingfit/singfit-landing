@@ -15,6 +15,10 @@ import CampaignLanding6 from "./CampaignLanding6";
 import CampaignLanding7 from "./CampaignLanding7";
 import CampaignLandingICAA from "./CampaignLandingICAA"; // adjust path
 import CampaignLandingConferences from "./CampaignLandingConferences";
+import TermsOfService from "./TermsOfService";
+import PrivacyPolicy from "./PrivacyPolicy";
+import Accessibility from "./Accessibility";
+import CookiePolicy from "./CookiePolicy";
 
 
 
@@ -36,6 +40,10 @@ function App() {
         <Route path="/campaign-landing7" element={<CampaignLanding7 />} />
         <Route path="/icaa" element={<CampaignLandingICAA />} />
         <Route path="/conferences" element={<CampaignLandingConferences />} />
+        <Route path="/terms" element={<TermsOfService />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/accessibility" element={<Accessibility />} />
+        <Route path="/cookies" element={<CookiePolicy />} />
       </Routes>
     </Router>
   );
