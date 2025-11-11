@@ -451,7 +451,7 @@ export default function SingFitLandingPage() {
           </span>
           <span>1010 Wilshire Blvd. Los Angeles, CA 90017</span>
           <a
-            href="https://www.singfit.com/privacypolicy"
+            href="/privacy"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:underline text-blue-600"
@@ -459,7 +459,7 @@ export default function SingFitLandingPage() {
             Privacy Policy
           </a>
           <a
-            href="https://www.singfit.com/terms-of-service"
+            href="/terms"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:underline text-blue-600"
@@ -467,7 +467,7 @@ export default function SingFitLandingPage() {
             Terms of Service
           </a>
           <a
-            href="https://www.singfit.com/accessibility-statement"
+            href="/accessibility"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:underline text-blue-600"
