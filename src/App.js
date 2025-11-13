@@ -19,6 +19,7 @@ import TermsOfService from "./TermsOfService";
 import PrivacyPolicy from "./PrivacyPolicy";
 import Accessibility from "./Accessibility";
 import CookiePolicy from "./CookiePolicy";
+import CleanAARPLanding from "./CleanAARPLanding";
 
 
 
@@ -44,6 +45,7 @@ function App() {
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/accessibility" element={<Accessibility />} />
         <Route path="/cookies" element={<CookiePolicy />} />
+        <Route path="/cleanlanding" element={<CleanAARPLanding />} />
       </Routes>
     </Router>
   );
