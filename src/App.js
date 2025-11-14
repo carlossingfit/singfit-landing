@@ -20,6 +20,7 @@ import PrivacyPolicy from "./PrivacyPolicy";
 import Accessibility from "./Accessibility";
 import CookiePolicy from "./CookiePolicy";
 import CleanAARPLanding from "./CleanAARPLanding";
+import DemoLandingPage from "./DemoLandingPage";
 
 
 
@@ -46,6 +47,7 @@ function App() {
         <Route path="/accessibility" element={<Accessibility />} />
         <Route path="/cookies" element={<CookiePolicy />} />
         <Route path="/cleanlanding" element={<CleanAARPLanding />} />
+        <Route path="/demo" element={<DemoLandingPage />} />
       </Routes>
     </Router>
   );
