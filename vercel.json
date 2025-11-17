@@ -11,7 +11,33 @@
       ]
     }
   ],
-   "rewrites": [
+
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "singfit.co.uk"
+        }
+      ],
+      "destination": "/uk",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.singfit.co.uk"
+        }
+      ],
+      "destination": "/uk",
+      "permanent": false
+    }
+  ],
+
+  "rewrites": [
     {
       "source": "/api/lead",
       "destination": "https://hook.us2.make.com/8t1ri7o1r73cfvkb2udx1rkiaxexnexb"

@@ -21,6 +21,7 @@ import Accessibility from "./Accessibility";
 import CookiePolicy from "./CookiePolicy";
 import CleanAARPLanding from "./CleanAARPLanding";
 import DemoLandingPage from "./DemoLandingPage";
+import UKLanding from "./UKLanding";
 
 
 
@@ -48,6 +49,7 @@ function App() {
         <Route path="/cookies" element={<CookiePolicy />} />
         <Route path="/cleanlanding" element={<CleanAARPLanding />} />
         <Route path="/demo" element={<DemoLandingPage />} />
+         <Route path="/uk" element={<UKLanding />} />
       </Routes>
     </Router>
   );
