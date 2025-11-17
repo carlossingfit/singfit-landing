@@ -159,7 +159,7 @@ export default function FreeContent2() {
   <iframe
   className="w-full h-full rounded-md"
   id="yt-video"
-  src="https://www.youtube.com/embed/bSw5X9Hq3NU?enablejsapi=1"
+  src="https://www.youtube.com/embed/tbnixywp4WE?enablejsapi=1"
   title="SingFit Free Resource"
   sandbox="allow-scripts allow-same-origin allow-presentation"
   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
