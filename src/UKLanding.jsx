@@ -92,7 +92,7 @@ export default function UKLanding() {
       bullets: [
         "Designed by board certified music therapists",
         "Track client progress towards goals over time",
-        "Personalize sessions for each client’s goals and needs",
+        "Personalise sessions for each client’s goals and needs",
       ],
       // Updated video URL
       video:
