@@ -5,9 +5,6 @@ import { useState } from "react";
 import { useAnalytics } from "./useAnalytics";
 import { useEffect } from "react";
 
-
-
-
 export default function FreeContent() {
   useEffect(() => {
     document.title = "SingFit AARP Member Resources";
@@ -46,6 +43,7 @@ export default function FreeContent() {
   }, []);
 
   // YOUTUBE VIDEO PLAY TRACKING
+  /*
   useEffect(() => {
     let player;
 
@@ -72,11 +70,12 @@ export default function FreeContent() {
       window.onYouTubeIframeAPIReady = null;
     };
   }, []);
+  */
 
   const videoTitles = [
-    "What a Song Can Do!",
     "How Caregivers Can Build Musical Habits for a Happy, Healthy Life",
-    "5 Signs Singing is Helping"
+    "Coming Soon",
+    "Coming Soon"
   ];
 
   const [sliderRef, instanceRef] = useKeenSlider({
@@ -169,50 +168,54 @@ export default function FreeContent() {
             </button>
 
             <div ref={sliderRef} className="keen-slider rounded-lg overflow-hidden shadow mt-2">
+              {/* Slide 1: YouTube Video (COMMENTED OUT) */}
+              {/*
               <div className="keen-slider__slide bg-white p-1 rounded-lg shadow h-[369px] flex items-center justify-center">
-  <iframe
-  id="yt-video"
-  className="w-full h-full rounded-md"
-  src="https://www.youtube.com/embed/tbnixywp4WE?enablejsapi=1"
-  title="SingFit Free Resource"
-  sandbox="allow-scripts allow-same-origin allow-presentation"
-  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-  allowFullScreen
-/>
-</div>
+                <iframe
+                  id="yt-video"
+                  className="w-full h-full rounded-md"
+                  src="https://www.youtube.com/embed/tbnixywp4WE?enablejsapi=1"
+                  title="SingFit Free Resource"
+                  sandbox="allow-scripts allow-same-origin allow-presentation"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+              */}
 
-              {/* Slide 2: Downloadable PDF */}
-{/* Slide 2: Downloadable PDF */}
-<div className="keen-slider__slide bg-white p-6 rounded-lg shadow flex flex-col justify-center items-center text-center text-[#243B53] gap-4">
-  <img
-    src="/downloadgraphic.jpeg"
-    alt="Download PDF Graphic"
-    className="w-24 h-24 object-contain mb-2"
-  />
-  <h3 className="text-2xl font-semibold">
-    How Caregivers Can Build Musical Habits for a Happy, Healthy Life
-  </h3>
-  <p className="text-base text-gray-700 max-w-md">
-    Download our free guide to start using music as a caregiving tool.
-  </p>
-  <a
-    href="/webinarplan.pdf"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="mt-2 bg-[#F47534] hover:bg-[#d9652c] text-white px-6 py-3 rounded shadow text-base font-medium transition"
-    onClick={() => {
-      track("click_cta", {
-        button_text: "Download Caregiver PDF",
-        destination_url: "/webinarplan.pdf",
-        page_id: "MemberResources"
-      });
-    }}
-  >
-    Download PDF
-  </a>
-</div>
+              {/* Slide 1: Downloadable PDF */}
+              <div className="keen-slider__slide bg-white p-6 rounded-lg shadow flex flex-col justify-center items-center text-center text-[#243B53] gap-4">
+                <img
+                  src="/downloadgraphic.jpeg"
+                  alt="Download PDF Graphic"
+                  className="w-24 h-24 object-contain mb-2"
+                />
+                <h3 className="text-2xl font-semibold">
+                  How Caregivers Can Build Musical Habits for a Happy, Healthy Life
+                </h3>
+                <p className="text-base text-gray-700 max-w-md">
+                  Download our free guide to start using music as a caregiving tool.
+                </p>
+                <a
+                  href="/webinarplan.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 bg-[#F47534] hover:bg-[#d9652c] text-white px-6 py-3 rounded shadow text-base font-medium transition"
+                  onClick={() => {
+                    track("click_cta", {
+                      button_text: "Download Caregiver PDF",
+                      destination_url: "/webinarplan.pdf",
+                      page_id: "MemberResources"
+                    });
+                  }}
+                >
+                  Download PDF
+                </a>
+              </div>
 
-
+              <div className="keen-slider__slide bg-gray-100 p-1 rounded-lg shadow flex items-center justify-center text-gray-600 text-base font-medium aspect-video">
+                Coming Soon
+              </div>
 
               <div className="keen-slider__slide bg-gray-100 p-1 rounded-lg shadow flex items-center justify-center text-gray-600 text-base font-medium aspect-video">
                 Coming Soon
@@ -463,39 +466,38 @@ export default function FreeContent() {
   </p>
 </div>
 {/* Footer */}
-<footer className="text-center text-xs text-gray-500 border-t border-gray-200 pt-6 mt-12 px-4">
-  <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
-    <span>
-      ©2025 Musical Health Technologies. All Rights Reserved.
-    </span>
-    <span>1010 Wilshire Blvd. Los Angeles, CA 90017</span>
-    <a
-      href="https://www.singfit.com/privacypolicy"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="hover:underline text-blue-600"
-    >
-      Privacy Policy
-    </a>
-    <a
-      href="https://www.singfit.com/terms-of-service"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="hover:underline text-blue-600"
-    >
-      Terms of Service
-    </a>
-    <a
-      href="https://www.singfit.com/accessibility-statement"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="hover:underline text-blue-600"
-    >
-      Accessibility Statement
-    </a>
-  </div>
-</footer>
+      <footer className="text-center text-xs text-gray-500 border-t border-gray-200 pt-6 mt-12 px-4">
+        <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
+          <span>
+            ©2025 Musical Health Technologies. All Rights Reserved.
+          </span>
+          <span>1010 Wilshire Blvd. Los Angeles, CA 90017</span>
+          <a
+            href="/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline text-blue-600"
+          >
+            Privacy Policy
+          </a>
+          <a
+            href="/terms"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline text-blue-600"
+          >
+            Terms of Service
+          </a>
+          <a
+            href="/accessibility"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline text-blue-600"
+          >
+            Accessibility Statement
+          </a>
+        </div>
+      </footer>
   </div>
   );
 }
-

@@ -6,15 +6,16 @@ export default function LegalLayout({ title, children }) {
       {/* Top bar with logo */}
       <header className="border-b bg-white">
         <div className="mx-auto flex items-center gap-4 px-4 py-3 max-w-6xl">
-          <Link to="/" aria-label="Go to homepage" className="flex items-center">
-            <img
-              src={"/SingFit%20New%20Brand%20Logo.png"} // File in /public folder
-              alt="SingFit"
-              className="h-8 w-auto"
-              loading="eager"
-              decoding="async"
-            />
-          </Link>
+          <div className="flex items-center">
+  <img
+    src="/SingFit%20New%20Brand%20Logo.png"
+    alt="SingFit"
+    className="h-8 w-auto"
+    loading="eager"
+    decoding="async"
+  />
+</div>
+
         </div>
       </header>
 
