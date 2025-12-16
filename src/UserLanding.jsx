@@ -57,13 +57,13 @@ export default function UserLanding() {
 
       {/* SingFit Logo */}
       <a
-  href="https://www.singfit.com/"
+  href="https://musicismedicine.singfit.com/aarp-non-member"
   target="_blank"
   rel="noopener noreferrer"
   onClick={() => {
     track("click_cta", {
       button_text: "SingFit Logo",
-      destination_url: "https://www.singfit.com/",
+      destination_url: "https://musicismedicine.singfit.com/aarp-non-member",
       page_id: "NonMemberLanding" // change to "UserLanding" on the other page
     });
   }}

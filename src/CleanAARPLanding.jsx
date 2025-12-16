@@ -27,9 +27,9 @@ export default function CleanAARPLandingPage() {
             percent_scrolled: t,
             page_id: "MemberLanding",
           };
-            window.parent.postMessage(eventData, "*");
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push(eventData);
+          window.parent.postMessage(eventData, "*");
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push(eventData);
         }
       });
     };
@@ -93,7 +93,7 @@ export default function CleanAARPLandingPage() {
 
           {/* Subhead */}
           <p className="text-xl text-gray-900 leading-relaxed">
-  Use music as part of your time together with your loved one. Explore free resources and try the SingFit App, which offers guided singing sessions you can follow together.
+            Connect with your loved ones through song with SingFit!  Explore free resources and try the SingFit App, which offers guided singing sessions you can enjoy together.
           </p>
 
           {/* CTA Buttons */}
@@ -143,7 +143,7 @@ export default function CleanAARPLandingPage() {
             >
               <span className="whitespace-nowrap">Learn About the SingFit App</span>
               <span className="mt-1 leading-none">
-              
+
               </span>
             </Button>
           </div>
@@ -183,7 +183,7 @@ export default function CleanAARPLandingPage() {
           <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
         </h2>
         <p className="text-lg md:text-xl">
-          The SingFit app provides guided singing sessions with voice prompted lyrics and simple session history tools so you can include singing in your daily routine; no musical background required.
+          The SingFit app provides guided singing sessions and voice prompted lyrics, making singing simple, accessible, and an easy part of your daily routine; no musical background required.
         </p>
         <div className="text-center mb-4">
           <Button
@@ -210,66 +210,127 @@ export default function CleanAARPLandingPage() {
             Get the SingFit App
           </Button>
         </div>
-
-        <p className="text-center text-2xl font-bold underline decoration-[#FDD9C7] decoration-1 text-[#002F6C] tracking-wide mb-4">
-          SingFit Is Designed For:
-        </p>
-
-        {/* UPDATED: Single full-width card */}
-        <div className="grid grid-cols-1 gap-6 sm:gap-10 text-left pt-3 items-stretch">
-          <div className="bg-[#FEF8F5] p-6 rounded-lg shadow hover:shadow-lg transition h-full flex flex-col justify-start">
-            <HeartHandshake strokeWidth={1.5} className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
-            <h3 className="font-semibold text-lg text-center">Caregivers & Their Loved Ones</h3>
-<p className="text-sm leading-relaxed text-gray-800 text-center">
-               SingFit offers a structured way for caregivers and care recipients to participate in music and singing activities together at home.
-            </p>
-          </div>
-        </div>
       </section>
+
+      {/* Personalized Music for Connection – refined editorial layout */}
+<section
+  id="personalized-music"
+  className="bg-white p-12 rounded-xl shadow-md mb-12"
+>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    
+    {/* Left: Text */}
+    <div className="space-y-8">
+      <div>
+        <h2 className="text-3xl md:text-4xl font-bold text-[#F47534] mb-3">
+          Personalized Music for Connection
+        </h2>
+        <div className="w-24 h-1 bg-[#FDD9C7] rounded"></div>
+      </div>
+
+      <div className="space-y-6 text-lg md:text-xl text-gray-800 leading-relaxed">
+        <div>
+          <p className="font-semibold text-[#002F6C] mb-1">
+            Shared moments, made simple
+          </p>
+          <p>
+            SingFit provides a structured, easy way for caregivers and care
+            recipients to participate in music and singing activities together,
+            creating meaningful moments at home.
+          </p>
+        </div>
+
+        <div>
+          <p className="font-semibold text-[#002F6C] mb-1">
+            Music that feels familiar
+          </p>
+          <p>
+            Choose from hundreds of songs and create personalized playlists that
+            reflect your loved one’s mood, memories, and musical preferences.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {/* Right: Image */}
+    <div className="w-full rounded-xl overflow-hidden shadow-xl">
+      <motion.img
+        initial={{ opacity: 0, scale: 0.97 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        src="/heroimage.jpg"
+        alt="Smiling older woman singing with caregiver in sunny living room"
+        className="w-full object-cover rounded-xl min-h-[260px]"
+      />
+    </div>
+  </div>
+</section>
+
+
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="bg-white p-10 rounded-xl shadow-md space-y-6 text-center mb-12">
-        <h2 className="text-4xl font-bold text-[#F47534] relative inline-block">
-          <span className="relative z-10">How It Works</span>
-          <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
-        </h2>
-        <p className="text-lg md:text-xl">
-          After subscribing on this website, you'll receive an email with app download instructions and your login credentials.
+<section
+  id="how-it-works"
+  className="bg-white p-10 rounded-xl shadow-md space-y-8 text-center mb-12"
+>
+  <h2 className="text-4xl font-bold text-[#F47534] relative inline-block">
+    <span className="relative z-10">How It Works</span>
+    <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
+  </h2>
+
+  <div className="grid grid-cols-1 md:grid-cols-4 gap-10 max-w-6xl mx-auto">
+    {[
+      "Download the app",
+      "Set your goal",
+      "Begin your session",
+      "Wrap up your session",
+    ].map((title, i) => (
+      <motion.div
+        key={i}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: i * 0.2, duration: 0.5 }}
+        className="space-y-3 sm:space-y-4 hover:scale-105 transition-transform duration-200"
+      >
+        <img
+          src={
+            i === 0
+              ? "/downloadapp_resized.png"
+              : `https://static.wixstatic.com/media/264616_${
+                  [
+                    "2389c82006c446cca0f12db06a3d9000",
+                    "44e07472013845718269c789f125b619",
+                    "3804aa0322e047aa86b78c4f937e93d8",
+                    "7696ff978e7e4f8bad929d3739f6043a",
+                  ][i]
+                }~mv2.png`
+          }
+          alt={`Step ${i + 1}`}
+          className="mx-auto w-full max-w-[140px] h-auto object-contain bg-white shadow-lg rounded-xl p-2 hover:scale-110 transition-transform duration-300"
+        />
+
+        <h3 className="text-lg font-semibold">{title}</h3>
+        <p className="text-sm text-gray-700">
+          {
+            [
+              "Download on iOS or Android, then log in and create your profile",
+              "Choose your main goal for the session",
+              "Follow on-screen instructions and sing along with the prompted lyrics",
+              "Reflect on your singing experience to close out your session",
+            ][i]
+          }
         </p>
+      </motion.div>
+    ))}
+  </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 max-w-6xl mx-auto">
-          {["Download the app","Set your goal","Begin your session","Wrap up your session"].map((title, i) => (
-            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.2, duration: 0.5 }} className="space-y-3 sm:space-y-4 hover:scale-105 transition-transform duration-200">
-              <img
-                src={
-                  i === 0
-                    ? "/downloadapp_resized.png"
-                    : `https://static.wixstatic.com/media/264616_${
-                        [
-                          "2389c82006c446cca0f12db06a3d9000",
-                          "44e07472013845718269c789f125b619",
-                          "3804aa0322e047aa86b78c4f937e93d8",
-                          "7696ff978e7e4f8bad929d3739f6043a",
-                        ][i]
-                      }~mv2.png`
-                }
-                alt={`Step ${i + 1}`}
-                className="mx-auto w-full max-w-[140px] h-auto object-contain bg-white shadow-lg rounded-xl p-2 hover:scale-110 transition-transform duration-300"
-              />
+  {/* Moved explanatory text to bottom */}
+  <p className="text-lg md:text-xl text-gray-700 max-w-4xl mx-auto pt-4">
+    After subscribing on this website, you'll receive an email with app download
+    instructions and your login credentials.
+  </p>
+</section>
 
-              <h3 className="text-lg font-semibold">{title}</h3>
-              <p className="text-sm text-gray-700">{
-                [
-                  "Download on iOS or Android, then log in and create your profile",
-                  "Choose how you want to use your session",
-                  "Follow on-screen instructions and sing along with the prompted lyrics",
-                  "Make a quick note about each session when you finish"
-                ][i]
-              }</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
 
       {/* Mid-Page CTA Section */}
       <div className="text-center">
