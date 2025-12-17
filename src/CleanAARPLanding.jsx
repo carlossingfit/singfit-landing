@@ -220,10 +220,10 @@ export default function CleanAARPLandingPage() {
   <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
     
     {/* Left: Text */}
-    <div className="space-y-8">
+    <div className="space-y-8 md:order-2">
       <div>
         <h2 className="text-3xl md:text-4xl font-bold text-[#F47534] mb-3">
-          Personalized Music for Connection
+          Personalized Music for Caregivers & Loved Ones
         </h2>
         <div className="w-24 h-1 bg-[#FDD9C7] rounded"></div>
       </div>
@@ -231,29 +231,28 @@ export default function CleanAARPLandingPage() {
       <div className="space-y-6 text-lg md:text-xl text-gray-800 leading-relaxed">
         <div>
           <p className="font-semibold text-[#002F6C] mb-1">
-            Shared moments, made simple
+            Connection through guided music
           </p>
           <p>
             SingFit provides a structured, easy way for caregivers and care
-            recipients to participate in music and singing activities together,
-            creating meaningful moments at home.
+            recipients to participate in music and singing activities,
+            creating meaningful moments together.
           </p>
         </div>
 
         <div>
           <p className="font-semibold text-[#002F6C] mb-1">
-            Music that feels familiar
+            Music they know and love
           </p>
           <p>
-            Choose from hundreds of songs and create personalized playlists that
-            reflect your loved one’s mood, memories, and musical preferences.
+            The SingFit app curates personalized, 6-song playlists that reflect your loved one’s musical preferences. Sing one song, or sing them all!
           </p>
         </div>
       </div>
     </div>
 
     {/* Right: Image */}
-    <div className="w-full rounded-xl overflow-hidden shadow-xl">
+    <div className="w-full rounded-xl overflow-hidden shadow-xl md:order-1">
       <motion.img
         initial={{ opacity: 0, scale: 0.97 }}
         whileInView={{ opacity: 1, scale: 1 }}
