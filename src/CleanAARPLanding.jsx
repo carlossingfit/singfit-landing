@@ -164,7 +164,7 @@ export default function CleanAARPLandingPage() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
-              src="/laina_anita.png"
+              src="/laina_anita.PNG"
               alt="Smiling older woman singing with caregiver in sunny living room"
               className="w-full object-cover rounded-xl min-h-[340px]"
             />
