@@ -245,7 +245,7 @@ export default function CleanAARPLandingPage() {
             Music they know and love
           </p>
           <p>
-            The SingFit app curates personalized, 6-song playlists that reflect your loved one’s musical preferences. Sing one song, or sing them all!
+            Let the app guide you to appropriate songs based on your loved ones’ preferences or choose from hundreds of songs to create personalized playlists.
           </p>
         </div>
       </div>
