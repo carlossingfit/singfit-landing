@@ -245,7 +245,7 @@ export default function CleanAARPLandingPage() {
             Music they know and love
           </p>
           <p>
-            Let the app guide you to appropriate songs based on your loved ones’ preferences or choose from hundreds of songs to create personalized playlists.
+            Let the app guide you to appropriate songs based on your loved one's preferences or choose from hundreds of songs to create personalized playlists.
           </p>
         </div>
       </div>
