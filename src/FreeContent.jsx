@@ -73,7 +73,7 @@ export default function FreeContent() {
   */
 
   const videoTitles = [
-    "How Caregivers Can Build Musical Habits for a Happy, Healthy Life",
+    "How Caregivers Can Build Musical Habits",
     "Coming Soon",
     "Coming Soon"
   ];
@@ -191,7 +191,7 @@ export default function FreeContent() {
                   className="w-24 h-24 object-contain mb-2"
                 />
                 <h3 className="text-2xl font-semibold">
-                  How Caregivers Can Build Musical Habits for a Happy, Healthy Life
+                  How Caregivers Can Build Musical Habits
                 </h3>
                 <p className="text-base text-gray-700 max-w-md">
                   Download our free guide to start using music as a caregiving tool.
@@ -311,7 +311,7 @@ export default function FreeContent() {
               className="w-16 h-16 object-cover rounded-full shadow"
             />
             <h2 className="text-xl font-bold text-[#243B53] leading-tight">
-              Board Certified Music Therapist Andy Tubman hosts a series of webinars on music as medicine.
+              Board Certified Music Therapist Andy Tubman hosts a series of webinars for Caregivers.
             </h2>
           </div>
 
@@ -338,7 +338,7 @@ export default function FreeContent() {
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      A Caregiver's Guide to Transforming Health & Wellness Through Music as Medicine
+      A Caregiver's Guide to using Music
     </p>
   </div>
 </button>
@@ -367,7 +367,7 @@ export default function FreeContent() {
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      Caregiver's Guide to Using Holiday and Classic Songs to Sing Away Stress
+      Caregiver's Guide to Using Holiday and Classic Songs
     </p>
   </div>
 </button>
@@ -395,7 +395,7 @@ export default function FreeContent() {
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      How to Combat Sundowning and Agitation with Music
+      Title Pending
     </p>
   </div>
 </button>

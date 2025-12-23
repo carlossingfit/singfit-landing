@@ -50,12 +50,12 @@ export default function CleanAARPLandingPage() {
           <div className="flex justify-between items-start w-full flex-wrap gap-2 md:gap-0">
             {/* SingFit Logo */}
             <a
-              href="https://www.singfit.com/"
+              href="https://musicismedicine.singfit.com/cleanlanding"
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => {
                 e.preventDefault(); // prevent default navigation
-                const url = "https://www.singfit.com/";
+                const url = "https://musicismedicine.singfit.com/cleanlanding";
 
                 // Fire analytics tracking
                 track("click_cta", {
