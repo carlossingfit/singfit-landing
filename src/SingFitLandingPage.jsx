@@ -93,7 +93,7 @@ export default function SingFitLandingPage() {
 
           {/* Subhead */}
           <p className="text-xl text-gray-900 leading-relaxed">
-            Use music to improve emotional wellbeing for you and your loved one. Explore free resources and try the SingFit App, which is designed to deliver guided singing sessions that can help elevate mood and increase engagement.
+            Connect with your loved ones through song with SingFit!  Explore free resources and try the SingFit App, which offers guided singing sessions you can enjoy together.
           </p>
 
           {/* CTA Buttons */}
@@ -164,7 +164,7 @@ export default function SingFitLandingPage() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
-              src="/heroimage.jpg"
+              src="/laina_anita.PNG"
               alt="Smiling older woman singing with caregiver in sunny living room"
               className="w-full object-cover rounded-xl min-h-[340px]"
             />
@@ -183,7 +183,7 @@ export default function SingFitLandingPage() {
           <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
         </h2>
         <p className="text-lg md:text-xl">
-          The SingFit app uses personalized guided singing sessions, voice prompted lyrics, and progress tracking to bring the benefits of singing into your daily routine; no musical background required.
+          The SingFit app provides guided singing sessions and voice prompted lyrics, making singing simple, accessible, and an easy part of your daily routine; no musical background required.
         </p>
         <div className="text-center mb-4">
           <Button
@@ -210,66 +210,122 @@ export default function SingFitLandingPage() {
             Get the SingFit App
           </Button>
         </div>
+        </section>
 
-        <p className="text-center text-2xl font-bold underline decoration-[#FDD9C7] decoration-1 text-[#002F6C] tracking-wide mb-4">
-          SingFit Is Designed For:
-        </p>
+        <section
+  id="personalized-music"
+  className="bg-white p-12 rounded-xl shadow-md mb-12"
+>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    
+    {/* Left: Text */}
+    <div className="space-y-8 md:order-2">
+      <div>
+        <h2 className="text-3xl md:text-4xl font-bold text-[#F47534] mb-3">
+          Personalized Music for Caregivers & Loved Ones
+        </h2>
+        <div className="w-24 h-1 bg-[#FDD9C7] rounded"></div>
+      </div>
 
-        {/* UPDATED: Single full-width card */}
-        <div className="grid grid-cols-1 gap-6 sm:gap-10 text-left pt-3 items-stretch">
-          <div className="bg-[#FEF8F5] p-6 rounded-lg shadow hover:shadow-lg transition h-full flex flex-col justify-start">
-            <HeartHandshake strokeWidth={1.5} className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
-            <h3 className="font-semibold text-lg text-center">Caregivers & Their Loved Ones</h3>
-<p className="text-sm leading-relaxed text-gray-800 text-center">
-              SingFit offers a structured path to engage with music and singing. Singing has been shown to not only help those struggling with mood and emotions, but also to enhance caregiver wellbeing.
-            </p>
-          </div>
+      <div className="space-y-6 text-lg md:text-xl text-gray-800 leading-relaxed">
+        <div>
+          <p className="font-semibold text-[#002F6C] mb-1">
+            Connection through guided music
+          </p>
+          <p>
+            SingFit provides a structured, easy way for caregivers and care
+            recipients to participate in music and singing activities,
+            creating meaningful moments together.
+          </p>
         </div>
-      </section>
+
+        <div>
+          <p className="font-semibold text-[#002F6C] mb-1">
+            Music they know and love
+          </p>
+          <p>
+            Let the app guide you to appropriate songs based on your loved one's preferences or choose from hundreds of songs to create personalized playlists.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {/* Right: Image */}
+    <div className="w-full rounded-xl overflow-hidden shadow-xl md:order-1">
+      <motion.img
+        initial={{ opacity: 0, scale: 0.97 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        src="/heroimage.jpg"
+        alt="Smiling older woman singing with caregiver in sunny living room"
+        className="w-full object-cover rounded-xl min-h-[260px]"
+      />
+    </div>
+  </div>
+</section>
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="bg-white p-10 rounded-xl shadow-md space-y-6 text-center mb-12">
-        <h2 className="text-4xl font-bold text-[#F47534] relative inline-block">
-          <span className="relative z-10">How It Works</span>
-          <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
-        </h2>
-        <p className="text-lg md:text-xl">
-          After subscribing on this website, you'll receive an email with app download instructions and your login credentials.
+      <section
+  id="how-it-works"
+  className="bg-white p-10 rounded-xl shadow-md space-y-8 text-center mb-12"
+>
+  <h2 className="text-4xl font-bold text-[#F47534] relative inline-block">
+    <span className="relative z-10">How It Works</span>
+    <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
+  </h2>
+
+  <div className="grid grid-cols-1 md:grid-cols-4 gap-10 max-w-6xl mx-auto">
+    {[
+      "Download the app",
+      "Set your goal",
+      "Begin your session",
+      "Wrap up your session",
+    ].map((title, i) => (
+      <motion.div
+        key={i}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: i * 0.2, duration: 0.5 }}
+        className="space-y-3 sm:space-y-4 hover:scale-105 transition-transform duration-200"
+      >
+        <img
+          src={
+            i === 0
+              ? "/downloadapp_resized.png"
+              : `https://static.wixstatic.com/media/264616_${
+                  [
+                    "2389c82006c446cca0f12db06a3d9000",
+                    "44e07472013845718269c789f125b619",
+                    "3804aa0322e047aa86b78c4f937e93d8",
+                    "7696ff978e7e4f8bad929d3739f6043a",
+                  ][i]
+                }~mv2.png`
+          }
+          alt={`Step ${i + 1}`}
+          className="mx-auto w-full max-w-[140px] h-auto object-contain bg-white shadow-lg rounded-xl p-2 hover:scale-110 transition-transform duration-300"
+        />
+
+        <h3 className="text-lg font-semibold">{title}</h3>
+        <p className="text-sm text-gray-700">
+          {
+            [
+              "Download on iOS or Android, then log in and create your profile",
+              "Choose your main goal for the session",
+              "Follow on-screen instructions and sing along with the prompted lyrics",
+              "Reflect on your singing experience to close out your session",
+            ][i]
+          }
         </p>
+      </motion.div>
+    ))}
+  </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 max-w-6xl mx-auto">
-          {["Download the app","Set your goal","Begin your session","Wrap up your session"].map((title, i) => (
-            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.2, duration: 0.5 }} className="space-y-3 sm:space-y-4 hover:scale-105 transition-transform duration-200">
-              <img
-                src={
-                  i === 0
-                    ? "/downloadapp_resized.png"
-                    : `https://static.wixstatic.com/media/264616_${
-                        [
-                          "2389c82006c446cca0f12db06a3d9000",
-                          "44e07472013845718269c789f125b619",
-                          "3804aa0322e047aa86b78c4f937e93d8",
-                          "7696ff978e7e4f8bad929d3739f6043a",
-                        ][i]
-                      }~mv2.png`
-                }
-                alt={`Step ${i + 1}`}
-                className="mx-auto w-full max-w-[140px] h-auto object-contain bg-white shadow-lg rounded-xl p-2 hover:scale-110 transition-transform duration-300"
-              />
-
-              <h3 className="text-lg font-semibold">{title}</h3>
-              <p className="text-sm text-gray-700">{
-                [
-                  "Download on iOS or Android, then log in and create your profile",
-                  "Choose what you want to focus on for your session",
-                  "Follow on-screen instructions and sing along with the prompted lyrics",
-                  "Track your results with our simple before/after rating system"
-                ][i]
-              }</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+  {/* Moved explanatory text to bottom */}
+  <p className="text-lg md:text-xl text-gray-700 max-w-4xl mx-auto pt-4">
+    After subscribing on this website, you'll receive an email with app download
+    instructions and your login credentials.
+  </p>
+</section>
 
       {/* Mid-Page CTA Section */}
       <div className="text-center">
@@ -280,144 +336,6 @@ export default function SingFitLandingPage() {
             const eventData = {
               event: "click_cta",
               button_text: "Mid - Buy SingFit Now",
-              destination_url: "https://www.singfit.com/aarp-member-pricing",
-              page_id: "MemberLanding"
-            };
-
-            // Push to GTM dataLayer
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push(eventData);
-
-            // Navigate
-            window.open(eventData.destination_url, "_blank");
-          }}
-        >
-          Get SingFit Now
-        </Button>
-
-        <p className="text-base md:text-lg mt-3 text-[#EC1300] flex items-center justify-center gap-3 mb-6">
-          <img
-            src="/aarp-member-benefit.png"
-            alt="AARP badge"
-            className="h-8 w-auto inline-block"
-          />
-          AARP Member Price: $8.39/month (includes 30% discount).
-        </p>
-      </div>
-
-      <section id="why-people-use" className="bg-[#FEF8F5] p-10 rounded-xl shadow-md space-y-10 text-center mb-12">
-        <h2 className="text-4xl font-bold text-[#F47534] relative inline-block">
-          <span className="relative z-10">How Singing Helps</span>
-          <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-6 max-w-6xl mx-auto">
-
-          <div className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-200">
-            <HealtcareIcon className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-black mb-2">Increase engagement with loved one</h3>
-            <p className="text-sm text-gray-700">
-              SingFit delivers structured singing sessions for the family caregiver and participant.
-            </p>
-          </div>
-
-          <div className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-200">
-            <Brain02Icon className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-black mb-2">To aid with memory challenges</h3>
-            <p className="text-sm text-gray-700">
-              Singing has been shown to activate the brain and may help support memory.
-            </p>
-          </div>
-
-          <div className="bg-white p-6 rounded-lg shadow hover:shadow-xl transition duration-200">
-            <SustainableEnergyIcon className="h-12 w-12 text-[#F47534] mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-black mb-2">Elevate your emotional wellbeing</h3>
-            <p className="text-sm text-gray-700">
-              Singing can enhance mood and foster social connection.
-            </p>
-          </div>
-
-        </div>
-      </section>
-
-      {/* The Science Behind SingFit Section */}
-      <section className="bg-[#D1E4F0] p-10 rounded-xl shadow-md space-y-6 text-center mb-12">
-        <h2 className="text-4xl font-bold text-[#F47534] relative inline-block">
-          <span className="relative z-10">The Research Behind Singing*</span>
-          <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FDD9C7] z-0 rounded"></span>
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-6 max-w-5xl mx-auto text-left">
-          <div className="bg-white rounded-lg p-6 shadow">
-            <h3 className="text-lg font-bold mb-2">Designed by Board-Certified Music Therapists</h3>
-            <p className="text-sm text-gray-700">
-              SingFit is grounded in clinical music therapy and is designed to enable failure-free singing.
-              Research shows that singing engages multiple brain functions, supporting memory, social connection, and emotional wellbeing.*
-            </p>
-          </div>
-
-          <div className="bg-white rounded-lg p-6 shadow">
-            <h3 className="text-lg font-bold mb-2">Personalized for Better Outcomes</h3>
-            <p className="text-sm text-gray-700">
-              SingFit uses personalized playlists and algorithms tailored to each user's age, preferences and goals.
-              Research shows that music interventions can improve cognitive function and mood in aging populations.*
-            </p>
-          </div>
-        </div>
-
-        {/* Single centered attribution inside the blue container */}
-        <p className="text-xs text-gray-700 italic text-center max-w-5xl mx-auto mt-2">
-  *&nbsp;
-  <a
-    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11940398/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="underline text-blue-700 hover:text-blue-900"
-    onClick={() => {
-      const eventData = {
-        event: "click_cta",
-        button_text: "Research Link - Tragantzopoulou (footnote)",
-        destination_url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11940398/",
-        page_id: "MemberLanding"
-      };
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push(eventData);
-    }}
-  >
-    Tragantzopoulou &amp; Giannouli, 2025
-  </a>
-  &nbsp;|&nbsp;
-  <a
-    href="https://d24s0qdzj4qepv.cloudfront.net/Neuro_Arts_Blueprint_Initiative_Final_Deloitte_Study_May_2025_689ad0fe8d.pdf"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="underline text-blue-700 hover:text-blue-900"
-    onClick={() => {
-      const eventData = {
-        event: "click_cta",
-        button_text: "Research Link - Deloitte NeuroArts (footnote)",
-        destination_url:
-          "https://d24s0qdzj4qepv.cloudfront.net/Neuro_Arts_Blueprint_Initiative_Final_Deloitte_Study_May_2025_689ad0fe8d.pdf",
-        page_id: "MemberLanding",
-      };
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push(eventData);
-    }}
-  >
-    Deloitte NeuroArts Blueprint, 2025
-  </a>.
-</p>
-
-      </section>
-
-      {/* Final CTA Section */}
-      <div className="text-center">
-        <Button
-          aria-label="Start using SingFit today"
-          className="w-full sm:w-auto text-xl px-10 py-4 min-h-[44px] bg-[#F47534] text-white hover:bg-[#d9652c] shadow-lg transition-all duration-200"
-          onClick={() => {
-            const eventData = {
-              event: "click_cta",
-              button_text: "End - Buy SingFit Now",
               destination_url: "https://www.singfit.com/aarp-member-pricing",
               page_id: "MemberLanding"
             };
