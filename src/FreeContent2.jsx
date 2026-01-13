@@ -44,6 +44,7 @@ export default function FreeContent2() {
   }, []);
 
  // YOUTUBE VIDEO PLAY TRACKING
+  /*
   useEffect(() => {
     let player;
 
@@ -58,7 +59,7 @@ export default function FreeContent2() {
             if (event.data === window.YT.PlayerState.PLAYING) {
               track("video_play", {
                 video_title: "How Caregivers Can Build Musical Habits to Support a Happy, Healthy Life",
-                page_id: "NonMemberResources"
+                page_id: "MemberResources"
               });
             }
           }
@@ -70,12 +71,13 @@ export default function FreeContent2() {
       window.onYouTubeIframeAPIReady = null;
     };
   }, []);
+  */
 
 
-  const videoTitles = [
-    "What a Song Can Do!",
-    "How Caregivers Can Build Musical Habits for a Happy, Healthy Life",
-    "5 Signs Singing is Helping"
+   const videoTitles = [
+    "How Caregivers Can Build Musical Habits",
+    "Coming Soon",
+    "Coming Soon"
   ];
 
   const [sliderRef, instanceRef] = useKeenSlider({
@@ -136,8 +138,15 @@ export default function FreeContent2() {
 
           <div className="relative mt-4">
             <button
-              onClick={() => instanceRef.current?.prev()}
+             onClick={() => {
+  const target = Math.max(currentSlide - 1, 0);
+  const title = videoTitles[target];
+  
+  instanceRef.current?.moveToIdx(target);
+}}
+
               className="absolute left-0 top-1/2 -ml-10 transform -translate-y-1/2 z-10 bg-white border border-[#002F6C] rounded-full w-8 h-8 flex items-center justify-center shadow hover:bg-gray-100"
+
               aria-label="Previous video"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -145,7 +154,13 @@ export default function FreeContent2() {
               </svg>
             </button>
             <button
-              onClick={() => instanceRef.current?.next()}
+              onClick={() => {
+  const target = Math.min(currentSlide + 1, videoTitles.length - 1);
+  const title = videoTitles[target];
+  
+  instanceRef.current?.moveToIdx(target);
+}}
+
               className="absolute right-0 top-1/2 -mr-10 transform -translate-y-1/2 z-10 bg-white border border-[#002F6C] rounded-full w-8 h-8 flex items-center justify-center shadow hover:bg-gray-100"
               aria-label="Next video"
             >
@@ -178,7 +193,7 @@ export default function FreeContent2() {
                   className="w-24 h-24 object-contain mb-2"
                 />
                 <h3 className="text-2xl font-semibold">
-                  How Caregivers Can Build Musical Habits for a Happy, Healthy Life
+                  How Caregivers Can Build Musical Habits
                 </h3>
                 <p className="text-base text-gray-700 max-w-md">
                   Download our free guide to start using music as a caregiving tool.
@@ -213,7 +228,12 @@ export default function FreeContent2() {
   {videoTitles.map((_, i) => (
     <button
       key={i}
-      onClick={() => instanceRef.current?.moveToIdx(i)}
+      onClick={() => {
+  const title = videoTitles[i];
+  
+  instanceRef.current?.moveToIdx(i);
+}}
+
       className={`w-3 h-3 rounded-full focus:outline-none ${
         currentSlide === i ? "bg-[#F47534]" : "bg-gray-300"
       } transition-all duration-300`}
@@ -221,7 +241,6 @@ export default function FreeContent2() {
     />
   ))}
 </div>
-
 
           </div>
 
@@ -290,7 +309,7 @@ export default function FreeContent2() {
               className="w-16 h-16 object-cover rounded-full shadow"
             />
             <h2 className="text-xl font-bold text-[#243B53] leading-tight">
-              Board Certified Music Therapist Andy Tubman hosts a series of webinars on music as medicine.
+             Board Certified Music Therapist Andy Tubman hosts a series of webinars for Caregivers.
             </h2>
           </div>
 
@@ -317,7 +336,7 @@ export default function FreeContent2() {
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      A Caregiver's Guide to Transforming Health & Wellness Through Music as Medicine
+      A Caregiver's Guide to using Music
     </p>
   </div>
 </button>
@@ -345,7 +364,7 @@ export default function FreeContent2() {
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      Caregiver's Guide to Using Holiday and Classic Songs to Sing Away Stress
+      Caregiver's Guide to Using Holiday and Classic Songs
     </p>
   </div>
 </button>
@@ -372,7 +391,7 @@ export default function FreeContent2() {
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      How to Combat Sundowning and Agitation with Music
+      Title Pending
     </p>
   </div>
 </button>
