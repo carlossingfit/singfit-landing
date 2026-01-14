@@ -284,9 +284,9 @@ export default function UserLanding() {
               : `https://static.wixstatic.com/media/264616_${
                   [
                     "2389c82006c446cca0f12db06a3d9000",
-                    "44e07472013845718269c789f125b619",
+                    "757c32d715d84834acce4d56a6955584",
                     "3804aa0322e047aa86b78c4f937e93d8",
-                    "7696ff978e7e4f8bad929d3739f6043a",
+                    "06bff58acd7d4b61a8117a49fced1aaf",
                   ][i]
                 }~mv2.png`
           }
@@ -299,7 +299,7 @@ export default function UserLanding() {
           {
             [
               "Download on iOS or Android, then log in and create your profile",
-              "Choose your main goal for the session",
+              "Choose your primary goal for the session",
               "Follow on-screen instructions and sing along with the prompted lyrics",
               "Reflect on your singing experience to close out your session",
             ][i]
