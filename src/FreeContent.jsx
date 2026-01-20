@@ -333,7 +333,7 @@ export default function FreeContent() {
 >
   <img
     src="/Feb_10.png"
-    alt="November 4, 2025"
+    alt="February 10, 2026"
     className="w-20 h-20 object-contain rounded-md shadow"
   />
   <div className="text-lg leading-relaxed">
@@ -361,8 +361,8 @@ export default function FreeContent() {
   className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
   <img
-    src="/Dec22025.png"
-    alt="December 2, 2025"
+    src="/Mar_10.png"
+    alt="March 10, 2026"
     className="w-20 h-20 object-contain rounded-md shadow"
   />
   <div className="text-lg leading-relaxed">
@@ -389,8 +389,8 @@ export default function FreeContent() {
   className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
   <img
-    src="/Jan62026.png"
-    alt="January 6, 2025"
+    src="/Apr_7.png"
+    alt="April 7, 2026"
     className="w-20 h-20 object-contain rounded-md shadow"
   />
   <div className="text-lg leading-relaxed">
