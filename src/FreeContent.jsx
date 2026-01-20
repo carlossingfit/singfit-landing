@@ -332,13 +332,13 @@ export default function FreeContent() {
   className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
   <img
-    src="/Nov42025.png"
+    src="/Feb_10.png"
     alt="November 4, 2025"
     className="w-20 h-20 object-contain rounded-md shadow"
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      A Caregiver's Guide to using Music
+      Connecting Through Music
     </p>
   </div>
 </button>
@@ -367,7 +367,7 @@ export default function FreeContent() {
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      Caregiver's Guide to Using Holiday and Classic Songs
+      Connecting Through Music Pt 2
     </p>
   </div>
 </button>
@@ -395,7 +395,7 @@ export default function FreeContent() {
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      Title Pending
+      Connecting Through Music Pt 3
     </p>
   </div>
 </button>
