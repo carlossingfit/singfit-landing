@@ -320,7 +320,7 @@ export default function FreeContent2() {
     const eventData = {
       event: "click_cta",
       button_text: "Webinar: A Caregiver's Guide (Sep 16)",
-      destination_url: "https://singfit.eventbrite.com",
+      destination_url: "https://www.eventbrite.com/e/connecting-through-music-tickets-1981192961480?aff=oddtdtcreator",
       page_id: "NonMemberResources"
     };
      window.dataLayer = window.dataLayer || [];

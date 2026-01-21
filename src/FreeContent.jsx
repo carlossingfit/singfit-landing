@@ -321,8 +321,8 @@ export default function FreeContent() {
   onClick={() => {
     const eventData = {
       event: "click_cta",
-      button_text: "Webinar: A Caregiver's Guide (Sep 16)",
-      destination_url: "https://singfit.eventbrite.com",
+      button_text: "Webinar: Connecting Through Music (Feb 10)",
+      destination_url: "https://www.eventbrite.com/e/connecting-through-music-tickets-1981192961480?aff=oddtdtcreator",
       page_id: "MemberResources"
     };
      window.dataLayer = window.dataLayer || [];
