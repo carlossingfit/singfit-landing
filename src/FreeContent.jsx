@@ -469,7 +469,7 @@ export default function FreeContent() {
       <footer className="text-center text-xs text-gray-500 border-t border-gray-200 pt-6 mt-12 px-4">
         <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
           <span>
-            ©2025 Musical Health Technologies. All Rights Reserved.
+            ©2026 Musical Health Technologies. All Rights Reserved.
           </span>
           <span>1010 Wilshire Blvd. Los Angeles, CA 90017</span>
           <a
