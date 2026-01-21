@@ -73,7 +73,7 @@ export default function FreeContent() {
   */
 
   const videoTitles = [
-    "How Caregivers Can Build Musical Habits",
+    "Connecting Through Music",
     "Coming Soon",
     "Coming Soon"
   ];
@@ -191,7 +191,7 @@ export default function FreeContent() {
                   className="w-24 h-24 object-contain mb-2"
                 />
                 <h3 className="text-2xl font-semibold">
-                  How Caregivers Can Build Musical Habits
+                  Connecting Through Music
                 </h3>
                 <p className="text-base text-gray-700 max-w-md">
                   Download our free guide to start using music as a caregiving tool.
@@ -213,12 +213,32 @@ export default function FreeContent() {
                 </a>
               </div>
 
-              <div className="keen-slider__slide bg-gray-100 p-1 rounded-lg shadow flex items-center justify-center text-gray-600 text-base font-medium aspect-video">
-                Coming Soon
+              <div className="keen-slider__slide bg-white p-6 rounded-lg shadow flex flex-col justify-center items-center text-center text-[#243B53] gap-4">
+                 <img
+                  src="/downloadgraphic.jpeg"
+                  alt="Download PDF Graphic"
+                  className="w-24 h-24 object-contain mb-2"
+                />
+                <h3 className="text-2xl font-semibold">
+                  New Content Coming Soon
+                </h3>  
+                  <p className="text-base text-gray-700 max-w-md">
+                  Enter your email below to sign up for updates.
+                </p>             
               </div>
 
-              <div className="keen-slider__slide bg-gray-100 p-1 rounded-lg shadow flex items-center justify-center text-gray-600 text-base font-medium aspect-video">
-                Coming Soon
+              <div className="keen-slider__slide bg-white p-6 rounded-lg shadow flex flex-col justify-center items-center text-center text-[#243B53] gap-4">
+                 <img
+                  src="/downloadgraphic.jpeg"
+                  alt="Download PDF Graphic"
+                  className="w-24 h-24 object-contain mb-2"
+                />
+                <h3 className="text-2xl font-semibold">
+                  New Content Coming Soon
+                </h3>   
+                <p className="text-base text-gray-700 max-w-md">
+                  Enter your email below to sign up for updates.
+                </p>               
               </div>
             </div>
             {/* Progress Dots */}
