@@ -336,7 +336,7 @@ export default function FreeContent2() {
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      Connecting Through Music
+      Caregivers: Using Music to Connect with Your Loved One
     </p>
   </div>
 </button>
@@ -364,7 +364,7 @@ export default function FreeContent2() {
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      Connecting Through Music Pt 2
+      Caregivers: How to Select the Right Music for Your Goal
     </p>
   </div>
 </button>
@@ -391,7 +391,7 @@ export default function FreeContent2() {
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      Connecting Through Music Pt 3
+      Caregivers: A Deep Dive into the Musical Preferences of Your Loved One
     </p>
   </div>
 </button>
@@ -401,7 +401,7 @@ export default function FreeContent2() {
           <div className="mt-auto pt-4 text-center">
             <div className="relative">
               <Button
-  className="text-sm px-6 py-4 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-md transition relative"
+  className="text-base px-6 py-4 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-md transition relative"
   style={{ top: '13px' }}
   onClick={() => {
     const eventData = {
