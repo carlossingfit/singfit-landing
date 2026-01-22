@@ -349,7 +349,7 @@ export default function UserLanding() {
     <span>
       AARP members receive additional savings.&nbsp;
       <a
-  href="https://www.aarp.org"
+  href="https://appsec.aarp.org/mem/join?campaignid=UTJSM3A&referrer=https%3A%2F%2Fsecure.aarp.org%2Fapplications%2Fuser%2Fvendor%2FacctConfirm%3Fvn%3Dsingfitmb"
   target="_blank"
   rel="noopener noreferrer"
   className="underline text-blue-700 hover:text-blue-900"
@@ -357,7 +357,7 @@ export default function UserLanding() {
     const eventData = {
       event: "click_cta",
       button_text: "Mid -Join AARP",
-      destination_url: "https://www.aarp.org",
+      destination_url: "https://appsec.aarp.org/mem/join?campaignid=UTJSM3A&referrer=https%3A%2F%2Fsecure.aarp.org%2Fapplications%2Fuser%2Fvendor%2FacctConfirm%3Fvn%3Dsingfitmb",
       page_id: "NonMemberLanding"
     };
     window.parent.postMessage(eventData, "*");
