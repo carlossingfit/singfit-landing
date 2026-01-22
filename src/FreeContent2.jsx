@@ -367,7 +367,7 @@ export default function FreeContent2() {
     const eventData = {
       event: "click_cta",
       button_text: "Webinar: Combat Sundowning (Oct 14)",
-      destination_url: "https://singfit.eventbrite.com",
+      destination_url: "https://www.eventbrite.com/e/1981269681953?aff=oddtdtcreator",
       page_id: "NonMemberResources"
     };
     
@@ -394,7 +394,7 @@ export default function FreeContent2() {
     const eventData = {
       event: "click_cta",
       button_text: "Webinar: Holiday Songs to Reduce Stress (Nov 13)",
-      destination_url: "https://singfit.eventbrite.com",
+      destination_url: "https://www.eventbrite.com/e/1981269705022?aff=oddtdtcreator",
       page_id: "NonMemberResources"
     };
     
