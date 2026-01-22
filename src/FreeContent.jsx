@@ -197,14 +197,14 @@ export default function FreeContent() {
                   Download our free guide to start using music as a caregiving tool.
                 </p>
                 <a
-                  href="/webinarplan.pdf"
+                  href="/Connecting Through Music_AARP Member.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-2 bg-[#F47534] hover:bg-[#d9652c] text-white px-6 py-3 rounded shadow text-base font-medium transition"
                   onClick={() => {
                     track("click_cta", {
                       button_text: "Download Caregiver PDF",
-                      destination_url: "/webinarplan.pdf",
+                      destination_url: "/Connecting Through Music_AARP Member.pdf",
                       page_id: "MemberResources"
                     });
                   }}
