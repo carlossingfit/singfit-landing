@@ -432,13 +432,13 @@ export default function CampaignLandingConferences() {
           className="text-center leading-tight tracking-tight text-black text-[34px] md:text-[57px]"
           style={{ fontFamily: "Gotham, Montserrat, Inter, Arial, sans-serif", fontWeight: 700 }}
         >
-          Win a Year of Music-Driven Wellness
+          Timeless Music. Endless Joy
         </h1>
         <p
           className="mt-4 text-center text-gray-700 mx-auto text-[18px] md:text-[29px] max-w-4xl leading-snug"
           style={{ fontFamily: "Gotham Light, Gotham, Montserrat, Inter, Arial, sans-serif", fontWeight: 300 }}
         >
-          Want even more therapeutic music, movement, and smiles? Enter our raffle for a chance to win a free year of SingFit PRIME for your community. Winner announced by Friday, October 24, 2025.
+          SingFit PRIME turns beloved tunes into meaningful moments of connection, movement, and expression.
         </p>
       </section>
 
@@ -467,7 +467,7 @@ export default function CampaignLandingConferences() {
 
               {/* Form variant (with updated header copy) */}
               <div className="mt-6">
-                <div className="text- text-gray-700 mb-2">Enter your details for a chance to win</div>
+                <div className="text- text-gray-700 mb-2">Enter your details to learn more.</div>
                 <InlineForm formType={product.cta?.formType ?? product.title} />
               </div>
             </div>
