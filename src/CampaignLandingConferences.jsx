@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useAnalytics } from "./useAnalytics";
 
 export default function CampaignLandingConferences() {
-  const PAGE_ID = "AHCA";
+  const PAGE_ID = "Campaign";
   const { track = () => {} } = useAnalytics ? useAnalytics(PAGE_ID) : { track: () => {} };
   const safeTrack = (event, params) => {
     try { if (typeof track === "function") track(event, params); } catch (_) {}
