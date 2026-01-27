@@ -101,7 +101,7 @@ export default function UserLanding() {
         onClick={() => {
           const eventData = {
             event: "click_cta",
-            button_text: "Get Free Therapeutic Music Resources",
+            button_text: "Get Free Music Resources",
             destination_url: "https://musicismedicine.singfit.com/aarp-non-member-resources",
             page_id: "NonMemberLanding"
           };
@@ -324,7 +324,7 @@ export default function UserLanding() {
      onClick={() => {
   const eventData = {
     event: "click_cta",
-    button_text: "Mid -Buy SingFit Now",
+    button_text: "Bottom -Buy SingFit Now",
     destination_url: "https://www.singfit.com/aarp-non-member-pricing",
     page_id: "NonMemberLanding"
   };
@@ -356,7 +356,7 @@ export default function UserLanding() {
   onClick={() => {
     const eventData = {
       event: "click_cta",
-      button_text: "Mid -Join AARP",
+      button_text: "Bottom -Join AARP",
       destination_url: "https://appsec.aarp.org/mem/join?campaignid=UTJSM3A&referrer=https%3A%2F%2Fsecure.aarp.org%2Fapplications%2Fuser%2Fvendor%2FacctConfirm%3Fvn%3Dsingfitmb",
       page_id: "NonMemberLanding"
     };

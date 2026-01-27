@@ -369,7 +369,7 @@ export default function FreeContent() {
   onClick={() => {
     const eventData = {
       event: "click_cta",
-      button_text: "Webinar: Combat Sundowning (Oct 14)",
+      button_text: "Webinar: How to Select the Right Music for Your Goal",
       destination_url: "https://www.eventbrite.com/e/1981269681953?aff=oddtdtcreator",
       page_id: "MemberResources"
     };
@@ -397,7 +397,7 @@ export default function FreeContent() {
   onClick={() => {
     const eventData = {
       event: "click_cta",
-      button_text: "Webinar: Holiday Songs to Reduce Stress (Nov 13)",
+      button_text: "Webinar: A Deep Dive into the Musical Preferences of Your Loved One",
       destination_url: "https://www.eventbrite.com/e/1981269705022?aff=oddtdtcreator",
       page_id: "MemberResources"
     };
@@ -431,7 +431,7 @@ export default function FreeContent() {
   onClick={() => {
     const eventData = {
       event: "click_cta",
-      button_text: "Sign Up for a Webinar",
+      button_text: "Generic: Sign Up for a Webinar",
       destination_url: "https://singfit.eventbrite.com",
       page_id: "MemberResources"
     };
@@ -456,7 +456,7 @@ export default function FreeContent() {
   onClick={() => {
   const eventData = {
     event: "click_cta",
-    button_text: "Buy SingFit",
+    button_text: "Buy SingFit Now",
     destination_url: "https://www.singfit.com/aarp-member-pricing",
     page_id: "MemberResources"
   };

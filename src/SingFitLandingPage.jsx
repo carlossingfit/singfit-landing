@@ -335,7 +335,7 @@ export default function SingFitLandingPage() {
           onClick={() => {
             const eventData = {
               event: "click_cta",
-              button_text: "Mid - Buy SingFit Now",
+              button_text: "Bottom - Buy SingFit Now",
               destination_url: "https://www.singfit.com/aarp-member-pricing",
               page_id: "MemberLanding"
             };
