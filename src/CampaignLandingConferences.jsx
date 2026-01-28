@@ -131,6 +131,7 @@ export default function CampaignLandingConferences() {
             company: community,     // mirrors 'community' to the legacy 'company' key
             page_id: PAGE_ID,       // "ICAA"
             product: formType,
+            ...utmParams,
           };
 
           try {
@@ -152,7 +153,7 @@ export default function CampaignLandingConferences() {
 
           try {
             if (typeof track === "function") {
-              track("submit_form", { form_id: "campaign_inline", formType, page_id: PAGE_ID });
+              track("submit_form", { form_id: "campaign_inline", formType, page_id: PAGE_ID, ...utmParams });
             }
           } catch {}
         }}
