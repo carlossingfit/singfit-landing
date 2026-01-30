@@ -217,6 +217,7 @@ useEffect(() => {
     company,
     page_id: PAGE_ID,          // "CampaignLanding5" or "CampaignLanding6"
     product: formType,
+    ...utmParams,
   };
 
   // fire the webhook in the background (do NOT await)
