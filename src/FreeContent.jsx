@@ -14,7 +14,7 @@ export default function FreeContent() {
   const [successMessage, setSuccessMessage] = useState("");
   const { track } = useAnalytics("FreeContent");
 
-  // SCROLL DEPTH TRACKING
+    // SCROLL DEPTH TRACKING
   useEffect(() => {
     const thresholds = [25, 50, 75, 100];
     const triggered = new Set();
@@ -77,6 +77,31 @@ export default function FreeContent() {
     "Coming Soon",
     "Coming Soon"
   ];
+// Feature flag: keep false until you are ready to show the first recording
+const SHOW_RECORDED_WEBINARS = false;
+
+const RECORDED_WEBINARS = [
+  {
+    id: "webinar-001",
+    title: "Using Music to Create Meaningful Connection",
+    duration: "38 min",
+    videoEmbedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+  },
+  ];
+
+const [isRecordedModalOpen, setIsRecordedModalOpen] = useState(false);
+const [activeRecording, setActiveRecording] = useState(null);
+
+const openRecordedModal = () => {
+  setActiveRecording(RECORDED_WEBINARS[0] || null);
+  setIsRecordedModalOpen(true);
+};
+
+const closeRecordedModal = () => {
+  setIsRecordedModalOpen(false);
+  setActiveRecording(null);
+};
+
 
   const [sliderRef, instanceRef] = useKeenSlider({
     loop: false,
@@ -421,31 +446,59 @@ export default function FreeContent() {
 </button>
 
           </div>
+{/* Webinar Buttons – bottom row */}
+<div className="mt-auto pt-4 text-center">
+  <div className="relative flex justify-center gap-3 flex-wrap" style={{ top: "13px" }}>
+    <Button
+      className="text-base px-6 py-4 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-md transition"
+      onClick={() => {
+        const eventData = {
+          event: "click_cta",
+          button_text: "Generic: Sign Up for a Webinar",
+          destination_url: "https://singfit.eventbrite.com",
+          page_id: "MemberResources",
+        };
 
-          {/* Webinar Button – FINAL FIX */}
-          <div className="mt-auto pt-4 text-center">
-            <div className="relative">
-              <Button
-  className="text-base px-6 py-4 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-md transition relative"
-  style={{ top: '13px' }}
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(eventData);
+        window.open(eventData.destination_url, "_blank");
+      }}
+    >
+      Sign Up for a Webinar
+    </Button>
+
+    {SHOW_RECORDED_WEBINARS && (
+      <Button
+  className="
+    text-base
+    px-6 py-4
+    bg-transparent
+    text-[#F47534]
+    border-2 border-[#F47534]
+    hover:bg-[#F47534]/10
+    shadow-sm
+    transition
+  "
   onClick={() => {
     const eventData = {
       event: "click_cta",
-      button_text: "Generic: Sign Up for a Webinar",
-      destination_url: "https://singfit.eventbrite.com",
-      page_id: "MemberResources"
+      button_text: "Watch Past Webinars",
+      destination_url: "modal:recorded_webinars",
+      page_id: "MemberResources",
     };
-    
+
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(eventData);
-    window.open(eventData.destination_url, "_blank");
+
+    openRecordedModal();
   }}
 >
-  Sign Up for a Webinar
+  Watch Past Webinars
 </Button>
 
-            </div>
-          </div>
+    )}
+  </div>
+</div>
 
         </div>
       </section>
@@ -518,6 +571,101 @@ export default function FreeContent() {
           </a>
         </div>
       </footer>
+      {/* Recorded Webinar Modal */}
+{SHOW_RECORDED_WEBINARS && isRecordedModalOpen && (
+  <div
+    className="fixed inset-0 z-50 flex items-center justify-center px-4"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Watch past webinars"
+  >
+    {/* Backdrop */}
+    <button
+      type="button"
+      className="absolute inset-0 bg-black/50"
+      onClick={closeRecordedModal}
+      aria-label="Close"
+    />
+
+    {/* Modal panel */}
+    <div className="relative w-full max-w-3xl bg-white rounded-2xl shadow-xl overflow-hidden">
+      <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200">
+        <div>
+          <h3 className="text-base font-semibold text-gray-900">
+            Watch Past Webinars
+          </h3>
+          <p className="text-xs text-gray-600 mt-0.5">
+            Recorded session
+          </p>
+        </div>
+
+        <button
+          type="button"
+          onClick={closeRecordedModal}
+          className="text-sm font-semibold text-gray-700 hover:underline"
+        >
+          Close
+        </button>
+      </div>
+
+      <div className="p-5">
+  {activeRecording ? (
+    <>
+      <div className="w-full aspect-video bg-gray-100 rounded-xl overflow-hidden border border-gray-200">
+        <iframe
+          title={activeRecording.title}
+          src={activeRecording.videoEmbedUrl}
+          className="w-full h-full"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
+
+      <div className="mt-3">
+        <div className="text-sm font-semibold text-gray-900">
+          {activeRecording.title}
+        </div>
+        <div className="text-xs text-gray-600 mt-1">
+          {activeRecording.duration}
+        </div>
+      </div>
+      {RECORDED_WEBINARS.length > 1 && (
+  <div className="mt-4 border-t border-gray-200 pt-3">
+    <div className="text-xs font-semibold text-gray-600 mb-2">
+      Other recordings
+    </div>
+
+    <div className="space-y-2">
+      {RECORDED_WEBINARS.map((rec) => (
+        <button
+          key={rec.id}
+          type="button"
+          onClick={() => setActiveRecording(rec)}
+          className={`w-full text-left p-2 rounded-md border text-sm transition ${
+            activeRecording.id === rec.id
+              ? "border-[#002F6C] bg-[#F5EFEA] text-[#002F6C]"
+              : "border-gray-200 hover:bg-gray-50"
+          }`}
+        >
+          <div className="font-medium">{rec.title}</div>
+          <div className="text-xs text-gray-600">{rec.duration}</div>
+        </button>
+      ))}
+    </div>
+  </div>
+)}
+
+    </>
+  ) : (
+    <div className="text-sm text-gray-600">
+      No recorded webinars available yet.
+    </div>
+  )}
+</div>
+    </div>
+  </div>
+)}
+
   </div>
   );
 }
