@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@vimeo/player": "^2.30.2",
     "autoprefixer": "^10.4.14",
     "framer-motion": "^10.18.0",
     "hugeicons-react": "^0.3.0",

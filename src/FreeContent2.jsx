@@ -2,7 +2,8 @@ import { Button } from "./components/ui/button";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import { useState } from "react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import Player from "@vimeo/player";
 import { useAnalytics } from "./useAnalytics";
 
 
@@ -87,7 +88,7 @@ const RECORDED_WEBINARS = [
     id: "webinar-001",
     title: "Using Music to Create Meaningful Connection",
     duration: "38 min",
-    videoEmbedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoEmbedUrl: "https://player.vimeo.com/video/1164185752?h=d0796ce4f1",
   },
   ];
 
@@ -95,14 +96,87 @@ const [isRecordedModalOpen, setIsRecordedModalOpen] = useState(false);
 const [activeRecording, setActiveRecording] = useState(null);
 
 const openRecordedModal = () => {
-  setActiveRecording(RECORDED_WEBINARS[0] || null);
+  const first = RECORDED_WEBINARS[0] || null;
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: "recorded_webinar_modal_open",
+    page_id: "NonMemberResources",
+    recording_id: first?.id || "",
+    recording_title: first?.title || "",
+  });
+
+  setActiveRecording(first);
   setIsRecordedModalOpen(true);
 };
 
 const closeRecordedModal = () => {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: "recorded_webinar_modal_close",
+    page_id: "NonMemberResources",
+  });
+
   setIsRecordedModalOpen(false);
   setActiveRecording(null);
 };
+
+const vimeoIframeRef = useRef(null);
+const vimeoPlayerRef = useRef(null);
+const firedMilestonesRef = useRef(new Set());
+
+useEffect(() => {
+  if (!isRecordedModalOpen) return;
+  if (!activeRecording?.videoEmbedUrl) return;
+  if (!vimeoIframeRef.current) return;
+
+  // Create player for the iframe
+  const player = new Player(vimeoIframeRef.current);
+
+  const pushEvent = (eventName) => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: eventName,
+      page_id: "NonMemberResources",
+      recording_id: activeRecording.id || "",
+      recording_title: activeRecording.title || "",
+    });
+  };
+
+  player.on("play", () => pushEvent("recorded_webinar_play"));
+  player.on("pause", () => pushEvent("recorded_webinar_pause"));
+  player.on("ended", () => pushEvent("recorded_webinar_complete"));
+
+  player.on("timeupdate", (data) => {
+  const duration = data?.duration || 0;
+  const seconds = data?.seconds || 0;
+  if (!duration) return;
+
+  const pct = Math.floor((seconds / duration) * 100);
+
+  [25, 50, 75, 90, 100].forEach((m) => {
+    if (!firedMilestonesRef.current.has(m) && pct >= m) {
+      firedMilestonesRef.current.add(m);
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "recorded_webinar_progress",
+        page_id: "NonMemberResources",
+        recording_id: activeRecording?.id || "",
+        recording_title: activeRecording?.title || "",
+        percent_watched: m,
+      });
+    }
+  });
+});
+
+
+  return () => {
+    try {
+      player.unload();
+    } catch (e) {}
+  };
+}, [isRecordedModalOpen, activeRecording]);
 
   const [sliderRef, instanceRef] = useKeenSlider({
     loop: false,
@@ -636,10 +710,11 @@ const closeRecordedModal = () => {
     <>
       <div className="w-full aspect-video bg-gray-100 rounded-xl overflow-hidden border border-gray-200">
         <iframe
+          ref={vimeoIframeRef}
           title={activeRecording.title}
           src={activeRecording.videoEmbedUrl}
           className="w-full h-full"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allow="autoplay; fullscreen; picture-in-picture"
           allowFullScreen
         />
       </div>
