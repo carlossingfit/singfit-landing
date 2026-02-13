@@ -85,7 +85,7 @@ const SHOW_RECORDED_WEBINARS = true;
 const RECORDED_WEBINARS = [
   {
     id: "webinar-001",
-    title: "Using Music to Create Meaningful Connection",
+    title: "Caregivers: Using Music to Connect with Your Loved One",
     duration: "38 min",
     videoEmbedUrl: "https://player.vimeo.com/video/1164185752?h=d0796ce4f1",
   },
