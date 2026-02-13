@@ -80,7 +80,7 @@ export default function FreeContent() {
     "Coming Soon"
   ];
 // Feature flag: keep false until you are ready to show the first recording
-const SHOW_RECORDED_WEBINARS = false;
+const SHOW_RECORDED_WEBINARS = true;
 
 const RECORDED_WEBINARS = [
   {
