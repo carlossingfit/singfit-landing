@@ -81,13 +81,13 @@ export default function FreeContent2() {
     "Coming Soon"
   ];
 // Feature flag: keep false until you are ready to show the first recording
-const SHOW_RECORDED_WEBINARS = false;
+const SHOW_RECORDED_WEBINARS = true;
 
 const RECORDED_WEBINARS = [
   {
     id: "webinar-001",
-    title: "Using Music to Create Meaningful Connection",
-    duration: "38 min",
+    title: "Caregivers: Using Music to Connect with Your Loved One",
+    duration: "56 min",
     videoEmbedUrl: "https://player.vimeo.com/video/1164185752?h=d0796ce4f1",
   },
   ];
@@ -437,13 +437,15 @@ useEffect(() => {
   onClick={() => {
     const eventData = {
       event: "click_cta",
-      button_text: "Webinar: Using Music to Connect with Your Loved One",
-      destination_url: "https://www.eventbrite.com/e/connecting-through-music-tickets-1981192961480?aff=oddtdtcreator",
-      page_id: "NonMemberResources"
-    };
-     window.dataLayer = window.dataLayer || [];
+      button_text: "Webinar: Connecting Through Music (Feb 10)",
+      destination_url: "modal:recorded_webinars",
+      page_id: "MemberResources"
+     };
+
+    window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(eventData);
-    window.open(eventData.destination_url, "_blank");
+
+    openRecordedModal();
   }}
   className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
@@ -538,16 +540,7 @@ useEffect(() => {
 
     {SHOW_RECORDED_WEBINARS && (
       <Button
-  className="
-    text-base
-    px-6 py-4
-    bg-transparent
-    text-[#F47534]
-    border-2 border-[#F47534]
-    hover:bg-[#F47534]/10
-    shadow-sm
-    transition
-  "
+  className="text-base px-6 py-4 bg-[#F47534] text-white hover:bg-[#d9652c] shadow-md transition"
   onClick={() => {
     const eventData = {
       event: "click_cta",
