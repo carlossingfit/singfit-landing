@@ -460,8 +460,11 @@ useEffect(() => {
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      Caregivers: Using Music to Connect with Your Loved One
-    </p>
+  Caregivers: Using Music to Connect with Your Loved One{" "}
+  <span className="text-sm font-medium text-[#F47534] ml-1">
+    (Click to Watch Recording)
+  </span>
+</p>
   </div>
 </button>
 
