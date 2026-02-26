@@ -118,7 +118,8 @@ export default function SingFitLandingPage() {
               aria-label="Access free therapeutic music resources"
               className="text-lg px-10 py-5 bg-[#F47534] text-white hover:bg-[#d9652c] transition-all duration-200 ease-in-out"
             >
-              Get Free Music Resources
+              Free Webinars & Resources
+      
             </Button>
 
             {/* Internal Scroll CTA – Learn About App */}
