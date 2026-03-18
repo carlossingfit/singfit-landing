@@ -89,6 +89,12 @@ const RECORDED_WEBINARS = [
     duration: "56 min",
     videoEmbedUrl: "https://player.vimeo.com/video/1164185752?h=d0796ce4f1",
   },  
+   {
+    id: "webinar-002",
+    title: "Caregivers: How to Select the Right Music for Your Goal",
+    duration: "50 min",
+    videoEmbedUrl: "https://player.vimeo.com/video/1173355484?h=85d323d74e",
+  },  
   ];
 
 const [isRecordedModalOpen, setIsRecordedModalOpen] = useState(false);
@@ -475,13 +481,14 @@ useEffect(() => {
     const eventData = {
       event: "click_cta",
       button_text: "Webinar: How to Select the Right Music for Your Goal",
-      destination_url: "https://www.eventbrite.com/e/1981269681953?aff=oddtdtcreator",
+      destination_url: "modal:recorded_webinars",
       page_id: "MemberResources"
-    };
-    
+     };
+
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(eventData);
-    window.open(eventData.destination_url, "_blank");
+
+    openRecordedModal();
   }}
   className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
@@ -492,7 +499,10 @@ useEffect(() => {
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      Caregivers: How to Select the Right Music for Your Goal
+      Caregivers: How to Select the Right Music for Your Goal{" "}
+      <span className="text-sm font-medium text-[#F47534] ml-1">
+    (Click to Watch Recording)
+  </span>
     </p>
   </div>
 </button>
