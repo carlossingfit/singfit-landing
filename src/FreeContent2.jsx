@@ -96,6 +96,12 @@ const RECORDED_WEBINARS = [
     duration: "50 min",
     videoEmbedUrl: "https://player.vimeo.com/video/1173355484?h=85d323d74e",
   },  
+  {
+    id: "webinar-003",
+    title: "Caregivers: A Deep Dive into the Musical Preferences of Your Loved One",
+    duration: "50 min",
+    videoEmbedUrl: "https://player.vimeo.com/video/1181333165?h=4fe87d8edd",
+  },  
   ];
 
 const [isRecordedModalOpen, setIsRecordedModalOpen] = useState(false);
@@ -503,17 +509,18 @@ useEffect(() => {
 </button>
             {/* Webinar Card 3 */}
             <button
-  onClick={() => {
+   onClick={() => {
     const eventData = {
       event: "click_cta",
       button_text: "Webinar: A Deep Dive into the Musical Preferences of Your Loved One",
-      destination_url: "https://www.eventbrite.com/e/1981269705022?aff=oddtdtcreator",
-      page_id: "NonMemberResources"
-    };
-    
+      destination_url: "modal:recorded_webinars",
+      page_id: "MemberResources"
+     };
+
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(eventData);
-    window.open(eventData.destination_url, "_blank");
+
+    openRecordedModal();
   }}
   className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
@@ -524,7 +531,10 @@ useEffect(() => {
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      Caregivers: A Deep Dive into the Musical Preferences of Your Loved One
+      Caregivers: A Deep Dive into the Musical Preferences of Your Loved One{" "}
+      <span className="text-sm font-medium text-[#F47534] ml-1">
+    (Click to Watch Recording)
+  </span>
     </p>
   </div>
 </button>
