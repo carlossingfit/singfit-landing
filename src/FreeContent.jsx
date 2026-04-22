@@ -453,39 +453,6 @@ useEffect(() => {
   onClick={() => {
     const eventData = {
       event: "click_cta",
-      button_text: "Webinar: Connecting Through Music (Feb 10)",
-      destination_url: "modal:recorded_webinars",
-      page_id: "MemberResources"
-     };
-
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(eventData);
-
-    openRecordedModal();
-  }}
-  className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
->
-  <img
-    src="/Feb_10.png"
-    alt="February 10, 2026"
-    className="w-20 h-20 object-contain rounded-md shadow"
-  />
-  <div className="text-lg leading-relaxed">
-    <p className="font-semibold text-[#002F6C] text-xl mb-2">
-  Caregivers: Using Music to Connect with Your Loved One{" "}
-  <span className="text-sm font-medium text-[#F47534] ml-1">
-    (Click to Watch Recording)
-  </span>
-</p>
-  </div>
-</button>
-
-
-            {/* Webinar Card 2 */}
-   <button
-  onClick={() => {
-    const eventData = {
-      event: "click_cta",
       button_text: "Webinar: How to Select the Right Music for Your Goal",
       destination_url: "modal:recorded_webinars",
       page_id: "MemberResources"
@@ -513,8 +480,9 @@ useEffect(() => {
   </div>
 </button>
 
-            {/* Webinar Card 3 */}
-  <button
+
+            {/* Webinar Card 2 */}
+   <button
   onClick={() => {
     const eventData = {
       event: "click_cta",
@@ -540,6 +508,37 @@ useEffect(() => {
       Caregivers: A Deep Dive into the Musical Preferences of Your Loved One{" "}
       <span className="text-sm font-medium text-[#F47534] ml-1">
     (Click to Watch Recording)
+  </span>
+    </p>
+  </div>
+</button>
+
+            {/* Webinar Card 3 */}
+  <button
+  onClick={() => {
+        const eventData = {
+          event: "click_cta",
+          button_text: "An Introduction to Using Music to Connect with Your Loved One",
+          destination_url: "https://www.eventbrite.com/e/overview-caregivers-using-music-to-connect-with-your-loved-one-tickets-1986815790513",
+          page_id: "MemberResources",
+        };
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(eventData);
+        window.open(eventData.destination_url, "_blank");
+      }}
+  className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
+>
+  <img
+    src="/May_6.png"
+    alt="May 6, 2026"
+    className="w-20 h-20 object-contain rounded-md shadow"
+  />
+  <div className="text-lg leading-relaxed">
+    <p className="font-semibold text-[#002F6C] text-xl mb-2">
+      Caregivers: An Introduction to Using Music to Connect with Your Loved One{" "}
+      <span className="text-sm font-medium text-[#F47534] ml-1">
+    (Sign Up Now!)
   </span>
     </p>
   </div>
