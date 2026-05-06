@@ -24,6 +24,7 @@ import DemoLandingPage from "./DemoLandingPage";
 import UKLanding from "./UKLanding";
 import CaregiverLandingPage from "./CaregiverLandingPage";
 import CaregiverLandingPageV2 from "./CaregiverLandingPageV2";
+import CaregiverLandingPageV3 from "./CaregiverLandingPageV3";
 
 
 
@@ -56,6 +57,8 @@ function App() {
          <Route path="/uk" element={<UKLanding />} />
          <Route path="/caregiverlanding" element={<CaregiverLandingPage />} />
          <Route path="/caregiverlanding2" element={<CaregiverLandingPageV2 />} />
+         <Route path="/caregiver3" element={<CaregiverLandingPageV3 />} />
+
 
       </Routes>
     </Router>
