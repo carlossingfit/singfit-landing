@@ -22,6 +22,10 @@ import CookiePolicy from "./CookiePolicy";
 import CleanAARPLanding from "./CleanAARPLanding";
 import DemoLandingPage from "./DemoLandingPage";
 import UKLanding from "./UKLanding";
+import CaregiverLandingPage from "./CaregiverLandingPage";
+import CaregiverLandingPageV2 from "./CaregiverLandingPageV2";
+
+
 
 
 
@@ -50,6 +54,9 @@ function App() {
         <Route path="/cleanlanding" element={<CleanAARPLanding />} />
         <Route path="/demo" element={<DemoLandingPage />} />
          <Route path="/uk" element={<UKLanding />} />
+         <Route path="/caregiverlanding" element={<CaregiverLandingPage />} />
+         <Route path="/caregiverlanding2" element={<CaregiverLandingPageV2 />} />
+
       </Routes>
     </Router>
   );
