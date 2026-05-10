@@ -29,6 +29,7 @@ import CaregiverLandingPageV4 from "./CaregiverLandingPageV4";
 import CaregiverLandingPageV5 from "./CaregiverLandingPageV5";
 import CaregiverLandingPageV6 from "./CaregiverLandingPageV6";
 import CaregiverLandingPageV7 from "./CaregiverLandingPageV7";
+import CaregiverLandingPageV8 from "./CaregiverLandingPageV8";
 
 
 
@@ -65,6 +66,7 @@ function App() {
          <Route path="/caregiverlanding5" element={<CaregiverLandingPageV5 />} />
          <Route path="/caregiverlanding6" element={<CaregiverLandingPageV6 />} />
          <Route path="/caregiverlanding7" element={<CaregiverLandingPageV7 />} />
+         <Route path="/caregiverlanding8" element={<CaregiverLandingPageV8 />} />
 
 
       </Routes>
