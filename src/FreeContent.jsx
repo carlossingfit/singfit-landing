@@ -519,13 +519,14 @@ useEffect(() => {
         const eventData = {
           event: "click_cta",
           button_text: "An Introduction to Using Music to Connect with Your Loved One",
-          destination_url: "https://www.eventbrite.com/e/overview-caregivers-using-music-to-connect-with-your-loved-one-tickets-1986815790513",
+          destination_url: "modal:recorded_webinars",
           page_id: "MemberResources",
         };
 
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push(eventData);
-        window.open(eventData.destination_url, "_blank");
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(eventData);
+
+    openRecordedModal();
       }}
   className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
@@ -538,7 +539,7 @@ useEffect(() => {
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
       Caregivers: An Introduction to Using Music to Connect with Your Loved One{" "}
       <span className="text-sm font-medium text-[#F47534] ml-1">
-    (Sign Up Now!)
+    (Click to Watch Recording)
   </span>
     </p>
   </div>
