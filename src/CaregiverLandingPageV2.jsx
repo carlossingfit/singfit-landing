@@ -166,7 +166,7 @@ export default function CaregiverLandingPageV2() {
     <div className="overflow-hidden rounded-[3rem] bg-white p-4 shadow-[0_34px_90px_rgba(15,23,42,0.10)]">
       <div className="relative aspect-video overflow-hidden rounded-[2rem]">
         <iframe
-          src="https://player.vimeo.com/video/566719050?h=0&title=0&byline=0&portrait=0"
+          src="https://player.vimeo.com/video/1194167243?h=0&title=0&byline=0&portrait=0"
           title="Caregiver sharing a SingFit music moment"
           className="absolute inset-0 h-full w-full"
           frameBorder="0"
