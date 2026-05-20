@@ -85,7 +85,7 @@ export default function CaregiverLandingPageV8() {
               </a>
 
               <p className="text-sm font-bold text-slate-600">
-                Start in minutes. Cancel anytime.
+                Just $11.99/month. Cancel anytime.
               </p>
             </div>
 
@@ -464,6 +464,39 @@ export default function CaregiverLandingPageV8() {
           </div>
         </div>
       </section>
+      {/* Footer */}
+      <footer className="text-center text-xs text-gray-500 border-t border-gray-200 pt-6 mt-12 px-4">
+        <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
+          <span>
+            ©2026 Musical Health Technologies. All Rights Reserved.
+          </span>
+          <span>1010 Wilshire Blvd. Los Angeles, CA 90017</span>
+          <a
+            href="/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline text-blue-600"
+          >
+            Privacy Policy
+          </a>
+          <a
+            href="/terms"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline text-blue-600"
+          >
+            Terms of Service
+          </a>
+          <a
+            href="/accessibility"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline text-blue-600"
+          >
+            Accessibility Statement
+          </a>
+        </div>
+      </footer>
     </main>
   );
 }
