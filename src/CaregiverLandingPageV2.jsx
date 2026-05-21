@@ -77,14 +77,6 @@ export default function CaregiverLandingPageV2() {
     }
   };
 
-  useEffect(() => {
-    pushTrackingEvent({
-      event: "page_view",
-      page_path: window.location.pathname,
-      page_location: window.location.href,
-      page_title: document.title,
-    });
-  }, []);
 
   useEffect(() => {
     const thresholds = [25, 50, 75, 100];
