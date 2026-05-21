@@ -121,73 +121,60 @@ export default function CaregiverLandingPageV2() {
 
   const player = new Player(videoIframeRef.current);
 
-  let progress25 = false;
-  let progress50 = false;
-  let progress75 = false;
-  let completed = false;
+  const progressMilestones = new Set();
+  let hasStarted = false;
+  let hasCompleted = false;
 
-  player.on("play", () => {
+  const handlePlay = () => {
+    if (hasStarted) return;
+
+    hasStarted = true;
+
     pushTrackingEvent({
       event: "video_start",
       page_id: PAGE_ID,
       video_name: "laina_story",
     });
-  });
+  };
 
-  player.on("timeupdate", ({ percent }) => {
+  const handleTimeUpdate = ({ percent }) => {
     const progress = Math.floor(percent * 100);
 
-    if (progress >= 25 && !progress25) {
-      progress25 = true;
+    [25, 50, 75].forEach((milestone) => {
+      if (progress >= milestone && !progressMilestones.has(milestone)) {
+        progressMilestones.add(milestone);
 
-      pushTrackingEvent({
-        event: "video_progress",
-        page_id: PAGE_ID,
-        video_name: "laina_story",
-        percent: 25,
-      });
-    }
+        pushTrackingEvent({
+          event: "video_progress",
+          page_id: PAGE_ID,
+          video_name: "laina_story",
+          percent: milestone,
+        });
+      }
+    });
+  };
 
-    if (progress >= 50 && !progress50) {
-      progress50 = true;
+  const handleEnded = () => {
+    if (hasCompleted) return;
 
-      pushTrackingEvent({
-        event: "video_progress",
-        page_id: PAGE_ID,
-        video_name: "laina_story",
-        percent: 50,
-      });
-    }
-
-    if (progress >= 75 && !progress75) {
-      progress75 = true;
-
-      pushTrackingEvent({
-        event: "video_progress",
-        page_id: PAGE_ID,
-        video_name: "laina_story",
-        percent: 75,
-      });
-    }
-  });
-
-  player.on("ended", () => {
-    if (completed) return;
-
-    completed = true;
+    hasCompleted = true;
 
     pushTrackingEvent({
       event: "video_complete",
       page_id: PAGE_ID,
       video_name: "laina_story",
     });
-  });
+  };
+
+  player.on("play", handlePlay);
+  player.on("timeupdate", handleTimeUpdate);
+  player.on("ended", handleEnded);
 
   return () => {
-  player.off("play");
-  player.off("timeupdate");
-  player.off("ended");
-};
+    player.off("play", handlePlay);
+    player.off("timeupdate", handleTimeUpdate);
+    player.off("ended", handleEnded);
+  };
 }, []);
 
   const PhoneMockup = ({ src, alt = "", className = "" }) => (
