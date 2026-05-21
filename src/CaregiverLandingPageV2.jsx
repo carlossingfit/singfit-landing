@@ -1,7 +1,194 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import Player from "@vimeo/player";
 
 export default function CaregiverLandingPageV2() {
+  const PAGE_ID = "CaregiverLandingV2";
+  const iframeRef = useRef(null);
   const checkoutUrl = "https://www.singfit.com/caregiver-pricing";
+  const videoIframeRef = useRef(null);
+  const videoStartedRef = useRef(false);
+  const videoProgressRef = useRef(new Set());
+
+  const attributionParams = [
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_content",
+    "utm_term",
+    "fbclid",
+    "gclid",
+  ];
+
+  const pushTrackingEvent = (eventData) => {
+    if (typeof window === "undefined") return;
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      page_id: PAGE_ID,
+      ...eventData,
+    });
+  };
+
+  const buildUrlWithAttribution = (destinationUrl) => {
+    if (typeof window === "undefined") return destinationUrl;
+
+    try {
+      const url = new URL(destinationUrl, window.location.origin);
+      const currentParams = new URLSearchParams(window.location.search);
+
+      attributionParams.forEach((param) => {
+        const value = currentParams.get(param);
+        if (value && !url.searchParams.has(param)) {
+          url.searchParams.set(param, value);
+        }
+      });
+
+      return url.toString();
+    } catch (error) {
+      return destinationUrl;
+    }
+  };
+
+  const trackCtaClick = ({ buttonText, destinationUrl }) => {
+    const finalDestinationUrl = buildUrlWithAttribution(destinationUrl);
+
+    pushTrackingEvent({
+      event: "click_cta",
+      button_text: buttonText,
+      destination_url: finalDestinationUrl,
+    });
+
+    return finalDestinationUrl;
+  };
+
+  const handleCtaNavigation = (event, { buttonText, destinationUrl }) => {
+    const finalDestinationUrl = trackCtaClick({ buttonText, destinationUrl });
+
+    if (
+      event &&
+      event.button === 0 &&
+      !event.metaKey &&
+      !event.ctrlKey &&
+      !event.shiftKey &&
+      !event.altKey
+    ) {
+      event.preventDefault();
+      window.location.assign(finalDestinationUrl);
+    }
+  };
+
+  useEffect(() => {
+    pushTrackingEvent({
+      event: "page_view",
+      page_path: window.location.pathname,
+      page_location: window.location.href,
+      page_title: document.title,
+    });
+  }, []);
+
+  useEffect(() => {
+    const thresholds = [25, 50, 75, 100];
+    const trackedThresholds = new Set();
+
+    const handleScroll = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const documentHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+      if (documentHeight <= 0) return;
+
+      const percentScrolled = Math.round((scrollTop / documentHeight) * 100);
+
+      thresholds.forEach((threshold) => {
+        if (percentScrolled >= threshold && !trackedThresholds.has(threshold)) {
+          trackedThresholds.add(threshold);
+          pushTrackingEvent({
+            event: "scroll_depth",
+            percent_scrolled: threshold,
+          });
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+  if (!videoIframeRef.current) return undefined;
+
+  const player = new Player(videoIframeRef.current);
+
+  let progress25 = false;
+  let progress50 = false;
+  let progress75 = false;
+  let completed = false;
+
+  player.on("play", () => {
+    pushTrackingEvent({
+      event: "video_start",
+      page_id: PAGE_ID,
+      video_name: "laina_story",
+    });
+  });
+
+  player.on("timeupdate", ({ percent }) => {
+    const progress = Math.floor(percent * 100);
+
+    if (progress >= 25 && !progress25) {
+      progress25 = true;
+
+      pushTrackingEvent({
+        event: "video_progress",
+        page_id: PAGE_ID,
+        video_name: "laina_story",
+        percent: 25,
+      });
+    }
+
+    if (progress >= 50 && !progress50) {
+      progress50 = true;
+
+      pushTrackingEvent({
+        event: "video_progress",
+        page_id: PAGE_ID,
+        video_name: "laina_story",
+        percent: 50,
+      });
+    }
+
+    if (progress >= 75 && !progress75) {
+      progress75 = true;
+
+      pushTrackingEvent({
+        event: "video_progress",
+        page_id: PAGE_ID,
+        video_name: "laina_story",
+        percent: 75,
+      });
+    }
+  });
+
+  player.on("ended", () => {
+    if (completed) return;
+
+    completed = true;
+
+    pushTrackingEvent({
+      event: "video_complete",
+      page_id: PAGE_ID,
+      video_name: "laina_story",
+    });
+  });
+
+  return () => {
+  player.off("play");
+  player.off("timeupdate");
+  player.off("ended");
+};
+}, []);
 
   const PhoneMockup = ({ src, alt = "", className = "" }) => (
     <div
@@ -47,7 +234,13 @@ export default function CaregiverLandingPageV2() {
           />
 
           <a
-            href={checkoutUrl}
+            href={buildUrlWithAttribution(checkoutUrl)}
+            onClick={(event) =>
+              handleCtaNavigation(event, {
+                buttonText: "Header - Start One Good Moment",
+                destinationUrl: checkoutUrl,
+              })
+            }
             className="rounded-full bg-[#F47534] px-5 py-3 text-sm font-bold text-white shadow-[0_12px_30px_rgba(244,117,52,0.25)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_44px_rgba(244,117,52,0.34)] md:px-6"
           >
             Start One Good Moment
@@ -74,7 +267,13 @@ export default function CaregiverLandingPageV2() {
 
             <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
               <a
-                href={checkoutUrl}
+                href={buildUrlWithAttribution(checkoutUrl)}
+                onClick={(event) =>
+                  handleCtaNavigation(event, {
+                    buttonText: "Hero - Start One Good Moment Today",
+                    destinationUrl: checkoutUrl,
+                  })
+                }
                 className="rounded-full bg-[#F47534] px-9 py-5 text-center text-lg font-bold text-white shadow-[0_18px_46px_rgba(244,117,52,0.30)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(244,117,52,0.40)]"
               >
                 Start One Good Moment Today
@@ -93,8 +292,8 @@ export default function CaregiverLandingPageV2() {
                     className="rounded-xl bg-slate-100/80 px-4 py-3"
                   >
                     <p className="text-center text-sm font-bold text-[#062B49]">
-  {item}
-</p>
+                      {item}
+                    </p>
                   </div>
                 )
               )}
@@ -147,7 +346,7 @@ export default function CaregiverLandingPageV2() {
 
             <div className="space-y-5 text-xl leading-relaxed text-slate-700">
               <p>
-                Somtimes dementia can make everyday connection feel unpredictable.
+                Sometimes dementia can make everyday connection feel unpredictable.
                 Sometimes conversation is hard. Sometimes nothing seems to land.
               </p>
 
@@ -166,6 +365,7 @@ export default function CaregiverLandingPageV2() {
     <div className="overflow-hidden rounded-[3rem] bg-white p-4 shadow-[0_34px_90px_rgba(15,23,42,0.10)]">
       <div className="relative aspect-video overflow-hidden rounded-[2rem]">
         <iframe
+          ref={videoIframeRef}
           src="https://player.vimeo.com/video/1194167243?h=0&title=0&byline=0&portrait=0"
           title="Caregiver sharing a SingFit music moment"
           className="absolute inset-0 h-full w-full"
@@ -295,7 +495,13 @@ export default function CaregiverLandingPageV2() {
             </div>
 
             <a
-              href={checkoutUrl}
+              href={buildUrlWithAttribution(checkoutUrl)}
+              onClick={(event) =>
+                handleCtaNavigation(event, {
+                  buttonText: "How It Works - Start Today",
+                  destinationUrl: checkoutUrl,
+                })
+              }
               className="w-fit rounded-full bg-[#F47534] px-7 py-4 text-base font-bold text-white shadow-[0_14px_34px_rgba(244,117,52,0.26)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_44px_rgba(244,117,52,0.34)]"
             >
               Start today
@@ -448,14 +654,20 @@ export default function CaregiverLandingPageV2() {
               </p>
 
               <a
-                href={checkoutUrl}
+                href={buildUrlWithAttribution(checkoutUrl)}
+                onClick={(event) =>
+                  handleCtaNavigation(event, {
+                    buttonText: "Final - Start One Good Moment Today",
+                    destinationUrl: checkoutUrl,
+                  })
+                }
                 className="mt-10 inline-block rounded-full bg-[#F47534] px-10 py-5 text-lg font-bold text-white shadow-[0_18px_46px_rgba(244,117,52,0.30)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(244,117,52,0.40)]"
               >
                 Start One Good Moment Today
               </a>
 
               <p className="mt-5 text-sm font-semibold text-blue-100">
-                Start in minutes. Cancel anytime.
+                Just $11.99/month. Cancel anytime.
               </p>
             </div>
           </div>
