@@ -235,12 +235,12 @@ export default function CaregiverLandingPageV2() {
           <div>
            
             <h1 className="max-w-5xl text-[3.2rem] font-black leading-[0.94] tracking-[-0.05em] md:text-[5rem] lg:text-[5.7rem]">
-              Caregivers, one good moment can change the whole day.
+              For caregivers, one good moment can change the whole day.
             </h1>
 
             <p className="mt-8 max-w-2xl text-xl leading-relaxed text-slate-700 md:text-2xl">
-                SingFit gives you guided music sessions you can start in seconds: choose a
-                session, press play, follow SingFit's Lyric Coach, and sing hit songs together
+                SingFit delivers guided music sessions you can start in seconds: choose a
+                session, press play, follow SingFit's Lyric Coach™, and sing hit songs together
                 from your phone.
             </p>
 
@@ -259,7 +259,7 @@ export default function CaregiverLandingPageV2() {
               </a>
 
               <p className="text-sm font-bold text-slate-600">
-                Just $11.99/month. Cancel anytime.
+                $11.99/month. Cancel anytime.
               </p>
             </div>
 
@@ -325,7 +325,7 @@ export default function CaregiverLandingPageV2() {
 
             <div className="space-y-5 text-xl leading-relaxed text-slate-700">
               <p>
-                Sometimes dementia can make everyday connection feel unpredictable.
+                Sometimes memory loss can make everyday connection feel unpredictable.
                 Sometimes conversation is hard. Sometimes nothing seems to land.
               </p>
 
@@ -367,8 +367,7 @@ export default function CaregiverLandingPageV2() {
 
       <div className="mt-8 rounded-[2rem] border-l-4 border-[#F47534] bg-[#FFF7F2] px-6 py-6">
         <p className="text-xl font-semibold leading-relaxed text-[#062B49]">
-          “SingFit gave us a simple way to connect through music, even on days
-          when conversation felt harder.”
+          “I’m so happy I learned of the SingFit program. It’s been life changing.”
         </p>
 
         <p className="mt-4 text-sm font-black uppercase tracking-[0.16em] text-[#F47534]">
@@ -395,12 +394,12 @@ export default function CaregiverLandingPageV2() {
     <div className="grid gap-px overflow-hidden rounded-[2.75rem] border border-slate-200 bg-slate-200 shadow-[0_34px_90px_rgba(15,23,42,0.09)] md:grid-cols-2">
       {[
         {
-          title: "Familiar songs",
-          text: "Use music that feels recognizable, personal, and easy to share. Familiar songs can help create comfort and connection in moments that otherwise feel difficult. Even a few minutes together can shift the tone of the day.",
+          title: "Hit songs",
+          text: "Use music that feels recognizable, personal, and easy to share. Familiar songs, including Over the Rainbow, Lean on Me, and Amazing Grace can help create comfort and connection in moments that otherwise feel difficult. Even a few minutes together can shift the tone of the day.",
         },
         {
           title: "Simple prompts",
-          text: "Lyrics and cues help guide participation so you are not leading alone. SingFit helps reduce the pressure of figuring out what to say or do next. Just press play and follow along together.",
+          text: "SingFit's unique Lyric Coach™ track helps guide participation so you are not leading alone. SingFit helps reduce the pressure of figuring out what to say or do next. Just press play and follow along and sing together.",
         },
       ].map((item) => (
         <div key={item.title} className="bg-white p-8 md:p-10">
@@ -496,7 +495,7 @@ export default function CaregiverLandingPageV2() {
               },
               {
                 step: "02",
-                title: "Follow along",
+                title: "Sing a Song",
                 text: "Use familiar songs and SingFit's Lyric Coach to easily participate together.",
               },
               {
@@ -524,45 +523,51 @@ export default function CaregiverLandingPageV2() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="px-5 py-10 md:px-10 md:py-14">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-10 max-w-4xl">
-            <p className="mb-5 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
-              Caregiver stories
+     {/* Testimonials */}
+<section className="px-5 py-10 md:px-10 md:py-14">
+  <div className="mx-auto max-w-7xl">
+    <div className="mb-10 max-w-4xl">
+      <p className="mb-5 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
+        Caregiver stories
+      </p>
+
+      <h2 className="text-5xl font-black leading-[0.98] tracking-[-0.06em] md:text-7xl">
+        Real moments caregivers remember.
+      </h2>
+    </div>
+
+    <div className="grid gap-6 md:grid-cols-3">
+      {testimonials.map((item) => (
+        <div
+          key={item.name}
+          className="relative flex min-h-[360px] flex-col justify-between rounded-[2.75rem] border border-slate-200 bg-white p-8 shadow-[0_30px_90px_rgba(15,23,42,0.09)]"
+        >
+          <div className="flex flex-1 flex-col">
+            <div className="mb-1 text-6xl font-black leading-[0.65] text-[#F47534]/25">
+              “
+            </div>
+
+            <p className="pr-6 text-xl font-black leading-snug tracking-[-0.035em] text-[#062B49]">
+              {item.quote}
             </p>
 
-            <h2 className="text-5xl font-black leading-[0.98] tracking-[-0.06em] md:text-7xl">
-              Real moments caregivers remember.
-            </h2>
+            <div className="absolute bottom-[88px] right-8 text-6xl font-black leading-[0.65] text-[#F47534]/25">
+              ”
+            </div>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            {testimonials.map((item) => (
-              <div
-                key={item.name}
-                className="flex min-h-[360px] flex-col justify-between rounded-[2.75rem] border border-slate-200 bg-white p-8 shadow-[0_30px_90px_rgba(15,23,42,0.09)]"
-              >
-                <div>
-                  <div className="mb-6 text-6xl font-black leading-none text-[#F47534]/25">
-                    “
-                  </div>
-                  <p className="text-xl font-black leading-snug tracking-[-0.035em] text-[#062B49]">
-                    {item.quote}
-                  </p>
-                </div>
+          <div className="mt-8 border-t border-slate-200 pt-5">
+            <p className="font-black text-[#062B49]">{item.name}</p>
 
-                <div className="mt-8 border-t border-slate-200 pt-5">
-                  <p className="font-black text-[#062B49]">{item.name}</p>
-                  <p className="text-sm font-semibold text-slate-600">
-                    {item.role}
-                  </p>
-                </div>
-              </div>
-            ))}
+            <p className="text-sm font-semibold text-slate-600">
+              {item.role}
+            </p>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* FAQ */}
       <section className="px-5 py-10 md:px-10 md:py-14">
@@ -590,7 +595,7 @@ export default function CaregiverLandingPageV2() {
                 },
                 {
                   q: "How long does it take?",
-                  a: "You can start in seconds. Even a few minutes of singing can create more connection with your loved one.",
+                  a: "You can get up and running in just a few minutes. Once set up, starting a SingFit session takes only seconds.",
                 },
                 {
                   q: "Am I locked into a long-term commitment?",
@@ -619,12 +624,9 @@ export default function CaregiverLandingPageV2() {
             <div className="absolute bottom-[-140px] right-[-140px] h-96 w-96 rounded-full bg-[#0091C8]/23 blur-3xl" />
 
             <div className="relative">
-              <p className="mb-6 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
-                Start today
-              </p>
-
+           
               <h2 className="mx-auto max-w-6xl text-5xl font-black leading-[0.94] tracking-[-0.05em] md:text-8xl">
-                Start with one good moment today.
+                Start with one good moment now.
               </h2>
 
               <p className="mx-auto mt-7 max-w-2xl text-xl leading-relaxed text-blue-50 md:text-2xl">
@@ -636,13 +638,13 @@ export default function CaregiverLandingPageV2() {
                 href={buildUrlWithAttribution(checkoutUrl)}
                 onClick={(event) =>
                   handleCtaNavigation(event, {
-                    buttonText: "Final - Start One Good Moment Today",
+                    buttonText: "Final - Start One Good Moment Now",
                     destinationUrl: checkoutUrl,
                   })
                 }
                 className="mt-10 inline-block rounded-full bg-[#F47534] px-10 py-5 text-lg font-bold text-white shadow-[0_18px_46px_rgba(244,117,52,0.30)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(244,117,52,0.40)]"
               >
-                Start One Good Moment Today
+                Start One Good Moment Now
               </a>
 
               <p className="mt-5 text-sm font-semibold text-blue-100">
