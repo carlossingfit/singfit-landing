@@ -325,7 +325,7 @@ export default function CaregiverLandingPageV2() {
 
             <div className="space-y-5 text-xl leading-relaxed text-slate-700">
               <p>
-                Sometimes memory loss can make everyday connection feel unpredictable.
+                Sometimes memory challenges can make everyday connection feel unpredictable.
                 Sometimes conversation is hard. Sometimes nothing seems to land.
               </p>
 
@@ -495,7 +495,7 @@ export default function CaregiverLandingPageV2() {
               },
               {
                 step: "02",
-                title: "Sing a Song",
+                title: "Sing a song",
                 text: "Use familiar songs and SingFit's Lyric Coach to easily participate together.",
               },
               {
@@ -638,17 +638,17 @@ export default function CaregiverLandingPageV2() {
                 href={buildUrlWithAttribution(checkoutUrl)}
                 onClick={(event) =>
                   handleCtaNavigation(event, {
-                    buttonText: "Final - Start One Good Moment Now",
+                    buttonText: "Final - Start One Good Moment",
                     destinationUrl: checkoutUrl,
                   })
                 }
                 className="mt-10 inline-block rounded-full bg-[#F47534] px-10 py-5 text-lg font-bold text-white shadow-[0_18px_46px_rgba(244,117,52,0.30)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(244,117,52,0.40)]"
               >
-                Start One Good Moment Now
+                Start One Good Moment
               </a>
 
               <p className="mt-5 text-sm font-semibold text-blue-100">
-                Just $11.99/month. Cancel anytime.
+                $11.99/month. Cancel anytime.
               </p>
             </div>
           </div>
