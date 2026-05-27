@@ -399,7 +399,7 @@ export default function CaregiverLandingPageV2() {
         },
         {
           title: "Simple prompts",
-          text: "SingFit's unique Lyric Coach™ track helps guide participation so you are not leading alone. SingFit helps reduce the pressure of figuring out what to say or do next. Just press play and follow along and sing together.",
+          text: "SingFit's unique Lyric Coach™ track helps guide participation so you are not leading alone. Our technology supplies the lyrics with a spoken prompt just before each line of the song, removing the anxiety of trying to read lyrics and keep up. Just press play to follow along and sing together.",
         },
       ].map((item) => (
         <div key={item.title} className="bg-white p-8 md:p-10">
