@@ -1,40 +1,253 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export default function PrimeLandingPage() {
-  const [formStatus, setFormStatus] = useState("idle");
+  const PAGE_ID = "PrimeLandingPage";
+  const SESSION_VIDEO_NAME = "prime_session_overview";
+  const TESTIMONIAL_VIDEO_NAME = "prime_customer_testimonial";
 
-  const scrollToDemoForm = () => {
+  const [formStatus, setFormStatus] = useState("idle");
+  const [formStartTime] = useState(Date.now());
+  const youtubePlayerRef = useRef(null);
+  const youtubeProgressIntervalRef = useRef(null);
+  const youtubeStartedRef = useRef(false);
+  const youtubeCompletedRef = useRef(false);
+  const youtubeMilestonesRef = useRef(new Set());
+  const vimeoStartedRef = useRef(false);
+  const vimeoCompletedRef = useRef(false);
+  const vimeoMilestonesRef = useRef(new Set());
+
+  const pushToDataLayer = (payload) => {
+    if (typeof window === "undefined") return;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ page_id: PAGE_ID, ...payload });
+  };
+
+  const trackCTA = (buttonText, destinationUrl = "#prime-demo-form") => {
+    pushToDataLayer({
+      event: "click_cta",
+      button_text: buttonText,
+      destination_url: destinationUrl,
+    });
+  };
+
+  const trackVideoEvent = (eventName, videoName, extra = {}) => {
+    pushToDataLayer({
+      event: eventName,
+      video_name: videoName,
+      ...extra,
+    });
+  };
+
+  const scrollToDemoForm = (buttonText = "Schedule a PRIME Demo") => {
+    trackCTA(buttonText, "#prime-demo-form");
+
     const formSection = document.getElementById("prime-demo-form");
     if (formSection) {
       formSection.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
+  useEffect(() => {
+    if (typeof window === "undefined") return undefined;
+
+    const clearProgressInterval = () => {
+      if (youtubeProgressIntervalRef.current) {
+        window.clearInterval(youtubeProgressIntervalRef.current);
+        youtubeProgressIntervalRef.current = null;
+      }
+    };
+
+    const checkYouTubeProgress = () => {
+      const player = youtubePlayerRef.current;
+      if (!player || typeof player.getDuration !== "function") return;
+
+      const duration = player.getDuration();
+      const currentTime = player.getCurrentTime();
+      if (!duration || !currentTime) return;
+
+      const percentWatched = (currentTime / duration) * 100;
+      [25, 50, 75].forEach((milestone) => {
+        if (
+          percentWatched >= milestone &&
+          !youtubeMilestonesRef.current.has(milestone)
+        ) {
+          youtubeMilestonesRef.current.add(milestone);
+          trackVideoEvent("video_progress", SESSION_VIDEO_NAME, {
+            percent: milestone,
+          });
+        }
+      });
+    };
+
+    const initializeYouTubePlayer = () => {
+      if (!window.YT || !window.YT.Player || youtubePlayerRef.current) return;
+
+      youtubePlayerRef.current = new window.YT.Player("prime-session-video", {
+        events: {
+          onStateChange: (event) => {
+            if (event.data === window.YT.PlayerState.PLAYING) {
+              if (!youtubeStartedRef.current) {
+                youtubeStartedRef.current = true;
+                trackVideoEvent("video_start", SESSION_VIDEO_NAME);
+              }
+
+              clearProgressInterval();
+              youtubeProgressIntervalRef.current = window.setInterval(
+                checkYouTubeProgress,
+                1000
+              );
+            }
+
+            if (
+              event.data === window.YT.PlayerState.PAUSED ||
+              event.data === window.YT.PlayerState.BUFFERING
+            ) {
+              clearProgressInterval();
+            }
+
+            if (event.data === window.YT.PlayerState.ENDED) {
+              clearProgressInterval();
+              if (!youtubeCompletedRef.current) {
+                youtubeCompletedRef.current = true;
+                trackVideoEvent("video_complete", SESSION_VIDEO_NAME);
+              }
+            }
+          },
+        },
+      });
+    };
+
+    if (window.YT && window.YT.Player) {
+      initializeYouTubePlayer();
+    } else {
+      const existingScript = document.querySelector(
+        'script[src="https://www.youtube.com/iframe_api"]'
+      );
+
+      if (!existingScript) {
+        const script = document.createElement("script");
+        script.src = "https://www.youtube.com/iframe_api";
+        document.body.appendChild(script);
+      }
+
+      const previousCallback = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = () => {
+        if (typeof previousCallback === "function") previousCallback();
+        initializeYouTubePlayer();
+      };
+    }
+
+    return () => {
+      clearProgressInterval();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return undefined;
+
+    const vimeoIframe = document.getElementById("prime-testimonial-video");
+    if (!vimeoIframe || !vimeoIframe.contentWindow) return undefined;
+
+    const subscribeToVimeoEvent = (eventName) => {
+      vimeoIframe.contentWindow.postMessage(
+        JSON.stringify({ method: "addEventListener", value: eventName }),
+        "https://player.vimeo.com"
+      );
+    };
+
+    const handleVimeoMessage = (event) => {
+      if (event.origin !== "https://player.vimeo.com") return;
+
+      let data;
+      try {
+        data = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
+      } catch (error) {
+        return;
+      }
+
+      if (!data || !data.event) return;
+
+      if (data.event === "play" && !vimeoStartedRef.current) {
+        vimeoStartedRef.current = true;
+        trackVideoEvent("video_start", TESTIMONIAL_VIDEO_NAME);
+      }
+
+      if (data.event === "timeupdate" && data.data?.percent) {
+        const percentWatched = data.data.percent * 100;
+        [25, 50, 75].forEach((milestone) => {
+          if (
+            percentWatched >= milestone &&
+            !vimeoMilestonesRef.current.has(milestone)
+          ) {
+            vimeoMilestonesRef.current.add(milestone);
+            trackVideoEvent("video_progress", TESTIMONIAL_VIDEO_NAME, {
+              percent: milestone,
+            });
+          }
+        });
+      }
+
+      if (data.event === "ended" && !vimeoCompletedRef.current) {
+        vimeoCompletedRef.current = true;
+        trackVideoEvent("video_complete", TESTIMONIAL_VIDEO_NAME);
+      }
+    };
+
+    window.addEventListener("message", handleVimeoMessage);
+    subscribeToVimeoEvent("play");
+    subscribeToVimeoEvent("timeupdate");
+    subscribeToVimeoEvent("ended");
+
+    return () => {
+      window.removeEventListener("message", handleVimeoMessage);
+    };
+  }, []);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setFormStatus("sending");
 
-    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    if (formData.get("website")) {
+      setFormStatus("success");
+      form.reset();
+      return;
+    }
+
+    const elapsedSeconds = (Date.now() - formStartTime) / 1000;
+
+    if (elapsedSeconds < 3) {
+      setFormStatus("success");
+      form.reset();
+      return;
+    }
+
     const payload = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch("/api/prime-demo", {
+      await fetch("https://hook.us2.make.com/6jcyahnyj6xzes7yc2inqqykk9rlvpgl", {
         method: "POST",
+        mode: "no-cors",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
       });
 
-      if (!response.ok) throw new Error("Form submission failed");
+      pushToDataLayer({
+        event: "submit_form",
+        form_id: "prime_demo_form",
+        formtype: "demo_request",
+      });
 
       setFormStatus("success");
-      event.currentTarget.reset();
+      form.reset();
     } catch (error) {
       setFormStatus("error");
     }
   };
-
   const trustStats = [
     { value: "900+", label: "Communities using SingFit" },
     { value: "2,800+", label: "SingFit Certified Facilitators" },
@@ -61,173 +274,187 @@ export default function PrimeLandingPage() {
         </div>
       </header>
 
-      <section className="relative px-5 pb-14 pt-8 md:px-10 md:pb-20 md:pt-12">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_10%,rgba(0,145,200,0.12),transparent_32%),radial-gradient(circle_at_12%_82%,rgba(244,117,52,0.10),transparent_30%)]" />
+      <section className="relative px-5 pb-12 pt-8 md:px-10 md:pb-16 md:pt-10">
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_10%,rgba(0,145,200,0.10),transparent_32%),radial-gradient(circle_at_12%_82%,rgba(244,117,52,0.08),transparent_30%)]" />
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.03fr_0.97fr]">
-          <div>
-            <p className="mb-6 inline-flex rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-black text-[#0377A3] shadow-sm">
-              For senior living communities
-            </p>
+  <div className="relative mx-auto max-w-7xl">
+    <div className="grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr]">
+      <div>
+       
+        <h1 className="max-w-4xl text-[2.8rem] font-black leading-[1.02] tracking-[-0.055em] md:text-[3.8rem] lg:text-[4.2rem]">
+          A turnkey music program your team can run consistently.
+        </h1>
 
-            <h1 className="max-w-5xl text-[3.1rem] font-black leading-[0.94] tracking-[-0.075em] md:text-[5.5rem] lg:text-[6.6rem]">
-              A turnkey music program your team can run consistently.
-            </h1>
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-700 md:text-xl">
+          SingFit PRIME helps senior living teams lead engaging group music
+          sessions with ready-to-use playlists, scripted booklets, training,
+          and a complete toolkit built for resident participation.
+        </p>
 
-            <p className="mt-8 max-w-2xl text-xl leading-relaxed text-slate-700 md:text-2xl">
-              SingFit PRIME helps senior living teams lead engaging group music
-              sessions with ready-to-use playlists, scripted booklets, training,
-              and a complete toolkit built for resident participation.
-            </p>
+        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+          <button
+            type="button"
+            onClick={scrollToDemoForm}
+            className="rounded-full bg-[#F47534] px-8 py-4 text-center text-base font-bold text-white shadow-[0_16px_40px_rgba(244,117,52,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_22px_52px_rgba(244,117,52,0.36)]"
+          >
+            Schedule a PRIME Demo
+          </button>
 
-            <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <button
-                type="button"
-                onClick={scrollToDemoForm}
-                className="rounded-full bg-[#F47534] px-9 py-5 text-center text-lg font-bold text-white shadow-[0_18px_46px_rgba(244,117,52,0.30)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(244,117,52,0.40)]"
-              >
-                Schedule a PRIME Demo
-              </button>
+          <p className="text-sm font-bold text-slate-600">
+            Built for activity, memory care, and wellness teams.
+          </p>
+        </div>
+      </div>
 
-              <p className="text-sm font-bold text-slate-600">
-                Built for activity, memory care, and wellness teams.
+      <div className="relative">
+        <div className="absolute left-8 top-8 h-[320px] w-[320px] rounded-full bg-[#0091C8]/12 blur-3xl" />
+        <div className="absolute bottom-0 right-0 h-[300px] w-[300px] rounded-full bg-[#F47534]/12 blur-3xl" />
+
+        <div className="relative overflow-hidden rounded-[2.5rem] border-[10px] border-white bg-white shadow-[0_30px_90px_rgba(15,23,42,0.16)]">
+          <img
+            src="/jessiewithgroup.jpg"
+            alt="SingFit PRIME group music session in a senior living community"
+            className="h-auto max-h-[480px] w-full object-contain"
+          />
+        </div>
+
+        <div className="mt-5 grid gap-3 sm:grid-cols-3">
+          {trustStats.map((item) => (
+            <div
+              key={item.label}
+              className="flex min-h-[96px] flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white px-4 py-4 text-center shadow-sm"
+            >
+              <p className="text-2xl font-black tracking-[-0.04em] text-[#062B49]">
+                {item.value}
+              </p>
+              <p className="mt-1 text-sm font-bold leading-snug text-slate-600">
+                {item.label}
               </p>
             </div>
-
-            <div className="mt-8 grid max-w-2xl gap-3 sm:grid-cols-3">
-              {trustStats.map((item) => (
-                <div
-                  key={item.label}
-                  className="rounded-2xl border border-slate-200 bg-white px-4 py-4 shadow-sm"
-                >
-                  <p className="text-2xl font-black tracking-[-0.04em] text-[#062B49]">
-                    {item.value}
-                  </p>
-                  <p className="mt-1 text-sm font-bold leading-snug text-slate-600">
-                    {item.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="relative mx-auto w-full max-w-[620px]">
-            <div className="absolute left-8 top-8 h-[420px] w-[420px] rounded-full bg-[#0091C8]/12 blur-3xl" />
-            <div className="absolute bottom-0 right-0 h-[360px] w-[360px] rounded-full bg-[#F47534]/14 blur-3xl" />
-
-            <div className="relative overflow-hidden rounded-[3rem] border border-white bg-white p-3 shadow-[0_34px_100px_rgba(15,23,42,0.16)]">
-              <img
-                src="/jessiewithgroup.jpg"
-                alt="SingFit PRIME group music session in a senior living community"
-                className="h-[520px] w-full rounded-[2.4rem] object-cover"
-              />
-
-              <div className="absolute bottom-8 left-8 right-8 rounded-[2rem] border border-white/60 bg-white/92 p-6 shadow-[0_24px_70px_rgba(15,23,42,0.18)] backdrop-blur">
-                <p className="text-sm font-black uppercase tracking-[0.18em] text-[#F47534]">
-                  Staff-led group sessions
-                </p>
-                <p className="mt-2 text-xl font-black leading-tight tracking-[-0.03em] text-[#062B49]">
-                  Music, movement, trivia, and participation in one repeatable
-                  program.
-                </p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <section className="px-5 py-10 md:px-10 md:py-14">
-        <div className="mx-auto max-w-7xl rounded-[3rem] border border-slate-200 bg-white p-7 shadow-[0_30px_90px_rgba(15,23,42,0.08)] md:p-10">
-          <p className="mb-4 text-center text-sm font-black uppercase tracking-[0.22em] text-slate-500">
-            Trusted by senior living teams
+ <section className="px-5 py-6 md:px-10 md:py-8">
+  <div className="mx-auto max-w-7xl rounded-[2.5rem] border border-slate-200 bg-white px-6 py-6 shadow-[0_20px_60px_rgba(15,23,42,0.05)] md:px-10 md:py-7">
+
+    <p className="mb-5 text-center text-sm font-black uppercase tracking-[0.22em] text-slate-500">
+      Trusted by leading senior living organizations
+    </p>
+
+    <div className="grid items-center gap-4 md:grid-cols-4">
+      <div className="flex h-16 items-center justify-center">
+        <img
+          src="/arbor_logo.jpg"
+          alt="The Arbor Company"
+          className="max-h-14 w-auto object-contain opacity-90"
+        />
+      </div>
+
+      <div className="flex h-16 items-center justify-center">
+        <img
+          src="/kisco_logo.png"
+          alt="Kisco Senior Living"
+          className="max-h-14 w-auto object-contain opacity-90"
+        />
+      </div>
+
+      <div className="flex h-16 items-center justify-center overflow-hidden">
+        <img
+  src="/commonwealth-senior-living-logo.svg"
+  alt="Commonwealth Senior Living"
+  className="max-h-12 w-auto object-contain opacity-90"
+/>
+      </div>
+
+      <div className="flex h-16 items-center justify-center">
+        <img
+          src="/silverado_logo.png"
+          alt="Silverado"
+          className="max-h-14 w-auto object-contain opacity-90"
+        />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+      <section className="px-5 py-8 md:px-10 md:py-12">
+  <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+    <div className="rounded-[2.5rem] bg-[#061D33] p-7 text-white shadow-[0_28px_80px_rgba(6,29,51,0.18)] md:p-8">
+      <p className="mb-4 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
+        Why PRIME
+      </p>
+
+      <h2 className="text-4xl font-black leading-[1.02] tracking-[-0.055em] md:text-5xl">
+        Better group programming without adding complexity.
+      </h2>
+
+      <p className="mt-5 text-lg leading-relaxed text-slate-200">
+        PRIME is built for communities that need engaging resident programming,
+        but cannot add more work to an already stretched team.
+      </p>
+      <div className="mt-7 grid gap-3">
+  {[
+    "Ready-to-use group sessions",
+    "No musical background required",
+    "Built for senior living teams",
+  ].map((item) => (
+    <div
+      key={item}
+      className="rounded-2xl border border-white/10 bg-white/8 px-4 py-3 text-sm font-black text-white"
+    >
+      {item}
+    </div>
+  ))}
+</div>
+    </div>
+
+    <div className="grid gap-6">
+      <div className="overflow-hidden rounded-[2.5rem] shadow-[0_26px_70px_rgba(15,23,42,0.10)]">
+        <img
+          src="/PRIME session3.jpg"
+          alt="Residents participating in a SingFit PRIME session with props"
+          className="h-[330px] w-full object-cover"
+        />
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-2">
+        <div className="rounded-[2.25rem] bg-white p-7 shadow-[0_20px_58px_rgba(15,23,42,0.07)]">
+          <h3 className="text-2xl font-black tracking-[-0.04em]">
+            Staff run it
+          </h3>
+          <p className="mt-4 text-lg leading-relaxed text-slate-700">
+            Sessions include the structure, prompts, and materials your team
+            needs to facilitate with confidence.
           </p>
-
-          <div className="grid gap-4 md:grid-cols-4">
-            {[
-              "Logo Placeholder",
-              "Logo Placeholder",
-              "Logo Placeholder",
-              "Logo Placeholder",
-            ].map((item, index) => (
-              <div
-                key={`${item}-${index}`}
-                className="flex h-20 items-center justify-center rounded-2xl border border-slate-200 bg-[#F7F9FC] text-sm font-black uppercase tracking-[0.16em] text-slate-400"
-              >
-                {item}
-              </div>
-            ))}
-          </div>
         </div>
-      </section>
 
-      <section className="px-5 py-10 md:px-10 md:py-16">
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="rounded-[3rem] bg-[#061D33] p-8 text-white shadow-[0_34px_100px_rgba(6,29,51,0.20)] md:p-10">
-            <p className="mb-5 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
-              Why PRIME
-            </p>
-
-            <h2 className="text-5xl font-black leading-[0.98] tracking-[-0.06em] md:text-7xl">
-              Better group programming without adding complexity.
-            </h2>
-
-            <p className="mt-6 text-xl leading-relaxed text-slate-200">
-              PRIME is built for communities that need engaging resident
-              programming, but cannot add more work to an already stretched
-              team.
-            </p>
-
-            <button
-              type="button"
-              onClick={scrollToDemoForm}
-              className="mt-8 rounded-full bg-[#F47534] px-7 py-4 text-base font-bold text-white shadow-[0_14px_34px_rgba(244,117,52,0.26)] transition hover:-translate-y-0.5"
-            >
-              Talk to Our Team
-            </button>
-          </div>
-
-          <div className="grid gap-6">
-            <div className="overflow-hidden rounded-[3rem] shadow-[0_30px_90px_rgba(15,23,42,0.12)]">
-              <img
-                src="/PRIME session3.jpg"
-                alt="Residents participating in a SingFit PRIME session with props"
-                className="h-[360px] w-full object-cover"
-              />
-            </div>
-
-            <div className="grid gap-6 md:grid-cols-2">
-              <div className="rounded-[2.5rem] bg-white p-7 shadow-[0_26px_70px_rgba(15,23,42,0.08)]">
-                <h3 className="text-2xl font-black tracking-[-0.04em]">
-                  Staff can run it
-                </h3>
-                <p className="mt-4 text-lg leading-relaxed text-slate-700">
-                  Sessions include the structure, prompts, and materials your
-                  team needs to facilitate with confidence.
-                </p>
-              </div>
-
-              <div className="rounded-[2.5rem] bg-[#EAF6FB] p-7 shadow-[0_26px_70px_rgba(15,23,42,0.06)]">
-                <h3 className="text-2xl font-black tracking-[-0.04em]">
-                  Residents can join in
-                </h3>
-                <p className="mt-4 text-lg leading-relaxed text-slate-700">
-                  Familiar songs, movement, trivia, and props help make sessions
-                  active and easy to participate in.
-                </p>
-              </div>
-            </div>
-          </div>
+        <div className="rounded-[2.25rem] bg-[#EAF6FB] p-7 shadow-[0_20px_58px_rgba(15,23,42,0.05)]">
+          <h3 className="text-2xl font-black tracking-[-0.04em]">
+            Residents join in
+          </h3>
+          <p className="mt-4 text-lg leading-relaxed text-slate-700">
+            Familiar songs, movement, trivia, and props help make sessions
+            active and easy to participate in.
+          </p>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <section className="px-5 py-10 md:px-10 md:py-16">
+      <section className="px-5 py-8 md:px-10 md:py-10">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-10 max-w-4xl">
+          <div className="mb-10 max-w-5xl">
             <p className="mb-5 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
               What it looks like
             </p>
 
-            <h2 className="text-5xl font-black leading-[0.98] tracking-[-0.06em] md:text-7xl">
+            <h2 className="text-5xl font-black leading-[0.98] tracking-[-0.06em] md:text-5xl">
               A complete session, ready when your team is.
             </h2>
           </div>
@@ -248,7 +475,7 @@ export default function PrimeLandingPage() {
               },
               {
                 step: "03",
-                title: "Create visible participation",
+                title: "Drive participation",
                 text: "Residents sing, move, reminisce, and take part in a shared group experience.",
                 bg: "bg-[#EAF6FB]",
               },
@@ -260,7 +487,7 @@ export default function PrimeLandingPage() {
                 <p className="text-sm font-black tracking-[0.18em] text-[#F47534]">
                   {item.step}
                 </p>
-                <h3 className="mt-6 text-3xl font-black tracking-[-0.045em] md:text-4xl">
+                <h3 className="mt-6 text-3xl font-black tracking-[-0.045em] md:text-3xl">
                   {item.title}
                 </h3>
                 <p className="mt-4 text-lg leading-relaxed text-slate-700">
@@ -280,7 +507,7 @@ export default function PrimeLandingPage() {
         See PRIME in action
       </p>
 
-      <h2 className="text-5xl font-black leading-[0.95] tracking-[-0.06em] md:text-6xl">
+      <h2 className="text-5xl font-black leading-[0.95] tracking-[-0.06em] md:text-5xl">
         Watch how a PRIME session works.
       </h2>
 
@@ -301,8 +528,9 @@ export default function PrimeLandingPage() {
     <div className="overflow-hidden rounded-[2.75rem] border border-white/10 shadow-[0_30px_90px_rgba(0,0,0,0.28)]">
       <div className="relative aspect-video w-full">
         <iframe
+          id="prime-session-video"
           className="absolute inset-0 h-full w-full"
-          src="https://www.youtube.com/embed/stknfT1FagU"
+          src={`https://www.youtube.com/embed/stknfT1FagU?enablejsapi=1&origin=${window.location.origin}`}
           title="SingFit PRIME session video"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
@@ -328,31 +556,33 @@ export default function PrimeLandingPage() {
               Complete toolkit
             </p>
 
-            <h2 className="text-5xl font-black leading-[0.98] tracking-[-0.06em] md:text-6xl">
+            <h2 className="text-4xl font-black leading-[1.02] tracking-[-0.055em] md:text-5xl">
               More than a playlist. A full engagement system.
             </h2>
 
-            <p className="mt-6 text-xl leading-relaxed text-slate-700">
+            <p className="mt-6 text-lg leading-relaxed text-slate-700">
               PRIME includes the app, playlist booklets, guided facilitation
               content, props, training, and support needed to help teams run
               repeatable music sessions.
             </p>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {[
-                "PRIME app and music library",
-                "Quarterly playlist booklets",
-                "Online staff training",
-                "Props, speakers, and support",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="rounded-2xl border border-slate-200 bg-[#F7F9FC] px-5 py-4 text-base font-black text-[#062B49]"
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
+           <div className="mt-8 grid gap-4 sm:grid-cols-2">
+  {[
+    "PRIME app and music library",
+    "Quarterly playlist booklets",
+    "Online staff training",
+    "Props, speakers, and support",
+  ].map((item) => (
+    <div
+      key={item}
+      className="flex min-h-[84px] items-center rounded-2xl border border-slate-200 bg-[#F7F9FC] px-6 py-4"
+    >
+      <span className="text-lg font-black leading-tight text-[#062B49]">
+        {item}
+      </span>
+    </div>
+  ))}
+</div>
 
             <button
               type="button"
@@ -365,75 +595,91 @@ export default function PrimeLandingPage() {
         </div>
       </section>
 
-      <section className="px-5 py-10 md:px-10 md:py-16">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-10 max-w-4xl">
-            <p className="mb-5 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
-              Customer voices
-            </p>
+     <section className="px-5 py-8 md:px-10 md:py-12">
+  <div className="mx-auto max-w-7xl">
+    <div className="mb-8 max-w-5xl">
+      <p className="mb-4 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
+        Customer voices
+      </p>
 
-            <h2 className="text-5xl font-black leading-[0.98] tracking-[-0.06em] md:text-7xl">
-              Designed for the realities of senior living.
-            </h2>
-          </div>
+      <h2 className="text-4xl font-black leading-[1.02] tracking-[-0.055em] md:text-5xl">
+        Designed for the realities of senior living.
+      </h2>
+    </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              {
-                quote:
-                  "From the first song you’re seeing the engagement, and it keeps building. As they walk out, they’re all talking to each other.",
-                name: "Pam M.",
-                role: "Activities Director",
-              },
-              {
-                quote:
-                  "Residents who hardly talk will sing along to songs with SingFit.",
-                name: "Chris S.",
-                role: "Life Enrichment Director",
-              },
-              {
-                quote:
-                  "Our residents love SingFit. I end up extending SingFit longer than planned. It is amazing to watch the residents become involved.",
-                name: "Vanessa King Love",
-                role: "Life Enrichment Director",
-              },
-            ].map((item, index) => (
-              <div
-                key={item.name}
-                className={`flex min-h-[360px] flex-col justify-between rounded-[2.75rem] p-8 shadow-[0_30px_90px_rgba(15,23,42,0.09)] ${
-                  index === 1
-                    ? "bg-[#061D33] text-white"
-                    : "border border-slate-200 bg-white text-[#062B49]"
-                }`}
-              >
-                <div>
-                  <div className="mb-6 text-6xl font-black leading-none text-[#F47534]/35">
-                    “
-                  </div>
-                  <p className="text-xl font-black leading-snug tracking-[-0.035em]">
-                    {item.quote}
-                  </p>
-                </div>
+    <div className="grid gap-6 lg:grid-cols-3">
+      <div className="relative min-h-[300px] rounded-[2.5rem] border border-slate-200 bg-white p-7 pb-[108px] shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
+        <div className="mb-5 text-5xl font-black leading-none text-[#F47534]/25">
+          “
+        </div>
 
-                <div
-                  className={`mt-8 border-t pt-5 ${
-                    index === 1 ? "border-white/20" : "border-slate-200"
-                  }`}
-                >
-                  <p className="font-black">{item.name}</p>
-                  <p
-                    className={`text-sm font-semibold ${
-                      index === 1 ? "text-slate-300" : "text-slate-600"
-                    }`}
-                  >
-                    {item.role}
-                  </p>
-                </div>
-              </div>
-            ))}
+        <p className="text-lg font-black leading-snug tracking-[-0.025em] text-[#062B49]">
+          From the first song you’re seeing the engagement, and it keeps
+          building. As they walk out, they’re all talking to each other.
+        </p>
+
+        <div className="mt-6 text-right text-5xl font-black leading-none text-[#F47534]/25">
+          ”
+        </div>
+
+        <div className="absolute bottom-7 left-7 right-7 border-t border-slate-200 pt-5">
+          <p className="font-black text-[#062B49]">Pam M.</p>
+          <p className="text-sm font-semibold text-slate-600">
+            Activities Director
+          </p>
+        </div>
+      </div>
+
+      <div className="relative min-h-[300px] overflow-hidden rounded-[2.5rem] bg-[#061D33] p-7 pb-[124px] shadow-[0_28px_80px_rgba(6,29,51,0.22)]">
+        <p className="mb-4 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
+          Video testimonial
+        </p>
+
+        <div className="mt-6 overflow-hidden rounded-[1.75rem] border border-white/10 bg-black">
+          <div className="relative aspect-video w-full">
+            <iframe
+              id="prime-testimonial-video"
+              className="absolute inset-0 h-full w-full"
+              src="https://player.vimeo.com/video/1196403668?api=1&player_id=prime-testimonial-video"
+              title="SingFit PRIME customer testimonial"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
           </div>
         </div>
-      </section>
+
+        <div className="absolute bottom-7 left-7 right-7 border-t border-white/15 pt-5">
+          <p className="font-black text-white">Paula Harder</p>
+          <p className="mt-1 text-sm font-semibold leading-snug text-slate-300">
+            VP Resident Programs & Memory Care
+          </p>
+        </div>
+      </div>
+
+      <div className="relative min-h-[300px] rounded-[2.5rem] border border-slate-200 bg-white p-7 pb-[108px] shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
+        <div className="mb-5 text-5xl font-black leading-none text-[#F47534]/25">
+          “
+        </div>
+
+        <p className="text-lg font-black leading-snug tracking-[-0.025em] text-[#062B49]">
+          Our residents love SingFit. I end up extending SingFit longer than
+          planned. It is amazing to watch the residents become involved.
+        </p>
+
+        <div className="mt-6 text-right text-5xl font-black leading-none text-[#F47534]/25">
+          ”
+        </div>
+
+        <div className="absolute bottom-7 left-7 right-7 border-t border-slate-200 pt-5">
+          <p className="font-black text-[#062B49]">Vanessa King Love</p>
+          <p className="text-sm font-semibold text-slate-600">
+            Life Enrichment Director
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       <section
         id="prime-demo-form"
@@ -445,28 +691,62 @@ export default function PrimeLandingPage() {
               Schedule a demo
             </p>
 
-            <h2 className="text-5xl font-black leading-[0.98] tracking-[-0.06em] md:text-7xl">
+            <h2 className="text-5xl font-black leading-[1.02] tracking-[-0.055em] md:text-5xl">
               See how PRIME could fit your community.
             </h2>
 
-            <p className="mt-6 max-w-2xl text-xl leading-relaxed text-slate-200">
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">
               Complete the form and our team will follow up to schedule a
               virtual demo, answer questions, and walk you through how PRIME
               works in a senior living setting.
             </p>
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-3">
-              {["Simple to launch", "Staff friendly", "Built for groups"].map(
-                (item) => (
-                  <div
-                    key={item}
-                    className="rounded-2xl border border-white/10 bg-white/8 px-4 py-4 text-sm font-black"
-                  >
-                    {item}
-                  </div>
-                )
-              )}
-            </div>
+            <div className="mt-10 space-y-3">
+  <div className="flex items-center gap-4 rounded-2xl border border-white/10 px-5 py-4">
+    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F47534] text-sm font-black text-white">
+      ✓
+    </div>
+    <span className="font-semibold text-white">
+      Ready-to-use session plans
+    </span>
+  </div>
+
+  <div className="flex items-center gap-4 rounded-2xl border border-white/10 px-5 py-4">
+    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F47534] text-sm font-black text-white">
+      ✓
+    </div>
+    <span className="font-semibold text-white">
+      No music therapy background required
+    </span>
+  </div>
+
+  <div className="flex items-center gap-4 rounded-2xl border border-white/10 px-5 py-4">
+    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F47534] text-sm font-black text-white">
+      ✓
+    </div>
+    <span className="font-semibold text-white">
+      Training included for your team
+    </span>
+  </div>
+
+  <div className="flex items-center gap-4 rounded-2xl border border-white/10 px-5 py-4">
+    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F47534] text-sm font-black text-white">
+      ✓
+    </div>
+    <span className="font-semibold text-white">
+      Designed specifically for senior living
+    </span>
+  </div>
+
+  <div className="flex items-center gap-4 rounded-2xl border border-white/10 px-5 py-4">
+    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F47534] text-sm font-black text-white">
+      ✓
+    </div>
+    <span className="font-semibold text-white">
+      Used by 900+ communities
+    </span>
+  </div>
+</div>
           </div>
 
           <form
@@ -541,6 +821,13 @@ export default function PrimeLandingPage() {
                   className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-4 text-base outline-none transition focus:border-[#F47534] focus:ring-4 focus:ring-[#F47534]/15"
                 />
               </label>
+              <input
+  type="text"
+  name="website"
+  tabIndex="-1"
+  autoComplete="off"
+  className="hidden"
+/>
             </div>
 
             <button
