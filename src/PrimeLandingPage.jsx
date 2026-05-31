@@ -266,7 +266,7 @@ export default function PrimeLandingPage() {
 
           <button
             type="button"
-            onClick={scrollToDemoForm}
+            onClick={() => scrollToDemoForm("Schedule a PRIME Demo")}
             className="rounded-full bg-[#F47534] px-5 py-3 text-sm font-bold text-white shadow-[0_12px_30px_rgba(244,117,52,0.25)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_44px_rgba(244,117,52,0.34)] md:px-6"
           >
             Schedule a PRIME Demo
@@ -294,7 +294,7 @@ export default function PrimeLandingPage() {
         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
           <button
             type="button"
-            onClick={scrollToDemoForm}
+            onClick={() => scrollToDemoForm("Schedule a PRIME Demo")}
             className="rounded-full bg-[#F47534] px-8 py-4 text-center text-base font-bold text-white shadow-[0_16px_40px_rgba(244,117,52,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_22px_52px_rgba(244,117,52,0.36)]"
           >
             Schedule a PRIME Demo
@@ -518,7 +518,7 @@ export default function PrimeLandingPage() {
 
       <button
         type="button"
-        onClick={scrollToDemoForm}
+        onClick={() => scrollToDemoForm("Schedule a PRIME Demo")}
         className="mt-8 rounded-full bg-[#F47534] px-7 py-4 text-base font-bold text-white shadow-[0_14px_34px_rgba(244,117,52,0.26)] transition hover:-translate-y-0.5"
       >
         Schedule a PRIME Demo
@@ -586,7 +586,7 @@ export default function PrimeLandingPage() {
 
             <button
               type="button"
-              onClick={scrollToDemoForm}
+              onClick={() => scrollToDemoForm("Schedule a PRIME Demo")}
               className="mt-8 w-fit rounded-full bg-[#F47534] px-7 py-4 text-base font-bold text-white shadow-[0_14px_34px_rgba(244,117,52,0.26)] transition hover:-translate-y-0.5"
             >
               Schedule a PRIME Demo
