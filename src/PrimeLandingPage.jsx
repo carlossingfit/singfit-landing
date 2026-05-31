@@ -414,13 +414,13 @@ export default function PrimeLandingPage() {
     </div>
 
     <div className="grid gap-6">
-      <div className="overflow-hidden rounded-[2.5rem] shadow-[0_26px_70px_rgba(15,23,42,0.10)]">
-        <img
-          src="/PRIME session3.jpg"
-          alt="Residents participating in a SingFit PRIME session with props"
-          className="h-[330px] w-full object-cover"
-        />
-      </div>
+      <div className="h-[330px] overflow-hidden rounded-[2.5rem] shadow-[0_26px_70px_rgba(15,23,42,0.10)]">
+  <img
+    src="/PRIME session3.jpg"
+    alt="Residents participating in a SingFit PRIME session with props"
+    className="h-full w-full object-cover"
+  />
+</div>
 
       <div className="grid gap-6 md:grid-cols-2">
         <div className="rounded-[2.25rem] bg-white p-7 shadow-[0_20px_58px_rgba(15,23,42,0.07)]">
