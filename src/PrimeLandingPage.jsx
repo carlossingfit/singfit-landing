@@ -143,10 +143,13 @@ export default function PrimeLandingPage() {
   }, []);
 
   useEffect(() => {
-    if (typeof window === "undefined") return undefined;
+  if (typeof window === "undefined") return undefined;
 
+  let cleanupIframe = null;
+
+  const setupVimeoTracking = () => {
     const vimeoIframe = document.getElementById("prime-testimonial-video");
-    if (!vimeoIframe || !vimeoIframe.contentWindow) return undefined;
+    if (!vimeoIframe || !vimeoIframe.contentWindow) return false;
 
     const subscribeToVimeoEvent = (eventName) => {
       vimeoIframe.contentWindow.postMessage(
@@ -193,22 +196,31 @@ export default function PrimeLandingPage() {
       }
     };
 
+    const subscribeToVimeoEvents = () => {
+      subscribeToVimeoEvent("play");
+      subscribeToVimeoEvent("timeupdate");
+      subscribeToVimeoEvent("ended");
+    };
+
     window.addEventListener("message", handleVimeoMessage);
+    vimeoIframe.addEventListener("load", subscribeToVimeoEvents);
+    subscribeToVimeoEvents();
 
-const subscribeToVimeoEvents = () => {
-  subscribeToVimeoEvent("play");
-  subscribeToVimeoEvent("timeupdate");
-  subscribeToVimeoEvent("ended");
-};
+    cleanupIframe = () => {
+      window.removeEventListener("message", handleVimeoMessage);
+      vimeoIframe.removeEventListener("load", subscribeToVimeoEvents);
+    };
 
-vimeoIframe.addEventListener("load", subscribeToVimeoEvents);
-subscribeToVimeoEvents();
+    return true;
+  };
 
-return () => {
-  window.removeEventListener("message", handleVimeoMessage);
-  vimeoIframe.removeEventListener("load", subscribeToVimeoEvents);
-};
-  }, []);
+  const setupTimer = window.setTimeout(setupVimeoTracking, 300);
+
+  return () => {
+    window.clearTimeout(setupTimer);
+    if (cleanupIframe) cleanupIframe();
+  };
+}, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
