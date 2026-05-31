@@ -194,13 +194,20 @@ export default function PrimeLandingPage() {
     };
 
     window.addEventListener("message", handleVimeoMessage);
-    subscribeToVimeoEvent("play");
-    subscribeToVimeoEvent("timeupdate");
-    subscribeToVimeoEvent("ended");
 
-    return () => {
-      window.removeEventListener("message", handleVimeoMessage);
-    };
+const subscribeToVimeoEvents = () => {
+  subscribeToVimeoEvent("play");
+  subscribeToVimeoEvent("timeupdate");
+  subscribeToVimeoEvent("ended");
+};
+
+vimeoIframe.addEventListener("load", subscribeToVimeoEvents);
+subscribeToVimeoEvents();
+
+return () => {
+  window.removeEventListener("message", handleVimeoMessage);
+  vimeoIframe.removeEventListener("load", subscribeToVimeoEvents);
+};
   }, []);
 
   const handleSubmit = async (event) => {
@@ -631,16 +638,16 @@ export default function PrimeLandingPage() {
       </div>
 
       <div className="relative min-h-[300px] overflow-hidden rounded-[2.5rem] bg-[#061D33] p-7 pb-[124px] shadow-[0_28px_80px_rgba(6,29,51,0.22)]">
-        <p className="mb-4 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
+        <p className="mb-2 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
           Video testimonial
         </p>
 
-        <div className="mt-6 overflow-hidden rounded-[1.75rem] border border-white/10 bg-black">
+        <div className="mt-4 -mx-4 overflow-hidden rounded-[1.75rem] border border-white/10 bg-black">
           <div className="relative aspect-video w-full">
             <iframe
               id="prime-testimonial-video"
               className="absolute inset-0 h-full w-full"
-              src="https://player.vimeo.com/video/1196403668?api=1&player_id=prime-testimonial-video"
+              src="https://player.vimeo.com/video/1196403668?api=1&player_id=prime-testimonial-video&autopause=0"
               title="SingFit PRIME customer testimonial"
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
