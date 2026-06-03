@@ -453,39 +453,6 @@ useEffect(() => {
   onClick={() => {
     const eventData = {
       event: "click_cta",
-      button_text: "Webinar: How to Select the Right Music for Your Goal",
-      destination_url: "modal:recorded_webinars",
-      page_id: "MemberResources"
-     };
-
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(eventData);
-
-    openRecordedModal();
-  }}
-  className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
->
-  <img
-    src="/Mar_10.png"
-    alt="March 10, 2026"
-    className="w-20 h-20 object-contain rounded-md shadow"
-  />
-  <div className="text-lg leading-relaxed">
-    <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      Caregivers: How to Select the Right Music for Your Goal{" "}
-      <span className="text-sm font-medium text-[#F47534] ml-1">
-    (Click to Watch Recording)
-  </span>
-    </p>
-  </div>
-</button>
-
-
-            {/* Webinar Card 2 */}
-   <button
-  onClick={() => {
-    const eventData = {
-      event: "click_cta",
       button_text: "Webinar: A Deep Dive into the Musical Preferences of Your Loved One",
       destination_url: "modal:recorded_webinars",
       page_id: "MemberResources"
@@ -513,8 +480,9 @@ useEffect(() => {
   </div>
 </button>
 
-            {/* Webinar Card 3 */}
-  <button
+
+            {/* Webinar Card 2 */}
+   <button
   onClick={() => {
         const eventData = {
           event: "click_cta",
@@ -541,6 +509,38 @@ useEffect(() => {
       <span className="text-sm font-medium text-[#F47534] ml-1">
     (Click to Watch Recording)
   </span>
+    </p>
+  </div>
+</button>
+
+            {/* Webinar Card 3 */}
+  <button
+  onClick={() => {
+        const eventData = {
+          event: "click_cta",
+          button_text: "Using Music to Create a More Harmonious Home Life",
+          destination_url: "https://www.eventbrite.com/e/caregivers-using-music-to-create-a-more-harmonious-home-life-tickets-1990199525355?aff=oddtdtcreator",
+          page_id: "MemberResources",
+        };
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(eventData);
+        window.open(eventData.destination_url, "_blank");
+      }}
+  className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
+>
+  <img
+    src="/june16.png"
+    alt="June 16, 2026"
+    className="w-20 h-20 object-contain rounded-md shadow"
+  />
+  <div className="text-lg leading-relaxed">
+    <p className="font-semibold text-[#002F6C] text-xl mb-2">
+      "Caregivers: Using Music to Create a More Harmonious Home Life"{" "}
+      <span className="text-sm font-medium text-[#F47534] ml-1">
+    (Sign up Now!)
+  </span>
+      
     </p>
   </div>
 </button>

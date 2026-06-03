@@ -430,7 +430,7 @@ useEffect(() => {
 
         </div>
 
-        {/* WEBINAR COLUMN */}
+       {/* WEBINAR COLUMN */}
         <div className="flex flex-col justify-between h-full bg-[#FAF6F2] p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
           <div className="flex items-start gap-4 pt-[0.2rem] min-h-[4rem]">
             <img
@@ -439,46 +439,13 @@ useEffect(() => {
               className="w-16 h-16 object-cover rounded-full shadow"
             />
             <h2 className="text-xl font-bold text-[#243B53] leading-tight">
-             Board Certified Music Therapist Andy Tubman hosts a series of webinars for Caregivers.
+              Board Certified Music Therapist Andy Tubman hosts a series of webinars for Caregivers.
             </h2>
           </div>
 
           <div className="space-y-4 mt-4">
-            {/* Webinar Card 1 */}
+           {/* Webinar Card 1 */}
 <button
-  onClick={() => {
-    const eventData = {
-      event: "click_cta",
-      button_text: "Webinar: How to Select the Right Music for Your Goal",
-      destination_url: "modal:recorded_webinars",
-      page_id: "NonMemberResources"
-     };
-
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(eventData);
-
-    openRecordedModal();
-  }}
-  className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
->
-  <img
-    src="/Mar_10.png"
-    alt="March 10, 2026"
-    className="w-20 h-20 object-contain rounded-md shadow"
-  />
-  <div className="text-lg leading-relaxed">
-    <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      Caregivers: How to Select the Right Music for Your Goal{" "}
-      <span className="text-sm font-medium text-[#F47534] ml-1">
-    (Click to Watch Recording)
-  </span>
-    </p>
-  </div>
-</button>
-
-
-            {/* Webinar Card 2 */}
-   <button
   onClick={() => {
     const eventData = {
       event: "click_cta",
@@ -509,8 +476,9 @@ useEffect(() => {
   </div>
 </button>
 
-            {/* Webinar Card 3 */}
-  <button
+
+            {/* Webinar Card 2 */}
+   <button
   onClick={() => {
         const eventData = {
           event: "click_cta",
@@ -535,11 +503,44 @@ useEffect(() => {
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
       Caregivers: An Introduction to Using Music to Connect with Your Loved One{" "}
       <span className="text-sm font-medium text-[#F47534] ml-1">
-    (Sign Up Now!)
+    (Click to Watch Recording)
   </span>
     </p>
   </div>
 </button>
+
+            {/* Webinar Card 3 */}
+  <button
+  onClick={() => {
+        const eventData = {
+          event: "click_cta",
+          button_text: "Using Music to Create a More Harmonious Home Life",
+          destination_url: "https://www.eventbrite.com/e/caregivers-using-music-to-create-a-more-harmonious-home-life-tickets-1990199525355?aff=oddtdtcreator",
+          page_id: "NonMemberResources",
+        };
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(eventData);
+        window.open(eventData.destination_url, "_blank");
+      }}
+  className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
+>
+  <img
+    src="/june16.png"
+    alt="June 16, 2026"
+    className="w-20 h-20 object-contain rounded-md shadow"
+  />
+  <div className="text-lg leading-relaxed">
+    <p className="font-semibold text-[#002F6C] text-xl mb-2">
+      Caregivers: Using Music to Create a More Harmonious Home Life{" "}
+      <span className="text-sm font-medium text-[#F47534] ml-1">
+    (Sign up Now!)
+  </span>
+      
+    </p>
+  </div>
+</button>
+
           </div>
 
           {/* Webinar Buttons – bottom row */}
