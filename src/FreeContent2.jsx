@@ -704,7 +704,7 @@ useEffect(() => {
     />
 
     {/* Modal panel */}
-    <div className="relative w-full max-w-3xl bg-white rounded-2xl shadow-xl overflow-hidden">
+    <div className="relative w-full max-w-3xl max-h-[90vh] bg-white rounded-2xl shadow-xl overflow-y-auto">
       <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200">
         <div>
           <h3 className="text-base font-semibold text-gray-900">
