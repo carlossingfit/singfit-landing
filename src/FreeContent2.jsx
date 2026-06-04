@@ -445,33 +445,33 @@ useEffect(() => {
 
           <div className="space-y-4 mt-4">
            {/* Webinar Card 1 */}
-<button
+ <button
   onClick={() => {
-    const eventData = {
-      event: "click_cta",
-      button_text: "Webinar: A Deep Dive into the Musical Preferences of Your Loved One",
-      destination_url: "modal:recorded_webinars",
-      page_id: "NonMemberResources"
-     };
+        const eventData = {
+          event: "click_cta",
+          button_text: "Using Music to Create a More Harmonious Home Life",
+          destination_url: "https://www.eventbrite.com/e/caregivers-using-music-to-create-a-more-harmonious-home-life-tickets-1990199525355?aff=oddtdtcreator",
+          page_id: "NonMemberResources",
+        };
 
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(eventData);
-
-    openRecordedModal();
-  }}
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(eventData);
+        window.open(eventData.destination_url, "_blank");
+      }}
   className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
   <img
-    src="/Apr_7.png"
-    alt="April 7, 2026"
+    src="/june16.png"
+    alt="June 16, 2026"
     className="w-20 h-20 object-contain rounded-md shadow"
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      Caregivers: A Deep Dive into the Musical Preferences of Your Loved One{" "}
+      "Caregivers: Using Music to Create a More Harmonious Home Life"{" "}
       <span className="text-sm font-medium text-[#F47534] ml-1">
-    (Click to Watch Recording)
+    (Sign up Now!)
   </span>
+      
     </p>
   </div>
 </button>
@@ -510,33 +510,34 @@ useEffect(() => {
 </button>
 
             {/* Webinar Card 3 */}
-  <button
+  {/* Webinar Card 1 */}
+<button
   onClick={() => {
-        const eventData = {
-          event: "click_cta",
-          button_text: "Using Music to Create a More Harmonious Home Life",
-          destination_url: "https://www.eventbrite.com/e/caregivers-using-music-to-create-a-more-harmonious-home-life-tickets-1990199525355?aff=oddtdtcreator",
-          page_id: "NonMemberResources",
-        };
+    const eventData = {
+      event: "click_cta",
+      button_text: "Webinar: A Deep Dive into the Musical Preferences of Your Loved One",
+      destination_url: "modal:recorded_webinars",
+      page_id: "NonMemberResources"
+     };
 
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push(eventData);
-        window.open(eventData.destination_url, "_blank");
-      }}
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(eventData);
+
+    openRecordedModal();
+  }}
   className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
   <img
-    src="/june16.png"
-    alt="June 16, 2026"
+    src="/Apr_7.png"
+    alt="April 7, 2026"
     className="w-20 h-20 object-contain rounded-md shadow"
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      Caregivers: Using Music to Create a More Harmonious Home Life{" "}
+      Caregivers: A Deep Dive into the Musical Preferences of Your Loved One{" "}
       <span className="text-sm font-medium text-[#F47534] ml-1">
-    (Sign up Now!)
+    (Click to Watch Recording)
   </span>
-      
     </p>
   </div>
 </button>
