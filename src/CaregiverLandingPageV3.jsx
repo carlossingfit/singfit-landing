@@ -228,56 +228,36 @@ export default function CaregiverLandingPageV3() {
       </header>
 
       {/* Hero */}
-      <section className="relative px-5 pb-14 pt-8 md:px-10 md:pb-20 md:pt-12">
+      <section className="relative px-5 pb-8 pt-6 md:px-10 md:pb-12 md:pt-8">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_10%,rgba(0,145,200,0.12),transparent_32%),radial-gradient(circle_at_12%_82%,rgba(244,117,52,0.10),transparent_30%)]" />
 
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.03fr_0.97fr]">
           <div>
            
-            <h1 className="max-w-5xl text-[3.2rem] font-black leading-[0.94] tracking-[-0.05em] md:text-[5rem] lg:text-[5.7rem]">
-              For caregivers, one good moment can change the whole day.
+            <h1 className="max-w-5xl text-[2.8rem] font-black leading-[0.94] tracking-[-0.05em] md:text-[4.4rem] lg:text-[5rem]">
+              Caregivers, you are not alone in this. When agitation and anxiety attack, music has your back.
             </h1>
 
-            <p className="mt-8 max-w-2xl text-xl leading-relaxed text-slate-700 md:text-2xl">
-                SingFit delivers guided music sessions you can start in seconds: choose a
-                session, press play, follow SingFit's Lyric Coach™, and sing hit songs together
-                from your phone.
+            <p className="mt-6 max-w-2xl text-[1.35rem] leading-snug text-slate-700 md:text-[1.8rem]">
+                Receive a complimentary 20 minute
+consultation with a certified music
+therapist to learn how singing can
+make caregiving easier.
             </p>
 
             <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
               <a
-                href={buildUrlWithAttribution(checkoutUrl)}
-                onClick={(event) =>
-                  handleCtaNavigation(event, {
-                    buttonText: "Hero - Start One Good Moment Today",
-                    destinationUrl: checkoutUrl,
-                  })
-                }
-                className="rounded-full bg-[#F47534] px-9 py-5 text-center text-lg font-bold text-white shadow-[0_18px_46px_rgba(244,117,52,0.30)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(244,117,52,0.40)]"
-              >
-                Start One Good Moment Today
-              </a>
+  href="https://calendly.com/jubilee-musicalhealthtech/15min"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="rounded-full bg-[#F47534] px-12 py-6 text-center text-xl font-bold text-white shadow-[0_18px_46px_rgba(244,117,52,0.30)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(244,117,52,0.40)] sm:px-16"
+>
+  Schedule Now
+</a>
 
-              <p className="text-sm font-bold text-slate-600">
-                $11.99/month. Cancel anytime.
-              </p>
             </div>
 
-            <div className="mt-8 grid max-w-xl gap-3 sm:grid-cols-3">
-              {["1. Subscribe here", "2. Download the app", "3. Sign in and start"].map(
-                (item) => (
-                  <div
-                    key={item}
-                    className="rounded-xl bg-slate-100/80 px-4 py-3"
-                  >
-                    <p className="text-center text-sm font-bold text-[#062B49]">
-                      {item}
-                    </p>
-                  </div>
-                )
-              )}
-            </div>
-          </div>
+                 </div>
 
           {/* Product Composition */}
           <div className="relative mx-auto h-[620px] w-full max-w-[590px]">
@@ -302,47 +282,128 @@ export default function CaregiverLandingPageV3() {
               className="absolute right-0 top-40 z-10 hidden w-[210px] rotate-[8deg] opacity-95 md:block"
             />
 
-            <div className="absolute bottom-8 left-1/2 z-30 w-[min(92%,430px)] -translate-x-1/2 rounded-[2rem] border border-slate-200 bg-white/95 p-5 text-center shadow-[0_24px_70px_rgba(15,23,42,0.14)] backdrop-blur">
-              <p className="text-sm font-black uppercase tracking-[0.18em] text-[#F47534]">
-                How access works
-              </p>
-              <p className="mt-2 text-lg font-black leading-tight text-[#062B49]">
-                Start your subscription, download the app, sign in, and begin
-                your first guided music session.
-              </p>
-            </div>
+            <div className="absolute -bottom-20 left-1/2 z-30 w-[min(94%,500px)] -translate-x-1/2 rounded-[2rem] border border-slate-200 bg-white/95 px-7 py-7 text-center shadow-[0_24px_70px_rgba(15,23,42,0.14)] backdrop-blur md:px-9 md:py-8">
+  <p className="text-2xl font-black leading-tight text-[#062B49] md:text-3xl">
+    Active music making has been shown to be one of the most effective tools for caregivers of people with dementia.
+  </p>
+</div>
           </div>
         </div>
       </section>
-{/* Music Therapist Call */}
-{/* Music Therapist Call */}
-<section className="px-5 pt-8 pb-4 md:px-10 md:pt-10 md:pb-6">
-  <div className="mx-auto max-w-7xl">
-    <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-[0_18px_55px_rgba(15,23,42,0.08)] md:p-8">
-      <div className="grid items-center gap-6 md:grid-cols-[1fr_auto]">
-        <div>
-          <p className="mb-3 text-sm font-black uppercase tracking-[0.18em] text-[#F47534]">
-            Free 15-minute call
-          </p>
 
-          <h2 className="text-3xl font-black leading-tight tracking-[-0.035em] text-[#062B49] md:text-4xl">
-            Have Questions Before You Get Started?
-          </h2>
+{/* Lifestyle / Emotional Proof */}
+<section className="px-5 py-10 md:px-10 md:py-14">
+  <div className="mx-auto grid max-w-7xl items-stretch gap-8 lg:grid-cols-[1.05fr_0.95fr]">
 
-          <p className="mt-4 max-w-3xl text-lg leading-relaxed text-slate-700">
-            Caring for a loved one with dementia can sometimes feel overwhelming. If you're searching for ways to spark joy, encourage engagement, and create more meaningful moments together, schedule a free 15-minute call with a SingFit Music Therapist. We'll answer your questions and help you decide whether SingFit is right for your family.
-          </p>
+    {/* Video + Quote */}
+    <div className="flex h-full flex-col justify-between gap-5">
+      <div className="overflow-hidden rounded-[3rem] bg-white p-4 shadow-[0_34px_90px_rgba(15,23,42,0.10)]">
+        <div className="relative aspect-video overflow-hidden rounded-[2rem]">
+          <iframe
+            ref={videoIframeRef}
+            src="https://player.vimeo.com/video/1194167243?h=0&title=0&byline=0&portrait=0"
+            className="absolute inset-0 h-full w-full"
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+          />
         </div>
-
-        <a
-          href=""
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center justify-center rounded-full bg-[#F47534] px-9 py-5 text-center text-lg font-bold text-white shadow-[0_18px_44px_rgba(244,117,52,0.28)] transition hover:-translate-y-0.5 hover:bg-[#E86521] hover:shadow-[0_22px_50px_rgba(244,117,52,0.38)] md:whitespace-nowrap"
-        >
-          Schedule a Free Call
-        </a>
       </div>
+
+      <div className="mt-3 rounded-[1.5rem] border border-[#F6D4BF] bg-[#FFF8F4] px-6 py-3">
+  <p className="text-lg font-medium leading-snug text-[#062B49]">
+          “I’m so happy I learned of the SingFit program.
+          It’s been life changing.”
+        </p>
+
+        <p className="mt-2 text-xs font-black uppercase tracking-[0.18em] text-[#F47534]">
+          LAINA
+        </p>
+      </div>
+    </div>
+
+    {/* Text Card */}
+    <div className="flex h-full flex-col justify-center rounded-[3rem] border border-slate-200 bg-white px-9 py-9 shadow-[0_34px_90px_rgba(15,23,42,0.09)] md:px-11 md:py-10">
+      <p className="mb-5 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
+        WHY IT MATTERS
+      </p>
+
+      <h2 className="text-4xl font-black leading-[1.02] tracking-[-0.055em] text-[#062B49] md:text-[3rem]">
+  When words are hard,
+  music gives you
+  somewhere to begin.
+</h2>
+
+<p className="mt-5 max-w-xl text-xl leading-relaxed text-slate-700 md:text-[1.35rem]">
+  A familiar song can create a shared place to start. Not a task.
+  Not a performance. Just a few minutes together, supported by music.
+</p>
+
+      <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <a
+          href={buildUrlWithAttribution(checkoutUrl)}
+          onClick={(event) =>
+            handleCtaNavigation(event, {
+              buttonText: "Why It Matters - Start Today",
+              destinationUrl: checkoutUrl,
+            })
+          }
+          className="inline-flex items-center justify-center rounded-full bg-[#F47534] px-8 py-4 text-base font-bold text-white shadow-[0_12px_30px_rgba(244,117,52,0.25)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_44px_rgba(244,117,52,0.34)]"
+        >
+          Start Today
+        </a>
+
+        <span className="text-base font-medium text-slate-600">
+          $11.99/month. Cancel anytime.
+        </span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+ {/* Testimonials */}
+<section className="px-5 py-10 md:px-10 md:py-14">
+  <div className="mx-auto max-w-7xl">
+    <div className="mb-10 max-w-4xl">
+      <p className="mb-5 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
+        Caregiver stories
+      </p>
+
+      <h2 className="text-5xl font-black leading-[0.98] tracking-[-0.06em] md:text-7xl">
+        Real moments caregivers remember.
+      </h2>
+    </div>
+
+    <div className="grid gap-6 md:grid-cols-3">
+      {testimonials.map((item) => (
+        <div
+          key={item.name}
+          className="relative flex min-h-[360px] flex-col justify-between rounded-[2.75rem] border border-slate-200 bg-white p-8 shadow-[0_30px_90px_rgba(15,23,42,0.09)]"
+        >
+          <div className="flex flex-1 flex-col">
+            <div className="mb-1 text-6xl font-black leading-[0.65] text-[#F47534]/25">
+              “
+            </div>
+
+            <p className="pr-6 text-xl font-black leading-snug tracking-[-0.035em] text-[#062B49]">
+              {item.quote}
+            </p>
+
+            <div className="absolute bottom-[88px] right-8 text-6xl font-black leading-[0.65] text-[#F47534]/25">
+              ”
+            </div>
+          </div>
+
+          <div className="mt-8 border-t border-slate-200 pt-5">
+            <p className="font-black text-[#062B49]">{item.name}</p>
+
+            <p className="text-sm font-semibold text-slate-600">
+              {item.role}
+            </p>
+          </div>
+        </div>
+      ))}
     </div>
   </div>
 </section>
@@ -352,63 +413,39 @@ export default function CaregiverLandingPageV3() {
         <div className="mx-auto max-w-7xl border-y border-slate-200 py-12 md:py-14">
           <div className="grid gap-10 md:grid-cols-[0.88fr_1.12fr]">
             <h2 className="text-4xl font-black leading-[1.02] tracking-[-0.055em] md:text-6xl">
-              You do not need the perfect plan.
+              You do not need the perfect plan. You just need a little help from a friend.
             </h2>
 
-            <div className="space-y-5 text-xl leading-relaxed text-slate-700">
-              <p>
-                Sometimes memory challenges can make everyday connection feel unpredictable.
-                Sometimes conversation is hard. Sometimes nothing seems to land.
-              </p>
+            <div className="space-y-8">
+  <div className="space-y-5 text-2xl leading-relaxed text-slate-700 md:text-[1.7rem]">
+    <p>
+      With caregiving, sometimes if feels like
+you are never doing enough, Stress
+seems like it’s just part of the plan.
+Sometime nothing seems to land.
+    </p>
+  </div>
 
-              <p>
-                Designed by music therapists, SingFit gives caregivers guided music sessions built for real moments of connection, comfort, and engagement at home.
-              </p>
-            </div>
+  <div className="flex flex-col items-start gap-3">
+  <a
+    href="https://calendly.com/jubilee-musicalhealthtech/15min"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center justify-center rounded-full bg-[#F47534] px-8 py-4 text-base font-bold text-white shadow-[0_12px_30px_rgba(244,117,52,0.25)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_44px_rgba(244,117,52,0.34)]"
+  >
+    Schedule a Free Consultation
+  </a>
+
+  <p className="text-base text-slate-600">
+    Free 20-minute conversation with a certified music therapist. No obligation.
+  </p>
+</div>
+</div>
           </div>
         </div>
       </section>
 
-      {/* Lifestyle / Emotional Proof */}
-<section className="px-5 py-10 md:px-10 md:py-14">
-  <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-    {/* Video Card */}
-    <div className="overflow-hidden rounded-[3rem] bg-white p-4 shadow-[0_34px_90px_rgba(15,23,42,0.10)]">
-      <div className="relative aspect-video overflow-hidden rounded-[2rem]">
-        <iframe
-          ref={videoIframeRef}
-          src="https://player.vimeo.com/video/1194167243?h=0&title=0&byline=0&portrait=0"
-          title="Caregiver sharing a SingFit music moment"
-          className="absolute inset-0 h-full w-full"
-          frameBorder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowFullScreen
-        />
-      </div>
-    </div>
-
-    {/* Text Card */}
-    <div className="flex flex-col justify-center rounded-[3rem] border border-slate-200 bg-white p-8 shadow-[0_34px_90px_rgba(15,23,42,0.09)] md:p-12">
-      <p className="mb-5 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
-        Why it matters
-      </p>
-
-      <h2 className="text-4xl font-black leading-[1.02] tracking-[-0.055em] md:text-5xl">
-        When words are hard, music gives you somewhere to begin.
-      </h2>
-
-      <div className="mt-8 rounded-[2rem] border-l-4 border-[#F47534] bg-[#FFF7F2] px-6 py-6">
-        <p className="text-xl font-semibold leading-relaxed text-[#062B49]">
-          “I’m so happy I learned of the SingFit program. It’s been life changing.”
-        </p>
-
-        <p className="mt-4 text-sm font-black uppercase tracking-[0.16em] text-[#F47534]">
-          Laina
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+      
 
       {/* Product Story */}
 <section className="px-5 py-10 md:px-10 md:py-14">
@@ -555,98 +592,73 @@ export default function CaregiverLandingPageV3() {
         </div>
       </section>
 
-     {/* Testimonials */}
+    
+
+    {/* FAQ */}
 <section className="px-5 py-10 md:px-10 md:py-14">
-  <div className="mx-auto max-w-7xl">
-    <div className="mb-10 max-w-4xl">
+  <div className="mx-auto grid max-w-7xl items-stretch gap-10 md:grid-cols-[0.82fr_1.18fr]">
+    <div>
       <p className="mb-5 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
-        Caregiver stories
+        Questions
       </p>
 
       <h2 className="text-5xl font-black leading-[0.98] tracking-[-0.06em] md:text-7xl">
-        Real moments caregivers remember.
+        Common caregiver concerns.
       </h2>
-    </div>
 
-    <div className="grid gap-6 md:grid-cols-3">
-      {testimonials.map((item) => (
-        <div
-          key={item.name}
-          className="relative flex min-h-[360px] flex-col justify-between rounded-[2.75rem] border border-slate-200 bg-white p-8 shadow-[0_30px_90px_rgba(15,23,42,0.09)]"
-        >
-          <div className="flex flex-1 flex-col">
-            <div className="mb-1 text-6xl font-black leading-[0.65] text-[#F47534]/25">
-              “
-            </div>
-
-            <p className="pr-6 text-xl font-black leading-snug tracking-[-0.035em] text-[#062B49]">
-              {item.quote}
-            </p>
-
-            <div className="absolute bottom-[88px] right-8 text-6xl font-black leading-[0.65] text-[#F47534]/25">
-              ”
-            </div>
-          </div>
-
-          <div className="mt-8 border-t border-slate-200 pt-5">
-            <p className="font-black text-[#062B49]">{item.name}</p>
-
-            <p className="text-sm font-semibold text-slate-600">
-              {item.role}
-            </p>
+      <div className="mt-8">
+        <div className="overflow-hidden rounded-[1.75rem] shadow-[0_20px_60px_rgba(15,23,42,0.10)]">
+          <div className="relative aspect-video">
+            <iframe
+              src="https://player.vimeo.com/video/1194167243?h=0&title=0&byline=0&portrait=0"
+              title="Laina Story"
+              className="absolute inset-0 h-full w-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
           </div>
         </div>
-      ))}
+
+        <p className="mt-4 text-lg font-semibold leading-relaxed text-[#062B49]">
+          Listen to Laina talk about her experience using SingFit.
+        </p>
+      </div>
+    </div>
+
+    <div className="flex rounded-[2.75rem] border border-slate-200 bg-white p-7 shadow-[0_30px_90px_rgba(15,23,42,0.09)] md:p-10">
+      <div className="flex w-full flex-col justify-between divide-y divide-slate-200">
+        {[
+          {
+            q: "What if I’m not musical?",
+            a: "You don’t need to be. The app guides everything step by step.",
+          },
+          {
+            q: "What if they don’t respond?",
+            a: "Every day is different. SingFit gives you a simple way to try a familiar song and create space for a response, even a small one.",
+          },
+          {
+            q: "How long does it take?",
+            a: "You can get up and running in just a few minutes. Once set up, starting a SingFit session takes only seconds.",
+          },
+          {
+            q: "Am I locked into a long-term commitment?",
+            a: "No. You can cancel anytime.",
+          },
+        ].map((item) => (
+          <div key={item.q} className="py-5 first:pt-0 last:pb-0">
+            <p className="text-xl font-black tracking-[-0.025em]">
+              {item.q}
+            </p>
+            <p className="mt-2 text-lg leading-relaxed text-slate-700">
+              {item.a}
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </section>
-
-      {/* FAQ */}
-      <section className="px-5 py-10 md:px-10 md:py-14">
-        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[0.82fr_1.18fr]">
-          <div>
-            <p className="mb-5 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
-              Questions
-            </p>
-
-            <h2 className="text-5xl font-black leading-[0.98] tracking-[-0.06em] md:text-7xl">
-              Common caregiver concerns.
-            </h2>
-          </div>
-
-          <div className="rounded-[2.75rem] border border-slate-200 bg-white p-7 shadow-[0_30px_90px_rgba(15,23,42,0.09)] md:p-10">
-            <div className="divide-y divide-slate-200">
-              {[
-                {
-                  q: "What if I’m not musical?",
-                  a: "You don’t need to be. The app guides everything step by step.",
-                },
-                {
-                  q: "What if they don’t respond?",
-                  a: "Every day is different. SingFit gives you a simple way to try a familiar song and create space for a response, even a small one.",
-                },
-                {
-                  q: "How long does it take?",
-                  a: "You can get up and running in just a few minutes. Once set up, starting a SingFit session takes only seconds.",
-                },
-                {
-                  q: "Am I locked into a long-term commitment?",
-                  a: "No. You can cancel anytime.",
-                },
-              ].map((item) => (
-                <div key={item.q} className="py-5 first:pt-0 last:pb-0">
-                  <p className="text-xl font-black tracking-[-0.025em]">
-                    {item.q}
-                  </p>
-                  <p className="mt-2 text-lg leading-relaxed text-slate-700">
-                    {item.a}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Final CTA */}
       <section className="px-5 pb-16 pt-6 md:px-10 md:pb-24">
