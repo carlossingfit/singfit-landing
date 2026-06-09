@@ -419,10 +419,10 @@ make caregiving easier.
             <div className="space-y-8">
   <div className="space-y-5 text-2xl leading-relaxed text-slate-700 md:text-[1.7rem]">
     <p>
-      With caregiving, sometimes if feels like
-you are never doing enough, Stress
+      With caregiving, sometimes it feels like
+you are never doing enough. Stress
 seems like it’s just part of the plan.
-Sometime nothing seems to land.
+Sometimes nothing seems to land.
     </p>
   </div>
 
