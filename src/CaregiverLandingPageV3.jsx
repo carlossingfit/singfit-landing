@@ -398,7 +398,7 @@ make caregiving easier.
           <div className="mt-8 border-t border-slate-200 pt-5">
             <p className="font-black text-[#062B49]">{item.name}</p>
 
-            <p className="text-sm font-semibold text-slate-600">
+            <p className="text-lg font-semibold text-slate-600">
               {item.role}
             </p>
           </div>
@@ -419,10 +419,7 @@ make caregiving easier.
             <div className="space-y-8">
   <div className="space-y-5 text-2xl leading-relaxed text-slate-700 md:text-[1.7rem]">
     <p>
-      With caregiving, sometimes it feels like
-you are never doing enough. Stress
-seems like it’s just part of the plan.
-Sometimes nothing seems to land.
+      With caregiving, With caregiving, sometimes it feels like you are never doing enough. Talk with a certified music therapist to discover how music can help. 
     </p>
   </div>
 
@@ -431,7 +428,7 @@ Sometimes nothing seems to land.
     href="https://calendly.com/jubilee-musicalhealthtech/15min"
     target="_blank"
     rel="noopener noreferrer"
-    className="inline-flex items-center justify-center rounded-full bg-[#F47534] px-8 py-4 text-base font-bold text-white shadow-[0_12px_30px_rgba(244,117,52,0.25)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_44px_rgba(244,117,52,0.34)]"
+    className="inline-flex items-center justify-center rounded-full bg-[#F47534] px-8 py-4 text-xl font-bold text-white shadow-[0_12px_30px_rgba(244,117,52,0.25)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_44px_rgba(244,117,52,0.34)]"
   >
     Schedule a Free Consultation
   </a>

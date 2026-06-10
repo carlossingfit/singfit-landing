@@ -301,13 +301,11 @@ export default function PrimeLandingPage() {
       <div>
        
         <h1 className="max-w-4xl text-[2.8rem] font-black leading-[1.02] tracking-[-0.055em] md:text-[3.8rem] lg:text-[4.2rem]">
-          A turnkey music program your team can run consistently.
+          Disengaged residents? Staff burning out? You are not alone. 
         </h1>
 
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-700 md:text-xl">
-          SingFit PRIME helps senior living teams lead engaging group music
-          sessions with ready-to-use playlists, scripted booklets, training,
-          and a complete toolkit built for resident participation.
+        Get everyone in tune with SingFit, a turnkey therapeutic music program designed specifically for senior living. 
         </p>
 
         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
