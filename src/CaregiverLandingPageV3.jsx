@@ -419,7 +419,7 @@ make caregiving easier.
             <div className="space-y-8">
   <div className="space-y-5 text-2xl leading-relaxed text-slate-700 md:text-[1.7rem]">
     <p>
-      With caregiving, With caregiving, sometimes it feels like you are never doing enough. Talk with a certified music therapist to discover how music can help. 
+      With caregiving, sometimes it feels like you are never doing enough. Talk with a certified music therapist to discover how music can help. 
     </p>
   </div>
 
