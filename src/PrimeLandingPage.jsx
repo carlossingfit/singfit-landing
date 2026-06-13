@@ -46,6 +46,51 @@ export default function PrimeLandingPage() {
       formSection.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
+  const getTrackingData = () => {
+  if (typeof window === "undefined") {
+    return {
+      utm_source: "",
+      utm_medium: "",
+      utm_campaign: "",
+      utm_term: "",
+      utm_content: "",
+      gclid: "",
+      fbclid: "",
+      landing_page: "",
+      referrer: "",
+    };
+  }
+
+  const params = new URLSearchParams(window.location.search);
+
+  const keys = [
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_term",
+    "utm_content",
+    "gclid",
+    "fbclid",
+  ];
+
+  const tracking = {};
+
+  keys.forEach((key) => {
+    const value = params.get(key);
+
+    if (value) {
+      window.sessionStorage.setItem(key, value);
+      tracking[key] = value;
+    } else {
+      tracking[key] = window.sessionStorage.getItem(key) || "";
+    }
+  });
+
+  tracking.landing_page = window.location.href;
+  tracking.referrer = document.referrer || "";
+
+  return tracking;
+};
 
   useEffect(() => {
     if (typeof window === "undefined") return undefined;
@@ -243,7 +288,10 @@ export default function PrimeLandingPage() {
       return;
     }
 
-    const payload = Object.fromEntries(formData.entries());
+    const payload = {
+  ...Object.fromEntries(formData.entries()),
+  ...getTrackingData(),
+};
 
     try {
       await fetch("https://hook.us2.make.com/6jcyahnyj6xzes7yc2inqqykk9rlvpgl", {
