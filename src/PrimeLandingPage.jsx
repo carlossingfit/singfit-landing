@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 export default function PrimeLandingPage() {
-  const PAGE_ID = "PrimeLandingPage";
+  const PAGE_ID = "PrimeLandingPage1";
   const SESSION_VIDEO_NAME = "prime_session_overview";
   const TESTIMONIAL_VIDEO_NAME = "prime_customer_testimonial";
 
@@ -291,6 +291,9 @@ export default function PrimeLandingPage() {
     const payload = {
   ...Object.fromEntries(formData.entries()),
   ...getTrackingData(),
+  page_id: "primelandingpage1",
+  form_id: "prime_demo_form",
+  formtype: "demo_request",
 };
 
     try {
