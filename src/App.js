@@ -32,6 +32,7 @@ import CaregiverLandingPageV7 from "./CaregiverLandingPageV7";
 import CaregiverLandingPageV8 from "./CaregiverLandingPageV8";
 import PrimeLandingPage from "./PrimeLandingPage";
 import PrimeUKSalesDeck from "./PrimeUKSalesDeck";
+import PrimeLandingPage2 from "./PrimeLandingPage2";
 
 
 
@@ -73,6 +74,7 @@ function App() {
          <Route path="/caregiverlanding8" element={<CaregiverLandingPageV8 />} />
          <Route path="/primelandingpage1" element={<PrimeLandingPage />} />
          <Route path="/primeuksales" element={<PrimeUKSalesDeck />} />
+         <Route path="/primelandingpage2" element={<PrimeLandingPage2 />} />
 
 
       </Routes>
