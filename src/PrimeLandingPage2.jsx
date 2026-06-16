@@ -179,13 +179,13 @@ export default function PrimeLandingPage2() {
             </p>
 
             <h1 className="max-w-4xl text-[2.75rem] font-black leading-[1.02] tracking-[-0.055em] md:text-[4rem] lg:text-[4.6rem]">
-              Share SingFit. Earn Rewards. Make an Impact.
+              Share SingFit.<br></br> Earn Rewards. Make an Impact.
             </h1>
 
             <p className="mt-6 max-w-3xl text-lg leading-relaxed text-slate-700 md:text-xl">
               You've seen the difference music can make. Help another community
               experience it too, and receive $100 in Amazon gift cards when your
-              referral joins SingFit.
+              referral signs up for SingFit PRIME.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -198,7 +198,7 @@ export default function PrimeLandingPage2() {
               </button>
 
               <p className="text-sm font-bold text-slate-600">
-                Limited-time referral reward for existing SingFit customers.
+                Limited-time referral reward for existing SingFit PRIME customers.
               </p>
             </div>
           </div>
@@ -259,7 +259,7 @@ export default function PrimeLandingPage2() {
               How the Referral Program Works
             </p>
             <h2 className="text-4xl font-black leading-[1.02] tracking-[-0.055em] md:text-5xl">
-              A simple way to share SingFit with another organization.
+              A simple way to share SingFit PRIME with another organization
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-slate-700">
               As a thank you for spreading the word, we're offering a special
@@ -386,11 +386,13 @@ export default function PrimeLandingPage2() {
 
                 <label className="block">
                   <span className="text-sm font-black text-slate-700">
-                    Phone
+                    Phone *
                   </span>
                   <input
                     name="referral_phone"
+                    required
                     type="tel"
+                    
                     className="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-4 text-base outline-none transition focus:border-[#F47534] focus:ring-4 focus:ring-[#F47534]/15"
                   />
                 </label>
