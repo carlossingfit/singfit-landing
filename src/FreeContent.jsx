@@ -101,6 +101,12 @@ const RECORDED_WEBINARS = [
     duration: "50 min",
     videoEmbedUrl: "https://player.vimeo.com/video/1181333165?h=4fe87d8edd",
   },  
+  {
+    id: "webinar-004",
+    title: "Caregivers: Using Music to Create a More Harmonious Home Life",
+    duration: "50 min",
+    videoEmbedUrl: "https://player.vimeo.com/video/1201986610?h=4fe87d8edd",
+  },  
   ];
 
 const [isRecordedModalOpen, setIsRecordedModalOpen] = useState(false);
@@ -454,13 +460,14 @@ useEffect(() => {
         const eventData = {
           event: "click_cta",
           button_text: "Using Music to Create a More Harmonious Home Life",
-          destination_url: "https://www.eventbrite.com/e/caregivers-using-music-to-create-a-more-harmonious-home-life-tickets-1990199525355?aff=oddtdtcreator",
+          destination_url: "modal:recorded_webinars",
           page_id: "MemberResources",
         };
 
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push(eventData);
-        window.open(eventData.destination_url, "_blank");
+    window.dataLayer.push(eventData);
+
+    openRecordedModal();
       }}
   className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
@@ -472,8 +479,8 @@ useEffect(() => {
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
       "Caregivers: Using Music to Create a More Harmonious Home Life"{" "}
-      <span className="text-sm font-medium text-[#F47534] ml-1">
-    (Sign up Now!)
+      <br></br><span className="text-sm font-medium text-[#F47534] ml-1">
+    (Click to Watch Recording)
   </span>
       
     </p>
@@ -506,7 +513,7 @@ useEffect(() => {
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
       Caregivers: An Introduction to Using Music to Connect with Your Loved One{" "}
-      <span className="text-sm font-medium text-[#F47534] ml-1">
+      <br></br><span className="text-sm font-medium text-[#F47534] ml-1">
     (Click to Watch Recording)
   </span>
     </p>
@@ -539,7 +546,7 @@ useEffect(() => {
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
       Caregivers: A Deep Dive into the Musical Preferences of Your Loved One{" "}
-      <span className="text-sm font-medium text-[#F47534] ml-1">
+      <br></br><span className="text-sm font-medium text-[#F47534] ml-1">
     (Click to Watch Recording)
   </span>
     </p>
