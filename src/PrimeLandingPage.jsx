@@ -380,7 +380,7 @@ export default function PrimeLandingPage() {
 
         <div className="relative overflow-hidden rounded-[2.5rem] border-[10px] border-white bg-white shadow-[0_30px_90px_rgba(15,23,42,0.16)]">
           <img
-            src="/jessiewithgroup.jpg"
+            src="/jessiewithgroup-optimized.webp"
             alt="SingFit PRIME group music session in a senior living community"
             className="h-auto max-h-[480px] w-full object-contain"
           />
@@ -484,7 +484,7 @@ export default function PrimeLandingPage() {
     <div className="grid gap-6">
       <div className="h-[330px] overflow-hidden rounded-[2.5rem] shadow-[0_26px_70px_rgba(15,23,42,0.10)]">
   <img
-    src="/PRIME session3.jpg"
+    src="/PRIME-session3-optimized.webp"
     alt="Residents participating in a SingFit PRIME session with props"
     className="h-full w-full object-cover"
   />
@@ -613,7 +613,7 @@ export default function PrimeLandingPage() {
         <div className="mx-auto grid max-w-7xl gap-10 rounded-[3.25rem] bg-white p-6 shadow-[0_34px_100px_rgba(15,23,42,0.10)] md:p-10 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="overflow-hidden rounded-[2.75rem] bg-[#F7F9FC]">
             <img
-              src="/Toolkit Image.png"
+              src="/Toolkit-Image-optimized.webp"
               alt="SingFit PRIME toolkit materials"
               className="h-full min-h-[440px] w-full object-cover"
             />
