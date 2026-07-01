@@ -169,17 +169,30 @@ export default function CaregiverLandingPageV2() {
   };
 }, []);
 
-  const PhoneMockup = ({ src, alt = "", className = "" }) => (
-    <div
-      className={`rounded-[2.4rem] border border-slate-200 bg-[#071F3F] p-2.5 shadow-[0_30px_80px_rgba(15,23,42,0.18)] ${className}`}
-    >
-      <div className="rounded-[2rem] bg-black p-1.5">
-        <div className="overflow-hidden rounded-[1.65rem] bg-white">
-          <img src={src} alt={alt} className="h-full w-full object-cover" />
-        </div>
+const PhoneMockup = ({
+  src,
+  alt = "",
+  className = "",
+  loading = "lazy",
+  fetchPriority = "auto",
+}) => (
+  <div
+    className={`rounded-[2.4rem] border border-slate-200 bg-[#071F3F] p-2.5 shadow-[0_30px_80px_rgba(15,23,42,0.18)] ${className}`}
+  >
+    <div className="rounded-[2rem] bg-black p-1.5">
+      <div className="overflow-hidden rounded-[1.65rem] bg-white">
+        <img
+          src={src}
+          alt={alt}
+          loading={loading}
+          decoding="async"
+          fetchPriority={fetchPriority}
+          className="h-full w-full object-cover"
+        />
       </div>
     </div>
-  );
+  </div>
+);
 
   const testimonials = [
     {
@@ -285,10 +298,12 @@ export default function CaregiverLandingPageV2() {
             <div className="absolute bottom-12 right-8 h-[360px] w-[360px] rounded-full bg-[#F47534]/14 blur-3xl" />
 
             <PhoneMockup
-              src="/studio-player-screen2.jpeg"
-              alt="SingFit music player screen"
-              className="absolute left-1/2 top-0 z-20 w-[285px] -translate-x-1/2"
-            />
+  src="/studio-player-screen2.jpeg"
+  alt="SingFit music player screen"
+  loading="eager"
+  fetchPriority="high"
+  className="absolute left-1/2 top-0 z-20 w-[285px] -translate-x-1/2"
+/>
 
             <PhoneMockup
               src="/studio-home-screen2.jpeg"
