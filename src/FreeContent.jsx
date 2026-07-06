@@ -75,8 +75,8 @@ export default function FreeContent() {
   */
 
   const videoTitles = [
+    "5 Tips for Using Music to Create a More Harmonious Home Life",
     "Connecting Through Music",
-    "Coming Soon",
     "Coming Soon"
   ];
 // Feature flag: keep false until you are ready to show the first recording
@@ -112,18 +112,21 @@ const RECORDED_WEBINARS = [
 const [isRecordedModalOpen, setIsRecordedModalOpen] = useState(false);
 const [activeRecording, setActiveRecording] = useState(null);
 
-const openRecordedModal = () => {
-  const first = RECORDED_WEBINARS[0] || null;
+const openRecordedModal = (recordingId = null) => {
+  const selected =
+    RECORDED_WEBINARS.find((rec) => rec.id === recordingId) ||
+    RECORDED_WEBINARS[0] ||
+    null;
 
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({
     event: "recorded_webinar_modal_open",
     page_id: "MemberResources",
-    recording_id: first?.id || "",
-    recording_title: first?.title || "",
+    recording_id: selected?.id || "",
+recording_title: selected?.title || "",
   });
 
-  setActiveRecording(first);
+  setActiveRecording(selected);
   setIsRecordedModalOpen(true);
 };
 
@@ -309,6 +312,35 @@ useEffect(() => {
                   className="w-24 h-24 object-contain mb-2"
                 />
                 <h3 className="text-2xl font-semibold">
+                  5 Tips for Using Music to Create a More Harmonious Home Life
+                </h3>
+                <p className="text-base text-gray-700 max-w-md">
+                  Download our free guide to start using music as a caregiving tool.
+                </p>
+                <a
+                  href="/5 Tips for Using Music to Create a More Harmonious Home Life_Members.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 bg-[#F47534] hover:bg-[#d9652c] text-white px-6 py-3 rounded shadow text-base font-medium transition"
+                  onClick={() => {
+                    track("click_cta", {
+                      button_text: "Download 5 Tips PDF",
+                      destination_url: "/5 Tips for Using Music to Create a More Harmonious Home Life_Members.pdf",
+                      page_id: "MemberResources"
+                    });
+                  }}
+                >
+                  Download PDF
+                </a>
+              </div>
+
+              <div className="keen-slider__slide bg-white p-6 rounded-lg shadow flex flex-col justify-center items-center text-center text-[#243B53] gap-4">
+                <img
+                  src="/downloadgraphic.jpeg"
+                  alt="Download PDF Graphic"
+                  className="w-24 h-24 object-contain mb-2"
+                />
+                <h3 className="text-2xl font-semibold">
                   Connecting Through Music
                 </h3>
                 <p className="text-base text-gray-700 max-w-md">
@@ -329,20 +361,6 @@ useEffect(() => {
                 >
                   Download PDF
                 </a>
-              </div>
-
-              <div className="keen-slider__slide bg-white p-6 rounded-lg shadow flex flex-col justify-center items-center text-center text-[#243B53] gap-4">
-                 <img
-                  src="/downloadgraphic.jpeg"
-                  alt="Download PDF Graphic"
-                  className="w-24 h-24 object-contain mb-2"
-                />
-                <h3 className="text-2xl font-semibold">
-                  New Content Coming Soon
-                </h3>  
-                  <p className="text-base text-gray-700 max-w-md">
-                  Enter your email below to sign up for updates.
-                </p>             
               </div>
 
               <div className="keen-slider__slide bg-white p-6 rounded-lg shadow flex flex-col justify-center items-center text-center text-[#243B53] gap-4">
@@ -459,28 +477,28 @@ useEffect(() => {
   onClick={() => {
         const eventData = {
           event: "click_cta",
-          button_text: "Using Music to Create a More Harmonious Home Life",
-          destination_url: "modal:recorded_webinars",
+          button_text: "Caregivers: Singing for Self-Expression and Confidence",
+          destination_url: "https://www.eventbrite.com/e/singing-for-self-expression-and-confidence-tickets-1992855649895?aff=oddtdtcreator",
           page_id: "MemberResources",
         };
 
         window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(eventData);
 
-    openRecordedModal();
+    window.open(eventData.destination_url, "_blank");
       }}
   className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
   <img
-    src="/june16.png"
-    alt="June 16, 2026"
+    src="/Aug_11.png"
+    alt="August 11, 2026"
     className="w-20 h-20 object-contain rounded-md shadow"
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      "Caregivers: Using Music to Create a More Harmonious Home Life"{" "}
+      Caregivers: Singing for Self-Expression and Confidence{" "}
       <br></br><span className="text-sm font-medium text-[#F47534] ml-1">
-    (Click to Watch Recording)
+    (Click to sign up for webinar)
   </span>
       
     </p>
@@ -493,40 +511,39 @@ useEffect(() => {
   onClick={() => {
         const eventData = {
           event: "click_cta",
-          button_text: "An Introduction to Using Music to Connect with Your Loved One",
-          destination_url: "modal:recorded_webinars",
+          button_text: "Caregivers: An Introduction to Using Music to Connect with Your Loved One",
+          destination_url: "https://www.eventbrite.com/e/caregivers-an-introduction-to-using-music-to-connect-with-your-loved-one-tickets-1990199670790?aff=oddtdtcreator",
           page_id: "MemberResources",
         };
 
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(eventData);
 
-    openRecordedModal();
+    window.open(eventData.destination_url, "_blank");
       }}
   className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
   <img
-    src="/May_6.png"
-    alt="May 6, 2026"
+    src="/July_14.png"
+    alt="July 14, 2026"
     className="w-20 h-20 object-contain rounded-md shadow"
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
       Caregivers: An Introduction to Using Music to Connect with Your Loved One{" "}
       <br></br><span className="text-sm font-medium text-[#F47534] ml-1">
-    (Click to Watch Recording)
+    (Click to sign up for webinar)
   </span>
     </p>
   </div>
 </button>
 
             {/* Webinar Card 3 */}
-  {/* Webinar Card 1 */}
 <button
   onClick={() => {
     const eventData = {
       event: "click_cta",
-      button_text: "Webinar: A Deep Dive into the Musical Preferences of Your Loved One",
+      button_text: "Using Music to Create a More Harmonious Home Life",
       destination_url: "modal:recorded_webinars",
       page_id: "MemberResources"
      };
@@ -534,20 +551,20 @@ useEffect(() => {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(eventData);
 
-    openRecordedModal();
+    openRecordedModal("webinar-004");
   }}
   className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
   <img
-    src="/Apr_7.png"
-    alt="April 7, 2026"
+    src="/june16.png"
+    alt="June 16, 2026"
     className="w-20 h-20 object-contain rounded-md shadow"
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      Caregivers: A Deep Dive into the Musical Preferences of Your Loved One{" "}
+      Caregivers: Using Music to Create a More Harmonious Home Life{" "}
       <br></br><span className="text-sm font-medium text-[#F47534] ml-1">
-    (Click to Watch Recording)
+    (Click to watch recording)
   </span>
     </p>
   </div>

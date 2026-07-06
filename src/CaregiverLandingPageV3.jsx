@@ -247,7 +247,7 @@ make caregiving easier.
 
             <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
               <a
-  href="https://calendly.com/jubilee-musicalhealthtech/15min"
+  href="https://calendly.com/rachelfrancine/complimentary-singfit-session"
   target="_blank"
   rel="noopener noreferrer"
   className="rounded-full bg-[#F47534] px-12 py-6 text-center text-xl font-bold text-white shadow-[0_18px_46px_rgba(244,117,52,0.30)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(244,117,52,0.40)] sm:px-16"
@@ -425,7 +425,7 @@ make caregiving easier.
 
   <div className="flex flex-col items-start gap-3">
   <a
-    href="https://calendly.com/jubilee-musicalhealthtech/15min"
+    href="https://calendly.com/rachelfrancine/complimentary-singfit-session"
     target="_blank"
     rel="noopener noreferrer"
     className="inline-flex items-center justify-center rounded-full bg-[#F47534] px-8 py-4 text-xl font-bold text-white shadow-[0_12px_30px_rgba(244,117,52,0.25)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_44px_rgba(244,117,52,0.34)]"

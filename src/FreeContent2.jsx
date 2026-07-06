@@ -74,10 +74,9 @@ export default function FreeContent2() {
   }, []);
   */
 
-
-   const videoTitles = [
+const videoTitles = [
+    "5 Tips for Using Music to Create a More Harmonious Home Life",
     "Connecting Through Music",
-    "Coming Soon",
     "Coming Soon"
   ];
 // Feature flag: keep false until you are ready to show the first recording
@@ -89,14 +88,14 @@ const RECORDED_WEBINARS = [
     title: "Caregivers: Using Music to Connect with Your Loved One",
     duration: "56 min",
     videoEmbedUrl: "https://player.vimeo.com/video/1164185752?h=d0796ce4f1",
-  },
+  },  
    {
     id: "webinar-002",
     title: "Caregivers: How to Select the Right Music for Your Goal",
     duration: "50 min",
     videoEmbedUrl: "https://player.vimeo.com/video/1173355484?h=85d323d74e",
   },  
-  {
+   {
     id: "webinar-003",
     title: "Caregivers: A Deep Dive into the Musical Preferences of Your Loved One",
     duration: "50 min",
@@ -113,18 +112,21 @@ const RECORDED_WEBINARS = [
 const [isRecordedModalOpen, setIsRecordedModalOpen] = useState(false);
 const [activeRecording, setActiveRecording] = useState(null);
 
-const openRecordedModal = () => {
-  const first = RECORDED_WEBINARS[0] || null;
+const openRecordedModal = (recordingId = null) => {
+  const selected =
+    RECORDED_WEBINARS.find((rec) => rec.id === recordingId) ||
+    RECORDED_WEBINARS[0] ||
+    null;
 
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({
     event: "recorded_webinar_modal_open",
     page_id: "NonMemberResources",
-    recording_id: first?.id || "",
-    recording_title: first?.title || "",
+    recording_id: selected?.id || "",
+recording_title: selected?.title || "",
   });
 
-  setActiveRecording(first);
+  setActiveRecording(selected);
   setIsRecordedModalOpen(true);
 };
 
@@ -195,6 +197,7 @@ useEffect(() => {
     } catch (e) {}
   };
 }, [isRecordedModalOpen, activeRecording]);
+
 
   const [sliderRef, instanceRef] = useKeenSlider({
     loop: false,
@@ -309,20 +312,20 @@ useEffect(() => {
                   className="w-24 h-24 object-contain mb-2"
                 />
                 <h3 className="text-2xl font-semibold">
-                  Connecting Through Music
+                  5 Tips for Using Music to Create a More Harmonious Home Life
                 </h3>
                 <p className="text-base text-gray-700 max-w-md">
                   Download our free guide to start using music as a caregiving tool.
                 </p>
                 <a
-                  href="/Connecting Through Music.pdf"
+                  href="/5 Tips for Using Music to Create a More Harmonious Home Life_Non-Members.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-2 bg-[#F47534] hover:bg-[#d9652c] text-white px-6 py-3 rounded shadow text-base font-medium transition"
                   onClick={() => {
                     track("click_cta", {
-                      button_text: "Download Caregiver PDF",
-                      destination_url: "/Connecting Through Music.pdf",
+                      button_text: "Download 5 Tips PDF",
+                      destination_url: "/5 Tips for Using Music to Create a More Harmonious Home Life_Members.pdf",
                       page_id: "NonMemberResources"
                     });
                   }}
@@ -332,17 +335,32 @@ useEffect(() => {
               </div>
 
               <div className="keen-slider__slide bg-white p-6 rounded-lg shadow flex flex-col justify-center items-center text-center text-[#243B53] gap-4">
-                 <img
+                <img
                   src="/downloadgraphic.jpeg"
                   alt="Download PDF Graphic"
                   className="w-24 h-24 object-contain mb-2"
                 />
                 <h3 className="text-2xl font-semibold">
-                  New Content Coming Soon
-                </h3>  
-                  <p className="text-base text-gray-700 max-w-md">
-                  Enter your email below to sign up for updates.
-                </p>             
+                  Connecting Through Music
+                </h3>
+                <p className="text-base text-gray-700 max-w-md">
+                  Download our free guide to start using music as a caregiving tool.
+                </p>
+                <a
+                  href="/Connecting Through Music_AARP Member.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 bg-[#F47534] hover:bg-[#d9652c] text-white px-6 py-3 rounded shadow text-base font-medium transition"
+                  onClick={() => {
+                    track("click_cta", {
+                      button_text: "Download Caregiver PDF",
+                      destination_url: "/Connecting Through Music_AARP Member.pdf",
+                      page_id: "NonMemberResources"
+                    });
+                  }}
+                >
+                  Download PDF
+                </a>
               </div>
 
               <div className="keen-slider__slide bg-white p-6 rounded-lg shadow flex flex-col justify-center items-center text-center text-[#243B53] gap-4">
@@ -385,33 +403,38 @@ useEffect(() => {
 <div className="mt-auto pt-4 text-center space-y-1">
   <p className="text-base">Get notified when new resources are released:</p>
   <form
-    className="flex flex-col sm:flex-row justify-center gap-2"
-    onSubmit={(e) => {
-      e.preventDefault();
-      const email = e.target.email.value;
+  className="flex flex-col sm:flex-row justify-center gap-2"
+ onSubmit={(e) => {
+  e.preventDefault();
+  const email = e.target.email.value;
 
-      fetch("https://hook.us2.make.com/vl4dwb7wcunr13bghvani6mvji8imygv", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      })
-        .then((res) => {
-  if (res.ok) {
-    setSuccessMessage("Thanks! Check your inbox for updates.");
-    e.target.reset();
-    setTimeout(() => setSuccessMessage(""), 5000); // optional auto-clear
-  } else {
-    setSuccessMessage("There was a problem. Please try again.");
-  }
-})
-.catch(() => {
-  setSuccessMessage("There was a problem. Please try again.");
-});
+  fetch("https://hook.us2.make.com/vl4dwb7wcunr13bghvani6mvji8imygv", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email }),
+  })
+    .then((res) => {
+      if (res.ok) {
+        setSuccessMessage("Thanks! Check your inbox for updates.");
+        track("submit_form", {
+          form_id: "notify_me",
+          page_id: "NonMemberResources",
+        });
+        e.target.reset();
+        setTimeout(() => setSuccessMessage(""), 5000); // optional auto-clear
+      } else {
+        setSuccessMessage("There was a problem. Please try again.");
+      }
+    })
+    .catch(() => {
+      setSuccessMessage("There was a problem. Please try again.");
+    });
+}}
 
-    }}
-  >
+>
+
     <input
       type="email"
       name="email"
@@ -427,16 +450,15 @@ useEffect(() => {
 </Button>
 
   </form>
-  {typeof successMessage === "string" && successMessage && (
+  {successMessage && (
   <p className="text-sm text-green-600 mt-2">{successMessage}</p>
 )}
-
 
 </div>
 
         </div>
 
-       {/* WEBINAR COLUMN */}
+           {/* WEBINAR COLUMN */}
         <div className="flex flex-col justify-between h-full bg-[#FAF6F2] p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
           <div className="flex items-start gap-4 pt-[0.2rem] min-h-[4rem]">
             <img
@@ -455,28 +477,28 @@ useEffect(() => {
   onClick={() => {
         const eventData = {
           event: "click_cta",
-          button_text: "Using Music to Create a More Harmonious Home Life",
-          destination_url: "modal:recorded_webinars",
+          button_text: "Caregivers: Singing for Self-Expression and Confidence",
+          destination_url: "https://www.eventbrite.com/e/singing-for-self-expression-and-confidence-tickets-1992855649895?aff=oddtdtcreator",
           page_id: "NonMemberResources",
         };
 
         window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(eventData);
 
-    openRecordedModal();
+    window.open(eventData.destination_url, "_blank");
       }}
   className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
   <img
-    src="/june16.png"
-    alt="June 16, 2026"
+    src="/Aug_11.png"
+    alt="August 11, 2026"
     className="w-20 h-20 object-contain rounded-md shadow"
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      "Caregivers: Using Music to Create a More Harmonious Home Life"{" "}
+      Caregivers: Singing for Self-Expression and Confidence{" "}
       <br></br><span className="text-sm font-medium text-[#F47534] ml-1">
-    (Click to Watch Recording)
+    (Click to sign up for webinar)
   </span>
       
     </p>
@@ -489,40 +511,39 @@ useEffect(() => {
   onClick={() => {
         const eventData = {
           event: "click_cta",
-          button_text: "An Introduction to Using Music to Connect with Your Loved One",
-          destination_url: "modal:recorded_webinars",
+          button_text: "Caregivers: An Introduction to Using Music to Connect with Your Loved One",
+          destination_url: "https://www.eventbrite.com/e/caregivers-an-introduction-to-using-music-to-connect-with-your-loved-one-tickets-1990199670790?aff=oddtdtcreator",
           page_id: "NonMemberResources",
         };
 
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(eventData);
 
-    openRecordedModal();
+    window.open(eventData.destination_url, "_blank");
       }}
   className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
   <img
-    src="/May_6.png"
-    alt="May 6, 2026"
+    src="/July_14.png"
+    alt="July 14, 2026"
     className="w-20 h-20 object-contain rounded-md shadow"
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
       Caregivers: An Introduction to Using Music to Connect with Your Loved One{" "}
-     <br></br> <span className="text-sm font-medium text-[#F47534] ml-1">
-    (Click to Watch Recording)
+      <br></br><span className="text-sm font-medium text-[#F47534] ml-1">
+    (Click to sign up for webinar)
   </span>
     </p>
   </div>
 </button>
 
             {/* Webinar Card 3 */}
-  
 <button
   onClick={() => {
     const eventData = {
       event: "click_cta",
-      button_text: "Webinar: A Deep Dive into the Musical Preferences of Your Loved One",
+      button_text: "Using Music to Create a More Harmonious Home Life",
       destination_url: "modal:recorded_webinars",
       page_id: "NonMemberResources"
      };
@@ -530,28 +551,29 @@ useEffect(() => {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(eventData);
 
-    openRecordedModal();
+    openRecordedModal("webinar-004");
   }}
   className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
   <img
-    src="/Apr_7.png"
-    alt="April 7, 2026"
+    src="/june16.png"
+    alt="June 16, 2026"
     className="w-20 h-20 object-contain rounded-md shadow"
   />
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      Caregivers: A Deep Dive into the Musical Preferences of Your Loved One{" "}
-     <br></br> <span className="text-sm font-medium text-[#F47534] ml-1">
-    (Click to Watch Recording)
+      Caregivers: Using Music to Create a More Harmonious Home Life{" "}
+      <br></br><span className="text-sm font-medium text-[#F47534] ml-1">
+    (Click to watch recording)
   </span>
     </p>
   </div>
 </button>
 
-          </div>
 
-          {/* Webinar Buttons – bottom row */}
+
+          </div>
+{/* Webinar Buttons – bottom row */}
 <div className="mt-auto pt-4 text-center">
   <div className="relative flex justify-center gap-3 flex-wrap" style={{ top: "13px" }}>
     <Button
@@ -601,17 +623,12 @@ useEffect(() => {
         </div>
   </div>
   <div className="text-center mt-4">
-  <a
-    href="https://www.singfit.com/aarp-non-member-pricing"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <Button
+ <Button
   onClick={() => {
   const eventData = {
     event: "click_cta",
     button_text: "Buy SingFit Now",
-    destination_url: "https://www.singfit.com/aarp-non-member-pricing",
+    destination_url: "https://www.singfit.com/aarp-member-pricing",
     page_id: "NonMemberResources"
   };
 
@@ -629,38 +646,15 @@ useEffect(() => {
 >
   Get SingFit Now
 </Button>
-  </a>
 
-  <div className="text-base md:text-lg mt-3 text-[#EC1300] text-center space-y-1">
-    <p>AARP Registered User Price: $10.19/month (includes 15% discount).</p>
-    <p className="flex justify-center items-center gap-2 flex-wrap">
-      <img
-        src="/aarp-member-benefit.png"
-        alt="AARP badge"
-        className="h-8 w-auto inline-block"
-      />
-      <span>
-        AARP members receive additional savings.&nbsp;
-        <a
-  href="https://appsec.aarp.org/mem/join?campaignid=UTJSM3A&referrer=https%3A%2F%2Fsecure.aarp.org%2Fapplications%2Fuser%2Fvendor%2FacctConfirm%3Fvn%3Dsingfitmb"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="underline text-blue-700 hover:text-blue-900"
-  onClick={() => {
-    const eventData = {
-      event: "click_cta",
-      button_text: "Bottom -Join AARP",
-      destination_url: "https://appsec.aarp.org/mem/join?campaignid=UTJSM3A&referrer=https%3A%2F%2Fsecure.aarp.org%2Fapplications%2Fuser%2Fvendor%2FacctConfirm%3Fvn%3Dsingfitmb",
-      page_id: "NonMemberResources"
-    };
-    window.parent.postMessage(eventData, "*");
-  }}
->
-  Not a member? Join today.
-</a>
-      </span>
-    </p>
-  </div>
+  <p className="text-base md:text-lg mt-3 text-[#EC1300] flex items-center justify-center gap-3">
+    <img
+      src="/aarp-member-benefit.png"
+      alt="AARP badge"
+      className="h-8 w-auto inline-block"
+    />
+    AARP Member Price: $8.39/month (includes 30% discount).
+  </p>
 </div>
 {/* Footer */}
       <footer className="text-center text-xs text-gray-500 border-t border-gray-200 pt-6 mt-12 px-4">
@@ -736,7 +730,7 @@ useEffect(() => {
   {activeRecording ? (
     <>
       <div className="w-full aspect-video bg-gray-100 rounded-xl overflow-hidden border border-gray-200">
-        <iframe
+       <iframe
           ref={vimeoIframeRef}
           title={activeRecording.title}
           src={activeRecording.videoEmbedUrl}
@@ -794,4 +788,3 @@ useEffect(() => {
   </div>
   );
 }
-
