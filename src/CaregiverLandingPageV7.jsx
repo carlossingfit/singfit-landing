@@ -2134,7 +2134,13 @@ p{
               <div className="hero-stage">
                 <div className="hero-image-panel">
                   <div className="hero-image-art hero-photo-art">
-                    <img src="/asset-02.png" alt="Caregiver and older loved one sharing a joyful music moment at home" />
+                    <img src="/asset-02.webp"
+                         alt="Caregiver and older loved one sharing a joyful music moment at home"
+                         width="1600"
+                         height="1200"
+                         fetchPriority="high"
+                         decoding="async"
+                     />
                   </div>
                 </div>
                 <div className="hero-accent-card" aria-hidden="true">
@@ -2143,7 +2149,7 @@ p{
                   <div className="accent-line mid"></div>
                 </div>
                 <div className="iphone hero-phone-image">
-                  <img src="/asset-03.png" alt="SingFit STUDIO Caregiver app screens shown on two mobile phones" />
+                  <img src="/asset-03.webp" alt="SingFit STUDIO Caregiver app screens shown on two mobile phones" />
                 </div>
               </div>
             </div>
@@ -2158,11 +2164,14 @@ p{
               <div className="who-image-panel">
                 <div className="who-image-stage">
                   <div className="who-real-image-panel">
-                    <img src="/asset-04.png" alt="A caregiver and an older man using a tablet together on a couch at home" />
+                    <img src="/asset-04.webp" 
+                         alt="A caregiver and an older man using a tablet together on a couch at home" 
+                         loading="lazy"
+decoding="async"/>
                   </div>
                   <div className="product-phone product-phone-floating">
                     <div className="product-phone-screen">
-                      <video className="product-video" autoPlay loop muted playsInline preload="metadata" disablePictureInPicture aria-label="Preview of the SingFit STUDIO Caregiver Lyric Coach experience">
+                      <video className="product-video" autoPlay loop muted playsInline preload="none" disablePictureInPicture aria-label="Preview of the SingFit STUDIO Caregiver Lyric Coach experience">
                         <source src="/screen-capture2.mp4" type="video/mp4" />
                       </video>
                     </div>
@@ -2219,7 +2228,7 @@ p{
               <div className="benefits-intro-media">
                 <div className="product-phone product-phone-intro">
                   <div className="product-phone-screen">
-                    <video className="product-video" autoPlay loop muted playsInline preload="metadata" disablePictureInPicture aria-label="Preview of a guided SingFit STUDIO Caregiver session">
+                    <video className="product-video" autoPlay loop muted playsInline preload="none" disablePictureInPicture aria-label="Preview of a guided SingFit STUDIO Caregiver session">
                       <source src="/screen-capture1.mp4" type="video/mp4" />
                     </video>
                   </div>
@@ -2228,12 +2237,17 @@ p{
             </div>
             <div className="benefit-editorial">
               {[
-                ["/asset-07.png", "A caregiver sitting beside an older man listening to music with headphones in a calm home setting", "Music can support mood", "Familiar songs can help shift the feeling of a routine, visit, or difficult moment."],
-                ["/asset-08.png", "A caregiver and older loved one laughing together while a SingFit session plays on a tablet", "Music can spark memory", "Songs tied to someone’s life can bring back memories, recognition, and conversation."],
-                ["/asset-09.png", "A caregiver and older loved one actively using the SingFit STUDIO app together on a tablet", "SingFit makes it easier to begin", "Guided lyrics, personalized sessions, and activity prompts give caregivers a clear next step."],
+                ["/asset-07.webp", "A caregiver sitting beside an older man listening to music with headphones in a calm home setting", "Music can support mood", "Familiar songs can help shift the feeling of a routine, visit, or difficult moment."],
+                ["/asset-08.webp", "A caregiver and older loved one laughing together while a SingFit session plays on a tablet", "Music can spark memory", "Songs tied to someone’s life can bring back memories, recognition, and conversation."],
+                ["/asset-09.webp", "A caregiver and older loved one actively using the SingFit STUDIO app together on a tablet", "SingFit makes it easier to begin", "Guided lyrics, personalized sessions, and activity prompts give caregivers a clear next step."],
               ].map(([src, alt, title, copy]) => (
                 <article className="benefit-row" key={title}>
-                  <div className="benefit-image benefit-real-image"><img src={src} alt={alt} /></div>
+                  <div className="benefit-image benefit-real-image"><img
+  src={src}
+  alt={alt}
+  loading="lazy"
+  decoding="async"
+/></div>
                   <div className="benefit-copy"><h3>{title}</h3><p>{copy}</p></div>
                 </article>
               ))}
