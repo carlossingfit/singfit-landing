@@ -2171,7 +2171,7 @@ decoding="async"/>
                   </div>
                   <div className="product-phone product-phone-floating">
                     <div className="product-phone-screen">
-                      <video className="product-video" autoPlay loop muted playsInline preload="none" disablePictureInPicture aria-label="Preview of the SingFit STUDIO Caregiver Lyric Coach experience">
+                      <video className="product-video" loop muted playsInline preload="none" disablePictureInPicture aria-label="Preview of the SingFit STUDIO Caregiver Lyric Coach experience">
                         <source src="/screen-capture2.mp4" type="video/mp4" />
                       </video>
                     </div>
@@ -2228,7 +2228,7 @@ decoding="async"/>
               <div className="benefits-intro-media">
                 <div className="product-phone product-phone-intro">
                   <div className="product-phone-screen">
-                    <video className="product-video" autoPlay loop muted playsInline preload="none" disablePictureInPicture aria-label="Preview of a guided SingFit STUDIO Caregiver session">
+                    <video className="product-video" loop muted playsInline preload="none" disablePictureInPicture aria-label="Preview of a guided SingFit STUDIO Caregiver session">
                       <source src="/screen-capture1.mp4" type="video/mp4" />
                     </video>
                   </div>
