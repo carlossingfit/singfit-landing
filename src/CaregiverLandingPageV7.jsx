@@ -188,7 +188,7 @@ export default function CaregiverLandingPageV7() {
 
   return (
     <main className={`caregiver-v7-root ${menuOpen ? "menu-open" : ""}`}>
-      <style>{`@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap");
+      <style>{`
 :root{
   --ink:#162331;
   --ink-soft:#344a5b;
