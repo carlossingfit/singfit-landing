@@ -34,6 +34,8 @@ const CaregiverLandingPageV8 = lazy(() => import("./CaregiverLandingPageV8"));
 const PrimeLandingPage = lazy(() => import("./PrimeLandingPage"));
 const PrimeUKSalesDeck = lazy(() => import("./PrimeUKSalesDeck"));
 const PrimeLandingPage2 = lazy(() => import("./PrimeLandingPage2"));
+const AARPResourcePageDraft = lazy(() => import("./AARPResourcePageDraft"));
+
 
 function App() {
   return (
@@ -72,6 +74,7 @@ function App() {
           <Route path="/primelandingpage1" element={<PrimeLandingPage />} />
           <Route path="/primeuksales" element={<PrimeUKSalesDeck />} />
           <Route path="/primelandingpage2" element={<PrimeLandingPage2 />} />
+          <Route path="/resourcepagedraft" element={<AARPResourcePageDraft />} />
         </Routes>
       </Suspense>
     </Router>
