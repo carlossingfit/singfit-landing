@@ -367,7 +367,7 @@ export default function AARPResourcePageDraft() {
 
         <nav
           aria-label="Resource sections"
-          className="sticky top-3 z-30 mx-auto -mt-5 max-w-5xl rounded-[1.4rem] border border-[#D6E0E9] bg-white/95 px-3 py-3 shadow-[0_16px_40px_rgba(36,59,83,0.16)] backdrop-blur-md sm:px-4"
+          className="sticky top-3 z-30 mx-auto -mt-5 max-w-6xl rounded-[1.4rem] border border-[#D6E0E9] bg-white/95 px-3 py-3 shadow-[0_16px_40px_rgba(36,59,83,0.16)] backdrop-blur-md sm:px-4"
         >
           <div className="flex flex-col gap-2 lg:flex-row lg:items-center">
             <div className="hidden shrink-0 border-r border-[#DCE5EC] px-4 pr-6 lg:block">
@@ -379,19 +379,19 @@ export default function AARPResourcePageDraft() {
             <div className="grid flex-1 grid-cols-2 gap-2 sm:grid-cols-4">
               {[
                 ["Free Guides", "guides", "guides"],
-                ["Live Webinars", "live-webinars", "live"],
+                ["Upcoming Webinars", "upcoming-webinars", "live"],
                 ["Past Webinars", "past-webinars", "recorded"],
                 ["Expert Videos", "expert-videos", "expert"],
               ].map(([label, id, icon]) => (
                 <a
                   key={id}
                   href={`#${id}`}
-                  className="group flex min-h-[48px] items-center justify-center gap-2 rounded-xl px-3 py-2 text-center text-sm font-bold text-[#002F6C] transition duration-200 hover:-translate-y-0.5 hover:bg-[#EEF5FA] hover:text-[#F47534]"
+                  className="group flex min-h-[48px] items-center justify-center gap-2 rounded-xl px-5 py-3 text-center text-[15px] font-bold text-[#002F6C] transition duration-200 hover:-translate-y-0.5 hover:bg-[#EEF5FA] hover:text-[#F47534]"
                 >
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#E6F0F7] text-[#002F6C] transition group-hover:bg-white group-hover:text-[#F47534]">
                     <ResourceNavIcon type={icon} />
                   </span>
-                  <span>{label}</span>
+                  <span className="whitespace-nowrap">{label}</span>
                 </a>
               ))}
             </div>
