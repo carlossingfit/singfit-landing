@@ -344,7 +344,7 @@ export default function AARPResourcePageDraft() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F9FC] font-sans text-[#243B53]">
+    <div className="min-h-screen overflow-x-clip bg-[#F7F9FC] font-sans text-[#243B53]">
       <main className="mx-auto max-w-7xl px-5 pb-16 pt-0 sm:px-8">
         <section className="relative overflow-hidden rounded-b-[2.5rem] border border-[#C9D8E6] bg-gradient-to-br from-[#DCEAF5] via-[#EEF5FA] to-white px-6 py-12 shadow-[0_24px_70px_rgba(0,47,108,0.16)] sm:px-10 sm:py-16">
           <div className="absolute -right-16 -top-24 h-64 w-64 rounded-full bg-white/45" />
@@ -386,12 +386,12 @@ export default function AARPResourcePageDraft() {
                 <a
                   key={id}
                   href={`#${id}`}
-                  className="group flex min-h-[46px] items-center justify-center gap-1.5 rounded-xl px-2 py-2.5 text-center text-sm font-bold text-[#002F6C] transition duration-200 hover:-translate-y-0.5 hover:bg-[#EEF5FA] hover:text-[#F47534] sm:gap-2 sm:px-5 sm:py-3 sm:text-[15px]"
+                  className="group flex min-w-0 flex-col items-center justify-center gap-1 rounded-xl px-1 py-2.5 text-center text-sm font-bold leading-tight text-[#002F6C] transition duration-200 hover:-translate-y-0.5 hover:bg-[#EEF5FA] hover:text-[#F47534] sm:min-h-[46px] sm:flex-row sm:gap-2 sm:px-4 sm:py-3 sm:text-[15px]"
                 >
                   <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#E6F0F7] text-[#002F6C] transition group-hover:bg-white group-hover:text-[#F47534] sm:h-8 sm:w-8">
                     <ResourceNavIcon type={icon} />
                   </span>
-                  <span className="whitespace-nowrap">{label}</span>
+                  <span className="max-w-full sm:whitespace-nowrap">{label}</span>
                 </a>
               ))}
             </div>
