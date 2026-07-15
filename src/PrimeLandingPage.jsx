@@ -982,7 +982,7 @@ export default function PrimeLandingPage() {
             </button>
 
             <p className="text-xs font-black uppercase tracking-[0.2em] text-[#F47534]">
-              Summer pricing
+              SPECIAL OFFER
             </p>
 
             <h2 className="mt-2 text-2xl font-black leading-tight tracking-[-0.04em] text-[#062B49]">
@@ -990,7 +990,7 @@ export default function PrimeLandingPage() {
             </h2>
 
             <p className="mt-3 text-sm font-semibold leading-relaxed text-slate-600">
-              Ask about special summer pricing for new PRIME communities.
+              Ask about special pricing for new PRIME communities.
             </p>
 
             <button
@@ -998,7 +998,7 @@ export default function PrimeLandingPage() {
               onClick={handleSummerPricingClick}
               className="mt-4 w-full rounded-full bg-[#F47534] px-5 py-3 text-sm font-bold text-white shadow-[0_12px_28px_rgba(244,117,52,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(244,117,52,0.36)]"
             >
-              Ask About Summer Pricing
+              Schedule a Demo
             </button>
           </div>
         </div>
