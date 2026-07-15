@@ -15,6 +15,8 @@ export default function PrimeLandingPage() {
   const vimeoStartedRef = useRef(false);
   const vimeoCompletedRef = useRef(false);
   const vimeoMilestonesRef = useRef(new Set());
+  const [showSummerPricing, setShowSummerPricing] = useState(false);
+  const [summerPricingDismissed, setSummerPricingDismissed] = useState(false);
 
   const pushToDataLayer = (payload) => {
     if (typeof window === "undefined") return;
@@ -45,6 +47,20 @@ export default function PrimeLandingPage() {
     if (formSection) {
       formSection.scrollIntoView({ behavior: "smooth", block: "start" });
     }
+  };
+
+  const dismissSummerPricing = () => {
+    setShowSummerPricing(false);
+    setSummerPricingDismissed(true);
+
+    if (typeof window !== "undefined") {
+      window.sessionStorage.setItem("prime_summer_pricing_dismissed", "true");
+    }
+  };
+
+  const handleSummerPricingClick = () => {
+    dismissSummerPricing();
+    scrollToDemoForm("Ask About Summer Pricing");
   };
   const getTrackingData = () => {
   if (typeof window === "undefined") {
@@ -91,6 +107,23 @@ export default function PrimeLandingPage() {
 
   return tracking;
 };
+
+ useEffect(() => {
+  if (typeof window === "undefined") return undefined;
+
+  const wasDismissed =
+    window.sessionStorage.getItem("prime_summer_pricing_dismissed") ===
+    "true";
+
+  if (wasDismissed) {
+    setSummerPricingDismissed(true);
+    setShowSummerPricing(false);
+  } else {
+    setShowSummerPricing(true);
+  }
+
+  return undefined;
+}, []);
 
   useEffect(() => {
     if (typeof window === "undefined") return undefined;
@@ -935,6 +968,41 @@ export default function PrimeLandingPage() {
           </form>
         </div>
       </section>
+
+      {showSummerPricing && !summerPricingDismissed && (
+        <div className="fixed bottom-4 left-4 right-4 z-[60] md:bottom-6 md:left-auto md:right-6 md:w-[320px]">
+          <div className="relative rounded-[1.75rem] border border-[#F47534]/35 bg-white p-5 pr-12 shadow-[0_24px_70px_rgba(15,23,42,0.20)]">
+            <button
+              type="button"
+              onClick={dismissSummerPricing}
+              aria-label="Dismiss summer pricing message"
+              className="absolute right-4 top-3 flex h-8 w-8 items-center justify-center rounded-full text-xl font-bold text-slate-400 transition hover:bg-slate-100 hover:text-[#062B49]"
+            >
+              ×
+            </button>
+
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-[#F47534]">
+              Summer pricing
+            </p>
+
+            <h2 className="mt-2 text-2xl font-black leading-tight tracking-[-0.04em] text-[#062B49]">
+              Summer Pricing Available
+            </h2>
+
+            <p className="mt-3 text-sm font-semibold leading-relaxed text-slate-600">
+              Ask about special summer pricing for new PRIME communities.
+            </p>
+
+            <button
+              type="button"
+              onClick={handleSummerPricingClick}
+              className="mt-4 w-full rounded-full bg-[#F47534] px-5 py-3 text-sm font-bold text-white shadow-[0_12px_28px_rgba(244,117,52,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(244,117,52,0.36)]"
+            >
+              Ask About Summer Pricing
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
