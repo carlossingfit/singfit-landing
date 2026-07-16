@@ -32,7 +32,7 @@ export default function FreeContent() {
           const eventData = {
             event: "Scroll Depth",
             percent_scrolled: t,
-            page_id: "FreeContent"
+            page_id: "MemberResources"
           };
           window.dataLayer = window.dataLayer || [];
           window.dataLayer.push(eventData);
@@ -87,7 +87,7 @@ const RECORDED_WEBINARS = [
     id: "webinar-001",
     title: "Caregivers: Using Music to Connect with Your Loved One",
     duration: "56 min",
-    videoEmbedUrl: "https://player.vimeo.com/video/1164185752?h=d0796ce4f1",
+    videoEmbedUrl: "https://player.vimeo.com/video/1210564808?h=5df23db571",
   },  
    {
     id: "webinar-002",
@@ -512,14 +512,14 @@ useEffect(() => {
         const eventData = {
           event: "click_cta",
           button_text: "Caregivers: An Introduction to Using Music to Connect with Your Loved One",
-          destination_url: "https://www.eventbrite.com/e/caregivers-an-introduction-to-using-music-to-connect-with-your-loved-one-tickets-1990199670790?aff=oddtdtcreator",
-          page_id: "MemberResources",
-        };
+          destination_url: "modal:recorded_webinars",
+      page_id: "MemberResources"
+     };
 
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(eventData);
 
-    window.open(eventData.destination_url, "_blank");
+    openRecordedModal("webinar-001");
       }}
   className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
@@ -532,7 +532,7 @@ useEffect(() => {
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
       Caregivers: An Introduction to Using Music to Connect with Your Loved One{" "}
       <br></br><span className="text-sm font-medium text-[#F47534] ml-1">
-    (Click to sign up for webinar)
+    (Click to watch recording)
   </span>
     </p>
   </div>
