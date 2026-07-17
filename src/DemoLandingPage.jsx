@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useRef } from "react";
 import { HealtcareIcon, Brain02Icon, SustainableEnergyIcon } from "hugeicons-react";
 import { useEffect } from "react";
+import TawkChat from "./TawkChat";
 
 export default function DemoLandingPage() {
   useEffect(() => {
@@ -41,6 +42,8 @@ export default function DemoLandingPage() {
   }, []);
 
   return (
+      <>
+    <TawkChat />
     <div className="flex flex-col gap-2 px-8 pt-0 pb-16 max-w-7xl mx-auto font-sans text-gray-900 text-xl md:text-2xl">
 
       {/* Hero Section */}
@@ -382,6 +385,7 @@ export default function DemoLandingPage() {
         </div>
       </footer>
 
-    </div>
+      </div>
+  </>
   );
 }
