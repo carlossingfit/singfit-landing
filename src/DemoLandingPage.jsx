@@ -4,7 +4,9 @@ import { motion } from "framer-motion";
 import { useRef } from "react";
 import { HealtcareIcon, Brain02Icon, SustainableEnergyIcon } from "hugeicons-react";
 import { useEffect } from "react";
-import TawkChat from "./TawkChat";
+import CrispChat from "./CrispChat";
+
+
 
 export default function DemoLandingPage() {
   useEffect(() => {
@@ -43,8 +45,8 @@ export default function DemoLandingPage() {
 
   return (
       <>
-    <TawkChat />
-    <div className="flex flex-col gap-2 px-8 pt-0 pb-16 max-w-7xl mx-auto font-sans text-gray-900 text-xl md:text-2xl">
+      <CrispChat />
+        <div className="flex flex-col gap-2 px-8 pt-0 pb-16 max-w-7xl mx-auto font-sans text-gray-900 text-xl md:text-2xl">
 
       {/* Hero Section */}
       <section className="relative grid grid-cols-1 md:grid-cols-2 gap-12 items-start bg-[#EEF6FA] pt-0 pb-10 px-10 rounded-xl shadow-xl bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] bg-repeat">
