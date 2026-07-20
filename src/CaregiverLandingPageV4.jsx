@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function CaregiverLandingPageV4() {
-  const checkoutUrl = "https://www.singfit.com/caregiver-pricing";
+  const checkoutUrl = "https://www.singfit.com/checkout-launcher-test";
 
   return (
     <main className="min-h-screen bg-[#F8FAFC] text-[#002E5D] antialiased">
