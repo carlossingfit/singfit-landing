@@ -81,11 +81,55 @@ export default function TermsOfService() {
 <p>​</p>
 <p><strong>Billing and Subscriptions</strong></p>
 <p><strong>​</strong></p>
-<p>Your subscription to SingFit STUDIO is a recurring subscription, meaning it will automatically renew and require a monthly payment until you cancel. By subscribing, you authorize us to charge your first subscription fee, including applicable taxes, upon subscription or at the end of any free trial period. Your subscription will automatically renew monthly at the stated price unless you cancel before the current subscription period ends or we terminate your subscription. We reserve the right to change our subscription terms or fees at any time, with prior notice provided to you.</p>
+<p>Your subscription to SingFit STUDIO is a recurring subscription that automatically
+renews until canceled.
+If you enroll in a subscription that includes a Free Trial, you authorize SingFit to charge
+your designated payment method automatically when the Free Trial expires unless you
+cancel before the end of the Free Trial. If no Free Trial applies, you authorize SingFit to
+charge your payment method immediately upon subscribing.
+Your subscription will automatically renew each month at the then-current subscription
+price unless canceled before the next billing date.
+We reserve the right to change subscription pricing or billing terms upon prior notice.</p>
+<p>​</p>
+<p><strong>Free Trial</strong></p>
+<p><strong>​</strong></p>
+<p>From time to time, SingFit may offer eligible users a free trial of SingFit STUDIO for
+thirty (30) days or another promotional period specified at enrollment (&quot;Free Trial&quot;).
+Free Trials are offered only to eligible users as determined by SingFit and may be
+limited to one Free Trial per individual, household, payment method, email address,
+device, or account. SingFit reserves the right to determine eligibility and to deny or
+revoke a Free Trial where it reasonably believes the promotion has been abused or
+multiple accounts have been created to obtain additional Free Trials.
+You will be required to provide a valid payment method to begin a Free Trial. Unless
+otherwise disclosed at enrollment, you will not be charged until the Free Trial expires.
+Unless you cancel before the Free Trial ends, your subscription will automatically
+convert into a paid monthly subscription at the then-current subscription price, and your
+designated payment method will automatically be charged.
+You may cancel your subscription at any time during the Free Trial through the SingFit
+app or by contacting SingFit Support. If you cancel before the Free Trial expires, your
+subscription will terminate at the end of the Free Trial and you will not be charged.
+Where required by applicable law, SingFit will provide any notices or reminders required
+before charging your payment method following the expiration of a Free Trial.
+SingFit reserves the right to modify, suspend, discontinue, or withdraw any promotional
+offer or Free Trial at any time, subject to applicable law.</p>
 <p>​</p>
 <p><strong>Cancellation Policy</strong></p>
 <p><strong>​</strong></p>
-<p>You may cancel your SingFit STUDIO subscription at any time. To cancel your subscription, log into your account at SingFit.com or email us at . Please note that cancellations will take effect at the end of the current billing period, and there are no prorated refunds if a subscription is canceled mid-billing cycle. You will retain access to the service until the end of your current subscription period.</p>
+<p>You may cancel your subscription at any time by logging into your account or contacting
+support@singfit.com.
+If you cancel during your Free Trial, you will continue to have access until the end of the
+Free Trial, and you will not be charged.
+If you cancel after your subscription has converted to a paid subscription, cancellation
+will become effective at the end of the current billing period. No prorated refunds will be
+provided unless required by applicable law.</p>
+<p>​</p>
+<p><strong>Promotional Offers</strong></p>
+<p><strong>​</strong></p>
+<p>SingFit may offer promotional pricing, discounts, referral incentives, introductory offers,
+or other promotions from time to time. Such promotions may be subject to additional
+terms presented at the time of the offer. If there is a conflict between the promotional
+terms and these Terms of Service, the promotional terms will control solely with respect
+to that promotion.</p>
 <p>​</p>
 <p><strong>Disclaimer of Warranties</strong></p>
 <p><strong>​​</strong></p>
@@ -145,7 +189,7 @@ export default function TermsOfService() {
         Musical Health Technologies, LLC (“SingFit” or the “Company”)
       </p>
       <p className="font-bold text-xl mt-1">Terms of Service</p>
-      <p className="text-gray-700 mt-1">Last updated: October 4, 2024</p>
+      <p className="text-gray-700 mt-1">Last updated: July 26, 2026</p>
     </div>
 
     <div
