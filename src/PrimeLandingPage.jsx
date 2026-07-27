@@ -398,7 +398,7 @@ export default function PrimeLandingPage() {
             onClick={() => scrollToDemoForm("Schedule a PRIME Demo")}
             className="rounded-full bg-[#F47534] px-8 py-4 text-center text-base font-bold text-white shadow-[0_16px_40px_rgba(244,117,52,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_22px_52px_rgba(244,117,52,0.36)]"
           >
-            Schedule a PRIME Demo
+            Learn More About PRIME
           </button>
 
           <p className="text-sm font-bold text-slate-600">
@@ -627,7 +627,7 @@ export default function PrimeLandingPage() {
         onClick={() => scrollToDemoForm("Schedule a PRIME Demo")}
         className="mt-8 rounded-full bg-[#F47534] px-7 py-4 text-base font-bold text-white shadow-[0_14px_34px_rgba(244,117,52,0.26)] transition hover:-translate-y-0.5"
       >
-        Schedule a PRIME Demo
+        Talk With Our Team
       </button>
     </div>
 
@@ -698,7 +698,7 @@ export default function PrimeLandingPage() {
               onClick={() => scrollToDemoForm("Schedule a PRIME Demo")}
               className="mt-8 w-fit rounded-full bg-[#F47534] px-7 py-4 text-base font-bold text-white shadow-[0_14px_34px_rgba(244,117,52,0.26)] transition hover:-translate-y-0.5"
             >
-              Schedule a PRIME Demo
+              Have Questions?
             </button>
           </div>
         </div>
@@ -947,7 +947,7 @@ export default function PrimeLandingPage() {
             >
               {formStatus === "sending"
                 ? "Sending..."
-                : "Schedule a PRIME Demo"}
+                : "Request a PRIME Demo"}
             </button>
 
             {formStatus === "success" && (
@@ -969,7 +969,7 @@ export default function PrimeLandingPage() {
         </div>
       </section>
 
-      {showSummerPricing && !summerPricingDismissed && (
+      {false && showSummerPricing && !summerPricingDismissed && (
         <div className="fixed bottom-4 left-4 right-4 z-[60] md:bottom-6 md:left-auto md:right-6 md:w-[320px]">
           <div className="relative rounded-[1.75rem] border border-[#F47534]/35 bg-white p-5 pr-12 shadow-[0_24px_70px_rgba(15,23,42,0.20)]">
             <button
