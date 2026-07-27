@@ -2219,7 +2219,7 @@ p{
 
           <section className="hero">
             <div>
-              <h1>Guided singing for dementia and memory care.</h1>
+              <h1>Guided singing for dementia and cognitive decline.</h1>
               <p className="hero-copy">
   SingFit STUDIO Caregiver helps family caregivers sing familiar songs together
   with someone living with dementia, memory loss, or cognitive decline using
@@ -2237,12 +2237,12 @@ p{
     )
   }
 >
-  Talk with the SingFit Team
+  Book a Free Walkthrough
 </a>
                 <CtaButton href="#video" variant="secondary" location="hero_secondary">See a session</CtaButton>
               </div>
               <p className="microcopy">
-  Free 20-minute walkthrough to see how the app works and get your questions answered. No obligation.
+  A 20-minute walkthrough to see how the app works and get your questions answered. No obligation.
 </p>
             </div>
 
@@ -2274,7 +2274,7 @@ p{
                 <p className="lead">
                   STUDIO Caregiver is designed for family caregivers supporting an older
                   loved one when conversation or shared activities feel harder than they
-                  used to. It gives you a guided way to sing familiar songs together
+                  used to. SingFit gives you a guided way to sing familiar songs together
                   instead of wondering what to do next.
                 </p>
               </div>
@@ -2327,7 +2327,7 @@ p{
                 <div className="who-situation">
                   <span>02</span>
                   <div>
-                    <h3>Reduced engagement or withdrawal</h3>
+                    <h3>Increase engagement</h3>
                     <p>
                       Create an active alternative to passive listening, watching TV, or
                       sitting quietly.
@@ -2340,7 +2340,7 @@ p{
                   <div>
                     <h3>Care routines that need more structure</h3>
                     <p>
-                      Give visits, afternoons, or home-care moments a familiar sing-along
+                      Give visits, afternoons, or home-care moments structured singing activities
                       you can follow together.
                     </p>
                   </div>
@@ -2360,7 +2360,7 @@ p{
                   )
                 }
               >
-                See if SingFit Is Right for You
+                Find out if SingFit Is Right for You
               </a>
 
               <p className="section-cta-note">
@@ -2373,8 +2373,8 @@ p{
           <section className="section" id="video">
             <div className="video-panel">
               <div>
-                <h2>See what a guided sing-along looks like.</h2>
-                <p className="lead">Watch a short walkthrough of SingFit STUDIO Caregiver and see how lyric coaching, guide vocals, and conversation prompts turn familiar songs into something you can do together.</p>
+                <h2>See what a SingFit session looks like.</h2>
+                <p className="lead">Watch a short walkthrough of SingFit STUDIO Caregiver and see how lyric coaching, guide vocals, and conversation prompts turn familiar songs into something that can transform your day.</p>
               </div>
               <div className="video-box video-embed">
                 <iframe

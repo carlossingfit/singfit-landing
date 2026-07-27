@@ -628,7 +628,7 @@ useEffect(() => {
   const eventData = {
     event: "click_cta",
     button_text: "Buy SingFit Now",
-    destination_url: "https://www.singfit.com/aarp-member-pricing",
+    destination_url: "https://www.singfit.com/aarp-non-member-pricing",
     page_id: "NonMemberResources"
   };
 
