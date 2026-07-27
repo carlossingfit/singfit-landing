@@ -647,15 +647,37 @@ useEffect(() => {
   Get SingFit Now
 </Button>
 
-  <p className="text-base md:text-lg mt-3 text-[#EC1300] flex items-center justify-center gap-3">
+  <div className="text-base md:text-lg mt-3 text-[#EC1300] text-center space-y-1">
+  <p>AARP Registered User Price: $10.19/month (includes 15% discount).</p>
+  <p className="flex justify-center items-center gap-2 flex-wrap">
     <img
       src="/aarp-member-benefit.png"
       alt="AARP badge"
       className="h-8 w-auto inline-block"
     />
-    AARP Member Price: $8.39/month (includes 30% discount).
+    <span>
+      AARP members receive additional savings.&nbsp;
+      <a
+  href="https://appsec.aarp.org/mem/join?campaignid=UTJSM3A&referrer=https%3A%2F%2Fsecure.aarp.org%2Fapplications%2Fuser%2Fvendor%2FacctConfirm%3Fvn%3Dsingfitmb"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="underline text-blue-700 hover:text-blue-900"
+  onClick={() => {
+    const eventData = {
+      event: "click_cta",
+      button_text: "Bottom -Join AARP",
+      destination_url: "https://appsec.aarp.org/mem/join?campaignid=UTJSM3A&referrer=https%3A%2F%2Fsecure.aarp.org%2Fapplications%2Fuser%2Fvendor%2FacctConfirm%3Fvn%3Dsingfitmb",
+      page_id: "NonMemberResources"
+    };
+    window.parent.postMessage(eventData, "*");
+  }}
+>
+  Not a member? Join today.
+</a>
+    </span>
   </p>
 </div>
+  </div>
 {/* Footer */}
       <footer className="text-center text-xs text-gray-500 border-t border-gray-200 pt-6 mt-12 px-4">
         <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
