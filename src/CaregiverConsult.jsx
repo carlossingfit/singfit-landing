@@ -2210,6 +2210,8 @@ p{
               <a href="#questions">Questions</a>
               <a className="nav-cta"
   href={calendlyUrl}
+    target="_blank"
+  rel="noopener noreferrer"
   onClick={() =>
     trackCta(
       "Free Walkthrough",
@@ -2281,6 +2283,8 @@ p{
                 <a
   className="btn btn-primary"
   href={calendlyUrl}
+    target="_blank"
+  rel="noopener noreferrer"
   onClick={() =>
     trackCta(
       "Talk with the SingFit Team",
@@ -2404,6 +2408,8 @@ p{
               <a
                 className="btn btn-primary"
                 href={calendlyUrl}
+                  target="_blank"
+  rel="noopener noreferrer"
                 onClick={() =>
                   trackCta(
                     "See if SingFit Is Right for You",
@@ -2446,6 +2452,8 @@ p{
   <a
     className="btn btn-primary"
     href={calendlyUrl}
+      target="_blank"
+  rel="noopener noreferrer"
     onClick={() =>
       trackCta(
         "Get a Free App Walkthrough",
@@ -2560,6 +2568,8 @@ p{
     <a
       className="btn btn-primary"
       href={calendlyUrl}
+        target="_blank"
+  rel="noopener noreferrer"
       onClick={() =>
         trackCta(
           "Ask About SingFit",
@@ -2620,6 +2630,8 @@ p{
   <a
     className="btn btn-primary"
     href={calendlyUrl}
+      target="_blank"
+  rel="noopener noreferrer"
     onClick={() =>
       trackCta(
         "Talk with the SingFit Team",
@@ -2693,6 +2705,8 @@ p{
     <a
       className="btn btn-primary"
       href={calendlyUrl}
+        target="_blank"
+  rel="noopener noreferrer"
       onClick={() =>
         trackCta(
           "Schedule Your Free Walkthrough",
@@ -2752,6 +2766,8 @@ p{
   <a
     className="btn btn-primary"
     href={calendlyUrl}
+      target="_blank"
+  rel="noopener noreferrer"
     onClick={() =>
       trackCta(
         "Free Walkthrough",
