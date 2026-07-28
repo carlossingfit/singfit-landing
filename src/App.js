@@ -36,6 +36,8 @@ const PrimeUKSalesDeck = lazy(() => import("./PrimeUKSalesDeck"));
 const PrimeLandingPage2 = lazy(() => import("./PrimeLandingPage2"));
 const AARPResourcePageDraft = lazy(() => import("./AARPResourcePageDraft"));
 const CaregiverConsult = lazy(() => import("./CaregiverConsult"));
+const CaregiverConsultConfirmation = lazy(() =>  import("./CaregiverConsultConfirmation")
+);
 
 
 function App() {
@@ -77,6 +79,8 @@ function App() {
           <Route path="/primelandingpage2" element={<PrimeLandingPage2 />} />
           <Route path="/resourcepagedraft" element={<AARPResourcePageDraft />} />
           <Route path="/caregiverconsult" element={<CaregiverConsult />} />
+          <Route path="/caregiverconsult-confirmation" element={<CaregiverConsultConfirmation />}
+/>
         </Routes>
       </Suspense>
     </Router>
