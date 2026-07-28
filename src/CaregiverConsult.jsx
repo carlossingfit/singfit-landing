@@ -3,6 +3,57 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 const PAGE_ID = "caregiverconsult";
 const VIDEO_NAME = "caregiver_session_walkthrough";
 const CHECKOUT_URL = "#pricing";
+const CALENDLY_BASE_URL = "https://calendly.com/singfit/20min";
+
+const ATTRIBUTION_PARAMS = [
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_content",
+  "utm_term",
+  "gclid",
+  "fbclid",
+];
+
+function buildCalendlyUrl() {
+  if (typeof window === "undefined") return CALENDLY_BASE_URL;
+
+  const currentParams = new URLSearchParams(window.location.search);
+  const calendlyUrl = new URL(CALENDLY_BASE_URL);
+
+  ATTRIBUTION_PARAMS.forEach((param) => {
+    const currentValue = currentParams.get(param);
+
+    if (currentValue) {
+      sessionStorage.setItem(`caregiverconsult_${param}`, currentValue);
+      calendlyUrl.searchParams.set(param, currentValue);
+      return;
+    }
+
+    const storedValue = sessionStorage.getItem(`caregiverconsult_${param}`);
+
+    if (storedValue) {
+      calendlyUrl.searchParams.set(param, storedValue);
+    }
+  });
+
+  if (!calendlyUrl.searchParams.has("utm_source")) {
+    calendlyUrl.searchParams.set("utm_source", "singfit_website");
+  }
+
+  if (!calendlyUrl.searchParams.has("utm_medium")) {
+    calendlyUrl.searchParams.set("utm_medium", "referral");
+  }
+
+  if (!calendlyUrl.searchParams.has("utm_campaign")) {
+    calendlyUrl.searchParams.set(
+      "utm_campaign",
+      "caregiver_consultation"
+    );
+  }
+
+  return calendlyUrl.toString();
+}
 
 function pushDataLayer(eventName, params = {}) {
   if (typeof window === "undefined") return;
@@ -67,6 +118,7 @@ export default function CaregiverConsult() {
   const iframeRef = useRef(null);
   const trackedProgressRef = useRef(new Set());
   const hasTrackedStartRef = useRef(false);
+  const calendlyUrl = useMemo(() => buildCalendlyUrl(), []);
 
   const reduceMotion = useMemo(() => {
     if (typeof window === "undefined") return false;
@@ -2157,11 +2209,11 @@ p{
               <a href="#stories">Stories</a>
               <a href="#questions">Questions</a>
               <a className="nav-cta"
-  href="https://calendly.com/rachelfrancine/complimentary-singfit-session"
+  href={calendlyUrl}
   onClick={() =>
     trackCta(
       "Free Walkthrough",
-      "https://calendly.com/rachelfrancine/complimentary-singfit-session",
+      calendlyUrl,
       "desktop_nav"
     )
   }
@@ -2203,7 +2255,7 @@ p{
                   ["Benefits", "#benefits"],
                   ["Stories", "#stories"],
                   ["Questions", "#questions"],
-                  [ "Free Walkthrough",  "https://calendly.com/rachelfrancine/complimentary-singfit-session",
+                  ["Free Walkthrough",  calendlyUrl,
 ],
                 ].map(([label, href]) => (
                   <a key={label} href={href} onClick={() => { setMenuOpen(false); trackCta(label, href, "mobile_drawer"); }}>{label}</a>
@@ -2228,11 +2280,11 @@ p{
               <div className="actions">
                 <a
   className="btn btn-primary"
-  href="https://calendly.com/rachelfrancine/complimentary-singfit-session"
+  href={calendlyUrl}
   onClick={() =>
     trackCta(
       "Talk with the SingFit Team",
-      "https://calendly.com/rachelfrancine/complimentary-singfit-session",
+      calendlyUrl,
       "hero_primary"
     )
   }
@@ -2351,11 +2403,11 @@ p{
             <div className="section-cta section-cta-left who-section-cta">
               <a
                 className="btn btn-primary"
-                href="https://calendly.com/rachelfrancine/complimentary-singfit-session"
+                href={calendlyUrl}
                 onClick={() =>
                   trackCta(
                     "See if SingFit Is Right for You",
-                    "https://calendly.com/rachelfrancine/complimentary-singfit-session",
+                    calendlyUrl,
                     "who_section"
                   )
                 }
@@ -2393,11 +2445,11 @@ p{
             <div className="section-cta">
   <a
     className="btn btn-primary"
-    href="https://calendly.com/rachelfrancine/complimentary-singfit-session"
+    href={calendlyUrl}
     onClick={() =>
       trackCta(
         "Get a Free App Walkthrough",
-        "https://calendly.com/rachelfrancine/complimentary-singfit-session",
+        calendlyUrl,
         "video_section"
       )
     }
@@ -2507,11 +2559,11 @@ p{
   <div className="section-cta">
     <a
       className="btn btn-primary"
-      href="https://calendly.com/rachelfrancine/complimentary-singfit-session"
+      href={calendlyUrl}
       onClick={() =>
         trackCta(
           "Ask About SingFit",
-          "https://calendly.com/rachelfrancine/complimentary-singfit-session",
+          calendlyUrl,
           "benefits_section"
         )
       }
@@ -2567,11 +2619,11 @@ p{
             <div className="section-cta">
   <a
     className="btn btn-primary"
-    href="https://calendly.com/rachelfrancine/complimentary-singfit-session"
+    href={calendlyUrl}
     onClick={() =>
       trackCta(
         "Talk with the SingFit Team",
-        "https://calendly.com/rachelfrancine/complimentary-singfit-session",
+        calendlyUrl,
         "stories_section"
       )
     }
@@ -2640,11 +2692,11 @@ p{
 
     <a
       className="btn btn-primary"
-      href="https://calendly.com/rachelfrancine/complimentary-singfit-session"
+      href={calendlyUrl}
       onClick={() =>
         trackCta(
           "Schedule Your Free Walkthrough",
-          "https://calendly.com/rachelfrancine/complimentary-singfit-session",
+          calendlyUrl,
           "pricing_card"
         )
       }
@@ -2699,11 +2751,11 @@ p{
             <div className="footer-cta">
   <a
     className="btn btn-primary"
-    href="https://calendly.com/rachelfrancine/complimentary-singfit-session"
+    href={calendlyUrl}
     onClick={() =>
       trackCta(
         "Free Walkthrough",
-        "https://calendly.com/rachelfrancine/complimentary-singfit-session",
+        calendlyUrl,
         "footer"
       )
     }
