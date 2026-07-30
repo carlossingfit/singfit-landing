@@ -4,7 +4,7 @@ const PAGE_ID = "caregiverfreetrial";
 const VIDEO_NAME = "caregiver_free_trial_session_video";
 
 // Replace this placeholder with the final Wix checkout URL for the 30-day free trial.
-const CHECKOUT_URL = "https://www.singfit.com/checkout-launcher-test";
+const CHECKOUT_URL = "https://www.singfit.com/buy";
 
 const ATTRIBUTION_PARAMS = [
   "utm_source",
