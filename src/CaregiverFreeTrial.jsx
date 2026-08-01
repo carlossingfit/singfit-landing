@@ -894,9 +894,17 @@ p{
   justify-content:stretch;
 }
 
-.who-section-cta .btn,
+.who-section-cta .btn{
+  grid-column:2;
+}
+
 .who-section-cta .section-cta-note{
   grid-column:2;
+  width:100%;
+  max-width:360px;
+  margin:10px auto 0;
+  text-align:center;
+  justify-self:center;
 }
   
 .who-situation h3{
@@ -1188,8 +1196,8 @@ p{
 .carousel-slide blockquote{
   color:var(--ink);
   font-family:"Source Serif 4",Georgia,serif;
-  font-size:clamp(28px, 4.6vw, 58px);
-  line-height:1.08;
+  font-size:clamp(26px, 4.2vw, 50px);
+  line-height:1.16;
   letter-spacing:-.05em;
 }
 
@@ -2259,11 +2267,11 @@ p{
 
           <section className="hero">
             <div>
-              <h1>Guided singing for dementia and cognitive decline.</h1>
+              <h1>Guided singing for dementia and cognitive decline</h1>
               <p className="hero-copy">
   SingFit STUDIO Caregiver helps family caregivers sing familiar songs together
   with someone living with dementia, memory loss, or cognitive decline using
-  lyric coaching, guide vocals, and built-in prompts.
+  lyric coaching, guide vocals, and conversation prompts.
 </p>
               <div className="actions">
                 <a
@@ -2463,7 +2471,7 @@ p{
 
       <p className="lead">
         A familiar song can do more than play in the background. Following the
-        lyrics, singing along, and using prompts can turn a quiet moment into a
+        lyrics, singing along, and using conversation prompts can turn a quiet moment into a
         shared activity.
       </p>
     </div>
@@ -2539,7 +2547,7 @@ p{
       <div className="benefit-copy">
         <h3>SingFit gives caregivers a way to lead</h3>
         <p>
-          Lyric coaching, guide vocals, and prompts make it easier to start
+          Lyric coaching, guide vocals, and conversation prompts make it easier to start
           singing together and keep the moment going.
         </p>
       </div>
@@ -2633,12 +2641,12 @@ p{
           </section>
 
           <section className="section center" id="questions">
-            <h2>Questions before you begin.</h2>
+            <h2>Questions before you begin</h2>
             <div className="faq">
               {[
                 ["Do I need to be musical?", "No. STUDIO Caregiver is designed for everyday caregivers. The built-in lyric prompter and guided session structure help you sing along without needing to read, remember lyrics, or perform."],
                 ["Who is this designed for?", "Family caregivers supporting an older loved one, including people experiencing dementia, cognitive decline, or related health challenges."],
-                ["What happens after I start my free trial?", "You’ll receive 30 days of access to STUDIO Caregiver. A credit card is required, and the trial automatically renews at $11.99 per month unless you cancel before the trial ends."],
+                ["What happens after I start my free trial?", "After subscribing for your trial online, download the app, log in, and begin your first guided music session."],
                 ["Is support available?", "Yes. Customer support is included to help caregivers get set up and feel confident using the app."],
               ].map(([question, answer]) => (
                 <div className="faq-row" key={question}>
@@ -2650,17 +2658,15 @@ p{
 
           <section className="section final-cta" id="pricing">
   <div className="final-copy">
-    <h2>Try SingFit free for 30 days.</h2>
+    <h2>Begin a guided music session with someone you care for.</h2>
+              <p className="lead">Subscribe online, download the app, and use STUDIO Caregiver to create a guided shared moment through personalized music and singing.</p>
+              <div className="proof-line">
+                <span>Award-winning therapeutic music technology</span>
+                <span>Designed by music therapists</span>
+                <span>Available for iOS and Android</span>
+              </div>
 
-    <p className="lead">
-      Start your 30-day free trial and use STUDIO Caregiver with your loved one at home.
-    </p>
-
-    <div className="proof-line">
-      <span>30-day free trial</span>
-      <span>Built for caregivers at home</span>
-    </div>
-  </div>
+     </div>
 
   <div className="price-card">
     <div className="price-top">
@@ -2676,12 +2682,22 @@ p{
     <div className="price-list">
   <div>
     <span className="price-check">✓</span>
-    <span>Full app access during your trial</span>
+    <span>Guided music sessions</span>
   </div>
 
   <div>
     <span className="price-check">✓</span>
-    <span>$11.99/month after the trial</span>
+    <span>Personalized music activities</span>
+  </div>
+
+  <div>
+    <span className="price-check">✓</span>
+    <span>Built-in lyric prompter</span>
+  </div>
+
+  <div>
+    <span className="price-check">✓</span>
+    <span>App access and support</span>
   </div>
 </div>
 
