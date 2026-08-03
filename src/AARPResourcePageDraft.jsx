@@ -15,6 +15,7 @@ const GUIDES = [
     href: "/5 Tips for Using Music to Create a More Harmonious Home Life_Members.pdf",
     buttonText: "Download 5 Tips PDF",
     accent: "from-[#E6F0F7] to-white",
+    coverImage: "/5_Tips_Cover.png",
   },
   {
     id: "guide-connecting-through-music",
@@ -24,6 +25,7 @@ const GUIDES = [
     href: "/Connecting Through Music_AARP Member.pdf",
     buttonText: "Download Caregiver PDF",
     accent: "from-[#F5EFEA] to-white",
+    coverImage: "/Connecting_Cover.png",
   },
 ];
 
@@ -345,29 +347,30 @@ export default function AARPResourcePageDraft() {
 
   return (
     <div className="min-h-screen overflow-x-clip bg-[#F7F9FC] font-sans text-[#243B53]">
-      <main className="mx-auto max-w-7xl px-5 pb-16 pt-0 sm:px-8">
-        <section className="relative overflow-hidden rounded-b-[2.5rem] border border-[#C9D8E6] bg-gradient-to-br from-[#DCEAF5] via-[#EEF5FA] to-white px-6 py-12 shadow-[0_24px_70px_rgba(0,47,108,0.16)] sm:px-10 sm:py-16">
-          <div className="absolute -right-16 -top-24 h-64 w-64 rounded-full bg-white/45" />
-          <div className="absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-[#F47534]/10" />
+      <main className="mx-auto max-w-7xl px-5 pb-16 pt-4 sm:px-8 sm:pt-6">
+        <section className="relative overflow-hidden rounded-[2.5rem] border border-[#B7D1E1] bg-[#DAECF6] px-6 py-08 shadow-[0_22px_60px_rgba(0,46,93,0.18)] sm:px-10 sm:py-10">
+  
+  <div className="relative mx-auto max-w-4xl text-center">
+    <h1 className="text-4xl font-extrabold leading-tight text-[#002E5D] sm:text-5xl">
+      Discover the Power of Music with SingFit — For Free
+    </h1>
 
-          <div className="relative mx-auto max-w-4xl text-center">
-            <h1 className="text-4xl font-extrabold leading-tight text-[#002F6C] sm:text-5xl">
-              Discover the Power of Music with SingFit — For Free
-            </h1>
-            <p className="mt-4 flex flex-wrap items-center justify-center gap-2 text-lg font-medium text-[#002F6C]">
-              Brought to you by SingFit in collaboration with
-              <img
-                src="/aarp-logo.png"
-                alt="AARP Logo"
-                className="h-5 w-auto"
-              />
-            </p>
-          </div>
-        </section>
+    <div className="mx-auto mt-5 h-px w-20 bg-[#002E5D]/20" />
+
+    <p className="mt-5 flex flex-wrap items-center justify-center gap-2 text-lg font-medium text-[#002E5D]">
+      Brought to you by SingFit in collaboration with
+      <img
+        src="/aarp-logo.png"
+        alt="AARP Logo"
+        className="h-5 w-auto"
+      />
+    </p>
+  </div>
+</section>
 
         <nav
           aria-label="Resource sections"
-          className="sticky top-3 z-30 mx-auto -mt-5 max-w-6xl rounded-[1.4rem] border border-[#D6E0E9] bg-white/95 px-2 py-2.5 sm:px-4 sm:py-3 shadow-[0_16px_40px_rgba(36,59,83,0.16)] backdrop-blur-md sm:px-4"
+          className="sticky top-3 z-30 mx-auto -mt-5 max-w-6xl rounded-[1.4rem] border border-[#B8D4E3] bg-white px-2 py-2.5 shadow-[0_18px_42px_rgba(0,46,93,0.18)] backdrop-blur-md sm:px-4 sm:py-3"
         >
           <div className="flex flex-col gap-2 lg:flex-row lg:items-center">
             <div className="hidden shrink-0 border-r border-[#DCE5EC] px-4 pr-6 lg:block">
@@ -386,9 +389,9 @@ export default function AARPResourcePageDraft() {
                 <a
                   key={id}
                   href={`#${id}`}
-                  className="group flex min-w-0 flex-col items-center justify-center gap-1 rounded-xl px-1 py-2.5 text-center text-sm font-bold leading-tight text-[#002F6C] transition duration-200 hover:-translate-y-0.5 hover:bg-[#EEF5FA] hover:text-[#F47534] sm:min-h-[46px] sm:flex-row sm:gap-2 sm:px-4 sm:py-3 sm:text-[15px]"
+                  className="group flex min-w-0 flex-col items-center justify-center gap-1 rounded-xl px-1 py-2.5 text-center text-sm font-bold leading-tight text-[#002F6C] transition duration-200 hover:-translate-y-0.5 hover:bg-[#F4F9FC] hover:text-[#0377A3]hover:bg-[#EEF5FA] hover:text-[#F47534] sm:min-h-[46px] sm:flex-row sm:gap-2 sm:px-4 sm:py-3 sm:text-[15px]"
                 >
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#E6F0F7] text-[#002F6C] transition group-hover:bg-white group-hover:text-[#F47534] sm:h-8 sm:w-8">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#DAECF6] text-[#0377A3] transition group-hover:bg-white group-hover:text-[#0091C8] sm:h-8 sm:w-8">
                     <ResourceNavIcon type={icon} />
                   </span>
                   <span className="max-w-full sm:whitespace-nowrap">{label}</span>
@@ -398,11 +401,13 @@ export default function AARPResourcePageDraft() {
           </div>
         </nav>
 
-        <section id="guides" className="scroll-mt-28 relative pb-12 pt-9 sm:pb-14 sm:pt-10">
-          <div className="pointer-events-none absolute -right-20 top-4 h-48 w-48 rounded-full bg-[#E6F0F7]/60 blur-3xl" />
-          <div className="max-w-3xl">
+        <section  
+        id="guides"
+        className="scroll-mt-28 relative mt-10 rounded-[2.25rem] border border-[#B8D4E3] bg-white px-6 py-10 shadow-[0_20px_48px_rgba(0,46,93,0.12)] sm:px-8 sm:py-12"
+>
+            <div className="max-w-3xl">
             <SectionEyebrow>Download and keep</SectionEyebrow>
-            <h2 className="mt-2 text-3xl font-extrabold text-[#002F6C] sm:text-4xl">
+            <h2 className="mt-2 text-3xl font-extrabold tracking-[-0.02em] text-[#002F6C] sm:text-[2.6rem]">
               Free Guides for Using Music in Caregiving
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-gray-700">
@@ -411,56 +416,35 @@ export default function AARPResourcePageDraft() {
             </p>
           </div>
 
-          <div className="mt-7 grid gap-7 lg:grid-cols-2">
-            {GUIDES.map((guide, index) => (
+          <div className="mx-auto mt-5 grid max-w-[900px] gap-6 lg:grid-cols-2">
+            {GUIDES.map((guide) => (
               <a
-                key={guide.id}
-                href={guide.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() =>
-                  track("click_cta", {
-                    button_text: guide.buttonText,
-                    destination_url: guide.href,
-                    page_id: PAGE_ID,
-                  })
-                }
-                className="group relative grid min-h-[320px] overflow-hidden rounded-[2rem] border border-[#D7E1EB] bg-white shadow-[0_18px_45px_rgba(36,59,83,0.12)] transition duration-300 hover:-translate-y-2 hover:shadow-[0_28px_65px_rgba(0,47,108,0.20)] sm:grid-cols-[42%_58%]"
-              >
-                <div
-                  className={`flex items-center justify-center bg-gradient-to-br ${guide.accent} p-8`}
-                >
-                  <div className="relative flex aspect-[8.5/11] w-full max-w-[210px] -rotate-1 flex-col overflow-hidden rounded-lg border border-white/80 bg-white p-6 shadow-[0_20px_45px_rgba(0,47,108,0.24)] transition duration-300 group-hover:rotate-0 group-hover:scale-[1.03]">
-                    <img
-                      src="/aarp-logo.png"
-                      alt=""
-                      className="h-5 w-auto self-start"
-                    />
-                    <div className="mt-7 text-xl font-extrabold leading-tight text-[#002F6C]">
-                      {guide.title}
-                    </div>
-                    <div className="mt-auto rounded-full bg-[#E6F0F7] px-3 py-2 text-center text-xs font-semibold text-[#002F6C]">
-                      Temporary cover placeholder
-                    </div>
-                  </div>
-                </div>
+  key={guide.id}
+  href={guide.href}
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={() =>
+    track("click_cta", {
+      button_text: guide.buttonText,
+      destination_url: guide.href,
+      page_id: PAGE_ID,
+    })
+  }
+  className="group w-full max-w-[410px] justify-self-center flex flex-col items-center rounded-[2rem] border border-transparent bg-white px-5 pt-5 pb-6 shadow-[0_18px_45px_rgba(0,46,93,0.12)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_26px_55px_rgba(0,46,93,0.18)]"
+>
+  <div className="w-full max-w-[300px] overflow-hidden rounded-xl bg-white shadow-[0_20px_45px_rgba(0,46,93,0.18)] transition duration-300 group-hover:scale-[1.015]">
+    <img
+      src={guide.coverImage}
+      alt={guide.title}
+      className="h-auto w-full object-contain"
+    />
+  </div>
 
-                <div className="flex flex-col justify-center p-7 sm:p-9">
-                  <p className="text-sm font-bold uppercase tracking-[0.13em] text-[#F47534]">
-                    Guide {index + 1}
-                  </p>
-                  <h3 className="mt-3 text-2xl font-bold leading-snug text-[#002F6C]">
-                    {guide.title}
-                  </h3>
-                  <p className="mt-4 text-base leading-relaxed text-gray-700">
-                    {guide.description}
-                  </p>
-                  <span className="mt-7 inline-flex items-center gap-2 font-bold text-[#F47534]">
-                    <DownloadIcon />
-                    Download PDF
-                  </span>
-                </div>
-              </a>
+  <span className="mt-5 inline-flex items-center gap-2 border-b-2 border-[#F47534] pb-1 font-bold text-[#F47534] transition group-hover:border-[#0377A3] group-hover:text-[#0377A3]">
+    <DownloadIcon />
+    Download PDF
+  </span>
+</a>
             ))}
           </div>
 
@@ -695,7 +679,7 @@ export default function AARPResourcePageDraft() {
           className="scroll-mt-28 relative overflow-hidden rounded-[2.5rem] border border-[#CFDCE8] bg-gradient-to-br from-white via-[#F7FAFD] to-[#E9F2F8] px-6 py-12 shadow-[0_24px_65px_rgba(0,47,108,0.14)] sm:px-10 sm:py-14"
         >
           <div className="pointer-events-none absolute -left-20 -top-16 h-56 w-56 rounded-full bg-[#002F6C]/10 blur-3xl" />
-          <div className="relative mx-auto max-w-4xl text-center">
+          <div className="relative mx-auto max-w-3xl text-center">
             <SectionEyebrow>Featured conversations</SectionEyebrow>
             <h2 className="mt-2 text-3xl font-extrabold text-[#002F6C] sm:text-4xl">
               Expert Conversations on Music and Caregiving

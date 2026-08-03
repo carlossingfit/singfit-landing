@@ -2269,7 +2269,7 @@ p{
             <div>
               <h1>Guided singing for dementia and cognitive decline</h1>
               <p className="hero-copy">
-  SingFit STUDIO Caregiver helps family caregivers sing familiar songs together
+  SingFit STUDIO Caregiver helps family caregivers sing familiar songs
   with someone living with dementia, memory loss, or cognitive decline using
   lyric coaching, guide vocals, and conversation prompts.
 </p>
