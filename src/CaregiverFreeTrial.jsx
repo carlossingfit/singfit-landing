@@ -2287,7 +2287,21 @@ p{
 >
   Start 30-Day Free Trial
 </a>
-                <CtaButton href="#video" variant="secondary" location="hero_secondary">See a session</CtaButton>
+                <a
+  className="btn btn-secondary"
+  href="#video"
+  onClick={() => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "click_video_cta",
+      page_id: "caregiverfreetrial",
+      button_text: "See a session",
+      cta_location: "hero_secondary",
+    });
+  }}
+>
+  See a session
+</a>
               </div>
               <p className="microcopy">
   30 days free, then $11.99/month. Cancel anytime.<br />
