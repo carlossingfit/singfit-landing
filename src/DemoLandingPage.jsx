@@ -45,7 +45,7 @@ export default function DemoLandingPage() {
 
   return (
       <>
-      <CrispChat />
+      
         <div className="flex flex-col gap-2 px-8 pt-0 pb-16 max-w-7xl mx-auto font-sans text-gray-900 text-xl md:text-2xl">
 
       {/* Hero Section */}

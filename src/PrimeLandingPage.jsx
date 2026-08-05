@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import CrispChat from "./CrispChat";
 
 export default function PrimeLandingPage() {
   const PAGE_ID = "PrimeLandingPage1";
@@ -358,6 +359,8 @@ export default function PrimeLandingPage() {
   ];
 
   return (
+      <>
+    <CrispChat />
     <main className="min-h-screen overflow-hidden bg-[#F7F9FC] text-[#062B49] antialiased">
       <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/85 px-5 py-4 backdrop-blur-xl md:px-10">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
@@ -385,11 +388,11 @@ export default function PrimeLandingPage() {
       <div>
        
         <h1 className="max-w-4xl text-[2.8rem] font-black leading-[1.02] tracking-[-0.055em] md:text-[3.8rem] lg:text-[4.2rem]">
-          Disengaged residents? Staff burning out? You are not alone. 
+          Disengaged residents? Let's change the tune.
         </h1>
 
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-700 md:text-xl">
-        Get everyone in tune with SingFit, a turnkey therapeutic music program designed specifically for senior living. 
+        SingFit PRIME is a turnkey therapeutic singing program that helps senior living teams create engaging, interactive experiences residents genuinely look forward to.
         </p>
 
         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -1004,5 +1007,6 @@ export default function PrimeLandingPage() {
         </div>
       )}
     </main>
+    </>
   );
 }
