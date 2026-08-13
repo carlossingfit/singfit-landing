@@ -107,6 +107,12 @@ const RECORDED_WEBINARS = [
     duration: "50 min",
     videoEmbedUrl: "https://player.vimeo.com/video/1201986610?h=4fe87d8edd",
   },  
+  {
+    id: "webinar-005",
+    title: "Caregivers: Singing for Self-Expression and Confidence",
+    duration: "50 min",
+    videoEmbedUrl: "https://player.vimeo.com/video/1217821993?h=c7d5d5125d", 
+  },  
   ];
 
 const [isRecordedModalOpen, setIsRecordedModalOpen] = useState(false);
@@ -478,14 +484,14 @@ useEffect(() => {
         const eventData = {
           event: "click_cta",
           button_text: "Caregivers: Singing for Self-Expression and Confidence",
-          destination_url: "https://www.eventbrite.com/e/singing-for-self-expression-and-confidence-tickets-1992855649895?aff=oddtdtcreator",
+          destination_url: "modal:recorded_webinars",
           page_id: "MemberResources",
         };
 
         window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(eventData);
 
-    window.open(eventData.destination_url, "_blank");
+    openRecordedModal("webinar-005");
       }}
   className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
@@ -498,7 +504,7 @@ useEffect(() => {
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
       Caregivers: Singing for Self-Expression and Confidence{" "}
       <br></br><span className="text-sm font-medium text-[#F47534] ml-1">
-    (Click to sign up for webinar)
+    (Click to watch recording)
   </span>
       
     </p>
