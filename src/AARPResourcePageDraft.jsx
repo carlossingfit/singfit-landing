@@ -561,9 +561,12 @@ export default function AARPResourcePageDraft() {
             {RECORDED_WEBINARS.map((recording) => (
               <button key={recording.id} type="button" onClick={() => { pushClickEvent(recording.title, "modal:recorded_webinars"); openRecordedModal(recording.id); }} className="group flex h-[296px] w-full flex-col overflow-hidden rounded-xl border border-[#D7E1EB] bg-white text-left shadow-[0_8px_22px_rgba(0,46,93,0.07)] transition hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(0,46,93,0.10)]">
                 <div className="relative h-[160px] w-full shrink-0 overflow-hidden bg-[#E9EEF3]">
-                  <img src={recording.thumbnail} alt={recording.title} className="h-full w-full object-cover" />
-                  <div className="absolute inset-0 flex items-center justify-center"><span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#F47534] text-white shadow-lg transition group-hover:scale-110"><PlayIcon className="h-6 w-6" /></span></div>
-                </div>
+  <img
+    src={recording.thumbnail}
+    alt={recording.title}
+    className="h-full w-full object-cover"
+  />
+</div>
                 <div className="flex h-[136px] w-full flex-col px-5 py-4">
                   <h3 className="text-[17px] font-bold leading-[1.35] text-[#002F6C]">{recording.title}</h3>
                   <p className="mt-auto pt-2 text-sm text-gray-600">{recording.duration}</p>
