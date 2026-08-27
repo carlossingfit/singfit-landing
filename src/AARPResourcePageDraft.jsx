@@ -31,19 +31,19 @@ const GUIDES = [
 
 const LIVE_WEBINARS = [
   {
-    id: "live-august-11",
-    title: "Caregivers: Singing for Self-Expression and Confidence",
-    image: "/Aug_11.png",
-    imageAlt: "August 11, 2026",
-    href: "https://www.eventbrite.com/e/singing-for-self-expression-and-confidence-tickets-1992855649895?aff=oddtdtcreator",
+    id: "webinar-005",
+    displayTitle: "Caregivers: Singing for Self-Expression and Confidence",
+    image: "/Screenshot1.png",
+    imageAlt: "Singing for Self-Expression and Confidence",
+    dateImage: "/Aug_11.png",
   },
   {
-    id: "live-july-14",
-    title:
+    id: "webinar-001",
+    displayTitle:
       "Caregivers: An Introduction to Using Music to Connect with Your Loved One",
-    image: "/July_14.png",
-    imageAlt: "July 14, 2026",
-    href: "https://www.eventbrite.com/e/caregivers-an-introduction-to-using-music-to-connect-with-your-loved-one-tickets-1990199670790?aff=oddtdtcreator",
+    image: "/Screenshot2.png",
+    imageAlt: "An Introduction to Using Music to Connect with Your Loved One",
+    dateImage: "/July_14.png",
   },
 ];
 
@@ -52,54 +52,57 @@ const RECORDED_WEBINARS = [
     id: "webinar-001",
     title: "Caregivers: Using Music to Connect with Your Loved One",
     duration: "56 min",
-    videoEmbedUrl:
-      "https://player.vimeo.com/video/1164185752?h=d0796ce4f1",
+    videoEmbedUrl: "https://player.vimeo.com/video/1210564808?h=5df23db571",
+    thumbnail: "/Connect_webinar.png",
   },
   {
     id: "webinar-002",
     title: "Caregivers: How to Select the Right Music for Your Goal",
     duration: "50 min",
-    videoEmbedUrl:
-      "https://player.vimeo.com/video/1173355484?h=85d323d74e",
+    videoEmbedUrl: "https://player.vimeo.com/video/1173355484?h=85d323d74e",
+    thumbnail: "/Goal_webinar.png",
   },
   {
     id: "webinar-003",
-    title:
-      "Caregivers: A Deep Dive into the Musical Preferences of Your Loved One",
+    title: "Caregivers: A Deep Dive into the Musical Preferences of Your Loved One",
     duration: "50 min",
-    videoEmbedUrl:
-      "https://player.vimeo.com/video/1181333165?h=4fe87d8edd",
+    videoEmbedUrl: "https://player.vimeo.com/video/1181333165?h=4fe87d8edd",
+    thumbnail: "/Musical_preferences_webinar.png",
   },
   {
     id: "webinar-004",
     title: "Caregivers: Using Music to Create a More Harmonious Home Life",
     duration: "50 min",
-    videoEmbedUrl:
-      "https://player.vimeo.com/video/1201986610?h=4fe87d8edd",
+    videoEmbedUrl: "https://player.vimeo.com/video/1201986610?h=4fe87d8edd",
+    thumbnail: "/Harmonious_webinar.png",
+  },
+  {
+    id: "webinar-005",
+    title: "Caregivers: Singing for Self-Expression and Confidence",
+    duration: "50 min",
+    videoEmbedUrl: "https://player.vimeo.com/video/1217821993?h=c7d5d5125d",
+    thumbnail: "/Screenshot1.png",
   },
 ];
 
 const EXPERT_VIDEOS = [
   {
     id: "IvonpE_5mPU",
-    title: "Expert Conversation 1",
-    embedUrl:
-      "https://www.youtube.com/embed/IvonpE_5mPU?autoplay=1&rel=0",
-    thumbnail: "https://img.youtube.com/vi/IvonpE_5mPU/hqdefault.jpg",
+    title: "Sundowners Syndrome: How Family Caregivers Can Use Music to Help",
+    embedUrl: "https://www.youtube.com/embed/IvonpE_5mPU?autoplay=1&rel=0",
+    thumbnail: "/Sundowners_Syndrome_thumbnail.png",
   },
   {
     id: "rTLm_Z9ydXM",
-    title: "Expert Conversation 2",
-    embedUrl:
-      "https://www.youtube.com/embed/rTLm_Z9ydXM?autoplay=1&rel=0",
-    thumbnail: "https://img.youtube.com/vi/rTLm_Z9ydXM/hqdefault.jpg",
+    title: "How Music Can Help Loved Ones Get Going in the Morning and Lower Stress When Caregiving",
+    embedUrl: "https://www.youtube.com/embed/rTLm_Z9ydXM?autoplay=1&rel=0",
+    thumbnail: "/Morning_thumbnail.png",
   },
   {
     id: "YpA_s5wt_8U",
-    title: "Expert Conversation 3",
-    embedUrl:
-      "https://www.youtube.com/embed/YpA_s5wt_8U?autoplay=1&rel=0",
-    thumbnail: "https://img.youtube.com/vi/YpA_s5wt_8U/hqdefault.jpg",
+    title: "Music: A Caregiving Tool to Get Your Loved Ones Moving and Doing Exercises",
+    embedUrl: "https://www.youtube.com/embed/YpA_s5wt_8U?autoplay=1&rel=0",
+    thumbnail: "/Exercise_thumbnail.png",
   },
 ];
 
@@ -174,13 +177,18 @@ function ResourceNavIcon({ type }) {
     );
   }
 
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" {...commonProps}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9 18V6l10-2v12" />
-      <circle cx="6" cy="18" r="3" />
-      <circle cx="16" cy="16" r="3" />
-    </svg>
-  );
+  if (type === "expert") {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" {...commonProps}>
+        <rect x="3" y="5" width="18" height="14" rx="2.5" />
+        <circle cx="9" cy="11" r="2" />
+        <path strokeLinecap="round" d="M6.5 16c.7-1.8 1.9-2.7 3.5-2.7S12.8 14.2 13.5 16" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="m15 9 3 2-3 2V9Z" />
+      </svg>
+    );
+  }
+
+  return null;
 }
 
 function SectionEyebrow({ children }) {
@@ -348,52 +356,33 @@ export default function AARPResourcePageDraft() {
   return (
     <div className="min-h-screen overflow-x-clip bg-[#F7F9FC] font-sans text-[#243B53]">
       <main className="mx-auto max-w-7xl px-5 pb-16 pt-4 sm:px-8 sm:pt-6">
-        <section className="relative overflow-hidden rounded-[2.5rem] border border-[#B7D1E1] bg-[#DAECF6] px-6 py-08 shadow-[0_22px_60px_rgba(0,46,93,0.18)] sm:px-10 sm:py-10">
-  
-  <div className="relative mx-auto max-w-4xl text-center">
-    <h1 className="text-4xl font-extrabold leading-tight text-[#002E5D] sm:text-5xl">
-      Discover the Power of Music with SingFit — For Free
-    </h1>
+        <section className="relative overflow-hidden rounded-[1.9rem] border border-[#BFD5E2] bg-[#DDEDF5] px-6 py-8 shadow-[0_14px_36px_rgba(0,46,93,0.10)] sm:px-10 sm:py-9">
+          <div className="relative mx-auto max-w-4xl text-center">
+            <h1 className="text-4xl font-extrabold leading-tight text-[#002F6C] sm:text-5xl">
+              Discover the Power of Music with SingFit — For Free
+            </h1>
+            <div className="mx-auto mt-4 h-px w-20 bg-[#002F6C]/15" />
+            <p className="mt-4 flex flex-wrap items-center justify-center gap-2 text-lg font-medium text-[#002F6C]">
+              Brought to you by SingFit in collaboration with
+              <img src="/aarp-logo.png" alt="AARP Logo" className="h-5 w-auto" />
+            </p>
+          </div>
+        </section>
 
-    <div className="mx-auto mt-5 h-px w-20 bg-[#002E5D]/20" />
-
-    <p className="mt-5 flex flex-wrap items-center justify-center gap-2 text-lg font-medium text-[#002E5D]">
-      Brought to you by SingFit in collaboration with
-      <img
-        src="/aarp-logo.png"
-        alt="AARP Logo"
-        className="h-5 w-auto"
-      />
-    </p>
-  </div>
-</section>
-
-        <nav
-          aria-label="Resource sections"
-          className="sticky top-3 z-30 mx-auto -mt-5 max-w-6xl rounded-[1.4rem] border border-[#B8D4E3] bg-white px-2 py-2.5 shadow-[0_18px_42px_rgba(0,46,93,0.18)] backdrop-blur-md sm:px-4 sm:py-3"
-        >
+        <nav aria-label="Resource sections" className="sticky top-3 z-30 mx-auto -mt-4 max-w-6xl rounded-[1.25rem] border border-[#D7E1EB] bg-white px-2 py-2 shadow-[0_10px_26px_rgba(0,46,93,0.10)] backdrop-blur-md sm:px-4 sm:py-2.5">
           <div className="flex flex-col gap-2 lg:flex-row lg:items-center">
-            <div className="hidden shrink-0 border-r border-[#DCE5EC] px-4 pr-6 lg:block">
-              <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#F47534]">
-                Browse Resources
-              </p>
+            <div className="hidden shrink-0 border-r border-[#E2E8EE] px-4 pr-6 lg:block">
+              <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#F47534]">Browse Resources</p>
             </div>
-
-            <div className="grid flex-1 grid-cols-2 gap-1.5 sm:grid-cols-4 sm:gap-2">
+            <div className="grid flex-1 grid-cols-2 gap-1 sm:grid-cols-4 sm:gap-1.5">
               {[
                 ["Free Guides", "guides", "guides"],
                 ["Upcoming Webinars", "upcoming-webinars", "live"],
                 ["Past Webinars", "past-webinars", "recorded"],
                 ["Expert Videos", "expert-videos", "expert"],
               ].map(([label, id, icon]) => (
-                <a
-                  key={id}
-                  href={`#${id}`}
-                  className="group flex min-w-0 flex-col items-center justify-center gap-1 rounded-xl px-1 py-2.5 text-center text-sm font-bold leading-tight text-[#002F6C] transition duration-200 hover:-translate-y-0.5 hover:bg-[#F4F9FC] hover:text-[#0377A3]hover:bg-[#EEF5FA] hover:text-[#F47534] sm:min-h-[46px] sm:flex-row sm:gap-2 sm:px-4 sm:py-3 sm:text-[15px]"
-                >
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#DAECF6] text-[#0377A3] transition group-hover:bg-white group-hover:text-[#0091C8] sm:h-8 sm:w-8">
-                    <ResourceNavIcon type={icon} />
-                  </span>
+                <a key={id} href={`#${id}`} className="group flex min-w-0 items-center justify-center gap-2 rounded-lg px-2 py-2 text-center text-sm font-bold leading-tight text-[#002F6C] transition hover:bg-[#F7F9FC] hover:text-[#F47534] sm:min-h-[44px] sm:px-3 sm:text-[15px]">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center text-[#0377A3] transition group-hover:text-[#F47534]"><ResourceNavIcon type={icon} /></span>
                   <span className="max-w-full sm:whitespace-nowrap">{label}</span>
                 </a>
               ))}
@@ -401,400 +390,232 @@ export default function AARPResourcePageDraft() {
           </div>
         </nav>
 
-        <section  
-        id="guides"
-        className="scroll-mt-28 relative mt-10 rounded-[2.25rem] border border-[#B8D4E3] bg-white px-6 py-10 shadow-[0_20px_48px_rgba(0,46,93,0.12)] sm:px-8 sm:py-12"
->
-            <div className="max-w-3xl">
+        <section id="guides" className="scroll-mt-28 relative mt-8 rounded-[1.75rem] border border-[#D7E1EB] bg-white px-6 py-6 shadow-[0_12px_30px_rgba(0,46,93,0.08)] sm:px-8">
+          <div className="max-w-[820px]">
             <SectionEyebrow>Download and keep</SectionEyebrow>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-[-0.02em] text-[#002F6C] sm:text-[2.6rem]">
-              Free Guides for Using Music in Caregiving
-            </h2>
-            <p className="mt-4 text-lg leading-relaxed text-gray-700">
-              Download practical resources that can help you use music to support
-              connection, engagement, and meaningful moments.
-            </p>
+            <h2 className="mt-2 text-3xl font-extrabold tracking-[-0.02em] text-[#002F6C] sm:text-[2.6rem]">Free Guides for Using Music in Caregiving</h2>
+            <p className="mt-3 text-lg leading-relaxed text-gray-700">Download practical resources that can help you use music to support connection, engagement, and meaningful moments.</p>
           </div>
-
-          <div className="mx-auto mt-5 grid max-w-[900px] gap-6 lg:grid-cols-2">
+          <div className="mt-5 grid gap-4 md:grid-cols-2">
             {GUIDES.map((guide) => (
-              <a
-  key={guide.id}
-  href={guide.href}
-  target="_blank"
-  rel="noopener noreferrer"
-  onClick={() =>
-    track("click_cta", {
-      button_text: guide.buttonText,
-      destination_url: guide.href,
-      page_id: PAGE_ID,
-    })
-  }
-  className="group w-full max-w-[410px] justify-self-center flex flex-col items-center rounded-[2rem] border border-transparent bg-white px-5 pt-5 pb-6 shadow-[0_18px_45px_rgba(0,46,93,0.12)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_26px_55px_rgba(0,46,93,0.18)]"
->
-  <div className="w-full max-w-[300px] overflow-hidden rounded-xl bg-white shadow-[0_20px_45px_rgba(0,46,93,0.18)] transition duration-300 group-hover:scale-[1.015]">
-    <img
-      src={guide.coverImage}
-      alt={guide.title}
-      className="h-auto w-full object-contain"
-    />
-  </div>
-
-  <span className="mt-5 inline-flex items-center gap-2 border-b-2 border-[#F47534] pb-1 font-bold text-[#F47534] transition group-hover:border-[#0377A3] group-hover:text-[#0377A3]">
-    <DownloadIcon />
-    Download PDF
-  </span>
-</a>
+              <a key={guide.id} href={guide.href} target="_blank" rel="noopener noreferrer" onClick={() => track("click_cta", { button_text: guide.buttonText, destination_url: guide.href, page_id: PAGE_ID })} className="group flex items-center gap-4 rounded-xl border border-[#DCE5EC] bg-[#FAFBFC] px-4 py-3 transition hover:-translate-y-0.5 hover:border-[#B8CBD8] hover:bg-white hover:shadow-[0_8px_20px_rgba(0,46,93,0.07)]">
+                <img src={guide.coverImage} alt={guide.title} className="w-[78px] shrink-0 rounded-md shadow-[0_5px_12px_rgba(0,46,93,0.10)] sm:w-[84px]" />
+                <div className="min-w-0">
+                  <h3 className="text-[16px] font-bold leading-[1.3] text-[#002F6C]">{guide.title}</h3>
+                  <span className="mt-2 inline-flex items-center gap-1.5 text-sm font-bold text-[#F47534] transition group-hover:text-[#0377A3]"><DownloadIcon className="h-4 w-4" />Download PDF</span>
+                </div>
+              </a>
             ))}
           </div>
+          <div className="mt-4 flex flex-col gap-3 rounded-lg border border-[#C7DCD8] bg-[#EEF5F3] px-5 py-2.5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+  <div className="min-w-0">
+    <p className="text-xs font-bold uppercase tracking-[0.13em] text-[#4D817B]">
+      More resources are on the way
+    </p>
 
-          <div className="mt-6 grid gap-4 rounded-2xl border border-[#E8CDBE] bg-gradient-to-r from-[#FFF8F3] to-[#FAF6F2] p-5 shadow-[0_10px_28px_rgba(244,117,52,0.08)] sm:grid-cols-[1fr_auto] sm:items-center sm:p-6">
-            <div>
-              <p className="text-sm font-bold uppercase tracking-[0.13em] text-[#F47534]">
-                More resources are on the way
-              </p>
-              <h3 className="mt-1 text-xl font-bold text-[#002F6C]">
-                New Content Coming Soon
-              </h3>
-              <p className="mt-1 text-sm text-gray-700">
-                Enter your email below to sign up for updates.
-              </p>
-            </div>
+    <p className="mt-0.5 text-[16px] font-semibold text-[#002F6C]">
+      Get notified when new guides and caregiver resources are added.
+    </p>
+  </div>
 
-            <form
-              className="flex w-full max-w-lg flex-col gap-2 sm:flex-row"
-              onSubmit={(event) => {
-                event.preventDefault();
-                const form = event.currentTarget;
-                const email = form.email.value;
+  <form
+    className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row"
+    onSubmit={(event) => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const email = form.email.value;
 
-                fetch(
-                  "https://hook.us2.make.com/vl4dwb7wcunr13bghvani6mvji8imygv",
-                  {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ email }),
-                  }
-                )
-                  .then((response) => {
-                    if (response.ok) {
-                      setSuccessMessage(
-                        "Thanks! Check your inbox for updates."
-                      );
-                      track("submit_form", {
-                        form_id: "notify_me",
-                        page_id: PAGE_ID,
-                      });
-                      form.reset();
-                      setTimeout(() => setSuccessMessage(""), 5000);
-                    } else {
-                      setSuccessMessage(
-                        "There was a problem. Please try again."
-                      );
-                    }
-                  })
-                  .catch(() => {
-                    setSuccessMessage(
-                      "There was a problem. Please try again."
-                    );
-                  });
-              }}
-            >
-              <input
-                type="email"
-                name="email"
-                required
-                placeholder="Enter your email"
-                className="min-h-[44px] flex-1 rounded-lg border border-gray-300 px-4 text-sm transition focus:border-[#F47534] focus:outline-none focus:ring-2 focus:ring-[#F47534]/25"
-              />
-              <Button
-                type="submit"
-                className="min-h-[44px] bg-[#F47534] px-5 text-white shadow hover:bg-[#d9652c]"
-              >
-                Notify Me
-              </Button>
-            </form>
-          </div>
+      fetch(
+        "https://hook.us2.make.com/vl4dwb7wcunr13bghvani6mvji8imygv",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        }
+      )
+        .then((response) => {
+          if (response.ok) {
+            setSuccessMessage("Thanks! Check your inbox for updates.");
 
-          {successMessage && (
-            <p className="mt-3 text-center text-sm text-green-700">
-              {successMessage}
-            </p>
-          )}
+            track("submit_form", {
+              form_id: "notify_me",
+              page_id: PAGE_ID,
+            });
+
+            form.reset();
+            setTimeout(() => setSuccessMessage(""), 5000);
+          } else {
+            setSuccessMessage("There was a problem. Please try again.");
+          }
+        })
+        .catch(() =>
+          setSuccessMessage("There was a problem. Please try again.")
+        );
+    }}
+  >
+    <input
+      type="email"
+      name="email"
+      required
+      placeholder="Enter your email"
+      className="min-h-[40px] w-full rounded-lg border border-[#C9D7D4] bg-white px-4 text-sm transition focus:border-[#5E9C96] focus:outline-none focus:ring-2 focus:ring-[#5E9C96]/20 sm:w-[210px]"
+    />
+
+    <Button
+      type="submit"
+      className="min-h-[40px] whitespace-nowrap bg-[#F47534] px-5 text-white shadow-none hover:bg-[#d9652c]"
+    >
+      Notify Me
+    </Button>
+  </form>
+</div>
+
+{successMessage && (
+  <p className="mt-2 text-center text-sm text-green-700">
+    {successMessage}
+  </p>
+)}
         </section>
 
         <section
-          id="upcoming-webinars"
-          className="scroll-mt-28 relative overflow-hidden rounded-[2.25rem] border border-[#E9D8CC] bg-gradient-to-br from-[#FFF9F5] via-[#FAF6F2] to-white px-5 py-9 shadow-[0_22px_55px_rgba(36,59,83,0.10)] sm:px-8 sm:py-10"
+  id="upcoming-webinars"
+  className="scroll-mt-28 relative mt-8 overflow-hidden rounded-[1.75rem] border border-[#D7E1EB] bg-white px-5 py-8 shadow-[0_12px_30px_rgba(0,46,93,0.08)] sm:px-8 sm:py-9"
+>
+  <div className="relative mx-auto max-w-7xl">
+    <div className="max-w-4xl">
+      <SectionEyebrow>Join us live</SectionEyebrow>
+
+      <h2 className="mt-2 text-3xl font-extrabold text-[#002F6C] sm:text-4xl">
+        Upcoming Caregiver Webinars
+      </h2>
+
+      <div className="mt-3 flex items-center gap-3">
+        <img
+          src="/andyheadshot.jpg"
+          alt="Andy Tubman"
+          className="h-12 w-12 rounded-full object-cover shadow-sm"
+        />
+
+        <p className="text-base leading-relaxed text-gray-700">
+          Board Certified Music Therapist Andy Tubman hosts a series of webinars
+          for Caregivers.
+        </p>
+      </div>
+    </div>
+
+    <div className="mt-6 grid gap-3">
+      {LIVE_WEBINARS.map((webinar) => (
+        <button
+          key={webinar.id}
+          type="button"
+          onClick={() => {
+            pushClickEvent(
+              webinar.displayTitle,
+              "modal:recorded_webinars"
+            );
+            openRecordedModal(webinar.id);
+          }}
+          className="group grid w-full gap-4 rounded-xl border border-[#DDE5EC] bg-[#FAFBFC] px-5 py-4 text-left transition hover:-translate-y-0.5 hover:border-[#B8CBD8] hover:bg-white hover:shadow-[0_10px_24px_rgba(0,46,93,0.07)] sm:grid-cols-[88px_1fr_auto] sm:items-center sm:gap-6"
         >
-          <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#F47534]/10 blur-3xl" />
-          <div className="relative mx-auto max-w-7xl">
-            <div className="max-w-4xl">
-              <div>
-                <SectionEyebrow>Join us live</SectionEyebrow>
-                <h2 className="mt-2 text-3xl font-extrabold text-[#002F6C] sm:text-4xl">
-                  Upcoming Caregiver Webinars
-                </h2>
-                <div className="mt-3 flex items-center gap-3">
-                  <img
-                    src="/andyheadshot.jpg"
-                    alt="Andy Tubman"
-                    className="h-12 w-12 rounded-full object-cover shadow"
-                  />
-                  <p className="text-base leading-relaxed text-gray-700">
-                    Board Certified Music Therapist Andy Tubman hosts a series of
-                    webinars for Caregivers.
-                  </p>
-                </div>
-              </div>
-
-
-            </div>
-
-            <div className="mt-7 grid gap-4">
-              {LIVE_WEBINARS.map((webinar) => (
-                <button
-                  key={webinar.id}
-                  type="button"
-                  onClick={() => {
-                    const eventData = pushClickEvent(
-                      webinar.title,
-                      webinar.href
-                    );
-                    window.open(eventData.destination_url, "_blank");
-                  }}
-                  className="group grid w-full gap-5 rounded-2xl border border-[#DDE5EC] bg-white p-5 text-left shadow-[0_12px_30px_rgba(36,59,83,0.10)] transition duration-300 hover:-translate-y-1 hover:border-[#BFD0DF] hover:shadow-[0_22px_45px_rgba(0,47,108,0.16)] sm:grid-cols-[110px_1fr_auto] sm:items-center"
-                >
-                  <img
-                    src={webinar.image}
-                    alt={webinar.imageAlt}
-                    className="h-24 w-24 rounded-xl object-contain shadow"
-                  />
-                  <div>
-                    <h3 className="text-xl font-bold leading-snug text-[#002F6C]">
-                      {webinar.title}
-                    </h3>
-                    <p className="mt-2 text-sm font-bold text-[#F47534]">
-                      (Click to sign up for webinar)
-                    </p>
-                  </div>
-                  <span className="inline-flex items-center justify-center rounded-full bg-[#002F6C] px-5 py-3 text-sm font-bold text-white transition group-hover:bg-[#F47534]">
-                    Register
-                  </span>
-                </button>
-              ))}
-
-              <button
-                type="button"
-                onClick={() => {
-                  pushClickEvent(
-                    "Using Music to Create a More Harmonious Home Life",
-                    "modal:recorded_webinars"
-                  );
-                  openRecordedModal("webinar-004");
-                }}
-                className="group grid w-full gap-5 rounded-2xl border border-[#DDE5EC] bg-white p-5 text-left shadow-[0_12px_30px_rgba(36,59,83,0.10)] transition duration-300 hover:-translate-y-1 hover:border-[#BFD0DF] hover:shadow-[0_22px_45px_rgba(0,47,108,0.16)] sm:grid-cols-[110px_1fr_auto] sm:items-center"
-              >
-                <img
-                  src="/june16.png"
-                  alt="June 16, 2026"
-                  className="h-24 w-24 rounded-xl object-contain shadow"
-                />
-                <div>
-                  <h3 className="text-xl font-bold leading-snug text-[#002F6C]">
-                    Caregivers: Using Music to Create a More Harmonious Home Life
-                  </h3>
-                  <p className="mt-2 text-sm font-bold text-[#F47534]">
-                    (Click to watch recording)
-                  </p>
-                </div>
-                <span className="inline-flex items-center justify-center gap-2 rounded-full bg-[#002F6C] px-5 py-3 text-sm font-bold text-white transition group-hover:bg-[#F47534]">
-                  <PlayIcon className="h-4 w-4" /> Watch
-                </span>
-              </button>
-            </div>
+          {/* DATE */}
+          <div className="flex justify-start sm:justify-center">
+            <img
+              src={webinar.dateImage}
+              alt=""
+              className="h-[72px] w-[72px] object-contain"
+            />
           </div>
-        </section>
+
+          {/* WEBINAR INFO */}
+          <div className="min-w-0">
+            <h3 className="text-[17px] font-bold leading-[1.35] text-[#002F6C] sm:text-lg">
+              {webinar.displayTitle}
+            </h3>
+
+            <p className="mt-1.5 text-sm font-bold text-[#F47534]">
+              Recording available
+            </p>
+          </div>
+
+          {/* ACTION */}
+          <span className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#002F6C] px-5 py-2.5 text-sm font-bold text-white transition group-hover:bg-[#F47534] sm:w-auto">
+            <PlayIcon className="h-4 w-4" />
+            Watch Recording
+          </span>
+        </button>
+      ))}
+    </div>
+  </div>
+</section>
 
         <section id="past-webinars" className="scroll-mt-28 py-12 sm:py-14">
           <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-3xl">
               <SectionEyebrow>Watch anytime</SectionEyebrow>
-              <h2 className="mt-2 text-3xl font-extrabold text-[#002F6C] sm:text-4xl">
-                Past Webinars
-              </h2>
-              <p className="mt-4 text-lg leading-relaxed text-gray-700">
-                Recorded sessions are available whenever you are ready to watch.
-              </p>
+              <h2 className="mt-2 text-3xl font-extrabold text-[#002F6C] sm:text-4xl">Past Webinars</h2>
+              <p className="mt-4 text-lg leading-relaxed text-gray-700">Recorded sessions are available whenever you are ready to watch.</p>
             </div>
-            <button
-              type="button"
-              onClick={() => {
-                pushClickEvent(
-                  "Watch Past Webinars",
-                  "modal:recorded_webinars"
-                );
-                openRecordedModal();
-              }}
-              className="text-left font-bold text-[#F47534] hover:underline"
-            >
-              View all recordings →
-            </button>
+            <button type="button" onClick={() => { pushClickEvent("Watch Past Webinars", "modal:recorded_webinars"); openRecordedModal(); }} className="text-left font-bold text-[#F47534] hover:underline">View all recordings →</button>
           </div>
-
-          <div className="mt-9 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {RECORDED_WEBINARS.map((recording, index) => (
-              <button
-                key={recording.id}
-                type="button"
-                onClick={() => {
-                  pushClickEvent(recording.title, "modal:recorded_webinars");
-                  openRecordedModal(recording.id);
-                }}
-                className="group overflow-hidden rounded-2xl border border-[#D7E1EB] bg-white text-left shadow-[0_12px_30px_rgba(36,59,83,0.11)] transition duration-300 hover:-translate-y-2 hover:shadow-[0_24px_50px_rgba(0,47,108,0.18)]"
-              >
-                <div className="relative flex aspect-video items-center justify-center overflow-hidden bg-gradient-to-br from-[#002F6C] via-[#124C85] to-[#E6F0F7] p-5">
-                  <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-[#002F6C]">
-                    Recording {index + 1}
-                  </span>
-                  <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[#F47534] text-white shadow-lg transition group-hover:scale-110">
-                    <PlayIcon />
-                  </span>
+          <div className="mt-9 grid items-start gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {RECORDED_WEBINARS.map((recording) => (
+              <button key={recording.id} type="button" onClick={() => { pushClickEvent(recording.title, "modal:recorded_webinars"); openRecordedModal(recording.id); }} className="group flex h-[296px] w-full flex-col overflow-hidden rounded-xl border border-[#D7E1EB] bg-white text-left shadow-[0_8px_22px_rgba(0,46,93,0.07)] transition hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(0,46,93,0.10)]">
+                <div className="relative h-[160px] w-full shrink-0 overflow-hidden bg-[#E9EEF3]">
+                  <img src={recording.thumbnail} alt={recording.title} className="h-full w-full object-cover" />
+                  <div className="absolute inset-0 flex items-center justify-center"><span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#F47534] text-white shadow-lg transition group-hover:scale-110"><PlayIcon className="h-6 w-6" /></span></div>
                 </div>
-                <div className="p-5">
-                  <h3 className="font-bold leading-snug text-[#002F6C]">
-                    {recording.title}
-                  </h3>
-                  <p className="mt-3 text-sm text-gray-600">
-                    {recording.duration}
-                  </p>
+                <div className="flex h-[136px] w-full flex-col px-5 py-4">
+                  <h3 className="text-[17px] font-bold leading-[1.35] text-[#002F6C]">{recording.title}</h3>
+                  <p className="mt-auto pt-2 text-sm text-gray-600">{recording.duration}</p>
                 </div>
               </button>
             ))}
           </div>
         </section>
 
-        <section
-          id="expert-videos"
-          className="scroll-mt-28 relative overflow-hidden rounded-[2.5rem] border border-[#CFDCE8] bg-gradient-to-br from-white via-[#F7FAFD] to-[#E9F2F8] px-6 py-12 shadow-[0_24px_65px_rgba(0,47,108,0.14)] sm:px-10 sm:py-14"
-        >
-          <div className="pointer-events-none absolute -left-20 -top-16 h-56 w-56 rounded-full bg-[#002F6C]/10 blur-3xl" />
-          <div className="relative mx-auto max-w-3xl text-center">
-            <SectionEyebrow>Featured conversations</SectionEyebrow>
-            <h2 className="mt-2 text-3xl font-extrabold text-[#002F6C] sm:text-4xl">
-              Expert Conversations on Music and Caregiving
-            </h2>
-            <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-gray-700">
-              Hear Amy Goyer, AARP's National Family & Caregiving Expert, and Andy
-              Tubman, Co-Founder and Chief Clinical Officer of SingFit, share how
-              music and singing can create moments of connection, engagement, and
-              joy for older adults.
-            </p>
-          </div>
-
-          <div className="mt-10 grid gap-7 md:grid-cols-3">
-            {EXPERT_VIDEOS.map((video) => (
-              <button
-                key={video.id}
-                type="button"
-                onClick={() => openExpertVideo(video)}
-                className="group overflow-hidden rounded-2xl border border-[#D7E1EB] bg-white text-left shadow-[0_12px_30px_rgba(36,59,83,0.11)] transition duration-300 hover:-translate-y-2 hover:shadow-[0_24px_50px_rgba(0,47,108,0.18)]"
-              >
-                <div className="relative aspect-video overflow-hidden bg-gray-100">
-                  <img
-                    src={video.thumbnail}
-                    alt=""
-                    loading="lazy"
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/15 transition group-hover:bg-black/25" />
-                  <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#F47534] text-white shadow-xl transition group-hover:scale-110">
-                    <PlayIcon />
-                  </span>
-                </div>
-                <div className="p-5">
-                  <p className="text-sm font-bold uppercase tracking-[0.12em] text-[#F47534]">
-                    Amy Goyer and Andy Tubman
-                  </p>
-                  <h3 className="mt-2 text-lg font-bold text-[#002F6C]">
-                    {video.title}
-                  </h3>
-                  <p className="mt-3 text-sm font-semibold text-gray-600">
-                    Watch conversation →
-                  </p>
-                </div>
-              </button>
-            ))}
+        <section id="expert-videos" className="scroll-mt-28 relative overflow-hidden rounded-[1.75rem] border border-[#D7E1EB] bg-white px-6 py-9 shadow-[0_12px_30px_rgba(0,46,93,0.08)] sm:px-8 sm:py-10">
+          <div className="relative">
+            <div className="max-w-[820px]">
+              <SectionEyebrow>Featured conversations</SectionEyebrow>
+              <h2 className="mt-2 text-3xl font-extrabold tracking-[-0.02em] text-[#002F6C] sm:text-4xl">Expert Conversations on Music and Caregiving</h2>
+              <p className="mt-4 text-lg leading-relaxed text-gray-700">Hear Amy Goyer, AARP&apos;s National Family &amp; Caregiving Expert, and Andy Tubman, Co-Founder and Chief Clinical Officer of SingFit, share how music and singing can create moments of connection, engagement, and joy for older adults.</p>
+            </div>
+            <div className="mx-auto mt-7 grid max-w-[1080px] gap-5 md:grid-cols-3">
+              {EXPERT_VIDEOS.map((video) => (
+                <button key={video.id} type="button" onClick={() => openExpertVideo(video)} className="group flex h-full flex-col overflow-hidden rounded-xl border border-[#D7E1EB] bg-white text-left shadow-[0_8px_22px_rgba(0,46,93,0.07)] transition hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(0,46,93,0.10)]">
+                  <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-gray-100"><img src={video.thumbnail} alt={video.title} loading="lazy" className="h-full w-full object-cover transition group-hover:scale-[1.01]" /></div>
+                  <div className="flex min-h-[122px] flex-col px-5 py-4">
+                    <p className="text-[13px] font-bold uppercase tracking-[0.12em] text-[#F47534]">Amy Goyer and Andy Tubman</p>
+                    <h3 className="mt-2 text-[17px] font-bold leading-[1.4] text-[#002F6C]">{video.title}</h3>
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="mt-12 rounded-[2.5rem] bg-gradient-to-br from-[#002F6C] via-[#0B477D] to-[#002F6C] px-6 py-12 text-center text-white shadow-[0_26px_60px_rgba(0,47,108,0.28)] sm:px-10">
+        <section className="mt-8 rounded-[1.75rem] bg-[#002F6C] px-6 py-11 text-center text-white shadow-[0_16px_38px_rgba(0,47,108,0.18)] sm:px-10">
           <h2 className="text-3xl font-extrabold">Ready to experience SingFit?</h2>
           <div className="mt-7">
-            <Button
-              onClick={() => {
-                const eventData = {
-                  event: "click_cta",
-                  button_text: "Buy SingFit Now",
-                  destination_url:
-                    "https://www.singfit.com/aarp-member-pricing",
-                  page_id: PAGE_ID,
-                };
-
-                if (typeof track === "function") {
-                  track("click_cta", eventData);
-                }
-
-                window.open(eventData.destination_url, "_blank");
-              }}
-              aria-label="Start using SingFit today"
-              className="min-h-[48px] bg-[#F47534] px-10 py-4 text-xl text-white shadow-lg hover:bg-[#d9652c]"
-            >
-              Get SingFit Now
-            </Button>
+            <Button onClick={() => {
+              const eventData = { event: "click_cta", button_text: "Buy SingFit Now", destination_url: "https://www.singfit.com/aarp-member-pricing", page_id: PAGE_ID };
+              if (typeof track === "function") track("click_cta", eventData);
+              window.open(eventData.destination_url, "_blank");
+            }} aria-label="Start using SingFit today" className="min-h-[48px] bg-[#F47534] px-10 py-4 text-xl text-white shadow-sm hover:bg-[#d9652c]">Get SingFit Now</Button>
           </div>
-          <p className="mt-4 flex flex-wrap items-center justify-center gap-3 text-base text-white sm:text-lg">
-            <img
-              src="/aarp-member-benefit.png"
-              alt="AARP badge"
-              className="h-8 w-auto"
-            />
-            AARP Member Price: $8.39/month (includes 30% discount).
-          </p>
+          <p className="mt-4 flex flex-wrap items-center justify-center gap-3 text-base text-white sm:text-lg"><img src="/aarp-member-benefit.png" alt="AARP badge" className="h-8 w-auto" />AARP Member Price: $8.39/month (includes 30% discount).</p>
         </section>
 
-        <footer className="mt-12 border-t border-gray-200 px-4 pt-6 text-center text-xs text-gray-500">
+        <footer className="mt-10 border-t border-gray-200 px-4 pt-6 text-center text-xs text-gray-500">
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
             <span>©2026 Musical Health Technologies. All Rights Reserved.</span>
             <span>1010 Wilshire Blvd. Los Angeles, CA 90017</span>
-            <a
-              href="/privacy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
-            >
-              Privacy Policy
-            </a>
-            <a
-              href="/terms"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
-            >
-              Terms of Service
-            </a>
-            <a
-              href="/accessibility"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
-            >
-              Accessibility Statement
-            </a>
+            <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-[#0377A3] hover:underline">Privacy Policy</a>
+            <a href="/terms" target="_blank" rel="noopener noreferrer" className="text-[#0377A3] hover:underline">Terms of Service</a>
+            <a href="/accessibility" target="_blank" rel="noopener noreferrer" className="text-[#0377A3] hover:underline">Accessibility Statement</a>
           </div>
         </footer>
       </main>
-
       {isRecordedModalOpen && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center px-4"
