@@ -356,18 +356,22 @@ export default function AARPResourcePageDraft() {
   return (
     <div className="min-h-screen overflow-x-clip bg-[#F7F9FC] font-sans text-[#243B53]">
       <main className="mx-auto max-w-7xl px-5 pb-16 pt-4 sm:px-8 sm:pt-6">
-        <section className="relative overflow-hidden rounded-[1.9rem] border border-[#BFD5E2] bg-[#DDEDF5] px-6 py-8 shadow-[0_14px_36px_rgba(0,46,93,0.10)] sm:px-10 sm:py-9">
-          <div className="relative mx-auto max-w-4xl text-center">
-            <h1 className="text-4xl font-extrabold leading-tight text-[#002F6C] sm:text-5xl">
-              Discover the Power of Music with SingFit — For Free
-            </h1>
-            <div className="mx-auto mt-4 h-px w-20 bg-[#002F6C]/15" />
-            <p className="mt-4 flex flex-wrap items-center justify-center gap-2 text-lg font-medium text-[#002F6C]">
-              Brought to you by SingFit in collaboration with
-              <img src="/aarp-logo.png" alt="AARP Logo" className="h-5 w-auto" />
-            </p>
-          </div>
-        </section>
+        <section className="relative overflow-hidden rounded-[1.9rem] border border-[#B9D4E1] bg-[linear-gradient(135deg,#E6F2F7_0%,#D5E9F2_52%,#C6E1ED_100%)] px-6 py-7 shadow-[0_14px_36px_rgba(0,46,93,0.10)] sm:px-10 sm:py-8">
+   <div className="relative z-10 mx-auto max-w-4xl text-center">
+    <h1 className="text-4xl font-extrabold leading-[1.05] tracking-[-0.025em] text-[#002F6C] sm:text-5xl">
+      Discover the Power of Music with SingFit — For Free
+    </h1>
+
+    <p className="mt-5 flex flex-wrap items-center justify-center gap-2 text-[17px] font-medium text-[#002F6C] sm:text-lg">
+      Brought to you by SingFit in collaboration with
+      <img
+        src="/aarp-logo.png"
+        alt="AARP Logo"
+        className="h-5 w-auto"
+      />
+    </p>
+  </div>
+</section>
 
         <nav aria-label="Resource sections" className="sticky top-3 z-30 mx-auto -mt-4 max-w-6xl rounded-[1.25rem] border border-[#D7E1EB] bg-white px-2 py-2 shadow-[0_10px_26px_rgba(0,46,93,0.10)] backdrop-blur-md sm:px-4 sm:py-2.5">
           <div className="flex flex-col gap-2 lg:flex-row lg:items-center">
