@@ -81,7 +81,7 @@ const RECORDED_WEBINARS = [
     title: "Caregivers: Singing for Self-Expression and Confidence",
     duration: "50 min",
     videoEmbedUrl: "https://player.vimeo.com/video/1217821993?h=c7d5d5125d",
-    thumbnail: "/Screenshot1.png",
+    thumbnail: "/Self_expression.png",
   },
 ];
 
