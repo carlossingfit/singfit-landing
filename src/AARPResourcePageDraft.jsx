@@ -44,7 +44,7 @@ const LIVE_WEBINARS = [
       "Singing to Feel Good: Making Singing Part of Your Everyday Life",
     image: "/Screenshot2.png",
     imageAlt: "An Introduction to Using Music to Connect with Your Loved One",
-    dateImage: "/oCT_27.png",
+    dateImage: "/Oct_27.png",
     href: "https://us02web.zoom.us/webinar/register/1217881986428/WN_Xlx7qVdgQSasEDs13fkBPg",
   },
 ];
