@@ -31,19 +31,21 @@ const GUIDES = [
 
 const LIVE_WEBINARS = [
   {
-    id: "webinar-005",
-    displayTitle: "Caregivers: Singing for Self-Expression and Confidence",
+    id: "webinar-006",
+    displayTitle: "Caregivers: Using Music to Connect with Your Loved One",
     image: "/Screenshot1.png",
-    imageAlt: "Singing for Self-Expression and Confidence",
-    dateImage: "/Aug_11.png",
+    imageAlt: "Using Music to Connect with Your Loved One",
+    dateImage: "/Sept_22.png",
+    href: "https://us02web.zoom.us/webinar/register/2617881985835/WN_JQ-ul8G6QUeMB194ZzVK2g",
   },
   {
-    id: "webinar-001",
+    id: "webinar-007",
     displayTitle:
-      "Caregivers: An Introduction to Using Music to Connect with Your Loved One",
+      "Singing to Feel Good: Making Singing Part of Your Everyday Life",
     image: "/Screenshot2.png",
     imageAlt: "An Introduction to Using Music to Connect with Your Loved One",
-    dateImage: "/July_14.png",
+    dateImage: "/oCT_27.png",
+    href: "https://us02web.zoom.us/webinar/register/1217881986428/WN_Xlx7qVdgQSasEDs13fkBPg",
   },
 ];
 
@@ -508,47 +510,51 @@ export default function AARPResourcePageDraft() {
     </div>
 
     <div className="mt-6 grid gap-3">
-      {LIVE_WEBINARS.map((webinar) => (
-        <button
-          key={webinar.id}
-          type="button"
-          onClick={() => {
-            pushClickEvent(
-              webinar.displayTitle,
-              "modal:recorded_webinars"
-            );
-            openRecordedModal(webinar.id);
-          }}
-          className="group grid w-full gap-4 rounded-xl border border-[#DDE5EC] bg-[#FAFBFC] px-5 py-4 text-left transition hover:-translate-y-0.5 hover:border-[#B8CBD8] hover:bg-white hover:shadow-[0_10px_24px_rgba(0,46,93,0.07)] sm:grid-cols-[88px_1fr_auto] sm:items-center sm:gap-6"
-        >
-          {/* DATE */}
-          <div className="flex justify-start sm:justify-center">
-            <img
-              src={webinar.dateImage}
-              alt=""
-              className="h-[72px] w-[72px] object-contain"
-            />
-          </div>
+  {LIVE_WEBINARS.map((webinar) => (
+    <button
+      key={webinar.id}
+      type="button"
+      onClick={() => {
+        pushClickEvent(
+          webinar.displayTitle,
+          webinar.href
+        );
 
-          {/* WEBINAR INFO */}
-          <div className="min-w-0">
-            <h3 className="text-[17px] font-bold leading-[1.35] text-[#002F6C] sm:text-lg">
-              {webinar.displayTitle}
-            </h3>
+        window.open(
+          webinar.href,
+          "_blank",
+          "noopener,noreferrer"
+        );
+      }}
+      className="group grid w-full gap-4 rounded-xl border border-[#DDE5EC] bg-[#FAFBFC] px-5 py-4 text-left transition hover:-translate-y-0.5 hover:border-[#B8CBD8] hover:bg-white hover:shadow-[0_10px_24px_rgba(0,46,93,0.07)] sm:grid-cols-[88px_1fr_auto] sm:items-center sm:gap-6"
+    >
+      {/* DATE */}
+      <div className="flex justify-start sm:justify-center">
+        <img
+          src={webinar.dateImage}
+          alt=""
+          className="h-[72px] w-[72px] object-contain"
+        />
+      </div>
 
-            <p className="mt-1.5 text-sm font-bold text-[#F47534]">
-              Recording available
-            </p>
-          </div>
+      {/* WEBINAR INFO */}
+      <div className="min-w-0">
+        <h3 className="text-[17px] font-bold leading-[1.35] text-[#002F6C] sm:text-lg">
+          {webinar.displayTitle}
+        </h3>
 
-          {/* ACTION */}
-          <span className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#002F6C] px-5 py-2.5 text-sm font-bold text-white transition group-hover:bg-[#F47534] sm:w-auto">
-            <PlayIcon className="h-4 w-4" />
-            Watch Recording
-          </span>
-        </button>
-      ))}
-    </div>
+        <p className="mt-1.5 text-sm font-bold text-[#F47534]">
+          Registration open
+        </p>
+      </div>
+
+      {/* ACTION */}
+      <span className="inline-flex min-h-[44px] w-full items-center justify-center whitespace-nowrap rounded-full bg-[#002F6C] px-5 py-2.5 text-sm font-bold text-white transition group-hover:bg-[#F47534] sm:w-auto">
+        Register Now
+      </span>
+    </button>
+  ))}
+</div>
   </div>
 </section>
 
