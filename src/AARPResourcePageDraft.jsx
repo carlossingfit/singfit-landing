@@ -516,9 +516,9 @@ export default function AARPResourcePageDraft() {
       type="button"
       onClick={() => {
         pushClickEvent(
-          webinar.displayTitle,
-          webinar.href
-        );
+  `Webinar Registration: ${webinar.displayTitle}`,
+  webinar.href
+);
 
         window.open(
           webinar.href,
