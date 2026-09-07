@@ -41,7 +41,7 @@ const LIVE_WEBINARS = [
   {
     id: "webinar-007",
     displayTitle:
-      "Singing to Feel Good: Making Singing Part of Your Everyday Life",
+      "Sing and Thrive!",
     image: "/Screenshot2.png",
     imageAlt: "An Introduction to Using Music to Connect with Your Loved One",
     dateImage: "/Oct_27.png",
