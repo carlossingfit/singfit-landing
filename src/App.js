@@ -40,6 +40,7 @@ const CaregiverConsultConfirmation = lazy(() =>  import("./CaregiverConsultConfi
 const CaregiverFreeTrial = lazy(() =>  import("./CaregiverFreeTrial"));
 const PrimeLandingPageTest = lazy(() =>  import("./PrimeLandingPageTest"));
 const AARPResourcePagePrototypeB = lazy(() => import("./AARPResourcePagePrototypeB"));
+const AssistedLivingWeek = lazy(() => import("./AssistedLivingWeek"));
 
 
 
@@ -85,8 +86,8 @@ function App() {
           <Route path="/caregiverconsult-confirmation" element={<CaregiverConsultConfirmation />} />
           <Route path="/caregiver-free-trial"  element={<CaregiverFreeTrial />} />
           <Route path="/primelandingpage-test" element={<PrimeLandingPageTest />}/>
-          <Route path="/aarp-member-resources-prototype-b" element={<AARPResourcePagePrototypeB />}
-/>
+          <Route path="/aarp-member-resources-prototype-b" element={<AARPResourcePagePrototypeB />} />
+          <Route path="/assisted-living-week" element={<AssistedLivingWeek />} />
         </Routes>
       </Suspense>
     </Router>
