@@ -20,7 +20,7 @@ export default function AssistedLivingWeek() {
             className="h-auto w-[190px] md:w-[220px]"
           />
 
-          <p className="mt-3 text-base font-semibold leading-relaxed text-white/90">
+          <p className="mt-3 max-w-2xl text-base font-semibold leading-relaxed text-white/90">
             Celebrating the people who make assisted living communities shine.
           </p>
         </div>
@@ -28,17 +28,70 @@ export default function AssistedLivingWeek() {
 
       <div className="h-[5px] bg-[#F47534]" />
 
-      {/* HERO */}
-      <section className="bg-[#FAFBFC] px-5 py-12 md:px-10 md:py-16">
-        <div className="mx-auto grid max-w-[1180px] items-center gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:gap-16">
+      {/* MOBILE HERO */}
+      <section className="bg-[#FAFBFC] px-5 py-8 lg:hidden">
+        <div className="mx-auto max-w-xl">
 
-          {/* HERO COPY */}
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-[#0377A3]">
+            National Assisted Living Week • September 13–19
+          </p>
+
+          <h1 className="mt-4 font-serif text-[2.55rem] font-bold leading-[1.03] tracking-[-0.04em] text-[#062B49]">
+            A quick message from Andy
+          </h1>
+
+          {/* VIDEO MOVED UP ON MOBILE */}
+          <div className="mt-7">
+            <div className="overflow-hidden rounded-[1.8rem] border-[4px] border-[#F47534] bg-[#061D33] shadow-[0_20px_55px_rgba(15,23,42,0.14)]">
+              <div className="relative aspect-video w-full overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(3,119,163,0.25),transparent_48%)]" />
+
+                <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+                  <button
+                    type="button"
+                    aria-label="Video placeholder"
+                    className="flex h-16 w-16 items-center justify-center rounded-full bg-[#F47534] text-white shadow-[0_12px_30px_rgba(0,0,0,0.25)]"
+                  >
+                    <span className="ml-1 text-2xl">▶</span>
+                  </button>
+
+                  <p className="mt-4 text-xs font-black uppercase tracking-[0.16em] text-white/80">
+                    Video coming soon
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-4">
+              <p className="text-lg font-black text-[#062B49]">
+                Andy Tubman, MT-BC
+              </p>
+
+              <p className="mt-1 text-sm font-semibold leading-relaxed text-slate-600">
+                Co-Founder & Chief Clinical Officer, SingFit
+              </p>
+            </div>
+          </div>
+
+          {/* INTRO COPY MOVED BELOW VIDEO ON MOBILE */}
+          <p className="mt-7 text-lg leading-[1.65] text-slate-700">
+            National Assisted Living Week is a chance to recognize the people
+            who bring energy, creativity, and connection to assisted living
+            communities every day. Andy wanted to take a minute to say thanks.
+          </p>
+        </div>
+      </section>
+
+      {/* DESKTOP HERO */}
+      <section className="hidden bg-[#FAFBFC] px-10 py-16 lg:block">
+        <div className="mx-auto grid max-w-[1180px] items-center gap-16 lg:grid-cols-[0.88fr_1.12fr]">
+
           <div>
             <p className="text-sm font-black uppercase tracking-[0.2em] text-[#0377A3]">
               National Assisted Living Week • September 13–19
             </p>
 
-            <h1 className="mt-5 max-w-xl font-serif text-[2.8rem] font-bold leading-[1.03] tracking-[-0.04em] text-[#062B49] md:text-[4rem]">
+            <h1 className="mt-5 max-w-xl font-serif text-[4rem] font-bold leading-[1.03] tracking-[-0.04em] text-[#062B49]">
               A quick message from Andy
             </h1>
 
@@ -49,7 +102,6 @@ export default function AssistedLivingWeek() {
             </p>
           </div>
 
-          {/* VIDEO */}
           <div>
             <div className="overflow-hidden rounded-[2rem] border-[5px] border-[#F47534] bg-[#061D33] shadow-[0_24px_70px_rgba(15,23,42,0.14)]">
               <div className="relative aspect-video w-full overflow-hidden">
@@ -87,11 +139,11 @@ export default function AssistedLivingWeek() {
       {/* SUPPORT INTRO */}
       <section className="px-5 pb-7 pt-9 md:px-10 md:pb-8 md:pt-10">
         <div className="mx-auto max-w-[900px] text-center">
-          <h2 className="font-serif text-[2.2rem] font-bold leading-tight text-[#062B49] md:text-[2.8rem]">
+          <h2 className="font-serif text-[2.15rem] font-bold leading-tight text-[#062B49] md:text-[2.8rem]">
             We’re here to support you!
           </h2>
 
-          <p className="mx-auto mt-4 max-w-3xl text-xl leading-[1.6] text-slate-700">
+          <p className="mx-auto mt-4 max-w-3xl text-lg leading-[1.6] text-slate-700 md:text-xl">
             Whether you’re new to SingFit, could use a refresher, or have ideas
             about how we can better support your community, we’d love to hear
             from you.
@@ -102,7 +154,7 @@ export default function AssistedLivingWeek() {
       {/* TRAINING BANNER */}
       <section className="px-5 pb-6 md:px-10 md:pb-7">
         <div className="mx-auto max-w-[1180px]">
-          <div className="grid items-center gap-7 rounded-[2rem] border border-[#C8E3EE] bg-[#F1F8FB] px-7 py-7 shadow-[0_16px_42px_rgba(15,23,42,0.05)] md:px-9 md:py-8 lg:grid-cols-[1fr_auto]">
+          <div className="grid items-center gap-7 rounded-[2rem] border border-[#C8E3EE] bg-[#F1F8FB] px-6 py-7 shadow-[0_16px_42px_rgba(15,23,42,0.05)] md:px-9 md:py-8 lg:grid-cols-[1fr_auto]">
 
             <div>
               <p className="text-sm font-black uppercase tracking-[0.18em] text-[#0377A3]">
@@ -119,10 +171,10 @@ export default function AssistedLivingWeek() {
               </p>
             </div>
 
-            <div className="lg:pl-6">
+            <div className="w-full lg:w-auto lg:pl-6">
               <a
                 href="#"
-                className="inline-flex whitespace-nowrap rounded-full bg-[#0377A3] px-7 py-4 text-base font-bold text-white shadow-[0_12px_28px_rgba(3,119,163,0.18)] transition hover:-translate-y-0.5"
+                className="flex w-full items-center justify-center rounded-full bg-[#0377A3] px-5 py-4 text-center text-sm font-bold leading-snug text-white shadow-[0_12px_28px_rgba(3,119,163,0.18)] transition hover:-translate-y-0.5 sm:text-base lg:inline-flex lg:w-auto lg:whitespace-nowrap lg:px-7"
               >
                 View the PRIME training calendar →
               </a>
@@ -138,12 +190,12 @@ export default function AssistedLivingWeek() {
           <div className="grid lg:grid-cols-[0.78fr_1.22fr]">
 
             {/* FEEDBACK COPY */}
-            <div className="flex flex-col justify-center px-7 py-8 md:px-10 md:py-10">
+            <div className="flex flex-col justify-center px-6 py-8 md:px-10 md:py-10">
               <p className="text-sm font-black uppercase tracking-[0.18em] text-[#E86424]">
                 We’d love to hear from you
               </p>
 
-              <h2 className="mt-4 font-serif text-[2.25rem] font-bold leading-[1.08] text-[#062B49] md:text-[2.75rem]">
+              <h2 className="mt-4 font-serif text-[2.15rem] font-bold leading-[1.08] text-[#062B49] md:text-[2.75rem]">
                 How can we better support you?
               </h2>
 
@@ -155,14 +207,12 @@ export default function AssistedLivingWeek() {
             </div>
 
             {/* FORM */}
-            <div className="bg-white px-7 py-8 md:px-9 md:py-9">
-
+            <div className="bg-white px-6 py-8 md:px-9 md:py-9">
               {formStatus !== "success" ? (
                 <form
                   onSubmit={handlePlaceholderSubmit}
                   className="grid gap-5"
                 >
-
                   <div className="grid gap-5 md:grid-cols-2">
                     <label className="block">
                       <span className="text-base font-black text-[#062B49]">
@@ -204,7 +254,7 @@ export default function AssistedLivingWeek() {
                   <div className="flex justify-end">
                     <button
                       type="submit"
-                      className="rounded-full bg-[#F47534] px-8 py-4 text-base font-bold text-white shadow-[0_12px_28px_rgba(244,117,52,0.22)] transition hover:-translate-y-0.5"
+                      className="w-full rounded-full bg-[#F47534] px-8 py-4 text-base font-bold text-white shadow-[0_12px_28px_rgba(244,117,52,0.22)] transition hover:-translate-y-0.5 sm:w-auto"
                     >
                       Send feedback
                     </button>
@@ -221,13 +271,11 @@ export default function AssistedLivingWeek() {
                   </p>
                 </div>
               )}
-
             </div>
           </div>
         </div>
       </section>
 
-      
       {/* FOOTER */}
       <footer className="border-t border-gray-200 bg-white px-4 py-7 text-center text-xs text-gray-500">
         <div className="mx-auto flex max-w-[1180px] flex-wrap items-center justify-center gap-x-4 gap-y-2">
