@@ -85,7 +85,7 @@ export default function AssistedLivingWeek() {
       </section>
 
       {/* SUPPORT INTRO */}
-      <section className="px-5 py-10 md:px-10 md:py-12">
+      <section className="px-5 pb-7 pt-9 md:px-10 md:pb-8 md:pt-10">
         <div className="mx-auto max-w-[900px] text-center">
           <h2 className="font-serif text-[2.2rem] font-bold leading-tight text-[#062B49] md:text-[2.8rem]">
             We’re here to support you!
@@ -100,7 +100,7 @@ export default function AssistedLivingWeek() {
       </section>
 
       {/* TRAINING BANNER */}
-      <section className="px-5 pb-8 md:px-10 md:pb-10">
+      <section className="px-5 pb-6 md:px-10 md:pb-7">
         <div className="mx-auto max-w-[1180px]">
           <div className="grid items-center gap-7 rounded-[2rem] border border-[#C8E3EE] bg-[#F1F8FB] px-7 py-7 shadow-[0_16px_42px_rgba(15,23,42,0.05)] md:px-9 md:py-8 lg:grid-cols-[1fr_auto]">
 
@@ -227,26 +227,7 @@ export default function AssistedLivingWeek() {
         </div>
       </section>
 
-      {/* SUPPORT */}
-      <section className="px-5 pb-12 md:px-10">
-        <div className="mx-auto max-w-[1180px] rounded-[1.35rem] border-l-[5px] border-[#F47534] bg-[#FFF8F4] px-6 py-5">
-          <p className="text-base font-black text-[#062B49]">
-            Need help with SingFit PRIME?
-          </p>
-
-          <p className="mt-1 text-base leading-relaxed text-slate-700">
-            Email{" "}
-            <a
-              href="mailto:support@singfit.com"
-              className="font-bold text-[#0377A3] underline"
-            >
-              support@singfit.com
-            </a>{" "}
-            and we’ll help you get set up.
-          </p>
-        </div>
-      </section>
-
+      
       {/* FOOTER */}
       <footer className="border-t border-gray-200 bg-white px-4 py-7 text-center text-xs text-gray-500">
         <div className="mx-auto flex max-w-[1180px] flex-wrap items-center justify-center gap-x-4 gap-y-2">
