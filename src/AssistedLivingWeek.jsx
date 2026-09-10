@@ -37,30 +37,22 @@ export default function AssistedLivingWeek() {
           </p>
 
           <h1 className="mt-4 font-serif text-[2.55rem] font-bold leading-[1.03] tracking-[-0.04em] text-[#062B49]">
-            A quick message from Andy
+            A short message from Andy
           </h1>
 
           {/* VIDEO MOVED UP ON MOBILE */}
           <div className="mt-7">
-            <div className="overflow-hidden rounded-[1.8rem] border-[4px] border-[#F47534] bg-[#061D33] shadow-[0_20px_55px_rgba(15,23,42,0.14)]">
-              <div className="relative aspect-video w-full overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(3,119,163,0.25),transparent_48%)]" />
-
-                <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-                  <button
-                    type="button"
-                    aria-label="Video placeholder"
-                    className="flex h-16 w-16 items-center justify-center rounded-full bg-[#F47534] text-white shadow-[0_12px_30px_rgba(0,0,0,0.25)]"
-                  >
-                    <span className="ml-1 text-2xl">▶</span>
-                  </button>
-
-                  <p className="mt-4 text-xs font-black uppercase tracking-[0.16em] text-white/80">
-                    Video coming soon
-                  </p>
-                </div>
-              </div>
-            </div>
+  <div className="overflow-hidden rounded-[1.8rem] border-[4px] border-[#F47534] bg-[#061D33] shadow-[0_20px_55px_rgba(15,23,42,0.14)]">
+    <div className="relative aspect-video w-full overflow-hidden">
+      <iframe
+        src="https://www.youtube.com/embed/IvonpE_5mPU?rel=0"
+        title="SingFit video"
+        className="absolute inset-0 h-full w-full"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+      />
+    </div>
+  </div>
 
             <div className="mt-4">
               <p className="text-lg font-black text-[#062B49]">
@@ -83,58 +75,50 @@ export default function AssistedLivingWeek() {
       </section>
 
       {/* DESKTOP HERO */}
-      <section className="hidden bg-[#FAFBFC] px-10 py-16 lg:block">
-        <div className="mx-auto grid max-w-[1180px] items-center gap-16 lg:grid-cols-[0.88fr_1.12fr]">
+<section className="hidden bg-[#FAFBFC] px-10 py-16 lg:block">
+  <div className="mx-auto grid max-w-[1180px] items-center gap-16 lg:grid-cols-[0.88fr_1.12fr]">
 
-          <div>
-            <p className="text-sm font-black uppercase tracking-[0.2em] text-[#0377A3]">
-              National Assisted Living Week • September 13–19
-            </p>
+    <div>
+      <p className="text-sm font-black uppercase tracking-[0.2em] text-[#0377A3]">
+        National Assisted Living Week • September 13–19
+      </p>
 
-            <h1 className="mt-5 max-w-xl font-serif text-[4rem] font-bold leading-[1.03] tracking-[-0.04em] text-[#062B49]">
-              A quick message from Andy
-            </h1>
+      <h1 className="mt-5 max-w-xl font-serif text-[4rem] font-bold leading-[1.03] tracking-[-0.04em] text-[#062B49]">
+        A short message from Andy
+      </h1>
 
-            <p className="mt-6 max-w-xl text-xl leading-[1.65] text-slate-700">
-              National Assisted Living Week is a chance to recognize the people
-              who bring energy, creativity, and connection to assisted living
-              communities every day. Andy wanted to take a minute to say thanks.
-            </p>
-          </div>
+      <p className="mt-6 max-w-xl text-xl leading-[1.65] text-slate-700">
+        National Assisted Living Week is a chance to recognize the people
+        who bring energy, creativity, and connection to assisted living
+        communities every day. Andy wanted to take a minute to say thanks.
+      </p>
+    </div>
 
-          <div>
-            <div className="overflow-hidden rounded-[2rem] border-[5px] border-[#F47534] bg-[#061D33] shadow-[0_24px_70px_rgba(15,23,42,0.14)]">
-              <div className="relative aspect-video w-full overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(3,119,163,0.25),transparent_48%)]" />
-
-                <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-                  <button
-                    type="button"
-                    aria-label="Video placeholder"
-                    className="flex h-20 w-20 items-center justify-center rounded-full bg-[#F47534] text-white shadow-[0_12px_30px_rgba(0,0,0,0.25)] transition hover:scale-105"
-                  >
-                    <span className="ml-1 text-3xl">▶</span>
-                  </button>
-
-                  <p className="mt-5 text-sm font-black uppercase tracking-[0.16em] text-white/80">
-                    Video coming soon
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-5">
-              <p className="text-xl font-black text-[#062B49]">
-                Andy Tubman, MT-BC
-              </p>
-
-              <p className="mt-1 text-base font-semibold text-slate-600">
-                Co-Founder & Chief Clinical Officer, SingFit
-              </p>
-            </div>
-          </div>
+    <div>
+      <div className="overflow-hidden rounded-[2rem] border-[5px] border-[#F47534] bg-[#061D33] shadow-[0_24px_70px_rgba(15,23,42,0.14)]">
+        <div className="relative aspect-video w-full overflow-hidden">
+          <iframe
+            src="https://www.youtube.com/embed/IvonpE_5mPU?rel=0"
+            title="SingFit video"
+            className="absolute inset-0 h-full w-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
         </div>
-      </section>
+      </div>
+
+      <div className="mt-5">
+        <p className="text-xl font-black text-[#062B49]">
+          Andy Tubman, MT-BC
+        </p>
+
+        <p className="mt-1 text-base font-semibold text-slate-600">
+          Co-Founder &amp; Chief Clinical Officer, SingFit
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* SUPPORT INTRO */}
       <section className="px-5 pb-7 pt-9 md:px-10 md:pb-8 md:pt-10">
