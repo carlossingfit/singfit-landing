@@ -43,11 +43,11 @@ export default function AssistedLivingWeek() {
       const firedMilestones = new Set();
 
       const baseVideoData = {
-        video_id: VIDEO_ID,
-        video_title: VIDEO_TITLE,
-        video_provider: "vimeo",
-        video_placement: placement,
-      };
+  video_id: VIDEO_ID,
+  video_name: VIDEO_TITLE,
+  video_provider: "vimeo",
+  video_placement: placement,
+};
 
       const handlePlay = () => {
         if (hasStarted) return;
