@@ -292,20 +292,7 @@ export default function AssistedLivingWeek() {
         </div>
       </section>
 
-      {/* SUPPORT INTRO */}
-      <section className="px-5 pb-7 pt-9 md:px-10 md:pb-8 md:pt-10">
-        <div className="mx-auto max-w-[900px] text-center">
-          <h2 className="font-serif text-[2.15rem] font-bold leading-tight text-[#062B49] md:text-[2.8rem]">
-            We’re here to support you!
-          </h2>
-
-          <p className="mx-auto mt-4 max-w-3xl text-lg leading-[1.6] text-slate-700 md:text-xl">
-            Whether you’re new to SingFit, could use a refresher, or have ideas
-            about how we can better support your community, we’d love to hear
-            from you.
-          </p>
-        </div>
-      </section>
+   
 
       {/* TRAINING BANNER */}
       <section className="px-5 pb-6 md:px-10 md:pb-7">
@@ -359,9 +346,7 @@ export default function AssistedLivingWeek() {
               </h2>
 
               <p className="mt-5 text-lg leading-[1.65] text-slate-700">
-                Have a question, an idea, or something that would make SingFit
-                easier or more valuable for your community? Let us know. Even a
-                quick note helps.
+                Have a question, an idea, or something that would make SingFit easier or more valuable for your community? Even a short note helps.
               </p>
             </div>
 
