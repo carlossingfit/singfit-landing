@@ -42,15 +42,15 @@ export default function AssistedLivingWeek() {
 
           {/* VIDEO MOVED UP ON MOBILE */}
           <div className="mt-7">
-  <div className="overflow-hidden rounded-[1.8rem] border-[4px] border-[#F47534] bg-[#061D33] shadow-[0_20px_55px_rgba(15,23,42,0.14)]">
-    <div className="relative aspect-video w-full overflow-hidden">
-      <iframe
-        src="https://www.youtube.com/embed/IvonpE_5mPU?rel=0"
-        title="SingFit video"
-        className="absolute inset-0 h-full w-full"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen
-      />
+          <div className="overflow-hidden rounded-[1.8rem] border-[4px] border-[#F47534] bg-[#061D33] shadow-[0_20px_55px_rgba(15,23,42,0.14)]">
+          <div className="relative aspect-video w-full overflow-hidden">
+          <iframe
+  src="https://player.vimeo.com/video/1225803892"
+  title="A short message from Andy"
+  className="absolute inset-0 h-full w-full"
+  allow="autoplay; fullscreen; picture-in-picture"
+  allowFullScreen
+/>
     </div>
   </div>
 
@@ -66,11 +66,7 @@ export default function AssistedLivingWeek() {
           </div>
 
           {/* INTRO COPY MOVED BELOW VIDEO ON MOBILE */}
-          <p className="mt-7 text-lg leading-[1.65] text-slate-700">
-            National Assisted Living Week is a chance to recognize the people
-            who bring energy, creativity, and connection to assisted living
-            communities every day. Andy wanted to take a minute to say thanks.
-          </p>
+         
         </div>
       </section>
 
@@ -87,23 +83,18 @@ export default function AssistedLivingWeek() {
         A short message from Andy
       </h1>
 
-      <p className="mt-6 max-w-xl text-xl leading-[1.65] text-slate-700">
-        National Assisted Living Week is a chance to recognize the people
-        who bring energy, creativity, and connection to assisted living
-        communities every day. Andy wanted to take a minute to say thanks.
-      </p>
     </div>
 
     <div>
       <div className="overflow-hidden rounded-[2rem] border-[5px] border-[#F47534] bg-[#061D33] shadow-[0_24px_70px_rgba(15,23,42,0.14)]">
         <div className="relative aspect-video w-full overflow-hidden">
           <iframe
-            src="https://www.youtube.com/embed/IvonpE_5mPU?rel=0"
-            title="SingFit video"
-            className="absolute inset-0 h-full w-full"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          />
+  src="https://player.vimeo.com/video/1225803892"
+  title="A short message from Andy"
+  className="absolute inset-0 h-full w-full"
+  allow="autoplay; fullscreen; picture-in-picture"
+  allowFullScreen
+/>
         </div>
       </div>
 
