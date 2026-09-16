@@ -353,10 +353,37 @@ export default function PrimeLandingPage() {
     }
   };
   const trustStats = [
-    { value: "900+", label: "Communities using SingFit" },
-    { value: "2,800+", label: "SingFit Certified Facilitators" },
-    { value: "57,000+", label: "Older adults singing" },
-  ];
+  {
+    value: "1,000+",
+    label: (
+      <>
+        Communities using
+        <br />
+        SingFit
+      </>
+    ),
+  },
+  {
+    value: "2,800+",
+    label: (
+      <>
+        SingFit Certified
+        <br />
+        Facilitators
+      </>
+    ),
+  },
+  {
+    value: "57,000+",
+    label: (
+      <>
+        Older adults
+        <br />
+        singing
+      </>
+    ),
+  },
+];
 
   return (
       <>
@@ -372,7 +399,7 @@ export default function PrimeLandingPage() {
 
           <button
             type="button"
-            onClick={() => scrollToDemoForm("Schedule a PRIME Demo")}
+            onClick={() => scrollToDemoForm("Learn More About PRIME")}
             className="rounded-full bg-[#F47534] px-5 py-3 text-sm font-bold text-white shadow-[0_12px_30px_rgba(244,117,52,0.25)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_44px_rgba(244,117,52,0.34)] md:px-6"
           >
             Schedule a PRIME Demo
@@ -380,7 +407,7 @@ export default function PrimeLandingPage() {
         </div>
       </header>
 
-      <section className="relative px-5 pb-12 pt-8 md:px-10 md:pb-16 md:pt-10">
+      <section className="relative px-5 pb-8 pt-8 md:px-10 md:pb-10 md:pt-10">
   <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_10%,rgba(0,145,200,0.10),transparent_32%),radial-gradient(circle_at_12%_82%,rgba(244,117,52,0.08),transparent_30%)]" />
 
   <div className="relative mx-auto max-w-7xl">
@@ -388,11 +415,11 @@ export default function PrimeLandingPage() {
       <div>
        
         <h1 className="max-w-4xl text-[2.8rem] font-black leading-[1.02] tracking-[-0.055em] md:text-[3.8rem] lg:text-[4.2rem]">
-          Disengaged residents? Let's change the tune.
+          Let Them Shine with SingFit PRIME
         </h1>
 
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-700 md:text-xl">
-        SingFit PRIME is a turnkey therapeutic singing program that helps senior living teams create engaging, interactive experiences residents genuinely look forward to.
+        SingFit PRIME is an award-winning, turnkey therapeutic singing program that helps senior living teams create engaging, interactive experiences residents genuinely look forward to.
         </p>
 
         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -445,15 +472,15 @@ export default function PrimeLandingPage() {
   </div>
 </section>
 
- <section className="px-5 py-6 md:px-10 md:py-8">
-  <div className="mx-auto max-w-7xl rounded-[2.5rem] border border-slate-200 bg-white px-6 py-6 shadow-[0_20px_60px_rgba(15,23,42,0.05)] md:px-10 md:py-7">
+ <section className="px-5 py-4 md:px-10 md:py-5">
+  <div className="mx-auto max-w-7xl rounded-[2.5rem] border border-slate-200 bg-white px-6 py-4 shadow-[0_20px_60px_rgba(15,23,42,0.05)] md:px-10 md:py-5">
 
-    <p className="mb-5 text-center text-sm font-black uppercase tracking-[0.22em] text-slate-500">
-      Trusted by leading senior living organizations
+    <p className="mb-3 text-center text-sm font-black uppercase tracking-[0.22em] text-slate-500">
+      Trusted by leading senior living organizations including
     </p>
 
-    <div className="grid items-center gap-4 md:grid-cols-4">
-      <div className="flex h-16 items-center justify-center">
+    <div className="grid grid-cols-2 items-center gap-x-4 gap-y-2 md:grid-cols-4 md:gap-4">
+      <div className="flex h-14 items-center justify-center md:h-16">
         <img
           src="/arbor_logo.jpg"
           alt="The Arbor Company"
@@ -461,7 +488,7 @@ export default function PrimeLandingPage() {
         />
       </div>
 
-      <div className="flex h-16 items-center justify-center">
+      <div className="flex h-14 items-center justify-center md:h-16">
         <img
           src="/kisco_logo.png"
           alt="Kisco Senior Living"
@@ -469,7 +496,7 @@ export default function PrimeLandingPage() {
         />
       </div>
 
-      <div className="flex h-16 items-center justify-center overflow-hidden">
+      <div className="flex h-14 items-center justify-center overflow-hidden md:h-16">
         <img
   src="/commonwealth-senior-living-logo.svg"
   alt="Commonwealth Senior Living"
@@ -477,7 +504,7 @@ export default function PrimeLandingPage() {
 />
       </div>
 
-      <div className="flex h-16 items-center justify-center">
+      <div className="flex h-14 items-center justify-center md:h-16">
         <img
           src="/silverado_logo.png"
           alt="Silverado"
@@ -489,6 +516,268 @@ export default function PrimeLandingPage() {
   </div>
 </section>
 
+{/* ==================== EXPERT PERSPECTIVES ==================== */}
+<section className="px-5 py-8 md:px-10 md:py-12">
+  <div className="mx-auto max-w-7xl">
+
+    {/* Section heading */}
+    <div className="mb-12 max-w-5xl">
+      <p className="mb-4 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
+        Expert perspectives
+      </p>
+
+      <h2 className="text-4xl font-black leading-[1.02] tracking-[-0.055em] text-[#062B49] md:text-5xl">
+        Hear what the experts have to say.
+      </h2>
+    </div>
+
+    {/* Expert perspectives */}
+    <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+
+      {/* ==================== TEEPA SNOW EXPERT TESTIMONIAL ==================== */}
+      <div>
+        {/* Teepa header */}
+        <div className="mb-4 md:mb-5">
+          
+
+          <p className="text-xl font-black text-[#062B49]">
+            Teepa Snow, MS, OTR/L, FAOTA
+          </p>
+
+          <p className="mt-1 text-base font-semibold text-slate-600">
+            Founder, Positive Approach to Care®
+          </p>
+        </div>
+
+        {/* Teepa quote card */}
+        <a
+          href="https://www.singfit.com/post/teepa-snow-supports-singfit?utm_source=prime_landing_page&utm_medium=website&utm_campaign=expert_perspectives&utm_content=teepa_snow"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() =>
+            trackCTA(
+              "Teepa Snow Expert Testimonial",
+              "https://www.singfit.com/post/teepa-snow-supports-singfit?utm_source=prime_landing_page&utm_medium=website&utm_campaign=expert_perspectives&utm_content=teepa_snow"
+            )
+          }
+          className="group block"
+          aria-label="Read more about Teepa Snow's support for SingFit"
+        >
+          <div className="flex aspect-video w-full max-w-[520px] flex-col justify-between overflow-hidden rounded-[1.25rem] border border-slate-200 bg-white p-5 shadow-[0_18px_50px_rgba(6,29,51,0.10)] transition hover:-translate-y-0.5 hover:shadow-[0_22px_60px_rgba(6,29,51,0.14)] md:rounded-[1.5rem] md:p-6">
+
+            <div>
+              <div className="flex items-start gap-4">
+                {/* Thumbnail */}
+                <div className="h-[82px] w-[82px] shrink-0 overflow-hidden rounded-full border-[3px] border-[#F47534] bg-white p-[2px] md:h-[94px] md:w-[94px]">
+                  <img
+                    src="/teepa_headshot.jpg"
+                    alt="Teepa Snow"
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full rounded-full object-cover object-[48%_35%]"
+                  />
+                </div>
+
+                {/* Quote */}
+                <div className="min-w-0">
+                  <div
+                    aria-hidden="true"
+                    className="-mb-2 font-serif text-4xl font-black leading-none text-[#A9CDE7]"
+                  >
+                    “
+                  </div>
+
+                  <blockquote className="text-[15px] font-bold leading-[1.45] text-[#062B49] md:text-base">
+                    As a dementia educator, I strongly support incorporating
+                    active music participation, rather than relying solely on
+                    passive listening, into daily routines whenever possible.{" "}
+                    <span className="text-[#F47534]">SingFit</span> can equip
+                    care partners to engage more effectively with and improve
+                    quality of life for those they support.
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-3 flex items-center justify-end border-t border-slate-200 pt-3">
+              <span className="text-sm font-black text-[#F47534] transition group-hover:translate-x-1">
+                Read More →
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      {/* ==================== PAULA HARDER CUSTOMER TESTIMONIAL ==================== */}
+      <div>
+        {/* Paula header */}
+        <div className="mb-4 md:mb-5">
+          
+
+          <p className="text-xl font-black text-[#062B49]">
+            Paula Harder
+          </p>
+
+          <p className="mt-1 text-base font-semibold text-slate-600">
+            VP Resident Programs &amp; Memory Care
+          </p>
+        </div>
+
+        {/*
+          Intentionally constrained.
+          Do not increase this max-width because the source video is portrait
+          inside a landscape Vimeo player.
+        */}
+        <div className="w-full max-w-[520px] overflow-hidden rounded-[1.25rem] border-[4px] border-[#061D33] bg-black shadow-[0_18px_50px_rgba(6,29,51,0.14)] md:rounded-[1.5rem] md:border-[6px]">
+          <div className="relative aspect-video w-full">
+            <iframe
+              id="prime-testimonial-video"
+              className="absolute inset-0 h-full w-full"
+              src="https://player.vimeo.com/video/1196403668?api=1&player_id=prime-testimonial-video&autopause=0"
+              title="Paula Harder SingFit PRIME customer testimonial"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{/* ==================== THE SINGFIT DIFFERENCE ==================== */}
+<section className="px-5 py-8 md:px-10 md:py-12">
+  <div className="mx-auto max-w-7xl">
+
+    {/* Section heading */}
+    <div className="mb-9 max-w-5xl">
+      <p className="mb-4 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
+        The SingFit difference
+      </p>
+
+      <h2 className="text-4xl font-black leading-[1.02] tracking-[-0.055em] md:text-5xl">
+        Move beyond background music.
+      </h2>
+
+      <p className="mt-5 max-w-3xl text-lg leading-relaxed text-slate-700">
+        Access to music is easy. Creating an experience that gets residents
+        actively involved takes structure, guidance, and a program designed
+        around participation.
+      </p>
+    </div>
+
+    {/* Comparison cards */}
+    <div className="grid gap-6 lg:grid-cols-2">
+
+      {/* ==================== GUIDED SINGING WITH PRIME ==================== */}
+      <div className="rounded-[2.75rem] bg-[#061D33] p-7 text-white shadow-[0_30px_86px_rgba(6,29,51,0.20)] md:p-9">
+        <p className="text-sm font-black uppercase tracking-[0.18em] text-[#F47534]">
+          Guided singing with PRIME
+        </p>
+
+        <h3 className="mt-4 text-3xl font-black tracking-[-0.045em]">
+          Residents become part of the music.
+        </h3>
+
+        <div className="mt-6 space-y-4">
+          {[
+            "Residents sing, move, and reminisce",
+            "Staff follow ready-to-use guidance",
+            "The group shares an active social experience",
+          ].map((item) => (
+            <div key={item} className="flex items-start gap-3">
+              <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#F47534] text-sm font-black text-white">
+                ✓
+              </span>
+
+              <p className="text-lg font-semibold leading-relaxed text-slate-100">
+                {item}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ==================== PASSIVE LISTENING ==================== */}
+      <div className="rounded-[2.75rem] border border-slate-200 bg-white p-7 shadow-[0_24px_70px_rgba(15,23,42,0.07)] md:p-9">
+        <p className="text-sm font-black uppercase tracking-[0.18em] text-slate-500">
+          Passive listening
+        </p>
+
+        <h3 className="mt-4 text-3xl font-black tracking-[-0.045em] text-[#062B49]">
+          Music plays in the background.
+        </h3>
+
+        <div className="mt-6 space-y-4">
+          {[
+            "Residents listen",
+            "Staff manage another activity",
+            "Participation can be difficult to sustain",
+          ].map((item) => (
+            <div key={item} className="flex items-start gap-3">
+              <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-100 text-sm font-black text-slate-500">
+                –
+              </span>
+
+              <p className="text-lg font-semibold leading-relaxed text-slate-600">
+                {item}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{/* ==================== PRIME SESSION VIDEO ==================== */}
+<section className="px-5 py-8 md:px-10 md:py-16">
+  <div className="mx-auto grid max-w-7xl items-center gap-7 rounded-[2.25rem] bg-[#061D33] p-6 text-white shadow-[0_44px_120px_rgba(6,29,51,0.28)] md:gap-12 md:rounded-[3.25rem] md:p-12 lg:grid-cols-[0.75fr_1.25fr]">
+    
+    <div className="max-w-xl">
+      <p className="mb-4 text-sm font-black uppercase tracking-[0.22em] text-[#F47534] md:mb-5">
+        See PRIME in action
+      </p>
+
+      <h2 className="text-4xl font-black leading-[0.98] tracking-[-0.055em] md:text-5xl md:leading-[0.95] md:tracking-[-0.06em]">
+        Watch how a PRIME session works.
+      </h2>
+
+      <p className="mt-4 text-lg leading-relaxed text-slate-200 md:mt-6 md:text-xl">
+        See how staff use music, movement, props, and guided facilitation to lead
+        engaging group sessions residents can actively participate in.
+      </p>
+
+      <button
+        type="button"
+        onClick={() => scrollToDemoForm("Talk With Our Team")}
+        className="mt-6 rounded-full bg-[#F47534] px-7 py-4 text-base font-bold text-white shadow-[0_14px_34px_rgba(244,117,52,0.26)] transition hover:-translate-y-0.5 md:mt-8"
+      >
+        Talk With Our Team
+      </button>
+    </div>
+
+    <div className="overflow-hidden rounded-[1.5rem] border border-white/10 shadow-[0_30px_90px_rgba(0,0,0,0.28)] md:rounded-[2.75rem]">
+      <div className="relative aspect-video w-full">
+        <iframe
+          id="prime-session-video"
+          className="absolute inset-0 h-full w-full"
+          src={`https://www.youtube.com/embed/stknfT1FagU?enablejsapi=1&origin=${window.location.origin}`}
+          title="SingFit PRIME session video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+  </div>
+</section>
+{/* ==================== WHY PRIME - TEMPORARILY DISABLED ==================== */}
+{false && (
       <section className="px-5 py-8 md:px-10 md:py-12">
   <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.8fr_1.2fr]">
     <div className="rounded-[2.5rem] bg-[#061D33] p-7 text-white shadow-[0_28px_80px_rgba(6,29,51,0.18)] md:p-8">
@@ -555,12 +844,13 @@ export default function PrimeLandingPage() {
     </div>
   </div>
 </section>
-
+)}
+{/* ==================== HOW PRIME WORKS ==================== */}
       <section className="px-5 py-8 md:px-10 md:py-10">
         <div className="mx-auto max-w-7xl">
           <div className="mb-10 max-w-5xl">
             <p className="mb-5 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
-              What it looks like
+              HOW PRIME WORKS
             </p>
 
             <h2 className="text-5xl font-black leading-[0.98] tracking-[-0.06em] md:text-5xl">
@@ -608,49 +898,8 @@ export default function PrimeLandingPage() {
         </div>
       </section>
 
-<section className="px-5 py-10 md:px-10 md:py-16">
-  <div className="mx-auto grid max-w-7xl items-center gap-12 rounded-[3.25rem] bg-[#061D33] p-7 text-white shadow-[0_44px_120px_rgba(6,29,51,0.28)] md:p-12 lg:grid-cols-[0.75fr_1.25fr]">
-    
-    <div className="max-w-xl">
-      <p className="mb-5 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
-        See PRIME in action
-      </p>
 
-      <h2 className="text-5xl font-black leading-[0.95] tracking-[-0.06em] md:text-5xl">
-        Watch how a PRIME session works.
-      </h2>
-
-      <p className="mt-6 text-xl leading-relaxed text-slate-200">
-        See how staff use music, movement, props, and guided facilitation to lead
-        engaging group sessions residents can actively participate in.
-      </p>
-
-      <button
-        type="button"
-        onClick={() => scrollToDemoForm("Schedule a PRIME Demo")}
-        className="mt-8 rounded-full bg-[#F47534] px-7 py-4 text-base font-bold text-white shadow-[0_14px_34px_rgba(244,117,52,0.26)] transition hover:-translate-y-0.5"
-      >
-        Talk With Our Team
-      </button>
-    </div>
-
-    <div className="overflow-hidden rounded-[2.75rem] border border-white/10 shadow-[0_30px_90px_rgba(0,0,0,0.28)]">
-      <div className="relative aspect-video w-full">
-        <iframe
-          id="prime-session-video"
-          className="absolute inset-0 h-full w-full"
-          src={`https://www.youtube.com/embed/stknfT1FagU?enablejsapi=1&origin=${window.location.origin}`}
-          title="SingFit PRIME session video"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-          loading="lazy"
-        />
-      </div>
-    </div>
-
-  </div>
-</section>
-
+{/* ==================== WHAT'S INCLUDED ==================== */}
       <section className="px-5 py-10 md:px-10 md:py-16">
         <div className="mx-auto grid max-w-7xl gap-10 rounded-[3.25rem] bg-white p-6 shadow-[0_34px_100px_rgba(15,23,42,0.10)] md:p-10 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="overflow-hidden rounded-[2.75rem] bg-[#F7F9FC]">
@@ -665,7 +914,7 @@ export default function PrimeLandingPage() {
 
           <div className="flex flex-col justify-center">
             <p className="mb-5 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
-              Complete toolkit
+              What's Included
             </p>
 
             <h2 className="text-4xl font-black leading-[1.02] tracking-[-0.055em] md:text-5xl">
@@ -680,7 +929,7 @@ export default function PrimeLandingPage() {
 
            <div className="mt-8 grid gap-4 sm:grid-cols-2">
   {[
-    "PRIME app and music library",
+    "Music Therapist curated music library",
     "Quarterly playlist booklets",
     "Online staff training",
     "Props, speakers, and support",
@@ -696,104 +945,55 @@ export default function PrimeLandingPage() {
   ))}
 </div>
 
-            <button
-              type="button"
-              onClick={() => scrollToDemoForm("Schedule a PRIME Demo")}
-              className="mt-8 w-fit rounded-full bg-[#F47534] px-7 py-4 text-base font-bold text-white shadow-[0_14px_34px_rgba(244,117,52,0.26)] transition hover:-translate-y-0.5"
-            >
-              Have Questions?
-            </button>
+          
           </div>
         </div>
       </section>
 
+      {/* ==================== CUSTOMER QUOTES ==================== */}
      <section className="px-5 py-8 md:px-10 md:py-12">
   <div className="mx-auto max-w-7xl">
     <div className="mb-8 max-w-5xl">
       <p className="mb-4 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
-        Customer voices
+        What activity leaders are seeing
       </p>
 
       <h2 className="text-4xl font-black leading-[1.02] tracking-[-0.055em] md:text-5xl">
-        Designed for the realities of senior living.
+        See what happens when residents join in.
       </h2>
     </div>
 
-    <div className="grid gap-6 lg:grid-cols-3">
-      <div className="relative min-h-[300px] rounded-[2.5rem] border border-slate-200 bg-white p-7 pb-[108px] shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
-        <div className="mb-5 text-5xl font-black leading-none text-[#F47534]/25">
-          “
-        </div>
-
-        <p className="text-lg font-black leading-snug tracking-[-0.025em] text-[#062B49]">
+    <div className="grid gap-6 lg:grid-cols-2">
+      <div className="relative min-h-[250px] rounded-[2.5rem] border border-slate-200 bg-white p-7 pb-[90px] shadow-[0_24px_70px_rgba(15,23,42,0.08)] md:p-9 md:pb-[94px]">
+        <div className="mb-3 text-5xl font-black leading-none text-[#F47534]/25">“</div>
+        <p className="max-w-xl text-[22px] font-black leading-[1.25] tracking-[-0.025em] text-[#062B49]">
           From the first song you’re seeing the engagement, and it keeps
           building. As they walk out, they’re all talking to each other.
         </p>
-
-        <div className="mt-6 text-right text-5xl font-black leading-none text-[#F47534]/25">
-          ”
-        </div>
-
-        <div className="absolute bottom-7 left-7 right-7 border-t border-slate-200 pt-5">
+        <div className="mt-3 text-right text-5xl font-black leading-none text-[#F47534]/25">”</div>
+        <div className="absolute bottom-7 left-7 right-7 border-t border-slate-200 pt-5 md:left-9 md:right-9">
           <p className="font-black text-[#062B49]">Pam M.</p>
-          <p className="text-sm font-semibold text-slate-600">
-            Activities Director
-          </p>
+          <p className="text-sm font-semibold text-slate-600">Activities Director</p>
         </div>
       </div>
 
-      <div className="relative min-h-[300px] overflow-hidden rounded-[2.5rem] bg-[#061D33] p-7 pb-[124px] shadow-[0_28px_80px_rgba(6,29,51,0.22)]">
-        <p className="mb-2 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
-          Video testimonial
-        </p>
-
-        <div className="mt-4 -mx-4 overflow-hidden rounded-[1.75rem] border border-white/10 bg-black">
-          <div className="relative aspect-video w-full">
-            <iframe
-              id="prime-testimonial-video"
-              className="absolute inset-0 h-full w-full"
-              src="https://player.vimeo.com/video/1196403668?api=1&player_id=prime-testimonial-video&autopause=0"
-              title="SingFit PRIME customer testimonial"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-              loading="lazy"
-            />
-          </div>
-        </div>
-
-        <div className="absolute bottom-7 left-7 right-7 border-t border-white/15 pt-5">
-          <p className="font-black text-white">Paula Harder</p>
-          <p className="mt-1 text-sm font-semibold leading-snug text-slate-300">
-            VP Resident Programs & Memory Care
-          </p>
-        </div>
-      </div>
-
-      <div className="relative min-h-[300px] rounded-[2.5rem] border border-slate-200 bg-white p-7 pb-[108px] shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
-        <div className="mb-5 text-5xl font-black leading-none text-[#F47534]/25">
-          “
-        </div>
-
-        <p className="text-lg font-black leading-snug tracking-[-0.025em] text-[#062B49]">
+      <div className="relative min-h-[250px] rounded-[2.5rem] border border-slate-200 bg-[#EAF6FB] p-7 pb-[90px] shadow-[0_24px_70px_rgba(15,23,42,0.08)] md:p-9 md:pb-[94px]">
+        <div className="mb-3 text-5xl font-black leading-none text-[#F47534]/25">“</div>
+        <p className="max-w-xl text-[22px] font-black leading-[1.25] tracking-[-0.025em] text-[#062B49]">
           Our residents love SingFit. I end up extending SingFit longer than
           planned. It is amazing to watch the residents become involved.
         </p>
-
-        <div className="mt-6 text-right text-5xl font-black leading-none text-[#F47534]/25">
-          ”
-        </div>
-
-        <div className="absolute bottom-7 left-7 right-7 border-t border-slate-200 pt-5">
+        <div className="mt-3 text-right text-5xl font-black leading-none text-[#F47534]/25">”</div>
+        <div className="absolute bottom-7 left-7 right-7 border-t border-slate-300 pt-5 md:left-9 md:right-9">
           <p className="font-black text-[#062B49]">Vanessa King Love</p>
-          <p className="text-sm font-semibold text-slate-600">
-            Life Enrichment Director
-          </p>
+          <p className="text-sm font-semibold text-slate-600">Life Enrichment Director</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+{/* ==================== DEMO REQUEST FORM ==================== */}
       <section
         id="prime-demo-form"
         className="scroll-mt-28 px-5 py-10 md:px-10 md:py-16"
@@ -829,7 +1029,7 @@ export default function PrimeLandingPage() {
       ✓
     </div>
     <span className="font-semibold text-white">
-      No music therapy background required
+      No musical background required
     </span>
   </div>
 
@@ -856,7 +1056,7 @@ export default function PrimeLandingPage() {
       ✓
     </div>
     <span className="font-semibold text-white">
-      Used by 900+ communities
+      Used by 1,000+ communities
     </span>
   </div>
 </div>
