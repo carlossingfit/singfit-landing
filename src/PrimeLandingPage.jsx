@@ -8,6 +8,7 @@ export default function PrimeLandingPage() {
 
   const [formStatus, setFormStatus] = useState("idle");
   const [formStartTime] = useState(Date.now());
+  const [youtubeLoaded, setYoutubeLoaded] = useState(false);
   const youtubePlayerRef = useRef(null);
   const youtubeProgressIntervalRef = useRef(null);
   const youtubeStartedRef = useRef(false);
@@ -111,115 +112,104 @@ export default function PrimeLandingPage() {
 
  useEffect(() => {
   if (typeof window === "undefined") return undefined;
+  if (!youtubeLoaded) return undefined;
 
-  const wasDismissed =
-    window.sessionStorage.getItem("prime_summer_pricing_dismissed") ===
-    "true";
+  const clearProgressInterval = () => {
+    if (youtubeProgressIntervalRef.current) {
+      window.clearInterval(youtubeProgressIntervalRef.current);
+      youtubeProgressIntervalRef.current = null;
+    }
+  };
 
-  if (wasDismissed) {
-    setSummerPricingDismissed(true);
-    setShowSummerPricing(false);
-  } else {
-    setShowSummerPricing(true);
-  }
+  const checkYouTubeProgress = () => {
+    const player = youtubePlayerRef.current;
+    if (!player || typeof player.getDuration !== "function") return;
 
-  return undefined;
-}, []);
+    const duration = player.getDuration();
+    const currentTime = player.getCurrentTime();
+    if (!duration || !currentTime) return;
 
-  useEffect(() => {
-    if (typeof window === "undefined") return undefined;
+    const percentWatched = (currentTime / duration) * 100;
 
-    const clearProgressInterval = () => {
-      if (youtubeProgressIntervalRef.current) {
-        window.clearInterval(youtubeProgressIntervalRef.current);
-        youtubeProgressIntervalRef.current = null;
+    [25, 50, 75].forEach((milestone) => {
+      if (
+        percentWatched >= milestone &&
+        !youtubeMilestonesRef.current.has(milestone)
+      ) {
+        youtubeMilestonesRef.current.add(milestone);
+
+        trackVideoEvent("video_progress", SESSION_VIDEO_NAME, {
+          percent: milestone,
+        });
       }
-    };
+    });
+  };
 
-    const checkYouTubeProgress = () => {
-      const player = youtubePlayerRef.current;
-      if (!player || typeof player.getDuration !== "function") return;
+  const initializeYouTubePlayer = () => {
+    if (!window.YT || !window.YT.Player || youtubePlayerRef.current) return;
 
-      const duration = player.getDuration();
-      const currentTime = player.getCurrentTime();
-      if (!duration || !currentTime) return;
-
-      const percentWatched = (currentTime / duration) * 100;
-      [25, 50, 75].forEach((milestone) => {
-        if (
-          percentWatched >= milestone &&
-          !youtubeMilestonesRef.current.has(milestone)
-        ) {
-          youtubeMilestonesRef.current.add(milestone);
-          trackVideoEvent("video_progress", SESSION_VIDEO_NAME, {
-            percent: milestone,
-          });
-        }
-      });
-    };
-
-    const initializeYouTubePlayer = () => {
-      if (!window.YT || !window.YT.Player || youtubePlayerRef.current) return;
-
-      youtubePlayerRef.current = new window.YT.Player("prime-session-video", {
-        events: {
-          onStateChange: (event) => {
-            if (event.data === window.YT.PlayerState.PLAYING) {
-              if (!youtubeStartedRef.current) {
-                youtubeStartedRef.current = true;
-                trackVideoEvent("video_start", SESSION_VIDEO_NAME);
-              }
-
-              clearProgressInterval();
-              youtubeProgressIntervalRef.current = window.setInterval(
-                checkYouTubeProgress,
-                1000
-              );
+    youtubePlayerRef.current = new window.YT.Player("prime-session-video", {
+      events: {
+        onStateChange: (event) => {
+          if (event.data === window.YT.PlayerState.PLAYING) {
+            if (!youtubeStartedRef.current) {
+              youtubeStartedRef.current = true;
+              trackVideoEvent("video_start", SESSION_VIDEO_NAME);
             }
 
-            if (
-              event.data === window.YT.PlayerState.PAUSED ||
-              event.data === window.YT.PlayerState.BUFFERING
-            ) {
-              clearProgressInterval();
-            }
+            clearProgressInterval();
 
-            if (event.data === window.YT.PlayerState.ENDED) {
-              clearProgressInterval();
-              if (!youtubeCompletedRef.current) {
-                youtubeCompletedRef.current = true;
-                trackVideoEvent("video_complete", SESSION_VIDEO_NAME);
-              }
+            youtubeProgressIntervalRef.current = window.setInterval(
+              checkYouTubeProgress,
+              1000
+            );
+          }
+
+          if (
+            event.data === window.YT.PlayerState.PAUSED ||
+            event.data === window.YT.PlayerState.BUFFERING
+          ) {
+            clearProgressInterval();
+          }
+
+          if (event.data === window.YT.PlayerState.ENDED) {
+            clearProgressInterval();
+
+            if (!youtubeCompletedRef.current) {
+              youtubeCompletedRef.current = true;
+              trackVideoEvent("video_complete", SESSION_VIDEO_NAME);
             }
-          },
+          }
         },
-      });
-    };
+      },
+    });
+  };
 
-    if (window.YT && window.YT.Player) {
-      initializeYouTubePlayer();
-    } else {
-      const existingScript = document.querySelector(
-        'script[src="https://www.youtube.com/iframe_api"]'
-      );
+  if (window.YT && window.YT.Player) {
+    initializeYouTubePlayer();
+  } else {
+    const existingScript = document.querySelector(
+      'script[src="https://www.youtube.com/iframe_api"]'
+    );
 
-      if (!existingScript) {
-        const script = document.createElement("script");
-        script.src = "https://www.youtube.com/iframe_api";
-        document.body.appendChild(script);
-      }
-
-      const previousCallback = window.onYouTubeIframeAPIReady;
-      window.onYouTubeIframeAPIReady = () => {
-        if (typeof previousCallback === "function") previousCallback();
-        initializeYouTubePlayer();
-      };
+    if (!existingScript) {
+      const script = document.createElement("script");
+      script.src = "https://www.youtube.com/iframe_api";
+      document.body.appendChild(script);
     }
 
-    return () => {
-      clearProgressInterval();
+    const previousCallback = window.onYouTubeIframeAPIReady;
+
+    window.onYouTubeIframeAPIReady = () => {
+      if (typeof previousCallback === "function") previousCallback();
+      initializeYouTubePlayer();
     };
-  }, []);
+  }
+
+  return () => {
+    clearProgressInterval();
+  };
+}, [youtubeLoaded]);
 
   useEffect(() => {
   if (typeof window === "undefined") return undefined;
@@ -761,18 +751,43 @@ export default function PrimeLandingPage() {
     </div>
 
     <div className="overflow-hidden rounded-[1.5rem] border border-white/10 shadow-[0_30px_90px_rgba(0,0,0,0.28)] md:rounded-[2.75rem]">
-      <div className="relative aspect-video w-full">
-        <iframe
-          id="prime-session-video"
-          className="absolute inset-0 h-full w-full"
-          src={`https://www.youtube.com/embed/stknfT1FagU?enablejsapi=1&origin=${window.location.origin}`}
-          title="SingFit PRIME session video"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
+  <div className="relative aspect-video w-full bg-black">
+    {!youtubeLoaded ? (
+      <button
+        type="button"
+        onClick={() => setYoutubeLoaded(true)}
+        className="group absolute inset-0 h-full w-full cursor-pointer"
+        aria-label="Play SingFit PRIME session video"
+      >
+        <img
+          src="/prime-session-thumbnail.jpg"
+          alt="SingFit PRIME session"
+          className="absolute inset-0 h-full w-full object-cover"
           loading="lazy"
+          decoding="async"
         />
-      </div>
-    </div>
+
+        <div className="absolute inset-0 bg-black/10 transition group-hover:bg-black/20" />
+
+        <span className="absolute left-1/2 top-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#F47534] shadow-[0_12px_32px_rgba(0,0,0,0.35)] transition group-hover:scale-105">
+          <span
+            aria-hidden="true"
+            className="ml-1 block h-0 w-0 border-y-[12px] border-l-[20px] border-y-transparent border-l-white"
+          />
+        </span>
+      </button>
+    ) : (
+      <iframe
+        id="prime-session-video"
+        className="absolute inset-0 h-full w-full"
+        src={`https://www.youtube.com/embed/stknfT1FagU?enablejsapi=1&autoplay=1&origin=${window.location.origin}`}
+        title="SingFit PRIME session video"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+      />
+    )}
+  </div>
+</div>
 
   </div>
 </section>
