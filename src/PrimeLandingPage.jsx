@@ -9,6 +9,7 @@ export default function PrimeLandingPage() {
   const [formStatus, setFormStatus] = useState("idle");
   const [formStartTime] = useState(Date.now());
   const [youtubeLoaded, setYoutubeLoaded] = useState(false);
+  const [vimeoLoaded, setVimeoLoaded] = useState(false);
   const youtubePlayerRef = useRef(null);
   const youtubeProgressIntervalRef = useRef(null);
   const youtubeStartedRef = useRef(false);
@@ -213,6 +214,7 @@ export default function PrimeLandingPage() {
 
   useEffect(() => {
   if (typeof window === "undefined") return undefined;
+  if (!vimeoLoaded) return undefined;
 
   let cleanupIframe = null;
 
@@ -231,8 +233,12 @@ export default function PrimeLandingPage() {
       if (event.origin !== "https://player.vimeo.com") return;
 
       let data;
+
       try {
-        data = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
+        data =
+          typeof event.data === "string"
+            ? JSON.parse(event.data)
+            : event.data;
       } catch (error) {
         return;
       }
@@ -246,15 +252,21 @@ export default function PrimeLandingPage() {
 
       if (data.event === "timeupdate" && data.data?.percent) {
         const percentWatched = data.data.percent * 100;
+
         [25, 50, 75].forEach((milestone) => {
           if (
             percentWatched >= milestone &&
             !vimeoMilestonesRef.current.has(milestone)
           ) {
             vimeoMilestonesRef.current.add(milestone);
-            trackVideoEvent("video_progress", TESTIMONIAL_VIDEO_NAME, {
-              percent: milestone,
-            });
+
+            trackVideoEvent(
+              "video_progress",
+              TESTIMONIAL_VIDEO_NAME,
+              {
+                percent: milestone,
+              }
+            );
           }
         });
       }
@@ -289,7 +301,7 @@ export default function PrimeLandingPage() {
     window.clearTimeout(setupTimer);
     if (cleanupIframe) cleanupIframe();
   };
-}, []);
+}, [vimeoLoaded]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -614,23 +626,48 @@ export default function PrimeLandingPage() {
         </div>
 
         {/*
-          Intentionally constrained.
-          Do not increase this max-width because the source video is portrait
-          inside a landscape Vimeo player.
-        */}
-        <div className="w-full max-w-[520px] overflow-hidden rounded-[1.25rem] border-[4px] border-[#061D33] bg-black shadow-[0_18px_50px_rgba(6,29,51,0.14)] md:rounded-[1.5rem] md:border-[6px]">
-          <div className="relative aspect-video w-full">
-            <iframe
-              id="prime-testimonial-video"
-              className="absolute inset-0 h-full w-full"
-              src="https://player.vimeo.com/video/1196403668?api=1&player_id=prime-testimonial-video&autopause=0"
-              title="Paula Harder SingFit PRIME customer testimonial"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-              loading="lazy"
-            />
-          </div>
-        </div>
+  Intentionally constrained.
+  Do not increase this max-width because the source video is portrait
+  inside a landscape Vimeo player.
+*/}
+<div className="w-full max-w-[520px] overflow-hidden rounded-[1.25rem] border-[4px] border-[#061D33] bg-black shadow-[0_18px_50px_rgba(6,29,51,0.14)] md:rounded-[1.5rem] md:border-[6px]">
+  <div className="relative aspect-video w-full bg-black">
+    {!vimeoLoaded ? (
+      <button
+        type="button"
+        onClick={() => setVimeoLoaded(true)}
+        className="group absolute inset-0 h-full w-full cursor-pointer"
+        aria-label="Play Paula Harder customer testimonial"
+      >
+        <img
+          src="/prime-testimonial-thumbnail.jpg"
+          alt="Paula Harder customer testimonial"
+          className="absolute inset-0 h-full w-full object-cover object-top"
+          loading="lazy"
+          decoding="async"
+        />
+
+        <div className="absolute inset-0 bg-black/10 transition group-hover:bg-black/20" />
+
+        <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#F47534] shadow-[0_10px_28px_rgba(0,0,0,0.35)] transition group-hover:scale-105">
+          <span
+            aria-hidden="true"
+            className="ml-1 block h-0 w-0 border-y-[10px] border-l-[17px] border-y-transparent border-l-white"
+          />
+        </span>
+      </button>
+    ) : (
+      <iframe
+        id="prime-testimonial-video"
+        className="absolute inset-0 h-full w-full"
+        src="https://player.vimeo.com/video/1196403668?api=1&player_id=prime-testimonial-video&autopause=0&autoplay=1"
+        title="Paula Harder SingFit PRIME customer testimonial"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowFullScreen
+      />
+    )}
+  </div>
+</div>
       </div>
 
     </div>
