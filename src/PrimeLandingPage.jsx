@@ -4,7 +4,7 @@ import CrispChat from "./CrispChat";
 export default function PrimeLandingPage() {
   const PAGE_ID = "PrimeLandingPage1";
   const SESSION_VIDEO_NAME = "prime_session_overview";
-  const TESTIMONIAL_VIDEO_NAME = "prime_customer_testimonial";
+  const TESTIMONIAL_VIDEO_NAME = "paula_harder_testimonial";
 
   const [formStatus, setFormStatus] = useState("idle");
   const [formStartTime] = useState(Date.now());
@@ -400,12 +400,12 @@ export default function PrimeLandingPage() {
           />
 
           <button
-            type="button"
-            onClick={() => scrollToDemoForm("Learn More About PRIME")}
-            className="rounded-full bg-[#F47534] px-5 py-3 text-sm font-bold text-white shadow-[0_12px_30px_rgba(244,117,52,0.25)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_44px_rgba(244,117,52,0.34)] md:px-6"
-          >
-            Schedule a PRIME Demo
-          </button>
+  type="button"
+  onClick={() => scrollToDemoForm("Schedule a Demo")}
+  className="whitespace-nowrap rounded-full bg-[#F47534] px-4 py-2.5 text-[13px] font-bold text-white shadow-[0_12px_30px_rgba(244,117,52,0.25)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_44px_rgba(244,117,52,0.34)] md:px-6 md:py-3 md:text-sm"
+>
+  Schedule a Demo
+</button>
         </div>
       </header>
 
@@ -427,7 +427,12 @@ export default function PrimeLandingPage() {
         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
           <button
             type="button"
-            onClick={() => scrollToDemoForm("Schedule a PRIME Demo")}
+            onClick={() => {
+  trackCTA("Learn More About PRIME", "#prime-session-video-section");
+  document
+    .getElementById("prime-session-video-section")
+    ?.scrollIntoView({ behavior: "smooth", block: "start" });
+}}
             className="rounded-full bg-[#F47534] px-8 py-4 text-center text-base font-bold text-white shadow-[0_16px_40px_rgba(244,117,52,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_22px_52px_rgba(244,117,52,0.36)]"
           >
             Learn More About PRIME
@@ -635,7 +640,14 @@ export default function PrimeLandingPage() {
     {!vimeoLoaded ? (
       <button
         type="button"
-        onClick={() => setVimeoLoaded(true)}
+        onClick={() => {
+  if (!vimeoStartedRef.current) {
+    vimeoStartedRef.current = true;
+    trackVideoEvent("video_start", TESTIMONIAL_VIDEO_NAME);
+  }
+
+  setVimeoLoaded(true);
+}}
         className="group absolute inset-0 h-full w-full cursor-pointer"
         aria-label="Play Paula Harder customer testimonial"
       >
@@ -761,7 +773,8 @@ export default function PrimeLandingPage() {
 </section>
 
 {/* ==================== PRIME SESSION VIDEO ==================== */}
-<section className="px-5 py-8 md:px-10 md:py-16">
+
+<section className="px-5 py-8 md:px-10 md:py-16" id="prime-session-video-section">
   <div className="mx-auto grid max-w-7xl items-center gap-7 rounded-[2.25rem] bg-[#061D33] p-6 text-white shadow-[0_44px_120px_rgba(6,29,51,0.28)] md:gap-12 md:rounded-[3.25rem] md:p-12 lg:grid-cols-[0.75fr_1.25fr]">
     
     <div className="max-w-xl">
@@ -1046,73 +1059,76 @@ export default function PrimeLandingPage() {
 </section>
 
 {/* ==================== DEMO REQUEST FORM ==================== */}
-      <section
-        id="prime-demo-form"
-        className="scroll-mt-28 px-5 py-10 md:px-10 md:py-16"
-      >
-        <div className="mx-auto grid max-w-7xl gap-10 rounded-[3.25rem] bg-[#061D33] p-7 text-white shadow-[0_44px_120px_rgba(6,29,51,0.32)] md:p-12 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
-            <p className="mb-5 text-sm font-black uppercase tracking-[0.22em] text-[#F47534]">
-              Schedule a demo
-            </p>
+<section
+  id="prime-demo-form"
+  className="scroll-mt-28 px-5 py-10 md:px-10 md:py-16"
+>
+  <div className="mx-auto grid max-w-7xl gap-4 rounded-[3.25rem] bg-[#061D33] p-7 text-white shadow-[0_44px_120px_rgba(6,29,51,0.32)] md:gap-10 md:p-12 lg:grid-cols-[0.9fr_1.1fr]">
+    <div>
+      <p className="text-sm font-black uppercase tracking-[0.22em] text-[#F47534] md:mb-5">
+        Schedule a demo
+      </p>
 
-            <h2 className="text-5xl font-black leading-[1.02] tracking-[-0.055em] md:text-5xl">
-              See how PRIME could fit your community.
-            </h2>
+      {/* Desktop-only demo introduction */}
+      <div className="hidden md:block">
+        <h2 className="text-5xl font-black leading-[1.02] tracking-[-0.055em]">
+          See how PRIME could fit your community.
+        </h2>
 
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">
-              Complete the form and our team will follow up to schedule a
-              virtual demo, answer questions, and walk you through how PRIME
-              works in a senior living setting.
-            </p>
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">
+          Complete the form and our team will follow up to schedule a
+          virtual demo, answer questions, and walk you through how PRIME
+          works in a senior living setting.
+        </p>
 
-            <div className="mt-10 space-y-3">
-  <div className="flex items-center gap-4 rounded-2xl border border-white/10 px-5 py-4">
-    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F47534] text-sm font-black text-white">
-      ✓
-    </div>
-    <span className="font-semibold text-white">
-      Ready-to-use session plans
-    </span>
-  </div>
-
-  <div className="flex items-center gap-4 rounded-2xl border border-white/10 px-5 py-4">
-    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F47534] text-sm font-black text-white">
-      ✓
-    </div>
-    <span className="font-semibold text-white">
-      No musical background required
-    </span>
-  </div>
-
-  <div className="flex items-center gap-4 rounded-2xl border border-white/10 px-5 py-4">
-    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F47534] text-sm font-black text-white">
-      ✓
-    </div>
-    <span className="font-semibold text-white">
-      Training included for your team
-    </span>
-  </div>
-
-  <div className="flex items-center gap-4 rounded-2xl border border-white/10 px-5 py-4">
-    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F47534] text-sm font-black text-white">
-      ✓
-    </div>
-    <span className="font-semibold text-white">
-      Designed specifically for senior living
-    </span>
-  </div>
-
-  <div className="flex items-center gap-4 rounded-2xl border border-white/10 px-5 py-4">
-    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F47534] text-sm font-black text-white">
-      ✓
-    </div>
-    <span className="font-semibold text-white">
-      Used by 1,000+ communities
-    </span>
-  </div>
-</div>
+        <div className="mt-10 space-y-3">
+          <div className="flex items-center gap-4 rounded-2xl border border-white/10 px-5 py-4">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F47534] text-sm font-black text-white">
+              ✓
+            </div>
+            <span className="font-semibold text-white">
+              Ready-to-use session plans
+            </span>
           </div>
+
+          <div className="flex items-center gap-4 rounded-2xl border border-white/10 px-5 py-4">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F47534] text-sm font-black text-white">
+              ✓
+            </div>
+            <span className="font-semibold text-white">
+              No musical background required
+            </span>
+          </div>
+
+          <div className="flex items-center gap-4 rounded-2xl border border-white/10 px-5 py-4">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F47534] text-sm font-black text-white">
+              ✓
+            </div>
+            <span className="font-semibold text-white">
+              Training included for your team
+            </span>
+          </div>
+
+          <div className="flex items-center gap-4 rounded-2xl border border-white/10 px-5 py-4">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F47534] text-sm font-black text-white">
+              ✓
+            </div>
+            <span className="font-semibold text-white">
+              Designed specifically for senior living
+            </span>
+          </div>
+
+          <div className="flex items-center gap-4 rounded-2xl border border-white/10 px-5 py-4">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F47534] text-sm font-black text-white">
+              ✓
+            </div>
+            <span className="font-semibold text-white">
+              Used by 1,000+ communities
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
 
           <form
             onSubmit={handleSubmit}
