@@ -570,7 +570,7 @@ export default function PrimeLandingPage() {
           className="group block"
           aria-label="Read more about Teepa Snow's support for SingFit"
         >
-          <div className="flex aspect-video w-full max-w-[520px] flex-col justify-between overflow-hidden rounded-[1.25rem] border border-slate-200 bg-white p-5 shadow-[0_18px_50px_rgba(6,29,51,0.10)] transition hover:-translate-y-0.5 hover:shadow-[0_22px_60px_rgba(6,29,51,0.14)] md:rounded-[1.5rem] md:p-6">
+          <div className="flex w-full max-w-[520px] flex-col justify-between overflow-hidden rounded-[1.25rem] border border-slate-200 bg-white p-5 shadow-[0_18px_50px_rgba(6,29,51,0.10)] transition hover:-translate-y-0.5 hover:shadow-[0_22px_60px_rgba(6,29,51,0.14)] md:aspect-video md:rounded-[1.5rem] md:p-6">
 
             <div>
               <div className="flex items-start gap-4">
