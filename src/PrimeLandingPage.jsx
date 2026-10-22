@@ -346,6 +346,7 @@ export default function PrimeLandingPage() {
         event: "submit_form",
         form_id: "prime_demo_form",
         formtype: "demo_request",
+        audience_type: formData.get("audience_type"),
       });
 
       setFormStatus("success");
@@ -1069,6 +1070,10 @@ export default function PrimeLandingPage() {
         Schedule a demo
       </p>
 
+      <p className="mt-2 text-base leading-relaxed text-slate-200 md:hidden">
+        SingFit PRIME is designed for senior living and care organizations seeking engaging group programming for their residents and participants.
+      </p>
+
       {/* Desktop-only demo introduction */}
       <div className="hidden md:block">
         <h2 className="text-5xl font-black leading-[1.02] tracking-[-0.055em]">
@@ -1076,6 +1081,7 @@ export default function PrimeLandingPage() {
         </h2>
 
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">
+          SingFit PRIME is designed for senior living and care organizations seeking engaging group programming for their residents and participants.
           Complete the form and our team will follow up to schedule a
           virtual demo, answer questions, and walk you through how PRIME
           works in a senior living setting.
@@ -1157,6 +1163,29 @@ export default function PrimeLandingPage() {
                   type="email"
                   className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-4 text-base outline-none transition focus:border-[#F47534] focus:ring-4 focus:ring-[#F47534]/15"
                 />
+              </label>
+
+              <label className="block md:col-span-2">
+                <span className="text-sm font-black text-slate-700">
+                  Which best describes you? *
+                </span>
+                <select
+                  name="audience_type"
+                  required
+                  defaultValue=""
+                  className="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-4 text-base text-[#062B49] outline-none transition focus:border-[#F47534] focus:ring-4 focus:ring-[#F47534]/15"
+                >
+                  <option value="" disabled>
+                    Please select
+                  </option>
+                  <option value="organization">
+                    I represent a senior living or care organization
+                  </option>
+                  <option value="caregiver_individual">
+                    I am a family caregiver or individual
+                  </option>
+                  <option value="other">Other</option>
+                </select>
               </label>
 
               <label className="block">

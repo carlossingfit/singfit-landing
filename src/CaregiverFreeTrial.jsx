@@ -901,7 +901,7 @@ p{
 .who-section-cta .section-cta-note{
   grid-column:2;
   width:100%;
-  max-width:360px;
+  max-width:500px;
   margin:10px auto 0;
   text-align:center;
   justify-self:center;
@@ -2305,7 +2305,8 @@ p{
               </div>
               <p className="microcopy">
   30 days free, then $11.99/month. Cancel anytime.<br />
-  Credit card required. Trial automatically renews unless canceled before the trial ends.
+  Credit card required. Trial automatically renews unless canceled. We'll remind you 3 days before the trial ends.
+
 </p>
             </div>
 
@@ -2428,7 +2429,7 @@ p{
 
               <p className="section-cta-note">
                 30 days free, then $11.99/month. Cancel anytime.<br />
-                Credit card required. Trial automatically renews unless canceled before the trial ends.
+                Credit card required. Trial automatically renews unless canceled. We'll remind you 3 days before the trial ends.
               </p>
             </div>
           </section>
@@ -2470,7 +2471,7 @@ p{
 
   <p className="section-cta-note">
     30 days free, then $11.99/month. Cancel anytime.<br />
-    Credit card required. Trial automatically renews unless canceled before the trial ends.
+    Credit card required. Trial automatically renews unless canceled. We'll remind you 3 days before the trial ends.
   </p>
 </div>
           </section>
@@ -2585,7 +2586,7 @@ p{
 
     <p className="section-cta-note">
       30 days free, then $11.99/month. Cancel anytime.<br />
-      Credit card required. Trial automatically renews unless canceled before the trial ends.
+      Credit card required. Trial automatically renews unless canceled. We'll remind you 3 days before the trial ends.
     </p>
   </div>
 </section>
@@ -2649,7 +2650,7 @@ p{
 
   <p className="section-cta-note">
     30 days free, then $11.99/month. Cancel anytime.<br />
-    Credit card required. Trial automatically renews unless canceled before the trial ends.
+    Credit card required. Trial automatically renews unless canceled. We'll remind you 3 days before the trial ends.
   </p>
 </div>
           </section>
@@ -2731,7 +2732,7 @@ p{
 
     <p className="section-cta-note">
       30 days free, then $11.99/month. Cancel anytime.<br />
-      Credit card required. Trial automatically renews unless canceled before the trial ends.
+      Credit card required. Trial automatically renews unless canceled. We'll remind you 3 days before the trial ends.
     </p>
   </div>
 </section>
