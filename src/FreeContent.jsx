@@ -112,6 +112,12 @@ const RECORDED_WEBINARS = [
     title: "Caregivers: Singing for Self-Expression and Confidence",
     duration: "50 min",
     videoEmbedUrl: "https://player.vimeo.com/video/1217821993?h=c7d5d5125d", 
+  },
+  {
+    id: "webinar-006",
+    title: "Sing and Thrive!",
+    duration: "50 min",
+    videoEmbedUrl: "https://player.vimeo.com/video/1240938378?h=0b7e6a5b59",
   },  
   ];
 
@@ -485,14 +491,14 @@ useEffect(() => {
         const eventData = {
           event: "click_cta",
           button_text: "Webinar: Sing and Thrive!",
-          destination_url: "https://us02web.zoom.us/webinar/register/1217881986428/WN_Xlx7qVdgQSasEDs13fkBPg",
+          destination_url: "modal:recorded_webinars",
       page_id: "MemberResources"
      };
 
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(eventData);
 
-    window.open(eventData.destination_url, "_blank");
+    openRecordedModal("webinar-006");
       }}
   className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
 >
@@ -505,7 +511,7 @@ useEffect(() => {
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
       Sing and Thrive!{" "}
       <br></br><span className="text-sm font-medium text-[#F47534] ml-1">
-    (Registration is Open)
+    (Click to watch recording)
   </span>
     </p>
   </div>
