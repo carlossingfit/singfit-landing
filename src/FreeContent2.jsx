@@ -485,13 +485,44 @@ useEffect(() => {
 
           <div className="space-y-4 mt-4">
           
-           {/* Webinar Card 1 */}
+          {/* Webinar Card 1 */}
  <button
   onClick={() => {
         const eventData = {
           event: "click_cta",
+          button_text: "Webinar: Making Spirits Bright Through Singing ",
+          destination_url: "https://us02web.zoom.us/webinar/register/2617939012152/WN_5zrzuD0-RcmSABtqVqcqiw",
+      page_id: "NonMemberResources"
+     };
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(eventData);
+        window.open(eventData.destination_url, "_blank");
+      }}
+  className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
+>
+  <img
+    src="/DEC_1.png"
+    alt="Dec 1, 2026"
+    className="w-20 h-20 object-contain rounded-md shadow"
+  />
+  <div className="text-lg leading-relaxed">
+    <p className="font-semibold text-[#002F6C] text-xl mb-2">
+      Making Spirits Bright Through Singing {" "}
+      <br></br><span className="text-sm font-medium text-[#F47534] ml-1">
+    (Click to sign up)
+  </span>
+    </p>
+  </div>
+</button>
+
+
+            {/* Webinar Card 2 */}
+   <button
+  onClick={() => {
+        const eventData = {
+          event: "click_cta",
           button_text: "Webinar: Sing and Thrive!",
-         destination_url: "modal:recorded_webinars",
+          destination_url: "modal:recorded_webinars",
       page_id: "NonMemberResources"
      };
 
@@ -517,9 +548,8 @@ useEffect(() => {
   </div>
 </button>
 
-
-            {/* Webinar Card 2 */}
-   <button
+            {/* Webinar Card 3 */}
+<button
   onClick={() => {
         const eventData = {
           event: "click_cta",
@@ -543,39 +573,6 @@ useEffect(() => {
   <div className="text-lg leading-relaxed">
     <p className="font-semibold text-[#002F6C] text-xl mb-2">
       Caregivers: Using Music to Connect with Your Loved One{" "}
-      <br></br><span className="text-sm font-medium text-[#F47534] ml-1">
-    (Click to watch recording)
-  </span>
-      
-    </p>
-  </div>
-</button>
-
-            {/* Webinar Card 3 */}
-<button
-  onClick={() => {
-        const eventData = {
-          event: "click_cta",
-          button_text: "Caregivers: Singing for Self-Expression and Confidence",
-          destination_url: "modal:recorded_webinars",
-          page_id: "NonMemberResources",
-        };
-
-        window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(eventData);
-
-    openRecordedModal("webinar-005");
-      }}
-  className="block bg-white rounded-xl shadow p-4 flex items-start gap-4 hover:shadow-lg transition-shadow duration-200 text-left w-full"
->
-  <img
-    src="/Aug_11.png"
-    alt="August 11, 2026"
-    className="w-20 h-20 object-contain rounded-md shadow"
-  />
-  <div className="text-lg leading-relaxed">
-    <p className="font-semibold text-[#002F6C] text-xl mb-2">
-      Caregivers: Singing for Self-Expression and Confidence{" "}
       <br></br><span className="text-sm font-medium text-[#F47534] ml-1">
     (Click to watch recording)
   </span>
