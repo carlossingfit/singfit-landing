@@ -38,6 +38,7 @@ const AARPResourcePageDraft = lazy(() => import("./AARPResourcePageDraft"));
 const CaregiverConsult = lazy(() => import("./CaregiverConsult"));
 const CaregiverConsultConfirmation = lazy(() =>  import("./CaregiverConsultConfirmation"));
 const CaregiverFreeTrial = lazy(() =>  import("./CaregiverFreeTrial"));
+const CaregiverFreeTrialRedesign = lazy(() => import("./CaregiverFreeTrialRedesign"));
 const PrimeLandingPageTest = lazy(() =>  import("./PrimeLandingPageTest"));
 const AARPResourcePagePrototypeB = lazy(() => import("./AARPResourcePagePrototypeB"));
 const AssistedLivingWeek = lazy(() => import("./AssistedLivingWeek"));
@@ -85,6 +86,7 @@ function App() {
           <Route path="/caregiverconsult" element={<CaregiverConsult />} />
           <Route path="/caregiverconsult-confirmation" element={<CaregiverConsultConfirmation />} />
           <Route path="/caregiver-free-trial"  element={<CaregiverFreeTrial />} />
+          <Route path="/caregiver-redesign" element={<CaregiverFreeTrialRedesign />} />
           <Route path="/primelandingpage-test" element={<PrimeLandingPageTest />}/>
           <Route path="/aarp-member-resources-prototype-b" element={<AARPResourcePagePrototypeB />} />
           <Route path="/assisted-living-week" element={<AssistedLivingWeek />} />
