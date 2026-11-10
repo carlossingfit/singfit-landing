@@ -39,6 +39,7 @@ const CaregiverConsult = lazy(() => import("./CaregiverConsult"));
 const CaregiverConsultConfirmation = lazy(() =>  import("./CaregiverConsultConfirmation"));
 const CaregiverFreeTrial = lazy(() =>  import("./CaregiverFreeTrial"));
 const CaregiverFreeTrialRedesign = lazy(() => import("./CaregiverFreeTrialRedesign"));
+const CaregiverHeroPreview = lazy(() => import("./CaregiverHeroPreview"));
 const PrimeLandingPageTest = lazy(() =>  import("./PrimeLandingPageTest"));
 const AARPResourcePagePrototypeB = lazy(() => import("./AARPResourcePagePrototypeB"));
 const AssistedLivingWeek = lazy(() => import("./AssistedLivingWeek"));
@@ -87,6 +88,11 @@ function App() {
           <Route path="/caregiverconsult-confirmation" element={<CaregiverConsultConfirmation />} />
           <Route path="/caregiver-free-trial"  element={<CaregiverFreeTrial />} />
           <Route path="/caregiver-redesign" element={<CaregiverFreeTrialRedesign />} />
+          {process.env.NODE_ENV === "development" && <>
+            <Route path="/caregiver-hero-a" element={<CaregiverHeroPreview variant="a" />} />
+            <Route path="/caregiver-hero-b" element={<CaregiverHeroPreview variant="b" />} />
+            <Route path="/caregiver-hero-hybrid" element={<CaregiverHeroPreview variant="hybrid" />} />
+          </>}
           <Route path="/primelandingpage-test" element={<PrimeLandingPageTest />}/>
           <Route path="/aarp-member-resources-prototype-b" element={<AARPResourcePagePrototypeB />} />
           <Route path="/assisted-living-week" element={<AssistedLivingWeek />} />
