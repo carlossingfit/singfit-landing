@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import CrispChat from "./CrispChat";
 
 export default function PrimeLandingPage() {
   const PAGE_ID = "PrimeLandingPage1";
@@ -390,7 +389,6 @@ export default function PrimeLandingPage() {
 
   return (
       <>
-    <CrispChat />
     <main className="min-h-screen overflow-hidden bg-[#F7F9FC] text-[#062B49] antialiased">
       <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/85 px-5 py-4 backdrop-blur-xl md:px-10">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
