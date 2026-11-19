@@ -39,6 +39,10 @@
 
   "rewrites": [
     {
+      "source": "/api/stripe/verify-checkout",
+      "destination": "/api/stripe/verify-checkout"
+    },
+    {
       "source": "/api/lead",
       "destination": "https://hook.us2.make.com/8t1ri7o1r73cfvkb2udx1rkiaxexnexb"
     },
