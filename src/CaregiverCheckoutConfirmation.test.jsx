@@ -42,6 +42,13 @@ test("loading is neutral; verified response unlocks success, downloads and video
   expect(container.textContent).toContain("Your 30-day free trial has started!");
   expect(container.querySelectorAll(".scc-stores a")).toHaveLength(2);
   expect(container.querySelector("iframe").src).toContain("1175592420?h=b5ad0b8108");
+  expect(container.textContent).not.toContain("Checkout verified.");
+  expect(container.querySelector(".scc-steps li:nth-child(3) p").textContent).toBe("Once your credentials arrive, open the app, sign in, and begin your first guided singing session.");
+  expect(container.querySelector(".scc-video h3").textContent).toBe("Getting Started with SingFit");
+  const videoLink = container.querySelector(".scc-video a");
+  expect(videoLink.textContent).toBe("Open video on Vimeo");
+  expect(videoLink.getAttribute("href")).toBe("https://vimeo.com/1175592420/b5ad0b8108?fl=pl&fe=sh");
+  expect(videoLink.target).toBe("_blank");
 });
 test.each(["rejected", "network", "malformed"])("%s response never shows success", async kind => {
   if (kind === "network") fetch.mockRejectedValue(new Error("offline"));

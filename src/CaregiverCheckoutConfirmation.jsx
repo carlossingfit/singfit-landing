@@ -40,7 +40,6 @@ export default function CaregiverCheckoutConfirmation() {
           <h1>{status === "loading" ? "Checking your checkout…" : "We’re unable to verify your checkout."}</h1>
           <p className="scc-lead">{status === "loading" ? "Please wait while we securely check your subscription with Stripe." : "This page does not confirm an active subscription. Please return using the link from your completed checkout, or try again later. You do not need to start another checkout."}</p>
         </section> : <>
-        <p className="scc-preview" role="note">Checkout verified. App account setup is separate and is not confirmed by this page.</p>
         <section className="scc-intro" aria-labelledby="scc-title">
           <p className="scc-eyebrow">Welcome to SingFit Caregiver</p>
           <h1 id="scc-title">Your 30-day free trial has started!</h1>
@@ -64,13 +63,13 @@ export default function CaregiverCheckoutConfirmation() {
                   <a href="https://play.google.com/store/apps/details?id=com.singfit" target="_blank" rel="noopener noreferrer">Download for Android <span>(Google Play, new tab)</span></a>
                 </div>
               </li>
-              <li><h3>Sign in and start using SingFit</h3><p>Once your credentials arrive, open the app, sign in, and enjoy your first guided sing-along.</p></li>
+              <li><h3>Sign in and start using SingFit</h3><p>Once your credentials arrive, open the app, sign in, and begin your first guided singing session.</p></li>
             </ol>
           </div>
           <div className="scc-video">
-            <h3>Watch: getting started with SingFit</h3>
+            <h3>Getting Started with SingFit</h3>
             <iframe src="https://player.vimeo.com/video/1175592420?h=b5ad0b8108" title="Getting started with SingFit" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen />
-            <a href="https://vimeo.com/1175592420/b5ad0b8108?fl=pl&fe=sh" target="_blank" rel="noopener noreferrer">Watch the getting-started video on Vimeo (new tab)</a>
+            <a href="https://vimeo.com/1175592420/b5ad0b8108?fl=pl&fe=sh" target="_blank" rel="noopener noreferrer">Open video on Vimeo</a>
           </div>
         </section>
         </>}
