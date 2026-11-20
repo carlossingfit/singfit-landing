@@ -1,6 +1,9 @@
 node_modules/
 .cache/
 .env
+.env.*
+!.env.example
+.vercel/
 .DS_Store
 .vs/
 build/
