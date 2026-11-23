@@ -2,7 +2,9 @@
   --sf-ink: #10243a;
   --sf-soft: #435462;
   --sf-teal: #007c80;
-  --sf-orange: #c94712;
+  --sf-rust: #b5402a;
+  --sf-cta-hover: #8f211b;
+  --sf-orange: #d44b2e;
   --sf-ivory: #faf7f2;
   --sf-white: #ffffff;
   --sf-mist: #eaf3f2;
@@ -32,8 +34,12 @@
 .sf-caregiver-redesign .sf-nav { display: flex; align-items: center; gap: 28px; font-size: 16px; font-weight: 600; }
 .sf-caregiver-redesign .sf-nav a { text-decoration: none; }
 .sf-caregiver-redesign .sf-btn { display: inline-flex; justify-content: center; align-items: center; min-height: 54px; padding: 14px 20px; border-radius: 10px; font: inherit; font-size: 19px; line-height: 1.2; font-weight: 700; text-decoration: none; text-align: center; border: 1.5px solid transparent; transition: background-color .18s; }
-.sf-caregiver-redesign :is(.sf-btn-primary,.sf-btn-nav) { background: var(--sf-orange); color: white; }
-.sf-caregiver-redesign :is(.sf-btn-primary,.sf-btn-nav):hover { background: #a8370d; }
+.sf-caregiver-redesign .sf-approved-hero.hp-hybrid {
+  --hp-orange: var(--sf-rust);
+  --hp-primary-hover: var(--sf-cta-hover);
+}
+.sf-caregiver-redesign :is(.sf-btn-primary,.sf-btn-nav) { background: var(--sf-rust); color: white; }
+.sf-caregiver-redesign :is(.sf-btn-primary,.sf-btn-nav):hover { background: var(--sf-cta-hover); }
 .sf-caregiver-redesign .sf-btn-outline { border-color: var(--sf-ink); background: #ffffffb3; color: var(--sf-ink); }
 .sf-caregiver-redesign .sf-btn-nav { font-size: 16px; min-height: 44px; padding: 10px 18px; }
 .sf-caregiver-redesign .sf-btn-disabled { opacity: .6; }
@@ -62,7 +68,7 @@
 .sf-caregiver-redesign .sf-placeholder-kicker { font-weight: 800; color: var(--sf-teal); font-size: 14px; letter-spacing: .12em; }
 .sf-caregiver-redesign .sf-placeholder-title { font-family: "Source Serif 4",Georgia,serif; font-size: 33px; line-height: 1.1; max-width: 320px; margin: 20px 0; }
 .sf-caregiver-redesign .sf-lyric-preview { display: grid; gap: 8px; padding: 18px 30px; background: white; border-radius: 10px; font-size: 17px; color: var(--sf-soft); }
-.sf-caregiver-redesign .sf-lyric-preview strong { color: var(--sf-orange); font-size: 18px; }
+.sf-caregiver-redesign .sf-lyric-preview strong { color: var(--sf-rust); font-size: 18px; }
 .sf-caregiver-redesign .sf-placeholder-duration { font-size: 13px; letter-spacing: .05em; margin-top: 22px; color: var(--sf-soft); }
 .sf-caregiver-redesign .sf-media video { display: block; width: 100%; border-radius: 24px; }
 .sf-caregiver-redesign .sf-media-caption { font-size: 14px; margin-top: 10px; }
