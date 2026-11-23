@@ -21,7 +21,6 @@ const PrivacyPolicy = lazy(() => import("./PrivacyPolicy"));
 const Accessibility = lazy(() => import("./Accessibility"));
 const CookiePolicy = lazy(() => import("./CookiePolicy"));
 const CleanAARPLanding = lazy(() => import("./CleanAARPLanding"));
-const DemoLandingPage = lazy(() => import("./DemoLandingPage"));
 const UKLanding = lazy(() => import("./UKLanding"));
 const CaregiverLandingPage = lazy(() => import("./CaregiverLandingPage"));
 const CaregiverLandingPageV2 = lazy(() => import("./CaregiverLandingPageV2"));
@@ -38,6 +37,7 @@ const AARPResourcePageDraft = lazy(() => import("./AARPResourcePageDraft"));
 const CaregiverConsult = lazy(() => import("./CaregiverConsult"));
 const CaregiverConsultConfirmation = lazy(() =>  import("./CaregiverConsultConfirmation"));
 const CaregiverFreeTrial = lazy(() =>  import("./CaregiverFreeTrial"));
+const CaregiverFreeTrialRedesign = lazy(() => import("./CaregiverFreeTrialRedesign"));
 const CaregiverCheckoutConfirmation = lazy(() => import("./CaregiverCheckoutConfirmation"));
 const PrimeLandingPageTest = lazy(() =>  import("./PrimeLandingPageTest"));
 const AARPResourcePagePrototypeB = lazy(() => import("./AARPResourcePagePrototypeB"));
@@ -69,7 +69,6 @@ function App() {
           <Route path="/accessibility" element={<Accessibility />} />
           <Route path="/cookies" element={<CookiePolicy />} />
           <Route path="/cleanlanding" element={<CleanAARPLanding />} />
-          <Route path="/demo" element={<DemoLandingPage />} />
           <Route path="/uk" element={<UKLanding />} />
           <Route path="/caregiverlanding" element={<CaregiverLandingPage />} />
           <Route path="/caregiverlanding2" element={<CaregiverLandingPageV2 />} />
@@ -86,6 +85,7 @@ function App() {
           <Route path="/caregiverconsult" element={<CaregiverConsult />} />
           <Route path="/caregiverconsult-confirmation" element={<CaregiverConsultConfirmation />} />
           <Route path="/caregiver-free-trial"  element={<CaregiverFreeTrial />} />
+          <Route path="/caregiver-redesign" element={<CaregiverFreeTrialRedesign />} />
           <Route path="/caregiver-checkout-confirmation" element={<CaregiverCheckoutConfirmation />} />
           <Route path="/primelandingpage-test" element={<PrimeLandingPageTest />}/>
           <Route path="/aarp-member-resources-prototype-b" element={<AARPResourcePagePrototypeB />} />

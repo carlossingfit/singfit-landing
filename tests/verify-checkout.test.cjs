@@ -33,4 +33,15 @@ for(const [name,options] of [
 test('Stripe API errors are sanitized',async()=>{const r=await run({error:new Error('secret customer data')});assert.equal(r.code,503);assert.deepEqual(r.body,{verified:false,error:'verification_unavailable'});});
 test('missing configuration fails closed',async()=>{const r=await run({config:{}});assert.equal(r.code,503);assert.equal(r.calls,0);});
 test('GET only',async()=>{const r=await run({method:'POST'});assert.equal(r.code,405);assert.equal(r.calls,0);});
-test('API rewrite precedes SPA fallback and preserves lead endpoint',()=>{const config=require('../vercel.json');assert.equal(config.rewrites[0].source,'/api/stripe/verify-checkout');assert.equal(config.rewrites[0].destination,config.rewrites[0].source);assert.equal(config.rewrites[1].source,'/api/lead');assert.equal(config.rewrites[2].source,'/(.*)');});
+test("checkout and lead rewrites precede the demo and SPA fallback", () => {
+  const { rewrites } = require("../vercel.json");
+  assert.equal(rewrites[0].source, "/api/stripe/verify-checkout");
+  assert.equal(rewrites[0].destination, "/api/stripe/verify-checkout");
+  assert.equal(rewrites[1].source, "/api/lead");
+  assert.equal(new URL(rewrites[1].destination).hostname, "hook.us2.make.com");
+  assert.deepEqual(rewrites.slice(2), [
+    { source: "/demo", destination: "https://singfit-free.vercel.app/demo/index.html" },
+    { source: "/demo/:path*", destination: "https://singfit-free.vercel.app/demo/:path*" },
+    { source: "/(.*)", destination: "/" },
+  ]);
+});
