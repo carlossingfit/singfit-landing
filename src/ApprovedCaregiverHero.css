@@ -45,7 +45,7 @@
 .sf-approved-hero.hp-hybrid :focus-visible { outline: 3px solid var(--hp-teal); outline-offset: 5px; }
 .sf-approved-hero.hp-hybrid .hp-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 20px; min-height: 54px; border: 1.5px solid transparent; border-radius: 10px; text-decoration: none; font-size: 19px; font-weight: 700; line-height: 1.2; text-align: center; }
 .sf-approved-hero.hp-hybrid .hp-primary { background: var(--hp-orange); color: #fff; }
-.sf-approved-hero.hp-hybrid .hp-primary:hover { background: #a8370d; }
+.sf-approved-hero.hp-hybrid .hp-primary:hover { background: var(--hp-primary-hover, #a8370d); }
 .sf-approved-hero.hp-hybrid .hp-secondary { background: #ffffffb3; border-color: var(--hp-ink); color: var(--hp-ink); }
 .sf-approved-hero.hp-hybrid .hp-secondary:hover { background: #fff; }
 .sf-approved-hero.hp-hybrid .hp-button svg { width: 19px; height: 19px; flex-shrink: 0; }
