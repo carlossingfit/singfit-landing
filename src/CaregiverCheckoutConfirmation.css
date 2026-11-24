@@ -28,8 +28,8 @@
 .sf-checkout-confirmation .scc-steps li::before { content: counter(steps); position: absolute; left: 0; top: 0; width: 32px; height: 32px; border: 1px solid #007c80; border-radius: 50%; text-align: center; color: #007075; font-weight: 700; }
 .sf-checkout-confirmation .scc-steps h3 { margin-bottom: 8px; }
 .sf-checkout-confirmation .scc-stores { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
-.sf-checkout-confirmation .scc-stores a { background: #c94712; color: white; padding: 12px 18px; border-radius: 10px; text-decoration: none; font-weight: 700; min-height: 54px; }
-.sf-checkout-confirmation .scc-stores a:hover { background: #a8370d; }
+.sf-checkout-confirmation .scc-stores a { background: #b5402a; color: white; padding: 12px 18px; border-radius: 10px; text-decoration: none; font-weight: 700; min-height: 54px; }
+.sf-checkout-confirmation .scc-stores a:hover { background: #8f211b; }
 .sf-checkout-confirmation .scc-stores span { display: block; font-size: 16px; font-weight: 400; }
 .sf-checkout-confirmation .scc-video h3 { margin-bottom: 20px; }
 .sf-checkout-confirmation .scc-video iframe { display: block; width: 100%; aspect-ratio: 16/9; border: 0; background: #10243a; border-radius: 12px; }
